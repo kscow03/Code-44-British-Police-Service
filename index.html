@@ -1,188 +1,410 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Code44 Police Service</title>
+<title>Code44 Armed Response Unit</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
-
-body {
-    margin: 0;
-    font-family: 'Inter', sans-serif;
-    background: radial-gradient(circle at top, #0d1b2a, #050a12);
-    color: #e6e6e6;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-/* HEADER */
-header {
-    padding: 80px 20px;
-    text-align: center;
-    background: linear-gradient(135deg, #102a43, #0b1a33);
-    border-bottom: 1px solid rgba(255,255,255,0.08);
+body{
+    font-family:Segoe UI,Tahoma,sans-serif;
+    background:#05080d;
+    color:#fff;
+    scroll-behavior:smooth;
 }
 
-header h1 {
-    font-size: 52px;
-    margin: 0;
-    letter-spacing: 2px;
+nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    background:rgba(5,8,13,.95);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid #16315c;
+    z-index:999;
 }
 
-header p {
-    color: #9fb3c8;
-    margin-top: 10px;
+.nav-container{
+    max-width:1400px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 30px;
 }
 
-/* BUTTONS */
-.buttons {
-    margin-top: 25px;
+.logo{
+    font-size:1.2rem;
+    font-weight:bold;
+    color:#4d9dff;
+    letter-spacing:1px;
 }
 
-.button {
-    display: inline-block;
-    padding: 12px 20px;
-    margin: 8px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: 0.25s;
+.menu{
+    display:flex;
+    gap:25px;
 }
 
-.primary {
-    background: #1d4ed8;
-    color: white;
+.menu a{
+    color:white;
+    text-decoration:none;
+    transition:.3s;
 }
 
-.primary:hover {
-    background: #2563eb;
-    transform: translateY(-2px);
+.menu a:hover{
+    color:#4d9dff;
 }
 
-.secondary {
-    border: 1px solid #3b82f6;
-    color: #93c5fd;
+.hero{
+    height:100vh;
+    background:
+    linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.85)),
+    url('https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1800&q=80');
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
 }
 
-.secondary:hover {
-    background: rgba(59,130,246,0.15);
+.hero-content{
+    max-width:900px;
 }
 
-/* SECTION */
-section {
-    padding: 60px 20px;
-    max-width: 1100px;
-    margin: auto;
+.hero h1{
+    font-size:4rem;
+    text-transform:uppercase;
+    letter-spacing:3px;
+    margin-bottom:15px;
 }
 
-/* CARDS */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 18px;
-    margin-top: 30px;
+.hero h2{
+    color:#4d9dff;
+    font-weight:300;
+    margin-bottom:25px;
 }
 
-.card {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 12px;
-    padding: 18px;
-    transition: 0.25s;
-    backdrop-filter: blur(10px);
+.hero p{
+    color:#cfcfcf;
+    margin-bottom:35px;
+    line-height:1.7;
 }
 
-.card:hover {
-    transform: translateY(-4px);
-    border-color: rgba(59,130,246,0.5);
-    background: rgba(59,130,246,0.08);
+.button{
+    background:#0066ff;
+    color:white;
+    padding:15px 35px;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+    font-size:1rem;
 }
 
-.card h3 {
-    margin: 0 0 8px 0;
-    color: #93c5fd;
+.button:hover{
+    background:#1e7bff;
 }
 
-/* FOOTER */
-footer {
-    text-align: center;
-    padding: 30px;
-    font-size: 12px;
-    color: #64748b;
-    border-top: 1px solid rgba(255,255,255,0.05);
+.section{
+    padding:90px 8%;
+}
+
+.title{
+    font-size:2rem;
+    margin-bottom:35px;
+    color:#4d9dff;
+    border-left:4px solid #0066ff;
+    padding-left:15px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:#0b111b;
+    border:1px solid #16315c;
+    border-radius:8px;
+    padding:25px;
+    transition:.3s;
+}
+
+.card:hover{
+    border-color:#0066ff;
+    transform:translateY(-5px);
+}
+
+.card h3{
+    margin-bottom:10px;
+    color:#4d9dff;
+}
+
+.notice{
+    background:#0b111b;
+    border-left:5px solid #0066ff;
+    padding:25px;
+    margin-top:25px;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+.stat{
+    background:#0b111b;
+    border:1px solid #16315c;
+    border-radius:8px;
+    text-align:center;
+    padding:30px;
+}
+
+.stat-number{
+    font-size:2.8rem;
+    color:#0066ff;
+    font-weight:bold;
+}
+
+footer{
+    text-align:center;
+    padding:30px;
+    border-top:1px solid #16315c;
+    color:#888;
+}
+
+@media(max-width:900px){
+    .menu{
+        display:none;
+    }
+
+    .hero h1{
+        font-size:2.5rem;
+    }
 }
 </style>
+
 </head>
 
 <body>
 
-<header>
-    <h1>Code44 Police Service</h1>
-    <p>FiveM Tactical Law Enforcement Division</p>
+<nav>
+    <div class="nav-container">
+        <div class="logo">CODE44 ARU</div>
 
-    <div class="buttons">
-        <a class="button primary" href="https://discord.gg/YOURDISCORD" target="_blank">Join Discord</a>
-        <a class="button secondary" href="#departments">Departments</a>
+```
+    <div class="menu">
+        <a href="#dashboard">Dashboard</a>
+        <a href="#operations">Operations</a>
+        <a href="#training">Training</a>
+        <a href="#command">Command</a>
+        <a href="#personnel">Personnel</a>
     </div>
-</header>
+</div>
+```
 
-<section>
-    <h2>Welcome</h2>
-    <p style="color:#94a3b8; max-width:700px;">
-        Code44 Police Service is a structured FiveM law enforcement agency focused on realism, discipline, and tactical coordination across all divisions.
+</nav>
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>Code44 Armed Response Unit</h1>
+
+```
+    <h2>England & Wales Tactical Firearms Command</h2>
+
+    <p>
+        Specialist Firearms Operations, Tactical Response,
+        High-Risk Incident Management and Operational Firearms Command.
     </p>
+
+    <button class="button"
+    onclick="document.getElementById('dashboard').scrollIntoView();">
+    Enter Operational Portal
+    </button>
+</div>
+```
+
 </section>
 
-<section id="departments">
-    <h2>Operational Divisions</h2>
+<section id="dashboard" class="section">
 
-    <div class="grid">
+```
+<h2 class="title">Operational Dashboard</h2>
 
-        <div class="card">
-            <h3>Response Unit</h3>
-            <p>Frontline patrol & immediate incident response.</p>
-        </div>
+<div class="stats">
 
-        <div class="card">
-            <h3>CID</h3>
-            <p>Criminal investigations and intelligence gathering.</p>
-        </div>
-
-        <div class="card">
-            <h3>Armed Response</h3>
-            <p>Firearms support & high-risk tactical deployment.</p>
-        </div>
-
-        <div class="card">
-            <h3>Roads Policing</h3>
-            <p>Traffic enforcement, pursuits & highway control.</p>
-        </div>
-
-        <div class="card">
-            <h3>NPAS</h3>
-            <p>Air support & aerial surveillance operations.</p>
-        </div>
-
-        <div class="card">
-            <h3>Training</h3>
-            <p>Recruit development & operational readiness.</p>
-        </div>
-
-        <div class="card">
-            <h3>Taser Unit</h3>
-            <p>Less-lethal force & controlled resolution tactics.</p>
-        </div>
-
-        <div class="card">
-            <h3>ACTT</h3>
-            <p>Advanced counter-terror & high-risk threat response.</p>
-        </div>
-
+    <div class="stat">
+        <div class="stat-number">14</div>
+        <div>Active ARVOs</div>
     </div>
+
+    <div class="stat">
+        <div class="stat-number">3</div>
+        <div>Current Deployments</div>
+    </div>
+
+    <div class="stat">
+        <div class="stat-number">7</div>
+        <div>ARU Vehicles</div>
+    </div>
+
+    <div class="stat">
+        <div class="stat-number">100%</div>
+        <div>Training Compliance</div>
+    </div>
+
+</div>
+
+<div class="notice">
+    <h3>Firearms Command Notice</h3>
+    <br>
+    <p>
+        All operators are reminded to complete continuation training
+        and vehicle tactics refresher sessions before the end of the month.
+    </p>
+</div>
+```
+
+</section>
+
+<section id="operations" class="section">
+
+```
+<h2 class="title">Operational Systems</h2>
+
+<div class="grid">
+
+    <div class="card">
+        <h3>🔫 Firearm Discharge Reports</h3>
+        <p>Operational reporting and review process.</p>
+    </div>
+
+    <div class="card">
+        <h3>🔫 ARU Announcements</h3>
+        <p>Important operational updates.</p>
+    </div>
+
+    <div class="card">
+        <h3>🔫 ARU Information</h3>
+        <p>Unit guidance and notices.</p>
+    </div>
+
+    <div class="card">
+        <h3>🔫 ARU General</h3>
+        <p>General communications and discussion.</p>
+    </div>
+
+    <div class="card">
+        <h3>🔫 OFC</h3>
+        <p>Operational Firearms Command resources.</p>
+    </div>
+
+</div>
+```
+
+</section>
+
+<section id="training" class="section">
+
+```
+<h2 class="title">Training Division</h2>
+
+<div class="grid">
+
+    <div class="card">
+        <h3>🔫 ARU Training</h3>
+        <p>Current courses and assessments.</p>
+    </div>
+
+    <div class="card">
+        <h3>🔫 Training Records</h3>
+        <p>Qualification tracking and attendance.</p>
+    </div>
+
+    <div class="card">
+        <h3>Vehicle Tactics</h3>
+        <p>TPAC and tactical driving resources.</p>
+    </div>
+
+    <div class="card">
+        <h3>Firearms Qualification</h3>
+        <p>Initial and continuation standards.</p>
+    </div>
+
+</div>
+```
+
+</section>
+
+<section id="command" class="section">
+
+```
+<h2 class="title">Firearms Command</h2>
+
+<div class="grid">
+
+    <div class="card">
+        <h3>🔫 Firearms Command Office</h3>
+        <p>Policy, governance and command notices.</p>
+    </div>
+
+    <div class="card">
+        <h3>Threat Assessment</h3>
+        <p>Current operational threat information.</p>
+    </div>
+
+    <div class="card">
+        <h3>Operational Briefings</h3>
+        <p>Daily and weekly briefings.</p>
+    </div>
+
+</div>
+```
+
+</section>
+
+<section id="personnel" class="section">
+
+```
+<h2 class="title">Personnel Directory</h2>
+
+<div class="grid">
+
+    <div class="card">
+        <h3>Firearms Commander</h3>
+        <p>VACANT</p>
+    </div>
+
+    <div class="card">
+        <h3>ARU Sergeant</h3>
+        <p>VACANT</p>
+    </div>
+
+    <div class="card">
+        <h3>Authorised Firearms Officers</h3>
+        <p>Operational Team Members</p>
+    </div>
+
+    <div class="card">
+        <h3>Trainee ARVOs</h3>
+        <p>Development Programme</p>
+    </div>
+
+</div>
+```
+
 </section>
 
 <footer>
-    Code44 Police Service © | FiveM Roleplay Division
+    Code44 Armed Response Unit • Tactical Firearms Command
 </footer>
 
 </body>
