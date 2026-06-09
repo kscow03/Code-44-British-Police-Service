@@ -1,69 +1,189 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Code44 British Police Service</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial;
-      background: #0b1a33;
-      color: white;
-      text-align: center;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Code44 Police Service</title>
 
-    header {
-      padding: 50px;
-      background: #132a4a;
-    }
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
 
-    h1 {
-      font-size: 48px;
-    }
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: radial-gradient(circle at top, #0d1b2a, #050a12);
+    color: #e6e6e6;
+}
 
-    .buttons {
-      margin-top: 30px;
-    }
+/* HEADER */
+header {
+    padding: 80px 20px;
+    text-align: center;
+    background: linear-gradient(135deg, #102a43, #0b1a33);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
 
-    a {
-      display: inline-block;
-      padding: 12px 20px;
-      margin: 10px;
-      background: #1e4fff;
-      color: white;
-      text-decoration: none;
-      border-radius: 8px;
-    }
+header h1 {
+    font-size: 52px;
+    margin: 0;
+    letter-spacing: 2px;
+}
 
-    a:hover {
-      background: #0f2fb8;
-    }
+header p {
+    color: #9fb3c8;
+    margin-top: 10px;
+}
 
-    section {
-      padding: 40px;
-    }
-  </style>
+/* BUTTONS */
+.buttons {
+    margin-top: 25px;
+}
+
+.button {
+    display: inline-block;
+    padding: 12px 20px;
+    margin: 8px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.25s;
+}
+
+.primary {
+    background: #1d4ed8;
+    color: white;
+}
+
+.primary:hover {
+    background: #2563eb;
+    transform: translateY(-2px);
+}
+
+.secondary {
+    border: 1px solid #3b82f6;
+    color: #93c5fd;
+}
+
+.secondary:hover {
+    background: rgba(59,130,246,0.15);
+}
+
+/* SECTION */
+section {
+    padding: 60px 20px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+/* CARDS */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+    margin-top: 30px;
+}
+
+.card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 18px;
+    transition: 0.25s;
+    backdrop-filter: blur(10px);
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(59,130,246,0.5);
+    background: rgba(59,130,246,0.08);
+}
+
+.card h3 {
+    margin: 0 0 8px 0;
+    color: #93c5fd;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 30px;
+    font-size: 12px;
+    color: #64748b;
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+</style>
 </head>
 
 <body>
 
 <header>
-  <h1>Code44 Police Service</h1>
-  <p>FiveM Roleplay Police Department</p>
+    <h1>Code44 Police Service</h1>
+    <p>FiveM Tactical Law Enforcement Division</p>
 
-  <div class="buttons">
-    <a href="#departments">Departments</a>
-  </div>
+    <div class="buttons">
+        <a class="button primary" href="https://discord.gg/YOURDISCORD" target="_blank">Join Discord</a>
+        <a class="button secondary" href="#departments">Departments</a>
+    </div>
 </header>
 
-<section id="departments">
-  <h2>Departments</h2>
-  <p>Response • CID • Armed Response • Roads Policing • NPAS • ACTT • Training • Taser Unit</p>
+<section>
+    <h2>Welcome</h2>
+    <p style="color:#94a3b8; max-width:700px;">
+        Code44 Police Service is a structured FiveM law enforcement agency focused on realism, discipline, and tactical coordination across all divisions.
+    </p>
 </section>
 
-<section>
-  <h2>About Us</h2>
-  <p>Code44 Police Service is a structured FiveM law enforcement roleplay experience focused on realism, teamwork, and tactical policing.</p>
+<section id="departments">
+    <h2>Operational Divisions</h2>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>Response Unit</h3>
+            <p>Frontline patrol & immediate incident response.</p>
+        </div>
+
+        <div class="card">
+            <h3>CID</h3>
+            <p>Criminal investigations and intelligence gathering.</p>
+        </div>
+
+        <div class="card">
+            <h3>Armed Response</h3>
+            <p>Firearms support & high-risk tactical deployment.</p>
+        </div>
+
+        <div class="card">
+            <h3>Roads Policing</h3>
+            <p>Traffic enforcement, pursuits & highway control.</p>
+        </div>
+
+        <div class="card">
+            <h3>NPAS</h3>
+            <p>Air support & aerial surveillance operations.</p>
+        </div>
+
+        <div class="card">
+            <h3>Training</h3>
+            <p>Recruit development & operational readiness.</p>
+        </div>
+
+        <div class="card">
+            <h3>Taser Unit</h3>
+            <p>Less-lethal force & controlled resolution tactics.</p>
+        </div>
+
+        <div class="card">
+            <h3>ACTT</h3>
+            <p>Advanced counter-terror & high-risk threat response.</p>
+        </div>
+
+    </div>
 </section>
+
+<footer>
+    Code44 Police Service © | FiveM Roleplay Division
+</footer>
 
 </body>
 </html>
