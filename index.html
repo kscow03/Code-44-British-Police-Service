@@ -2,19 +2,124 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Code 44 Police Service</title>
-<link rel="stylesheet" href="assets/style.css">
+<title>Code 44 Police Service - Armed Response Unit</title>
+
+<style>
+
+body{
+    background:#05080d;
+    color:white;
+    font-family:Segoe UI,sans-serif;
+    margin:0;
+}
+
+/* HERO */
+.hero{
+    height:220px;
+    background:#0b111b;
+    border-bottom:1px solid #16315c;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+}
+
+.hero h1{
+    color:#4d9dff;
+    margin:0;
+    font-size:2.2em;
+}
+
+.hero p{
+    color:#7aa7d9;
+    margin-top:5px;
+}
+
+/* STATS */
+.stats-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+    gap:15px;
+    padding:20px 40px 0 40px;
+}
+
+.stat-card{
+    background:#0b111b;
+    border:1px solid #16315c;
+    border-radius:8px;
+    padding:20px;
+}
+
+.stat-title{
+    color:#7aa7d9;
+    font-size:0.9em;
+}
+
+.stat-value{
+    font-size:1.8em;
+    color:#4d9dff;
+    margin-top:5px;
+    font-weight:bold;
+}
+
+/* GRID MENU */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));
+    gap:15px;
+    padding:20px 40px 40px 40px;
+}
+
+.card{
+    background:#0b111b;
+    border:1px solid #16315c;
+    border-radius:8px;
+    padding:25px;
+    text-align:center;
+    color:#4d9dff;
+    text-decoration:none;
+    font-weight:bold;
+    transition:0.2s;
+}
+
+.card:hover{
+    background:#101a2b;
+    border-color:#4d9dff;
+}
+
+</style>
 </head>
 
 <body>
 
 <header class="hero">
-  <div class="overlay">
+  <div>
     <h1>Code 44 Police Service</h1>
-    <p>Armed Response Unit</p>
+    <p>Armed Response Unit Command</p>
   </div>
 </header>
 
+<!-- COMMAND STATS -->
+<section class="stats-grid">
+
+  <div class="stat-card">
+    <div class="stat-title">Firearms Discharge Reports (This Month)</div>
+    <div class="stat-value">0</div>
+  </div>
+
+  <div class="stat-card">
+    <div class="stat-title">Active Officers</div>
+    <div class="stat-value">2</div>
+  </div>
+
+  <div class="stat-card">
+    <div class="stat-title">Current Threat Level</div>
+    <div class="stat-value">CRITICAL</div>
+  </div>
+
+</section>
+
+<!-- NAV CARDS -->
 <section class="grid">
 
   <a class="card" href="arv.html">Armed Response Unit</a>
