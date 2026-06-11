@@ -1,27 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <title>Firearms Discharge Report</title>
-<link rel="stylesheet" href="assets/style.css">
+
+<style>
+
+body{
+    background:#05080d;
+    color:white;
+    font-family:Segoe UI,sans-serif;
+    padding:40px;
+}
+
+a{
+    color:#4d9dff;
+    text-decoration:none;
+}
+
+h1{
+    color:#4d9dff;
+}
+
+.card{
+    background:#0b111b;
+    border:1px solid #16315c;
+    border-radius:8px;
+    padding:20px;
+    margin-top:15px;
+}
+
+nav{
+    margin-bottom:20px;
+}
+
+input, select, textarea{
+    width:100%;
+    margin-top:10px;
+    margin-bottom:12px;
+    padding:10px;
+    border-radius:5px;
+    border:1px solid #16315c;
+    background:#05080d;
+    color:white;
+    font-family:Segoe UI,sans-serif;
+}
+
+textarea{
+    min-height:120px;
+    resize:vertical;
+}
+
+button{
+    background:#4d9dff;
+    border:none;
+    padding:10px 15px;
+    border-radius:5px;
+    color:#05080d;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#6fb2ff;
+}
+
+.note{
+    color:#7aa7d9;
+    font-size:0.9em;
+    margin-top:10px;
+}
+
+</style>
 </head>
 
 <body>
 
 <nav>
- <a href="index.html"
-style="
-color:#4d9dff;
-text-decoration:none;
-font-weight:bold;
-">
-← Return to Dashboard
-</a>
+    <a href="index.html">← Return to Dashboard</a>
 </nav>
 
-<section class="page">
-
 <h1>Firearms Discharge Report</h1>
+
+<div class="card">
 
 <form>
 
@@ -45,7 +107,9 @@ font-weight:bold;
 Note: This is a template system. Backend submission integration required.
 </p>
 
-</section>
+</div>
 
 </body>
+
+</html>
 </html>
