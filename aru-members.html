@@ -2,7 +2,86 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>ARU Members Area</title>
+<title>ARU Internal Database</title>
+
+<style>
+
+body{
+    margin:0;
+    background:#05080d;
+    color:white;
+    font-family:Segoe UI,sans-serif;
+}
+
+.hero{
+    height:300px;
+    background:
+    linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.85)),
+    url('arv-photo.png');
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+}
+
+.hero h1{
+    color:#4d9dff;
+    margin-bottom:10px;
+}
+
+.hero p{
+    font-size:18px;
+}
+
+.content{
+    width:90%;
+    max-width:1200px;
+    margin:40px auto;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:#0b111b;
+    border:1px solid #16315c;
+    border-radius:10px;
+    padding:25px;
+    text-align:center;
+    transition:.3s;
+}
+
+.card:hover{
+    border-color:#4d9dff;
+}
+
+.card a{
+    color:white;
+    text-decoration:none;
+}
+
+.notice{
+    margin-top:30px;
+    background:#0b111b;
+    border-left:5px solid #4d9dff;
+    padding:20px;
+    border-radius:5px;
+}
+
+.back{
+    display:inline-block;
+    margin-bottom:25px;
+    color:#4d9dff;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+</style>
 </head>
 
 <body>
@@ -11,14 +90,59 @@
 const password = prompt("🔒 ARU Members Area\n\nEnter Access Password:");
 
 if (password !== "Code44ARU") {
-    alert("Incorrect password.");
+    alert("Access Denied");
     window.location.href = "index.html";
 }
 </script>
 
-<h1>ARU Members Area</h1>
+<header class="hero">
+    <div>
+        <h1>Code44 Armed Response Unit</h1>
+        <p>Internal Database</p>
+    </div>
+</header>
 
-<p>Welcome to the Internal Database for the Armed Response Unit</p>
+<div class="content">
+
+<a class="back" href="index.html">
+← Return to Dashboard
+</a>
+
+<div class="grid">
+
+    <div class="card">
+        <h3>Marksman Programme</h3>
+        <p>Advanced firearms pathway.</p>
+    </div>
+
+    <div class="card">
+        <h3>Breacher Training</h3>
+        <p>Specialist operational development.</p>
+    </div>
+
+    <div class="card">
+        <h3>Qualification Tracker</h3>
+        <p>Monitor officer qualifications.</p>
+    </div>
+
+    <div class="card">
+        <h3>Training Resources</h3>
+        <p>Internal learning materials.</p>
+    </div>
+
+</div>
+
+<div class="notice">
+    <h3>Operational Notice</h3>
+
+    <p>
+    This area is restricted to ARU personnel only.
+    All operational documents and training materials remain internal to the unit. Sharing informaiton or restricted documents outside of the unit may result in disiplinary action.
+    </p>
+
+</div>
+
+</div>
 
 </body>
 </html>
