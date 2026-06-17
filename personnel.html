@@ -18,16 +18,50 @@ a{
     text-decoration:none;
 }
 
+.navbar{
+    background:#0b111b;
+    border:1px solid #16315c;
+    border-radius:8px;
+    padding:15px;
+    margin-bottom:20px;
+}
+
+.navbar a{
+    color:#4d9dff;
+    text-decoration:none;
+    margin-right:20px;
+    font-weight:bold;
+}
+
+.navbar a:hover{
+    color:white;
+}
+
 .card{
     background:#0b111b;
     border:1px solid #16315c;
     border-radius:8px;
     padding:20px;
     margin-top:15px;
+    transition:0.3s;
+}
+
+.card:hover{
+    border-color:#4d9dff;
 }
 
 h1{
     color:#4d9dff;
+}
+
+details summary{
+    cursor:pointer;
+    color:#4d9dff;
+    font-size:18px;
+}
+
+details[open] summary{
+    margin-bottom:15px;
 }
 
 </style>
@@ -35,61 +69,84 @@ h1{
 
 <body>
 
+<nav class="navbar">
+    <a href="index.html">Dashboard</a>
+    <a href="personnel.html" style="color:white;">Personnel</a>
+    <a href="training.html">Training</a>
+    <a href="operations.html">Operations</a>
+    <a href="equipment.html">Equipment</a>
+    <a href="discharge.html">Discharge Reports</a>
+</nav>
+
 <a href="index.html">← Return to Dashboard</a>
 
 <h1>Personnel Directory</h1>
 
 <div class="card">
-    <h2>Superintendant of Special Operations (SO-06)</h2>
-    <p>W.DIAZ</p>
+    <h2>Unit Statistics</h2>
+
+    <p><strong>Active AFOs:</strong> 0</p>
+    <p><strong>AFOs In Training:</strong> 2</p>
+    <p><strong>Reserve Members:</strong> 2</p>
+    <p><strong>Additional Firearms Commanders:</strong> 3</p>
 </div>
-  
+
 <div class="card">
-  <h2>Chief Inspector of Armed Response Unit (FI-01)</h2>
-   <p>VACANT</p>
+    <h2>Superintendent of Special Operations (SO-06)</h2>
+    <p><strong>Name:</strong> W.DIAZ</p>
+    <p><strong>Qualification:</strong> Tactical Firearms Commander (TFC)</p>
 </div>
-  
+
+<div class="card">
+    <h2>Chief Inspector of Armed Response Unit (FI-01)</h2>
+    <p><strong>Name:</strong> VACANT</p>
+    <p><strong>Qualification:</strong> Tactical Firearms Commander (TFC)</p
+</div>
+
 <div class="card">
     <h2>Inspector of Armed Response Unit (FI-02)</h2>
-    <p>VACANT</p>
-</div>
-  
-  <div class="card">
-    <h2>Sergeant of Armed Response Unit (FS-03)</h2>
-    <p>K.MADDOX</p>
-</div>
-
-   <div class="card">
-    <h2>Sergeant of Armed Response Unit (FS-04)</h2>
-    <p>VACANT</p>
+    <p><strong>Name:</strong> VACANT</p>
+    <p><strong>Qualification:</strong> Tactical Firearms Commander (TFC)</p
 </div>
 
 <div class="card">
-    <h2>Authorised Firearms Officers</h2>
-    <p>Add Operators Here</p>
+    <h2>Sergeant of Armed Response Unit (FS-03)</h2>
+    <p><strong>Name:</strong> K.MADDOX</p>
+    <p><strong>Qualification:</strong> Operational Firearms Commander (OFC)</p
 </div>
 
-  <details class="card">
-    <summary><strong>AFOs In Training (2)</strong></summary>
+<div class="card">
+    <h2>Sergeant of Armed Response Unit (FS-04)</h2>
+    <p><strong>Name:</strong> VACANT</p>
+    <p><strong>Qualification:</strong> Operational Firearms Commander (OFC)</
+</div>
+
+<details class="card">
+    <summary><strong>Authorised Firearms Officers</strong></summary>
+
+    <p>Add Operators Here</p>
+</details>
+
+<details class="card">
+    <summary><strong>AFOs In Training (0)</strong></summary>
 
     <p>Officer One</p>
     <p>Officer Two</p>
 </details>
 
-  <details class="card">
-    <summary><strong>Reserve Members (2)</strong></summary>
+<details class="card">
+    <summary><strong>Reserve Members (0)</strong></summary>
 
     <p>Officer One</p>
     <p>Officer Two</p>
 </details>
 
-  <details class="card">
-    <summary><strong>Additional Firearms Commanders (5)</strong></summary>
+<details class="card">
+    <summary><strong>Additional Firearms Commanders (3)</strong></summary>
 
     <p>K.RICH (SFC)</p>
     <p>J.RAMSEY (SFC)</p>
     <p>V.KALASHNIKOV (SFC)</p>
-   
 </details>
 
 </body>
