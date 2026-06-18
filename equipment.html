@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
-<title>Equipment</title>
+<title>Equipment & Capability</title>
 
 <style>
 
@@ -19,8 +18,23 @@ a{
     text-decoration:none;
 }
 
-h1{
+.navbar{
+    background:#0b111b;
+    border:1px solid #16315c;
+    border-radius:8px;
+    padding:15px;
+    margin-bottom:20px;
+}
+
+.navbar a{
     color:#4d9dff;
+    text-decoration:none;
+    margin-right:20px;
+    font-weight:bold;
+}
+
+.navbar a:hover{
+    color:white;
 }
 
 .card{
@@ -29,10 +43,15 @@ h1{
     border-radius:8px;
     padding:20px;
     margin-top:15px;
+    transition:0.3s;
 }
 
-nav{
-    margin-bottom:20px;
+.card:hover{
+    border-color:#4d9dff;
+}
+
+h1{
+    color:#4d9dff;
 }
 
 ul{
@@ -44,33 +63,61 @@ ul{
 </head>
 
 <body>
-    
+
 <nav class="navbar">
-    <a href="index.html">Dashboard</a>
-    <a href="personnel.html" style="color:white;">Personnel</a>
-    <a href="training.html">Training</a>
-    <a href="operations.html">Operations</a>
-    <a href="equipment.html">Equipment</a>
+    <a href="index.html">Dashboard</a> |
+    <a href="personnel.html">Personnel</a> |
+    <a href="training.html">Training</a> |
+    <a href="operations.html">Operations</a> |
+    <a href="equipment.html" style="color:white;">Equipment</a> |
     <a href="discharge.html">Discharge Reports</a>
 </nav>
-    
-<nav>
-    <a href="index.html">← Return to Dashboard</a>
-</nav>
+
+<a href="index.html">← Return to Dashboard</a>
 
 <h1>Equipment & Capability</h1>
 
 <div class="card">
+    <h2>Standard Equipment</h2>
 
-<ul>
-  <li>Ballistic protection systems</li>
-  <li>ARV response vehicles</li>
-  <li>Encrypted communications</li>
-  <li>Specialist tactical equipment</li>
-</ul>
+    <ul>
+        <li>Ballistic Protection Systems</li>
+        <li>ARV Response Vehicles</li>
+        <li>Encrypted Communications</li>
+        <li>Specialist Tactical Equipment</li>
+    </ul>
+</div>
 
+<div class="card">
+    <h2>Operational Capability</h2>
+
+    <ul>
+        <li>Armed Response Vehicle Deployment</li>
+        <li>High-Risk Vehicle Stops</li>
+        <li>Containment Operations</li>
+        <li>Firearms Support to Local Policing</li>
+    </ul>
+</div>
+
+<div class="card">
+    <h2>Specialist Resources</h2>
+
+    <ul>
+        <li>Marksman Capability</li>
+        <li>Breaching Capability</li>
+        <li>Tactical Firearms Command</li>
+        <li>Strategic Firearms Command Support</li>
+    </ul>
+</div>
+
+<div class="card">
+    <h2>Operational Notice</h2>
+
+    <p>
+        Equipment listed is representative of ARU operational capability.
+        Access to specialist equipment remains subject to training and authorisation.
+    </p>
 </div>
 
 </body>
-
 </html>
