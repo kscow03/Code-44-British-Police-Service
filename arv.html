@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
 <title>Armed Response Unit</title>
@@ -19,8 +18,23 @@ a{
     text-decoration:none;
 }
 
-h1{
+.navbar{
+    background:#0b111b;
+    border:1px solid #16315c;
+    border-radius:8px;
+    padding:15px;
+    margin-bottom:20px;
+}
+
+.navbar a{
     color:#4d9dff;
+    text-decoration:none;
+    margin-right:10px;
+    font-weight:bold;
+}
+
+.navbar a:hover{
+    color:white;
 }
 
 .card{
@@ -29,10 +43,15 @@ h1{
     border-radius:8px;
     padding:20px;
     margin-top:15px;
+    transition:0.3s;
 }
 
-nav{
-    margin-bottom:20px;
+.card:hover{
+    border-color:#4d9dff;
+}
+
+h1{
+    color:#4d9dff;
 }
 
 ul{
@@ -46,43 +65,68 @@ ul{
 <body>
 
 <nav class="navbar">
-    <a href="index.html">Dashboard</a>
-    <a href="personnel.html" style="color:white;">Personnel</a>
-    <a href="training.html">Training</a>
-    <a href="operations.html">Operations</a>
-    <a href="equipment.html">Equipment</a>
+    <a href="index.html">Dashboard</a> |
+    <a href="personnel.html">Personnel</a> |
+    <a href="training.html">Training</a> |
+    <a href="operations.html" style="color:white;">Operations</a> |
+    <a href="equipment.html">Equipment</a> |
     <a href="discharge.html">Discharge Reports</a>
 </nav>
 
-<nav>
-    <a href="index.html">← Return to Dashboard</a>
-</nav>
+<a href="index.html">← Return to Dashboard</a>
 
 <h1>Armed Response Unit (ARV)</h1>
 
 <div class="card">
+    <h2>Unit Overview</h2>
 
-<p>
-The Armed Response Unit provides specialist firearms capability in response to high-risk incidents,
-supporting frontline policing and maintaining public safety.
-</p>
-
+    <p>
+        The Armed Response Unit provides specialist firearms capability in response
+        to high-risk incidents, supporting frontline policing and maintaining public safety.
+    </p>
 </div>
 
 <div class="card">
+    <h2>Core Responsibilities</h2>
 
-<h2>Core Responsibilities</h2>
+    <ul>
+        <li>Armed intervention at critical incidents</li>
+        <li>Support to unarmed units</li>
+        <li>High-risk suspect containment</li>
+        <li>Rapid tactical deployment</li>
+    </ul>
+</div>
 
-<ul>
-  <li>Armed intervention at critical incidents</li>
-  <li>Support to unarmed units</li>
-  <li>High-risk suspect containment</li>
-  <li>Rapid tactical deployment</li>
-</ul>
+<div class="card">
+    <h2>Primary Objectives</h2>
 
+    <ul>
+        <li>Protect life and prevent serious harm</li>
+        <li>Provide an immediate armed response capability</li>
+        <li>Support specialist operations across the force</li>
+        <li>Maintain operational readiness at all times</li>
+    </ul>
+</div>
+
+<div class="card">
+    <h2>Operational Capability</h2>
+
+    <ul>
+        <li>Authorised Firearms Officers (AFOs)</li>
+        <li>Operational Firearms Commanders (OFCs)</li>
+        <li>Tactical Firearms Command Support</li>
+        <li>Advanced Tactical Resources</li>
+    </ul>
+</div>
+
+<div class="card">
+    <h2>Operational Notice</h2>
+
+    <p>
+        All deployments are conducted in accordance with force policy,
+        command direction and operational necessity.
+    </p>
 </div>
 
 </body>
-
-</html>
 </html>
