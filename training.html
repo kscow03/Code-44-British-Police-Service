@@ -1,6 +1,6 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
 <title>Training Division</title>
@@ -19,8 +19,23 @@ a{
     text-decoration:none;
 }
 
-h1{
+.navbar{
+    background:#0b111b;
+    border:1px solid #16315c;
+    border-radius:8px;
+    padding:15px;
+    margin-bottom:20px;
+}
+
+.navbar a{
     color:#4d9dff;
+    text-decoration:none;
+    margin-right:10px;
+    font-weight:bold;
+}
+
+.navbar a:hover{
+    color:white;
 }
 
 .card{
@@ -29,10 +44,15 @@ h1{
     border-radius:8px;
     padding:20px;
     margin-top:15px;
+    transition:0.3s;
 }
 
-nav{
-    margin-bottom:20px;
+.card:hover{
+    border-color:#4d9dff;
+}
+
+h1{
+    color:#4d9dff;
 }
 
 ul{
@@ -44,33 +64,86 @@ ul{
 </head>
 
 <body>
-    
+
 <nav class="navbar">
-    <a href="index.html">Dashboard</a>
-    <a href="personnel.html" style="color:white;">Personnel</a>
-    <a href="training.html">Training</a>
-    <a href="operations.html">Operations</a>
-    <a href="equipment.html">Equipment</a>
+    <a href="index.html">Dashboard</a> |
+    <a href="personnel.html">Personnel</a> |
+    <a href="training.html" style="color:white;">Training</a> |
+    <a href="operations.html">Unit Overview</a> |
+    <a href="equipment.html">Equipment</a> |
     <a href="discharge.html">Discharge Reports</a>
 </nav>
 
-<nav>
-    <a href="index.html">← Return to Dashboard</a>
-</nav>
+<a href="index.html">← Return to Dashboard</a>
 
 <h1>Training Division</h1>
 
 <div class="card">
+    <h2>Training Philosophy</h2>
 
-<ul>
-  <li>Firearms handling procedures</li>
-  <li>Use of force escalation</li>
-  <li>Tactical movement & entry</li>
-  <li>Scenario-based training</li>
-</ul>
+    <p>
+        The Armed Response Unit maintains a culture of continuous professional
+        development. Officers are expected to train regularly, maintain operational
+        standards and demonstrate sound decision-making under pressure.
+    </p>
+</div>
 
+<div class="card">
+    <h2>Core Training Areas</h2>
+
+    <ul>
+        <li>Firearms Handling & Safety Procedures</li>
+        <li>Use of Force & Decision Making</li>
+        <li>Tactical Movement & Building Entry</li>
+        <li>Vehicle-Based Tactics</li>
+        <li>Scenario-Based Training Exercises</li>
+        <li>Command & Communication Skills</li>
+    </ul>
+</div>
+
+<div class="card">
+    <h2>Continuation Training</h2>
+
+    <p>
+        All Authorised Firearms Officers undertake regular continuation training
+        to ensure skills remain current and operational standards are maintained.
+        Training focuses on both individual competence and team effectiveness.
+    </p>
+</div>
+
+<div class="card">
+    <h2>Development Opportunities</h2>
+
+    <ul>
+        <li>Authorised Firearms Officer (AFO)</li>
+        <li>Operational Firearms Commander (OFC)</li>
+        <li>Specialist Tactical Roles</li>
+        <li>Instructor Development Pathways</li>
+        <li>Leadership & Command Development</li>
+        <li>Taser Training Team</li>
+    </ul>
+</div>
+
+<div class="card">
+    <h2>Professional Standards</h2>
+
+    <p>
+        The Training Division promotes accountability, professionalism and
+        operational excellence. Officers are expected to uphold the highest
+        standards both during training and operational deployments.
+    </p>
+</div>
+
+<div class="card">
+    <h2>Operational Notice</h2>
+
+    <p>
+        Detailed lesson plans, training packages and specialist course material
+        are maintained within the Internal Database and are available to authorised
+        personnel only.
+    </p>
 </div>
 
 </body>
-
 </html>
+```
