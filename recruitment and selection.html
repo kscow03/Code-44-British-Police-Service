@@ -1,6 +1,6 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
 <title>Recruitment & Selection</title>
@@ -19,6 +19,25 @@ a{
     text-decoration:none;
 }
 
+.navbar{
+    background:#0b111b;
+    border:1px solid #16315c;
+    border-radius:8px;
+    padding:15px;
+    margin-bottom:20px;
+}
+
+.navbar a{
+    color:#4d9dff;
+    text-decoration:none;
+    margin-right:10px;
+    font-weight:bold;
+}
+
+.navbar a:hover{
+    color:white;
+}
+
 h1{
     color:#4d9dff;
 }
@@ -29,6 +48,11 @@ h1{
     border-radius:8px;
     padding:20px;
     margin-top:15px;
+    transition:0.3s;
+}
+
+.card:hover{
+    border-color:#4d9dff;
 }
 
 .card h2{
@@ -37,7 +61,7 @@ h1{
 }
 
 .card p{
-    line-height:1.5;
+    line-height:1.6;
 }
 
 .button{
@@ -64,121 +88,157 @@ ul{
 </head>
 
 <body>
-    
+
 <nav class="navbar">
-    <a href="index.html">Dashboard</a>
-    <a href="personnel.html" style="color:white;">Personnel</a>
-    <a href="training.html">Training</a>
-    <a href="operations.html">Operations</a>
-    <a href="equipment.html">Equipment</a>
+    <a href="index.html">Dashboard</a> |
+    <a href="personnel.html">Personnel</a> |
+    <a href="training.html">Training</a> |
+    <a href="operations.html">Unit Overview</a> |
+    <a href="equipment.html">Equipment</a> |
+    <a href="recruitment.html" style="color:white;">Recruitment</a> |
     <a href="discharge.html">Discharge Reports</a>
 </nav>
-    
+
 <a href="index.html">← Return to Dashboard</a>
 
 <h1>Recruitment & Selection</h1>
 
- <div class="card">
-
-<h2>Selection Standards</h2>
-
-<p>
-All applicants are assessed against the professional and operational
-standards expected of Armed Response Unit personnel.
-</p>
-
-<ul>
-<li>Professionalism and conduct</li>
-<li>Decision making under pressure</li>
-<li>Teamwork and communication</li>
-<li>Activity and commitment levels</li>
-<li>Tactical knowledge and development</li>
-<li>Leadership potential</li>
-</ul>
-
-
 <div class="card">
+    <h2>Join the Armed Response Unit</h2>
 
-<h2>Mentorship Programme</h2>
-
-<p>
-
-<ul>
-<li>One-to-one mentoring</li>
-<li>Operational guidance</li>
-<li>Selection preparation</li>
-<li>Career development support</li>
-</ul>
-
-<a href="mentorship.html" class="button">
-Register for Mentorship
-</a>
-
+    <p>
+        The Armed Response Unit seeks professional, motivated and capable officers
+        who demonstrate commitment to operational excellence, teamwork and public service.
+        Recruitment is conducted throughout the year based on operational requirements.
+    </p>
 </div>
 
 <div class="card">
+    <h2>Why Join ARU?</h2>
 
-<h2>Register Interest in Firearms Policing</h2>
-
-<p>
-
-</p>
-
-<ul>
-<li>Expression of interest only</li>
-<li>No commitment required</li>
-<li>Future recruitment notifications</li>
-<li>Development opportunities</li>
-</ul>
-
-<a href="#" class="button">Register Interest</a>
-
+    <ul>
+        <li>Specialist firearms training</li>
+        <li>Career progression opportunities</li>
+        <li>Leadership development pathways</li>
+        <li>Participation in high-profile operations</li>
+        <li>Work alongside highly trained officers</li>
+    </ul>
 </div>
 
 <div class="card">
+    <h2>Selection Standards</h2>
 
-<h2>Full-Time Operator Application</h2>
+    <p>
+        All applicants are assessed against the professional and operational
+        standards expected of Armed Response Unit personnel.
+    </p>
 
-<p>
-Applications are open to officers seeking permanent assignment to the
-Armed Response Unit.
-</p>
-
-<h3>Minimum Requirements</h3>
-
-<ul>
-<li>Operational competence</li>
-<li>Professional conduct record</li>
-<li>Commitment to specialist training</li>
-<li>Successful completion of selection process</li>
-</ul>
-
-<a href="#" class="button">Apply Now</a>
-
+    <ul>
+        <li>Professionalism and conduct</li>
+        <li>Decision making under pressure</li>
+        <li>Teamwork and communication</li>
+        <li>Activity and commitment levels</li>
+        <li>Tactical knowledge and development</li>
+        <li>Leadership potential</li>
+    </ul>
 </div>
 
 <div class="card">
+    <h2>Mentorship Programme</h2>
 
-<h2>Reserve Operator Application</h2>
+    <p>
+        Officers considering a future within ARU can register for mentorship
+        and development support from experienced firearms officers.
+    </p>
 
-<p>
-Reserve Operators remain attached to their primary department whilst
-supporting Armed Response Unit operations when required.
-</p>
+    <ul>
+        <li>One-to-one mentoring</li>
+        <li>Operational guidance</li>
+        <li>Selection preparation</li>
+        <li>Career development support</li>
+    </ul>
 
-<h3>Minimum Requirements</h3>
-
-<ul>
-<li>Operational competence</li>
-<li>Additional training commitment</li>
-<li>Availability for deployments</li>
-<li>Successful completion of selection process</li>
-</ul>
-
-<a href="#" class="button">Apply Now</a>
-
+    <a href="mentorship.html" class="button">
+        Register for Mentorship
+    </a>
 </div>
+
+<div class="card">
+    <h2>Register Interest in Firearms Policing</h2>
+
+    <p>
+        Register your interest to receive updates on future recruitment campaigns,
+        development opportunities and mentorship programmes.
+    </p>
+
+    <ul>
+        <li>Expression of interest only</li>
+        <li>No commitment required</li>
+        <li>Future recruitment notifications</li>
+        <li>Development opportunities</li>
+    </ul>
+
+    <a href="#" class="button">Register Interest</a>
+</div>
+
+<div class="card">
+    <h2>Full-Time Operator Application</h2>
+
+    <p>
+        Applications are open to officers seeking permanent assignment
+        within the Armed Response Unit.
+    </p>
+
+    <h3>Minimum Requirements</h3>
+
+    <ul>
+        <li>Operational competence</li>
+        <li>Professional conduct record</li>
+        <li>Commitment to specialist training</li>
+        <li>Successful completion of selection process</li>
+    </ul>
+
+    <a href="#" class="button">Apply Now</a>
+</div>
+
+<div class="card">
+    <h2>Reserve Operator Application</h2>
+
+    <p>
+        Reserve Operators remain attached to their primary department
+        whilst supporting ARU operations when required.
+    </p>
+
+    <h3>Minimum Requirements</h3>
+
+    <ul>
+        <li>Operational competence</li>
+        <li>Additional training commitment</li>
+        <li>Availability for deployments</li>
+        <li>Successful completion of selection process</li>
+    </ul>
+
+    <a href="#" class="button">Apply Now</a>
+</div>
+
+<div class="card">
+    <h2>Selection Pathway</h2>
+
+    <p>
+        Expression of Interest → Mentorship → Selection Process →
+        Firearms Training → Operational Deployment
+    </p>
+</div>
+
+<div class="card">
+    <h2>Operational Notice</h2>
+
+    <p>
+        Recruitment processes and standards may be amended in line with
+        operational requirements and organisational needs.
+    </p>
 </div>
 
 </body>
 </html>
+```
