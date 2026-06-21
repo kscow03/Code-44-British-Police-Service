@@ -1,1 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Full-Time Operator Application</title>
+
+<style>
+
+body{
+    background:#05080d;
+    color:white;
+    font-family:Segoe UI,sans-serif;
+    padding:40px;
+}
+
+a{
+    color:#4d9dff;
+    text-decoration:none;
+}
+
+h1{
+    color:#4d9dff;
+}
+
+.card{
+    background:#0b111b;
+    border:1px solid #16315c;
+    border-radius:8px;
+    padding:20px;
+    margin-top:15px;
+}
+
+.button{
+    display:inline-block;
+    margin-top:15px;
+    padding:12px 20px;
+    background:#4d9dff;
+    color:#05080d;
+    font-weight:bold;
+    border-radius:5px;
+    text-decoration:none;
+}
+
+.button:hover{
+    background:#6fb2ff;
+}
+
+ul{
+    padding-left:20px;
+}
+
+</style>
+</head>
+
+<body>
+
+<a href="recruitment.html">← Return to Recruitment</a>
+
+<h1>Full-Time Operator Application</h1>
+
+<div class="card">
+
+<p>
+The Armed Response Unit is seeking professional and dedicated officers
+for permanent assignment as Full-Time Operators. Successful applicants
+will become part of a specialist team responsible for delivering armed
+policing capabilities and supporting high-risk operations.
+</p>
+
+</div>
+
+<div class="card">
+
+<h2>What We Expect</h2>
+
+<ul>
+<li>Professional conduct at all times</li>
+<li>Strong communication skills</li>
+<li>Consistent activity and attendance</li>
+<li>Commitment to training and development</li>
+<li>Ability to work effectively within a team</li>
+<li>Mature decision-making under pressure</li>
+</ul>
+
+</div>
+
+<div class="card">
+
+<h2>Training Commitment</h2>
+
+<p>
+All successful applicants will be required to complete initial firearms
+training and maintain operational competence through regular continuation
+training and exercises.
+</p>
+
+<ul>
+<li>Initial Operator Training</li>
+<li>Scenario-Based Exercises</li>
+<li>Operational Assessments</li>
+<li>Continued Professional Development</li>
+</ul>
+
+</div>
+
+<div class="card">
+
+<h2>Selection Process</h2>
+
+<ol>
+<li>Application Submission</li>
+<li>Command Review</li>
+<li>Interview / Assessment</li>
+<li>Training Phase</li>
+<li>Operational Qualification</li>
+</ol>
+
+</div>
+
+<div class="card">
+
+<h2>Before You Apply</h2>
+
+<p>
+Applications should only be submitted by officers who are genuinely
+committed to specialist firearms policing and who can dedicate the time
+required for training, operational deployments and professional development.
+</p>
+
+</div>
+
+<div class="card">
+
+<h2>Application Form</h2>
+
+<p>
+If you have read the information above and wish to proceed, submit your
+application using the link below.
+</p>
+
+<a class="button"
+href="PASTE-YOUR-GOOGLE-FORM-LINK-HERE"
+target="_blank">
+Apply for Full-Time Operator
+</a>
+
+</div>
+
+</body>
+</html>
 
