@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Module 2 - Professional Standards</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    background:#05080d;
+    color:white;
+    font-family:Segoe UI,Arial,sans-serif;
+    line-height:1.6;
+}
+
+.page-container{
+    width:90%;
+    max-width:1100px;
+    margin:0 auto;
+    padding:35px 0 60px;
+}
+
+.navbar{
+    background:#0b111b;
+    border:1px solid #16315c;
+    border-radius:8px;
+    padding:15px;
+    margin-bottom:20px;
+}
+
+.navbar a{
+    color:#4d9dff;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.navbar a:hover{
+    color:white;
+}
+
+.back-link{
+    display:inline-block;
+    margin-bottom:20px;
+    color:#4d9dff;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+h1,
+h2,
+h3{
+    color:#4d9dff;
+}
+
+.module-header{
+    background:
+        linear-gradient(rgba(2,7,14,.82),rgba(2,7,14,.92)),
+        url('arv-photo.png');
+    background-size:cover;
+    background-position:center;
+    border:1px solid #16315c;
+    border-radius:10px;
+    padding:50px 30px;
+    margin-bottom:20px;
+    text-align:center;
+}
+
+.module-header h1{
+    margin:0 0 10px;
+    font-size:2.3rem;
+}
+
+.module-header p{
+    margin:5px 0;
+    color:#d3dbea;
+}
+
+.badge{
+    display:inline-block;
+    margin-top:15px;
+    padding:7px 12px;
+    background:#10203a;
+    border:1px solid #2c65a8;
+    border-radius:20px;
+    color:#8fc2ff;
+    font-size:.9rem;
+    font-weight:bold;
+}
+
+.card{
+    background:#0b111b;
+    border:1px solid #16315c;
+    border-radius:8px;
+    padding:22px;
+    margin-top:18px;
+    transition:.25s;
+}
+
+.card:hover{
+    border-color:#4d9dff;
+}
+
+.info-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+    gap:15px;
+    margin-top:18px;
+}
+
+.info-box{
+    background:#08111d;
+    border:1px solid #16315c;
+    border-radius:7px;
+    padding:17px;
+}
+
+.info-box strong{
+    display:block;
+    color:#4d9dff;
+    margin-bottom:5px;
+}
+
+ul,
+ol{
+    padding-left:22px;
+}
+
+li{
+    margin-bottom:7px;
+}
+
+.lesson-section{
+    border-left:4px solid #4d9dff;
+}
+
+.notice{
+    border-left:5px solid #4d9dff;
+}
+
+.warning{
+    border-left:5px solid #e3a629;
+}
+
+.activity{
+    border-left:5px solid #4da86b;
+}
+
+.example-box{
+    background:#08111d;
+    border:1px solid #16315c;
+    border-radius:7px;
+    padding:16px;
+    margin-top:14px;
+}
+
+.example-box strong{
+    color:#4d9dff;
+}
+
+.values-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+    gap:12px;
+    margin-top:15px;
+}
+
+.value-box{
+    background:#08111d;
+    border:1px solid #16315c;
+    border-radius:7px;
+    padding:16px;
+    text-align:center;
+}
+
+.value-box strong{
+    display:block;
+    color:#4d9dff;
+    margin-bottom:6px;
+}
+
+.checklist{
+    list-style:none;
+    padding-left:0;
+}
+
+.checklist li{
+    background:#08111d;
+    border:1px solid #16315c;
+    border-radius:6px;
+    padding:12px;
+    margin-top:9px;
+}
+
+.checklist li::before{
+    content:"☐";
+    color:#4d9dff;
+    font-weight:bold;
+    margin-right:10px;
+}
+
+.button-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:20px;
+}
+
+.button{
+    display:inline-block;
+    padding:12px 18px;
+    background:#4d9dff;
+    color:#05080d;
+    text-decoration:none;
+    font-weight:bold;
+    border-radius:6px;
+}
+
+.button:hover{
+    background:#77b5ff;
+}
+
+.button.secondary{
+    background:#101b2c;
+    color:#4d9dff;
+    border:1px solid #24538b;
+}
+
+.module-footer{
+    margin-top:30px;
+    padding-top:20px;
+    border-top:1px solid #16315c;
+    color:#8f9bad;
+    font-size:.9rem;
+    text-align:center;
+}
+
+@media(max-width:600px){
+
+    .page-container{
+        width:92%;
+    }
+
+    .module-header{
+        padding:38px 18px;
+    }
+
+    .module-header h1{
+        font-size:1.8rem;
+    }
+
+    .button{
+        width:100%;
+        text-align:center;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="page-container">
+
+<nav class="navbar">
+    <a href="database.html">Internal Database</a> |
+    <a href="academy.html">ARU Academy</a> |
+    <a href="module1.html">Module 1</a> |
+    <a href="module2.html" style="color:white;">Module 2</a>
+</nav>
+
+<a class="back-link" href="academy.html">
+    ← Return to ARU Academy
+</a>
+
+<header class="module-header">
+
+    <h1>Module 2 — Professional Standards</h1>
+
+    <p>Code44 Armed Response Unit Academy</p>
+
+    <p>Cohort 001</p>
+
+    <span class="badge">Professional Standards Module</span>
+
+</header>
+
+<section class="card">
+
+    <h2>Module Overview</h2>
+
+    <p>
+        Professional standards form the foundation of service within the Armed
+        Response Unit. Technical ability alone does not make an effective ARU
+        officer. Recruits must demonstrate integrity, accountability, respect,
+        discipline and a willingness to develop.
+    </p>
+
+    <p>
+        These standards apply throughout the Academy and continue after
+        qualification. A recruit's conduct, attitude and response to feedback
+        will be assessed during every training session.
+    </p>
+
+    <div class="info-grid">
+
+        <div class="info-box">
+            <strong>Estimated Duration</strong>
+            60–75 minutes
+        </div>
+
+        <div class="info-box">
+            <strong>Delivery Method</strong>
+            Classroom discussion and group activities
+        </div>
+
+        <div class="info-box">
+            <strong>Assessment</strong>
+            Knowledge check and instructor observation
+        </div>
+
+        <div class="info-box">
+            <strong>Pass Standard</strong>
+            80% knowledge-check score
+        </div>
+
+        <div class="info-box">
+            <strong>Progression Requirement</strong>
+            Required before practical development
+        </div>
+
+    </div>
+
+</section>
+
+<section class="card lesson-section">
+
+    <h2>Learning Objectives</h2>
+
+    <p>By completing this module, recruits will be able to:</p>
+
+    <ul>
+        <li>Explain what professionalism means within the Armed Response Unit.</li>
+        <li>Describe the importance of integrity and honesty.</li>
+        <li>Understand personal accountability for actions and decisions.</li>
+        <li>Demonstrate respectful and effective communication.</li>
+        <li>Explain the importance of teamwork and collective responsibility.</li>
+        <li>Receive and apply constructive feedback appropriately.</li>
+        <li>Understand attendance, preparation and commitment expectations.</li>
+        <li>Recognise the importance of confidentiality and discretion.</li>
+    </ul>
+
+</section>
+
+<section class="card lesson-section">
+
+    <h2>1. Professionalism</h2>
+
+    <p>
+        Professionalism is the consistent standard of behaviour expected from
+        every ARU recruit and qualified officer. It applies during operational
+        roleplay, training, briefings, Discord communication and interaction
+        with the wider police service.
+    </p>
+
+    <p>A professional ARU officer:</p>
+
+    <ul>
+        <li>Treats colleagues and members of the public respectfully.</li>
+        <li>Communicates calmly and clearly.</li>
+        <li>Arrives prepared for training and deployments.</li>
+        <li>Follows lawful and reasonable instructions.</li>
+        <li>Represents the unit positively.</li>
+        <li>Maintains composure during difficult situations.</li>
+        <li>Separates personal disagreements from professional responsibilities.</li>
+    </ul>
+
+    <div class="example-box">
+        <strong>Discussion Point:</strong>
+        Can an officer be technically capable but still unsuitable for ARU
+        because of their attitude or conduct?
+    </div>
+
+</section>
+
+<section class="card lesson-section">
+
+    <h2>2. Integrity</h2>
+
+    <p>
+        Integrity means being honest, trustworthy and willing to do the right
+        thing even when doing so may be uncomfortable.
+    </p>
+
+    <p>Examples of integrity include:</p>
+
+    <ul>
+        <li>Admitting mistakes promptly.</li>
+        <li>Providing accurate accounts of incidents.</li>
+        <li>Not exaggerating qualifications or experience.</li>
+        <li>Completing assessments independently.</li>
+        <li>Not concealing errors made by yourself or others.</li>
+        <li>Using internal access appropriately.</li>
+    </ul>
+
+    <p>
+        Mistakes during training are expected. Dishonesty about a mistake is
+        more serious than the original error because it damages trust.
+    </p>
+
+</section>
+
+<section class="card lesson-section">
+
+    <h2>3. Accountability</h2>
+
+    <p>
+        Accountability means accepting responsibility for your actions,
+        decisions, attendance, equipment and professional conduct.
+    </p>
+
+    <p>Recruits are accountable for:</p>
+
+    <ul>
+        <li>Following Academy instructions and standards.</li>
+        <li>Completing required learning and assessments.</li>
+        <li>Maintaining issued equipment appropriately.</li>
+        <li>Reporting problems or limitations promptly.</li>
+        <li>Explaining and reflecting upon decisions.</li>
+        <li>Taking reasonable steps to improve following feedback.</li>
+    </ul>
+
+    <div class="example-box">
+        <strong>Example:</strong>
+        If a recruit misses a training session, they should contact an instructor,
+        explain the circumstances and arrange to complete any missed learning.
+    </div>
+
+</section>
+
+<section class="card lesson-section">
+
+    <h2>4. Communication</h2>
+
+    <p>
+        Effective communication helps prevent confusion, builds trust and supports
+        safe, coordinated teamwork.
+    </p>
+
+    <p>Professional communication includes:</p>
+
+    <ul>
+        <li>Listening fully before responding.</li>
+        <li>Using clear and concise language.</li>
+        <li>Addressing senior officers appropriately.</li>
+        <li>Asking questions when instructions are unclear.</li>
+        <li>Avoiding unnecessary arguments during briefings.</li>
+        <li>Giving relevant information without dominating communication.</li>
+        <li>Remaining respectful during disagreement.</li>
+    </ul>
+
+    <p>
+        Confidence is encouraged, but confidence must not become arrogance.
+        Recruits should be willing to contribute while recognising the experience
+        and responsibilities of others.
+    </p>
+
+</section>
+
+<section class="card lesson-section">
+
+    <h2>5. Teamwork</h2>
+
+    <p>
+        ARU officers work as part of a team. Individual ability is valuable, but
+        team reliability, communication and trust are essential.
+    </p>
+
+    <p>Effective team members:</p>
+
+    <ul>
+        <li>Share relevant information.</li>
+        <li>Support colleagues without being asked.</li>
+        <li>Carry out assigned responsibilities.</li>
+        <li>Ask for assistance when necessary.</li>
+        <li>Recognise the strengths and limitations of others.</li>
+        <li>Resolve disagreements professionally.</li>
+        <li>Place team performance above personal recognition.</li>
+    </ul>
+
+    <div class="example-box">
+        <strong>Key Principle:</strong>
+        ARU training is not a competition between recruits. The objective is to
+        develop a reliable team capable of working to a shared standard.
+    </div>
+
+</section>
+
+<section class="card lesson-section">
+
+    <h2>6. Receiving Feedback</h2>
+
+    <p>
+        Constructive feedback is a core part of Academy development. Feedback is
+        intended to improve performance and should not automatically be treated
+        as personal criticism.
+    </p>
+
+    <p>When receiving feedback, recruits should:</p>
+
+    <ol>
+        <li>Listen without immediately becoming defensive.</li>
+        <li>Ask questions if the feedback is unclear.</li>
+        <li>Reflect on the issue identified.</li>
+        <li>Agree an improvement action where appropriate.</li>
+        <li>Apply the feedback during future training.</li>
+        <li>Request further support if needed.</li>
+    </ol>
+
+    <p>
+        Instructors are also expected to give feedback fairly, respectfully and
+        with clear examples.
+    </p>
+
+</section>
+
+<section class="card lesson-section">
+
+    <h2>7. Attendance and Commitment</h2>
+
+    <p>
+        Cohort 001 requires regular attendance and meaningful participation.
+        Instructors invest time preparing and delivering each lesson, and recruits
+        are expected to show an equivalent level of commitment.
+    </p>
+
+    <p>Recruits are expected to:</p>
+
+    <ul>
+        <li>Attend scheduled sessions wherever reasonably possible.</li>
+        <li>Notify instructors in advance when unavailable.</li>
+        <li>Arrive on time and prepared.</li>
+        <li>Complete assigned work before deadlines.</li>
+        <li>Engage appropriately during discussions and exercises.</li>
+        <li>Arrange catch-up learning when sessions are missed.</li>
+    </ul>
+
+    <p>
+        Repeated unexplained absence, poor engagement or failure to complete
+        required work may result in remedial action or removal from the Academy.
+    </p>
+
+</section>
+
+<section class="card lesson-section">
+
+    <h2>8. Confidentiality and Discretion</h2>
+
+    <p>
+        Access to the Internal Database and Academy resources is provided for
+        authorised Code44 ARU purposes.
+    </p>
+
+    <p>Recruits must not share:</p>
+
+    <ul>
+        <li>Restricted training documents.</li>
+        <li>Assessment questions or answers.</li>
+        <li>Trainer-only resources.</li>
+        <li>Personal recruit records.</li>
+        <li>Internal command discussions.</li>
+        <li>Password or access information.</li>
+    </ul>
+
+    <p>
+        Officers should use discretion when discussing unit matters and should
+        raise concerns through appropriate internal channels.
+    </p>
+
+</section>
+
+<section class="card lesson-section">
+
+    <h2>9. Rank, Respect and Professional Challenge</h2>
+
+    <p>
+        Rank and command responsibilities must be respected. Recruits should
+        follow lawful instructions and understand that supervisors are responsible
+        for maintaining standards, coordinating training and making progression
+        decisions.
+    </p>
+
+    <p>
+        Respect for rank does not mean remaining silent when something is unclear
+        or concerning. Professional challenge is encouraged when it is raised
+        appropriately.
+    </p>
+
+    <p>A professional challenge should be:</p>
+
+    <ul>
+        <li>Calm and respectful.</li>
+        <li>Based on a genuine concern.</li>
+        <li>Raised at an appropriate time where possible.</li>
+        <li>Focused on the issue rather than the person.</li>
+        <li>Escalated through the correct channel if unresolved.</li>
+    </ul>
+
+</section>
+
+<section class="card lesson-section">
+
+    <h2>10. Conduct Within Discord and Internal Systems</h2>
+
+    <p>
+        Professional standards also apply to Discord channels, direct messages,
+        website access and internal forms.
+    </p>
+
+    <p>Recruits should:</p>
+
+    <ul>
+        <li>Use the correct channels for questions and updates.</li>
+        <li>Avoid unnecessary tagging of command staff.</li>
+        <li>Keep internal discussions professional.</li>
+        <li>Use forms and records honestly.</li>
+        <li>Avoid sharing screenshots from restricted areas.</li>
+        <li>Respect decisions made through the chain of command.</li>
+    </ul>
+
+</section>
+
+<section class="card">
+
+    <h2>ARU Professional Values</h2>
+
+    <div class="values-grid">
+
+        <div class="value-box">
+            <strong>Professionalism</strong>
+            Maintain a consistent and credible standard.
+        </div>
+
+        <div class="value-box">
+            <strong>Integrity</strong>
+            Be honest, fair and trustworthy.
+        </div>
+
+        <div class="value-box">
+            <strong>Accountability</strong>
+            Take responsibility for actions and decisions.
+        </div>
+
+        <div class="value-box">
+            <strong>Respect</strong>
+            Treat others fairly and professionally.
+        </div>
+
+        <div class="value-box">
+            <strong>Teamwork</strong>
+            Contribute to collective success.
+        </div>
+
+        <div class="value-box">
+            <strong>Development</strong>
+            Learn continuously and apply feedback.
+        </div>
+
+    </div>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Group Activity — Defining Professionalism</h2>
+
+    <p>
+        Recruits should work in small groups and answer the following question:
+    </p>
+
+    <div class="example-box">
+        <strong>
+            What does a professional Code44 ARU officer look like in practice?
+        </strong>
+    </div>
+
+    <p>Each group should identify:</p>
+
+    <ul>
+        <li>Three behaviours expected from an ARU officer.</li>
+        <li>Three behaviours that would damage trust in the unit.</li>
+        <li>One example of professional disagreement.</li>
+        <li>One example of accountability following a mistake.</li>
+    </ul>
+
+    <p>
+        Groups should present their answers to the instructor for discussion.
+    </p>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Scenario Discussion One</h2>
+
+    <p>
+        A recruit repeatedly interrupts an instructor during a briefing and
+        dismisses feedback from other members of the cohort.
+    </p>
+
+    <p><strong>Discuss:</strong></p>
+
+    <ul>
+        <li>What standards are not being met?</li>
+        <li>How should the issue initially be addressed?</li>
+        <li>What should happen if the behaviour continues?</li>
+        <li>How might this behaviour affect the wider cohort?</li>
+    </ul>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Scenario Discussion Two</h2>
+
+    <p>
+        A recruit makes an error during an assessment but immediately reports it,
+        explains what happened and asks how to improve.
+    </p>
+
+    <p><strong>Discuss:</strong></p>
+
+    <ul>
+        <li>What positive standards have been demonstrated?</li>
+        <li>Why is honesty important in this situation?</li>
+        <li>How should an instructor respond?</li>
+        <li>Should the recruit automatically fail because an error occurred?</li>
+    </ul>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Scenario Discussion Three</h2>
+
+    <p>
+        Two recruits disagree during a group exercise. One recruit begins
+        criticising the other in front of the wider cohort and refuses to continue
+        working with them.
+    </p>
+
+    <p><strong>Discuss:</strong></p>
+
+    <ul>
+        <li>How should the disagreement be managed?</li>
+        <li>What would a professional response look like?</li>
+        <li>When should an instructor become involved?</li>
+        <li>How can trust be rebuilt afterwards?</li>
+    </ul>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Individual Reflection</h2>
+
+    <p>
+        Each recruit should provide a short written response to the following:
+    </p>
+
+    <div class="example-box">
+        <strong>
+            What personal standard will you hold yourself to throughout Cohort 001,
+            and how will you demonstrate it?
+        </strong>
+    </div>
+
+    <p>
+        The response should include one practical commitment, such as arriving
+        prepared, asking for feedback, supporting another recruit or completing
+        required work on time.
+    </p>
+
+    <p>
+        This response is not graded. It should be retained and revisited during
+        the recruit's final Academy interview.
+    </p>
+
+</section>
+
+<section class="card warning">
+
+    <h2>Important Standard</h2>
+
+    <p>
+        Technical performance does not excuse poor conduct. A recruit may meet
+        practical standards but still be considered unsuitable if they repeatedly
+        demonstrate dishonesty, poor attitude, disrespect or an unwillingness
+        to develop.
+    </p>
+
+</section>
+
+<section class="card">
+
+    <h2>Recruit Completion Checklist</h2>
+
+    <ul class="checklist">
+        <li>Attend the Module 2 classroom session</li>
+        <li>Review all professional values</li>
+        <li>Participate in the group activity</li>
+        <li>Participate in the scenario discussions</li>
+        <li>Complete the individual reflection task</li>
+        <li>Complete the Module 2 knowledge check</li>
+        <li>Receive instructor confirmation</li>
+    </ul>
+
+</section>
+
+<section class="card notice">
+
+    <h2>Module Completion</h2>
+
+    <p>
+        Module 2 is complete once the recruit has attended the lesson,
+        participated appropriately, completed the reflection task and achieved
+        the required score in the knowledge check.
+    </p>
+
+    <p>
+        Professional conduct remains continuously assessed throughout every
+        subsequent Academy module.
+    </p>
+
+    <div class="button-row">
+
+        <a class="button"
+           href="PASTE-MODULE-2-GOOGLE-FORM-LINK-HERE"
+           target="_blank">
+            Complete Module 2 Quiz
+        </a>
+
+        <a class="button secondary"
+           href="academy.html">
+            Return to Academy
+        </a>
+
+    </div>
+
+</section>
+
+<footer class="module-footer">
+
+    Code44 Police Service • Armed Response Unit Academy<br>
+    Cohort 001 • Module 2 — Professional Standards
+
+</footer>
+
+</div>
+
+</body>
+</html>
