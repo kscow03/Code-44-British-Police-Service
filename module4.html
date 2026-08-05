@@ -1,0 +1,1336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Module 4 - Equipment, Vehicles and PPE</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    background:#05080d;
+    color:white;
+    font-family:Segoe UI,Arial,sans-serif;
+    line-height:1.65;
+}
+
+.page-container{
+    width:90%;
+    max-width:1150px;
+    margin:0 auto;
+    padding:35px 0 60px;
+}
+
+.navbar{
+    background:#0b111b;
+    border:1px solid #16315c;
+    border-radius:8px;
+    padding:15px;
+    margin-bottom:20px;
+}
+
+.navbar a{
+    color:#4d9dff;
+    text-decoration:none;
+    font-weight:bold;
+    margin:0 5px;
+}
+
+.navbar a:hover,
+.back-link:hover{
+    color:white;
+}
+
+.back-link{
+    display:inline-block;
+    margin-bottom:20px;
+    color:#4d9dff;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.hero{
+    background:
+        linear-gradient(rgba(2,7,14,.79),rgba(2,7,14,.94)),
+        url('arv-photo.png');
+
+    background-size:cover;
+    background-position:center;
+
+    border:1px solid #16315c;
+    border-radius:12px;
+
+    padding:58px 30px;
+    text-align:center;
+}
+
+.hero h1{
+    margin:0 0 10px;
+    color:#4d9dff;
+    font-size:2.5rem;
+}
+
+.hero p{
+    margin:5px 0;
+    color:#d3dbea;
+}
+
+.badge{
+    display:inline-block;
+    margin-top:15px;
+    padding:7px 14px;
+
+    background:#10203a;
+    border:1px solid #2c65a8;
+    border-radius:20px;
+
+    color:#8fc2ff;
+    font-weight:bold;
+}
+
+h1,
+h2,
+h3{
+    color:#4d9dff;
+}
+
+.card{
+    background:#0b111b;
+    border:1px solid #16315c;
+    border-radius:9px;
+
+    padding:22px;
+    margin-top:20px;
+
+    transition:.25s;
+}
+
+.card:hover{
+    border-color:#4d9dff;
+}
+
+.section-card{
+    border-left:4px solid #4d9dff;
+}
+
+.notice{
+    border-left:5px solid #4d9dff;
+}
+
+.warning{
+    border-left:5px solid #e3a629;
+}
+
+.success{
+    border-left:5px solid #4da86b;
+}
+
+.info-grid,
+.equipment-grid,
+.vehicle-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:15px;
+    margin-top:18px;
+}
+
+.info-box,
+.equipment-box,
+.vehicle-box,
+.example-box{
+    background:#08111d;
+    border:1px solid #16315c;
+    border-radius:8px;
+    padding:17px;
+}
+
+.info-box strong,
+.equipment-box strong,
+.vehicle-box strong,
+.example-box strong{
+    display:block;
+    color:#4d9dff;
+    margin-bottom:6px;
+}
+
+.contents-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:12px;
+    margin-top:15px;
+}
+
+.contents-link{
+    display:block;
+    background:#08111d;
+    border:1px solid #16315c;
+    border-radius:7px;
+
+    padding:14px;
+
+    color:white;
+    text-decoration:none;
+
+    transition:.25s;
+}
+
+.contents-link:hover{
+    border-color:#4d9dff;
+    background:#0d1828;
+}
+
+.contents-link strong{
+    color:#4d9dff;
+}
+
+.checklist,
+.revision-list{
+    list-style:none;
+    padding-left:0;
+}
+
+.checklist li,
+.revision-list li{
+    background:#08111d;
+    border:1px solid #16315c;
+    border-radius:7px;
+
+    padding:14px;
+    margin-top:10px;
+}
+
+.checklist li::before{
+    content:"☐";
+    color:#4d9dff;
+    font-weight:bold;
+    margin-right:10px;
+}
+
+.equipment-table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:15px;
+}
+
+.equipment-table th,
+.equipment-table td{
+    border:1px solid #16315c;
+    padding:12px;
+    text-align:left;
+    vertical-align:top;
+}
+
+.equipment-table th{
+    background:#10203a;
+    color:#8fc2ff;
+}
+
+.status-tag{
+    display:inline-block;
+    padding:4px 9px;
+    border-radius:12px;
+    font-size:.82rem;
+    font-weight:bold;
+    margin-top:6px;
+}
+
+.status-personal{
+    background:#10203a;
+    border:1px solid #2c65a8;
+    color:#8fc2ff;
+}
+
+.status-vehicle{
+    background:#203017;
+    border:1px solid #4f7f32;
+    color:#bde99f;
+}
+
+.status-specialist{
+    background:#3a2a0d;
+    border:1px solid #a8761e;
+    color:#f2c76f;
+}
+
+ul,
+ol{
+    padding-left:22px;
+}
+
+li{
+    margin-bottom:7px;
+}
+
+.quote{
+    background:#08111d;
+    border:1px solid #16315c;
+    border-radius:7px;
+
+    padding:20px;
+    margin-top:15px;
+
+    color:#d8e2ef;
+    font-style:italic;
+}
+
+.button-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:20px;
+}
+
+.button{
+    display:inline-block;
+
+    padding:12px 18px;
+
+    background:#4d9dff;
+    color:#05080d;
+
+    border-radius:6px;
+
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.button:hover{
+    background:#77b5ff;
+}
+
+.button.secondary{
+    background:#101b2c;
+    color:#4d9dff;
+    border:1px solid #24538b;
+}
+
+.footer{
+    margin-top:30px;
+    padding-top:20px;
+
+    border-top:1px solid #16315c;
+
+    color:#8f9bad;
+    text-align:center;
+    font-size:.9rem;
+}
+
+@media(max-width:700px){
+
+    .page-container{
+        width:92%;
+    }
+
+    .hero{
+        padding:42px 18px;
+    }
+
+    .hero h1{
+        font-size:2rem;
+    }
+
+    .navbar{
+        line-height:2;
+    }
+
+    .button{
+        width:100%;
+        text-align:center;
+    }
+
+    .equipment-table{
+        font-size:.9rem;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="page-container">
+
+<nav class="navbar">
+
+    <a href="database.html">
+        Internal Database
+    </a>
+
+    |
+
+    <a href="academy.html">
+        ARU Academy
+    </a>
+
+    |
+
+    <a href="student-handbook.html">
+        Student Handbook
+    </a>
+
+    |
+
+    <a href="module1.html">
+        Module 1
+    </a>
+
+    |
+
+    <a href="module2.html">
+        Module 2
+    </a>
+
+    |
+
+    <a href="module3.html">
+        Module 3
+    </a>
+
+    |
+
+    <a href="module4.html" style="color:white;">
+        Module 4
+    </a>
+
+</nav>
+
+<a class="back-link" href="academy.html">
+    ← Return to ARU Academy
+</a>
+
+<header class="hero">
+
+    <h1>Module 4 — Equipment, Vehicles and PPE</h1>
+
+    <p>Code44 Police Service</p>
+
+    <p>Armed Response Unit Academy</p>
+
+    <span class="badge">
+        Cohort 001
+    </span>
+
+</header>
+
+<section class="card">
+
+    <h2>Module Overview</h2>
+
+    <p>
+        Module 4 introduces students to the equipment, vehicles and personal
+        protective equipment used by the Code44 Armed Response Unit.
+    </p>
+
+    <p>
+        This module focuses upon familiarisation, safe storage, accountability
+        and the correct role of each capability. It does not teach practical
+        firearms handling, live-fire skills or breaching procedures.
+    </p>
+
+    <p>
+        Students must understand that specialist equipment is issued for a
+        defined purpose and remains the responsibility of the officer using it.
+    </p>
+
+    <div class="info-grid">
+
+        <div class="info-box">
+            <strong>Estimated Reading Time</strong>
+            35–45 minutes
+        </div>
+
+        <div class="info-box">
+            <strong>Lesson Delivery</strong>
+            Trainer-led equipment and vehicle walkthrough
+        </div>
+
+        <div class="info-box">
+            <strong>Assessment</strong>
+            Equipment identification and knowledge check
+        </div>
+
+        <div class="info-box">
+            <strong>Required Before</strong>
+            Module 5 — Firearms Safety and Handling
+        </div>
+
+    </div>
+
+</section>
+
+<section class="card warning">
+
+    <h2>Important Training Notice</h2>
+
+    <p>
+        This module is written for Code44 FiveM roleplay. Students must follow
+        current server rules, approved ARU policy and trainer direction.
+    </p>
+
+    <p>
+        Students must not deploy, handle or remove specialist equipment unless
+        authorised to do so by an approved trainer or appropriate commander.
+    </p>
+
+</section>
+
+<section class="card">
+
+    <h2>Contents</h2>
+
+    <div class="contents-grid">
+
+        <a class="contents-link" href="#objectives">
+            <strong>1.</strong> Learning Objectives
+        </a>
+
+        <a class="contents-link" href="#responsibility">
+            <strong>2.</strong> Equipment Responsibility
+        </a>
+
+        <a class="contents-link" href="#ppe">
+            <strong>3.</strong> Personal Protective Equipment
+        </a>
+
+        <a class="contents-link" href="#helmet">
+            <strong>4.</strong> Helmet and Protection
+        </a>
+
+        <a class="contents-link" href="#specialist-ppe">
+            <strong>5.</strong> Specialist PPE
+        </a>
+
+        <a class="contents-link" href="#medical">
+            <strong>6.</strong> Medical Capability
+        </a>
+
+        <a class="contents-link" href="#firearms">
+            <strong>7.</strong> Firearms Familiarisation
+        </a>
+
+        <a class="contents-link" href="#less-lethal">
+            <strong>8.</strong> Less-Lethal Equipment
+        </a>
+
+        <a class="contents-link" href="#vehicles">
+            <strong>9.</strong> ARU Vehicles
+        </a>
+
+        <a class="contents-link" href="#storage">
+            <strong>10.</strong> Firearms Storage
+        </a>
+
+        <a class="contents-link" href="#checks">
+            <strong>11.</strong> Vehicle and Equipment Checks
+        </a>
+
+        <a class="contents-link" href="#faults">
+            <strong>12.</strong> Faults and Missing Equipment
+        </a>
+
+        <a class="contents-link" href="#revision">
+            <strong>13.</strong> Revision Questions
+        </a>
+
+    </div>
+
+</section>
+
+<section class="card section-card" id="objectives">
+
+    <h2>1. Learning Objectives</h2>
+
+    <p>After completing Module 4, you should be able to:</p>
+
+    <ul>
+        <li>Identify the principal equipment used by Code44 ARU.</li>
+        <li>Explain the purpose of standard personal protective equipment.</li>
+        <li>Describe the roles of the SIG P226, SIG MCX and SIG 716.</li>
+        <li>Explain the specialist role of the Remington breaching shotgun.</li>
+        <li>Identify the marked and unmarked BMW X7.</li>
+        <li>Explain how firearms are stored within ARU vehicles.</li>
+        <li>Understand the exception for an officer's personal sidearm.</li>
+        <li>Describe pre-deployment and end-of-tour equipment checks.</li>
+        <li>Explain how faults, damage or missing equipment should be reported.</li>
+        <li>Understand personal responsibility for issued equipment.</li>
+    </ul>
+
+</section>
+
+<section class="card section-card" id="responsibility">
+
+    <h2>2. Equipment Responsibility and Accountability</h2>
+
+    <p>
+        Specialist equipment must be treated as an operational responsibility,
+        not as an entitlement or status symbol.
+    </p>
+
+    <p>
+        Officers are responsible for ensuring that equipment issued to them is:
+    </p>
+
+    <ul>
+        <li>Appropriate for the authorised task.</li>
+        <li>Present and accounted for.</li>
+        <li>Stored securely when not deployed.</li>
+        <li>Used only by trained and authorised personnel.</li>
+        <li>Returned to the correct location after use.</li>
+        <li>Checked for faults or damage.</li>
+        <li>Reported immediately if missing or defective.</li>
+    </ul>
+
+    <div class="example-box">
+
+        <strong>Core Principle</strong>
+
+        If you take responsibility for an item, you remain responsible for
+        ensuring it is secure, accounted for and returned correctly.
+
+    </div>
+
+</section>
+
+<section class="card section-card" id="ppe">
+
+    <h2>3. Personal Protective Equipment</h2>
+
+    <p>
+        Personal protective equipment supports officer safety and operational
+        effectiveness. PPE must be worn or carried as directed by the trainer,
+        operational commander or current ARU policy.
+    </p>
+
+    <div class="equipment-grid">
+
+        <div class="equipment-box">
+
+            <strong>Plate Carrier</strong>
+
+            Worn to carry ballistic protection and authorised operational equipment.
+
+            <span class="status-tag status-personal">
+                Personal Equipment
+            </span>
+
+        </div>
+
+        <div class="equipment-box">
+
+            <strong>Ballistic Plates</strong>
+
+            Protective inserts worn within the plate carrier.
+
+            <span class="status-tag status-personal">
+                Personal Equipment
+            </span>
+
+        </div>
+
+        <div class="equipment-box">
+
+            <strong>Ballistic Helmet</strong>
+
+            Protective head equipment used during authorised deployments and training.
+
+            <span class="status-tag status-personal">
+                Personal Equipment
+            </span>
+
+        </div>
+
+        <div class="equipment-box">
+
+            <strong>Eye Protection</strong>
+
+            Protective equipment used to reduce risk to the eyes during training
+            and operational activity.
+
+            <span class="status-tag status-personal">
+                Personal Equipment
+            </span>
+
+        </div>
+
+        <div class="equipment-box">
+
+            <strong>Ear Protection</strong>
+
+            Protective equipment used during firearms training and other
+            high-noise activity.
+
+            <span class="status-tag status-personal">
+                Personal Equipment
+            </span>
+
+        </div>
+
+        <div class="equipment-box">
+
+            <strong>Gas Mask</strong>
+
+            Specialist protective equipment used when the circumstances and
+            authorised plan require it.
+
+            <span class="status-tag status-specialist">
+                Specialist Equipment
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="card section-card" id="helmet">
+
+    <h2>4. Helmet, Eye Protection and Ear Protection</h2>
+
+    <h3>Ballistic Helmet</h3>
+
+    <p>
+        The ballistic helmet forms part of the officer's protective equipment.
+        It may also support authorised attachments such as eye protection,
+        hearing protection or night-vision equipment.
+    </p>
+
+    <p>Students should understand that the helmet must:</p>
+
+    <ul>
+        <li>Be worn correctly.</li>
+        <li>Be checked before use.</li>
+        <li>Remain securely fitted.</li>
+        <li>Be stored carefully when not required.</li>
+        <li>Be reported if damaged or defective.</li>
+    </ul>
+
+    <h3>Eye Protection</h3>
+
+    <p>
+        Eye protection should be used during relevant firearms training,
+        simulated exercises and other activity where directed.
+    </p>
+
+    <h3>Ear Protection</h3>
+
+    <p>
+        Ear protection should be used during firearms training and other
+        high-noise activity. Students must follow the trainer's instructions
+        throughout all range or simulated-firearms sessions.
+    </p>
+
+</section>
+
+<section class="card section-card" id="specialist-ppe">
+
+    <h2>5. Specialist Protective Equipment</h2>
+
+    <div class="equipment-grid">
+
+        <div class="equipment-box">
+
+            <strong>Night-Vision Equipment</strong>
+
+            Code44 ARU has access to night-vision equipment for authorised
+            operations and training scenarios.
+
+            Students must not deploy or operate night-vision equipment without
+            trainer or command direction.
+
+        </div>
+
+        <div class="equipment-box">
+
+            <strong>Gas Mask</strong>
+
+            The gas mask provides a specialist protective capability where
+            authorised by the tactical plan.
+
+            Students should understand its purpose, storage location and
+            accountability requirements.
+
+        </div>
+
+        <div class="equipment-box">
+
+            <strong>Ballistic Shield</strong>
+
+            The ballistic shield is a specialist protective resource used only
+            by trained officers when authorised and appropriate.
+
+            Detailed shield tactics are not covered within this module.
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="card section-card" id="medical">
+
+    <h2>6. Medical Capability</h2>
+
+    <p>
+        Code44 ARU roleplays a comprehensive trauma and emergency medical
+        capability. Medical equipment may be carried personally or stored
+        within the ARV.
+    </p>
+
+    <p>The available capability includes:</p>
+
+    <ul>
+        <li>Individual first-aid equipment.</li>
+        <li>Tourniquets.</li>
+        <li>Chest seals.</li>
+        <li>Haemostatic dressings.</li>
+        <li>Pressure dressings.</li>
+        <li>Trauma shears.</li>
+        <li>Airway equipment.</li>
+        <li>Emergency blankets.</li>
+        <li>Oxygen equipment.</li>
+        <li>AED.</li>
+        <li>Medical backpack or trauma bag.</li>
+    </ul>
+
+    <p>
+        Tactical medical procedures will be covered in a later Academy module.
+        Module 4 requires students only to understand what equipment is available,
+        where it is stored and how it is accounted for.
+    </p>
+
+    <div class="example-box">
+
+        <strong>Core Principle</strong>
+
+        Medical equipment must be checked, available and replaced after use.
+        Missing or used items must be reported before the vehicle returns to service.
+
+    </div>
+
+</section>
+
+<section class="card section-card" id="firearms">
+
+    <h2>7. Firearms Familiarisation</h2>
+
+    <p>
+        This section introduces the role of each firearm within Code44 ARU.
+        Practical handling and firearms drills are covered in later modules.
+    </p>
+
+    <table class="equipment-table">
+
+        <tr>
+            <th>Capability</th>
+            <th>Role</th>
+            <th>Storage and Responsibility</th>
+        </tr>
+
+        <tr>
+            <td>
+                <strong>SIG Sauer P226</strong><br>
+                <span class="status-tag status-personal">
+                    Personal Sidearm
+                </span>
+            </td>
+
+            <td>
+                The P226 is the personal sidearm carried by trained and authorised
+                ARU officers.
+            </td>
+
+            <td>
+                The sidearm is the exception to the general requirement for firearms
+                to remain secured within the rear vehicle storage.
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <strong>SIG MCX</strong><br>
+                <span class="status-tag status-vehicle">
+                    Primary Carbine
+                </span>
+            </td>
+
+            <td>
+                The SIG MCX is the primary operational carbine used by trained
+                ARU officers during authorised deployments.
+            </td>
+
+            <td>
+                It must remain secured within the designated rear vehicle firearms
+                storage unless it has been authorised for deployment.
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <strong>SIG 716</strong><br>
+                <span class="status-tag status-specialist">
+                    Precision Capability
+                </span>
+            </td>
+
+            <td>
+                The SIG 716 provides a specialist precision-rifle capability
+                for authorised roles and operations.
+            </td>
+
+            <td>
+                It must remain securely stored within the vehicle until authorised.
+                Students should not assume that every ARU officer will automatically
+                deploy with it.
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <strong>Remington Shotgun</strong><br>
+                <span class="status-tag status-specialist">
+                    Breaching Platform
+                </span>
+            </td>
+
+            <td>
+                The Remington is used as a specialist breaching tool. It is not
+                the routine primary firearm for general ARU deployments.
+            </td>
+
+            <td>
+                It must remain securely stored within the vehicle unless authorised
+                for a breaching role. Detailed breaching procedures are covered
+                separately and only for trained personnel.
+            </td>
+        </tr>
+
+    </table>
+
+</section>
+
+<section class="card warning">
+
+    <h2>Firearms Familiarisation Boundary</h2>
+
+    <p>
+        This module does not provide practical instruction in operating,
+        loading, firing or deploying any firearm.
+    </p>
+
+    <p>
+        Students must wait until the relevant trainer-led firearms module before
+        completing any practical handling or simulated-firearms activity.
+    </p>
+
+</section>
+
+<section class="card section-card" id="less-lethal">
+
+    <h2>8. Less-Lethal and Supporting Equipment</h2>
+
+    <div class="equipment-grid">
+
+        <div class="equipment-box">
+
+            <strong>Taser</strong>
+
+            Available to appropriately trained and authorised officers.
+
+            It must be carried and used in accordance with current Code44 policy
+            and server rules.
+
+        </div>
+
+        <div class="equipment-box">
+
+            <strong>PAVA</strong>
+
+            Available as an authorised officer-safety option.
+
+            Students must understand that carrying PAVA does not remove the need
+            for communication, judgement and accountability.
+
+        </div>
+
+        <div class="equipment-box">
+
+            <strong>Flashbangs</strong>
+
+            Code44 ARU has access to flashbangs where supported by the server script.
+
+            They are a specialist capability and must only be used when authorised
+            and supported by current server mechanics.
+
+        </div>
+
+    </div>
+
+    <p>
+        Code44 ARU does not currently have a beanbag shotgun capability.
+    </p>
+
+</section>
+
+<section class="card section-card" id="vehicles">
+
+    <h2>9. ARU Vehicles</h2>
+
+    <p>
+        Code44 ARU currently operates two BMW X7 variants.
+    </p>
+
+    <div class="vehicle-grid">
+
+        <div class="vehicle-box">
+
+            <strong>Marked BMW X7</strong>
+
+            Used as a visible armed-response vehicle and identifiable ARU resource.
+
+            The vehicle carries secured firearms, medical equipment, PPE and
+            other authorised operational resources.
+
+        </div>
+
+        <div class="vehicle-box">
+
+            <strong>Unmarked BMW X7</strong>
+
+            Provides an unmarked ARU capability for authorised deployments
+            and operational requirements.
+
+            The same security, accountability and equipment-check standards apply.
+
+        </div>
+
+    </div>
+
+    <h3>Crewing</h3>
+
+    <p>
+        ARV crews are normally double-crewed by trained ARU officers.
+    </p>
+
+    <p>
+        Both officers remain responsible for understanding the vehicle's equipment,
+        confirming that firearms are secured and reporting faults or missing items.
+    </p>
+
+</section>
+
+<section class="card section-card" id="storage">
+
+    <h2>10. Firearms Storage Within ARU Vehicles</h2>
+
+    <p>
+        Firearms other than the officer's personal sidearm must remain secured
+        within the rear firearms storage of the vehicle when not deployed.
+    </p>
+
+    <p>This includes:</p>
+
+    <ul>
+        <li>SIG MCX carbines.</li>
+        <li>SIG 716 precision rifles.</li>
+        <li>Remington breaching shotguns.</li>
+    </ul>
+
+    <p>
+        The SIG P226 personal sidearm is the exception and may remain carried by
+        the trained and authorised officer.
+    </p>
+
+    <p>Students must understand that:</p>
+
+    <ul>
+        <li>Vehicle firearms must not be left unsecured.</li>
+        <li>Firearms must remain in the designated storage until authorised.</li>
+        <li>Every firearm must be accounted for before and after deployment.</li>
+        <li>Unauthorised access must be reported immediately.</li>
+        <li>A firearm returned to the vehicle must be secured correctly.</li>
+        <li>The vehicle must not be left unattended with insecure firearms.</li>
+    </ul>
+
+    <div class="example-box">
+
+        <strong>Key Rule</strong>
+
+        Every firearm other than the officer's personal sidearm remains secured
+        in the rear of the ARV unless deployment has been authorised.
+
+    </div>
+
+</section>
+
+<section class="card section-card" id="checks">
+
+    <h2>11. Pre-Deployment and End-of-Tour Checks</h2>
+
+    <h3>Pre-Deployment Check</h3>
+
+    <p>
+        Before an ARV is placed into service, the crew should confirm:
+    </p>
+
+    <ul class="checklist">
+        <li>The vehicle is present and serviceable</li>
+        <li>The marked or unmarked configuration is understood</li>
+        <li>All required firearms are present</li>
+        <li>All rear firearms are securely stored</li>
+        <li>Personal sidearms are accounted for</li>
+        <li>Required PPE is available</li>
+        <li>The medical kit is present</li>
+        <li>The ballistic shield is available where required</li>
+        <li>Night-vision equipment is present where authorised</li>
+        <li>Communications equipment is working</li>
+        <li>Any faults or shortages have been reported</li>
+    </ul>
+
+    <h3>End-of-Tour Check</h3>
+
+    <p>
+        Before the vehicle is stood down, the crew should confirm:
+    </p>
+
+    <ul class="checklist">
+        <li>All deployed firearms have been returned</li>
+        <li>All rear firearms are secured</li>
+        <li>No equipment has been left at an incident or training location</li>
+        <li>Used medical items have been identified</li>
+        <li>Damaged equipment has been reported</li>
+        <li>Missing equipment has been reported</li>
+        <li>The vehicle has been checked for damage</li>
+        <li>The vehicle is ready for the next crew</li>
+        <li>Relevant logs or reports have been completed</li>
+    </ul>
+
+</section>
+
+<section class="card section-card" id="faults">
+
+    <h2>12. Reporting Faults, Damage or Missing Equipment</h2>
+
+    <p>
+        Students must report any fault, damage or missing equipment as soon as
+        it is identified.
+    </p>
+
+    <p>A report should explain:</p>
+
+    <ul>
+        <li>What item is affected.</li>
+        <li>Where the item should be located.</li>
+        <li>When the issue was discovered.</li>
+        <li>Whether the equipment was recently used.</li>
+        <li>Whether the vehicle can remain operational.</li>
+        <li>Who has been informed.</li>
+        <li>What immediate action has been taken.</li>
+    </ul>
+
+    <div class="example-box">
+
+        <strong>Example</strong>
+
+        During the pre-deployment check, the crew discovers that an item of
+        medical equipment is missing. The vehicle should not simply be deployed
+        without mentioning it. The shortage must be reported and resolved or
+        formally accepted by the appropriate supervisor.
+
+    </div>
+
+    <p>
+        Hiding a fault or missing item is a professional-standards issue and may
+        place other officers at risk.
+    </p>
+
+</section>
+
+<section class="card section-card">
+
+    <h2>Equipment Familiarisation Summary</h2>
+
+    <div class="equipment-grid">
+
+        <div class="equipment-box">
+            <strong>Personal Sidearm</strong>
+            SIG Sauer P226
+        </div>
+
+        <div class="equipment-box">
+            <strong>Primary Carbine</strong>
+            SIG MCX
+        </div>
+
+        <div class="equipment-box">
+            <strong>Precision Capability</strong>
+            SIG 716
+        </div>
+
+        <div class="equipment-box">
+            <strong>Breaching Platform</strong>
+            Remington shotgun
+        </div>
+
+        <div class="equipment-box">
+            <strong>Less-Lethal</strong>
+            Taser and PAVA
+        </div>
+
+        <div class="equipment-box">
+            <strong>Specialist Equipment</strong>
+            Flashbangs, NVG, gas mask and ballistic shield
+        </div>
+
+        <div class="equipment-box">
+            <strong>Marked ARV</strong>
+            BMW X7
+        </div>
+
+        <div class="equipment-box">
+            <strong>Unmarked ARV</strong>
+            BMW X7
+        </div>
+
+    </div>
+
+</section>
+
+<section class="card success" id="revision">
+
+    <h2>13. Revision Questions</h2>
+
+    <p>
+        Consider these questions before attending the trainer-led Module 4 lesson:
+    </p>
+
+    <ol class="revision-list">
+
+        <li>
+            What is the officer's responsibility when issued specialist equipment?
+        </li>
+
+        <li>
+            What personal protective equipment is available to Code44 ARU?
+        </li>
+
+        <li>
+            What is the role of the SIG P226?
+        </li>
+
+        <li>
+            What is the role of the SIG MCX?
+        </li>
+
+        <li>
+            What is the role of the SIG 716?
+        </li>
+
+        <li>
+            What is the Remington shotgun used for?
+        </li>
+
+        <li>
+            Where must long firearms be stored when they are not deployed?
+        </li>
+
+        <li>
+            What is the exception to the rear vehicle firearms-storage rule?
+        </li>
+
+        <li>
+            What vehicles are currently operated by Code44 ARU?
+        </li>
+
+        <li>
+            How are ARVs normally crewed?
+        </li>
+
+        <li>
+            What should be checked before an ARV enters service?
+        </li>
+
+        <li>
+            What should happen if equipment is missing or damaged?
+        </li>
+
+        <li>
+            Why must used medical equipment be reported and replaced?
+        </li>
+
+        <li>
+            Does Module 4 authorise students to handle or deploy firearms?
+        </li>
+
+    </ol>
+
+</section>
+
+<section class="card notice">
+
+    <h2>Module Completion</h2>
+
+    <p>Module 4 is complete when you have:</p>
+
+    <ul class="checklist">
+        <li>Read the Module 4 student material</li>
+        <li>Attended the trainer-led equipment lesson</li>
+        <li>Completed the PPE familiarisation</li>
+        <li>Completed the firearms-role familiarisation</li>
+        <li>Completed the marked and unmarked X7 walkthrough</li>
+        <li>Demonstrated knowledge of vehicle firearms storage</li>
+        <li>Completed a pre-deployment equipment check</li>
+        <li>Completed the Module 4 knowledge check</li>
+        <li>Received trainer confirmation</li>
+    </ul>
+
+    <div class="quote">
+
+        “Specialist equipment is not simply issued to you. It is entrusted to you.
+        You are responsible for knowing its purpose, keeping it secure and ensuring
+        it is ready for the next officer who may depend upon it.”
+
+    </div>
+
+    <div class="button-row">
+
+        <a class="button"
+           href="PASTE-MODULE-4-GOOGLE-FORM-LINK-HERE"
+           target="_blank">
+
+            Complete Module 4 Knowledge Check
+
+        </a>
+
+        <a class="button secondary"
+           href="academy.html">
+
+            Return to Academy
+
+        </a>
+
+    </div>
+
+</section>
+
+<footer class="footer">
+
+    Code44 Police Service • Armed Response Unit Academy<br>
+
+    Cohort 001 • Module 4 — Equipment, Vehicles and PPE
+
+</footer>
+
+</div>
+
+</body>
+</html>
