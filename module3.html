@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Module 3 - Legal and Decision-Making</title>
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    background:#05080d;
+    color:white;
+    font-family:Segoe UI,Arial,sans-serif;
+    line-height:1.65;
+}
+
+.page-container{
+    width:90%;
+    max-width:1100px;
+    margin:0 auto;
+    padding:35px 0 60px;
+}
+
+.navbar{
+    background:#0b111b;
+    border:1px solid #16315c;
+    border-radius:8px;
+    padding:15px;
+    margin-bottom:20px;
+}
+
+.navbar a{
+    color:#4d9dff;
+    text-decoration:none;
+    font-weight:bold;
+    margin:0 5px;
+}
+
+.navbar a:hover,
+.back-link:hover{
+    color:white;
+}
+
+.back-link{
+    display:inline-block;
+    margin-bottom:20px;
+    color:#4d9dff;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.hero{
+    background:
+        linear-gradient(rgba(2,7,14,.79),rgba(2,7,14,.94)),
+        url('arv-photo.png');
+
+    background-size:cover;
+    background-position:center;
+    border:1px solid #16315c;
+    border-radius:12px;
+    padding:58px 30px;
+    text-align:center;
+}
+
+.hero h1{
+    margin:0 0 10px;
+    color:#4d9dff;
+    font-size:2.5rem;
+}
+
+.hero p{
+    margin:5px 0;
+    color:#d3dbea;
+}
+
+.badge{
+    display:inline-block;
+    margin-top:15px;
+    padding:7px 14px;
+    background:#10203a;
+    border:1px solid #2c65a8;
+    border-radius:20px;
+    color:#8fc2ff;
+    font-weight:bold;
+}
+
+h1,
+h2,
+h3{
+    color:#4d9dff;
+}
+
+.card{
+    background:#0b111b;
+    border:1px solid #16315c;
+    border-radius:9px;
+    padding:22px;
+    margin-top:20px;
+    transition:.25s;
+}
+
+.card:hover{
+    border-color:#4d9dff;
+}
+
+.section-card{
+    border-left:4px solid #4d9dff;
+}
+
+.notice{
+    border-left:5px solid #4d9dff;
+}
+
+.warning{
+    border-left:5px solid #e3a629;
+}
+
+.success{
+    border-left:5px solid #4da86b;
+}
+
+.info-grid,
+.framework-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+    gap:15px;
+    margin-top:18px;
+}
+
+.info-box,
+.framework-box,
+.example-box{
+    background:#08111d;
+    border:1px solid #16315c;
+    border-radius:8px;
+    padding:17px;
+}
+
+.info-box strong,
+.framework-box strong,
+.example-box strong{
+    display:block;
+    color:#4d9dff;
+    margin-bottom:5px;
+}
+
+.contents-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:12px;
+    margin-top:15px;
+}
+
+.contents-link{
+    display:block;
+    background:#08111d;
+    border:1px solid #16315c;
+    border-radius:7px;
+    padding:14px;
+    color:white;
+    text-decoration:none;
+    transition:.25s;
+}
+
+.contents-link:hover{
+    border-color:#4d9dff;
+    background:#0d1828;
+}
+
+.contents-link strong{
+    color:#4d9dff;
+}
+
+.checklist,
+.revision-list{
+    list-style:none;
+    padding-left:0;
+}
+
+.checklist li,
+.revision-list li{
+    background:#08111d;
+    border:1px solid #16315c;
+    border-radius:7px;
+    padding:14px;
+    margin-top:10px;
+}
+
+.checklist li::before{
+    content:"☐";
+    color:#4d9dff;
+    font-weight:bold;
+    margin-right:10px;
+}
+
+ul,
+ol{
+    padding-left:22px;
+}
+
+li{
+    margin-bottom:7px;
+}
+
+.quote{
+    background:#08111d;
+    border:1px solid #16315c;
+    border-radius:7px;
+    padding:20px;
+    margin-top:15px;
+    color:#d8e2ef;
+    font-style:italic;
+}
+
+.button-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:20px;
+}
+
+.button{
+    display:inline-block;
+    padding:12px 18px;
+    background:#4d9dff;
+    color:#05080d;
+    border-radius:6px;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.button:hover{
+    background:#77b5ff;
+}
+
+.button.secondary{
+    background:#101b2c;
+    color:#4d9dff;
+    border:1px solid #24538b;
+}
+
+.footer{
+    margin-top:30px;
+    padding-top:20px;
+    border-top:1px solid #16315c;
+    color:#8f9bad;
+    text-align:center;
+    font-size:.9rem;
+}
+
+@media(max-width:650px){
+
+    .page-container{
+        width:92%;
+    }
+
+    .hero{
+        padding:42px 18px;
+    }
+
+    .hero h1{
+        font-size:2rem;
+    }
+
+    .navbar{
+        line-height:2;
+    }
+
+    .button{
+        width:100%;
+        text-align:center;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="page-container">
+
+<nav class="navbar">
+    <a href="database.html">Internal Database</a> |
+    <a href="academy.html">ARU Academy</a> |
+    <a href="student-handbook.html">Student Handbook</a> |
+    <a href="module1.html">Module 1</a> |
+    <a href="module2.html">Module 2</a> |
+    <a href="module3.html" style="color:white;">Module 3</a>
+</nav>
+
+<a class="back-link" href="academy.html">
+    ← Return to ARU Academy
+</a>
+
+<header class="hero">
+
+    <h1>Module 3 — Legal and Decision-Making</h1>
+
+    <p>Code44 Police Service</p>
+
+    <p>Armed Response Unit Academy</p>
+
+    <span class="badge">Cohort 001</span>
+
+</header>
+
+<section class="card">
+
+    <h2>Module Overview</h2>
+
+    <p>
+        This module introduces the legal, policy and accountability principles
+        that support decision-making within the Armed Response Unit.
+    </p>
+
+    <p>
+        Students are not expected to memorise every rule word-for-word. They are
+        expected to understand the principles behind their decisions and explain
+        why an action was necessary, reasonable and proportionate.
+    </p>
+
+    <p>
+        This module is written for Code44 roleplay. Current server rules,
+        approved force policy and command direction always take priority.
+    </p>
+
+    <div class="info-grid">
+
+        <div class="info-box">
+            <strong>Estimated Reading Time</strong>
+            30–40 minutes
+        </div>
+
+        <div class="info-box">
+            <strong>Lesson Delivery</strong>
+            Trainer-led discussion and tabletop exercises
+        </div>
+
+        <div class="info-box">
+            <strong>Assessment</strong>
+            Knowledge check and written decision exercise
+        </div>
+
+        <div class="info-box">
+            <strong>Required Before</strong>
+            Module 4
+        </div>
+
+    </div>
+
+</section>
+
+<section class="card warning">
+
+    <h2>Important Policy Notice</h2>
+
+    <p>
+        This module supports Code44 Police Service roleplay and does not replace
+        current force policy, server rules or command direction.
+    </p>
+
+    <p>
+        Where this page and an approved current policy differ, the current
+        approved policy takes priority.
+    </p>
+
+</section>
+
+<section class="card">
+
+    <h2>Contents</h2>
+
+    <div class="contents-grid">
+
+        <a class="contents-link" href="#objectives">
+            <strong>1.</strong> Learning Objectives
+        </a>
+
+        <a class="contents-link" href="#responsibility">
+            <strong>2.</strong> Armed Policing Responsibility
+        </a>
+
+        <a class="contents-link" href="#principles">
+            <strong>3.</strong> Core Legal Principles
+        </a>
+
+        <a class="contents-link" href="#information">
+            <strong>4.</strong> Information Before Action
+        </a>
+
+        <a class="contents-link" href="#decision">
+            <strong>5.</strong> Decision-Making Mindset
+        </a>
+
+        <a class="contents-link" href="#apstra">
+            <strong>6.</strong> APSTRA
+        </a>
+
+        <a class="contents-link" href="#force">
+            <strong>7.</strong> Use-of-Force Considerations
+        </a>
+
+        <a class="contents-link" href="#reassessment">
+            <strong>8.</strong> Reassessment
+        </a>
+
+        <a class="contents-link" href="#command">
+            <strong>9.</strong> Command and Escalation
+        </a>
+
+        <a class="contents-link" href="#aftercare">
+            <strong>10.</strong> Aftercare
+        </a>
+
+        <a class="contents-link" href="#reporting">
+            <strong>11.</strong> Reporting
+        </a>
+
+        <a class="contents-link" href="#revision">
+            <strong>12.</strong> Revision Questions
+        </a>
+
+    </div>
+
+</section>
+
+<section class="card section-card" id="objectives">
+
+    <h2>1. Learning Objectives</h2>
+
+    <p>After completing Module 3, you should be able to:</p>
+
+    <ul>
+        <li>Explain why operational decisions must be justified.</li>
+        <li>Describe necessity, proportionality and reasonableness.</li>
+        <li>Separate confirmed information from assumptions.</li>
+        <li>Consider reasonable alternatives before acting.</li>
+        <li>Explain the purpose of APSTRA.</li>
+        <li>Recognise when circumstances require reassessment.</li>
+        <li>Understand the importance of command updates.</li>
+        <li>Describe post-incident responsibilities.</li>
+        <li>Produce a clear and honest written rationale.</li>
+    </ul>
+
+</section>
+
+<section class="card section-card" id="responsibility">
+
+    <h2>2. Responsibility Attached to Armed Policing</h2>
+
+    <p>
+        Armed policing carries an increased level of responsibility because
+        decisions may have serious consequences for officers, subjects and
+        members of the public.
+    </p>
+
+    <p>
+        Specialist status does not remove the need for restraint,
+        communication, professional judgement or accountability.
+    </p>
+
+    <p>An ARU officer should be prepared to explain:</p>
+
+    <ul>
+        <li>What information was known at the time.</li>
+        <li>What threat or risk was identified.</li>
+        <li>What options were considered.</li>
+        <li>Why a chosen action was necessary.</li>
+        <li>Why the response was proportionate.</li>
+        <li>What changed during the incident.</li>
+        <li>What happened afterwards.</li>
+    </ul>
+
+</section>
+
+<section class="card section-card" id="principles">
+
+    <h2>3. Core Legal and Policy Principles</h2>
+
+    <p>
+        Decisions within ARU should be based upon approved policy,
+        current server rules and the following principles.
+    </p>
+
+    <div class="framework-grid">
+
+        <div class="framework-box">
+            <strong>Necessity</strong>
+            Was the action genuinely required, or was another reasonable option available?
+        </div>
+
+        <div class="framework-box">
+            <strong>Proportionality</strong>
+            Was the response appropriate to the threat, risk and intended objective?
+        </div>
+
+        <div class="framework-box">
+            <strong>Reasonableness</strong>
+            Did the decision make sense based on what the officer honestly knew at the time?
+        </div>
+
+        <div class="framework-box">
+            <strong>Accountability</strong>
+            Can the officer clearly explain and record the decision?
+        </div>
+
+        <div class="framework-box">
+            <strong>Protection of Life</strong>
+            Was preservation of life treated as the primary objective?
+        </div>
+
+        <div class="framework-box">
+            <strong>Fairness</strong>
+            Were the rights and dignity of everyone involved considered?
+        </div>
+
+    </div>
+
+</section>
+
+<section class="card section-card" id="information">
+
+    <h2>4. Information Before Action</h2>
+
+    <p>
+        Good decisions depend upon reliable information. Officers should avoid
+        treating an initial report as though every detail has already been confirmed.
+    </p>
+
+    <p>Relevant information may include:</p>
+
+    <ul>
+        <li>What has been reported.</li>
+        <li>Who provided the information.</li>
+        <li>Whether a weapon has been seen or confirmed.</li>
+        <li>The subject's description and location.</li>
+        <li>Behaviour displayed by the subject.</li>
+        <li>Presence of members of the public.</li>
+        <li>Presence of vulnerable persons.</li>
+        <li>Available resources and command support.</li>
+        <li>Whether the situation is changing.</li>
+    </ul>
+
+    <div class="example-box">
+        <strong>Key Principle</strong>
+        Clearly separate what has been reported, what has been confirmed
+        and what remains unknown.
+    </div>
+
+</section>
+
+<section class="card section-card" id="decision">
+
+    <h2>5. Five-Step Decision-Making Mindset</h2>
+
+    <p>
+        Students should use the following mindset when considering
+        intervention, tactics or force.
+    </p>
+
+    <ol>
+
+        <li>
+            <strong>Identify the threat.</strong><br>
+            What is happening, who is at risk and how immediate is the danger?
+        </li>
+
+        <li>
+            <strong>Gather and assess information.</strong><br>
+            Confirm what is known and identify what remains uncertain.
+        </li>
+
+        <li>
+            <strong>Consider available options.</strong><br>
+            Consider communication, containment, distance, time and support.
+        </li>
+
+        <li>
+            <strong>Apply necessity and proportionality.</strong><br>
+            Is the proposed response required and balanced against the threat?
+        </li>
+
+        <li>
+            <strong>Communicate, record and review.</strong><br>
+            Provide an APSTRA update and continue reassessing the situation.
+        </li>
+
+    </ol>
+
+</section>
+
+<section class="card section-card" id="apstra">
+
+    <h2>6. APSTRA</h2>
+
+    <p>
+        APSTRA is the Code44 framework used to communicate and record
+        the reasoning behind decisions, tactics and use of force.
+    </p>
+
+    <p>A clear APSTRA update should identify:</p>
+
+    <div class="framework-grid">
+
+        <div class="framework-box">
+            <strong>Who</strong>
+            Officer, rank, unit or callsign.
+        </div>
+
+        <div class="framework-box">
+            <strong>What</strong>
+            Incident, threat or behaviour observed.
+        </div>
+
+        <div class="framework-box">
+            <strong>Where</strong>
+            Clear location or area.
+        </div>
+
+        <div class="framework-box">
+            <strong>Risk</strong>
+            Risk to officers, public, subject or vulnerable persons.
+        </div>
+
+        <div class="framework-box">
+            <strong>Action</strong>
+            Intended action and concise justification.
+        </div>
+
+    </div>
+
+    <div class="example-box">
+
+        <strong>Example</strong>
+
+        “PC Bloggs, ARV-2. Reports of a firearm near Legion Square.
+        One male matching the description, weapon not yet confirmed,
+        high public presence. Establishing containment and requesting
+        additional units.”
+
+    </div>
+
+    <p>
+        APSTRA updates should be concise, relevant and refreshed whenever
+        the circumstances materially change.
+    </p>
+
+</section>
+
+<section class="card section-card" id="force">
+
+    <h2>7. Use-of-Force Considerations</h2>
+
+    <p>
+        Officers should not assume every incident must move through
+        a fixed list of force options in a set order.
+    </p>
+
+    <p>
+        The appropriate response depends upon the actual threat,
+        available time, subject behaviour, communication and risk to life.
+    </p>
+
+    <p>Available options may include:</p>
+
+    <ul>
+        <li>Clear communication and lawful directions.</li>
+        <li>Creating distance.</li>
+        <li>Containment and observation.</li>
+        <li>Using time to gather information.</li>
+        <li>Withdrawal or repositioning.</li>
+        <li>Requesting additional resources.</li>
+        <li>Using authorised force only where justified.</li>
+    </ul>
+
+    <p>
+        Force must stop or reduce when the justification for that force changes.
+    </p>
+
+</section>
+
+<section class="card section-card" id="reassessment">
+
+    <h2>8. Reassessment and Changing Circumstances</h2>
+
+    <p>
+        Information can change quickly. A decision that was reasonable moments
+        earlier may need to change when new information becomes available.
+    </p>
+
+    <p>Officers should continually reassess:</p>
+
+    <ul>
+        <li>Whether the subject matches the information provided.</li>
+        <li>Whether a weapon remains visible or confirmed.</li>
+        <li>Whether the threat is immediate.</li>
+        <li>Whether the subject is complying.</li>
+        <li>Whether members of the public are entering the area.</li>
+        <li>Whether the chosen action remains necessary.</li>
+        <li>Whether additional command direction is required.</li>
+    </ul>
+
+    <div class="example-box">
+        <strong>Key Principle</strong>
+        New information should be reflected in both the plan and the APSTRA update.
+    </div>
+
+</section>
+
+<section class="card section-card" id="command">
+
+    <h2>9. Command and Escalation</h2>
+
+    <p>
+        Students must understand when to request command direction and when
+        an immediate life-saving decision may be required.
+    </p>
+
+    <p>Command updates should include:</p>
+
+    <ul>
+        <li>The current threat.</li>
+        <li>The location.</li>
+        <li>Subjects and persons at risk.</li>
+        <li>Actions already taken.</li>
+        <li>Resources present.</li>
+        <li>Resources required.</li>
+        <li>Any force used.</li>
+        <li>Any casualties or urgent medical needs.</li>
+    </ul>
+
+    <p>
+        Officers should not delay immediate action required to protect life
+        solely because a commander is not yet present. Command should be
+        updated as soon as reasonably possible.
+    </p>
+
+</section>
+
+<section class="card section-card" id="aftercare">
+
+    <h2>10. Aftercare and Post-Incident Responsibilities</h2>
+
+    <p>
+        Responsibility does not end when the immediate threat has been controlled.
+    </p>
+
+    <p>Post-incident priorities may include:</p>
+
+    <ul>
+        <li>Confirming the immediate threat has ended.</li>
+        <li>Providing or requesting urgent medical assistance.</li>
+        <li>Protecting officers, subjects and the public.</li>
+        <li>Updating Force Control and firearms command.</li>
+        <li>Preserving the scene where possible.</li>
+        <li>Identifying witnesses.</li>
+        <li>Completing required reports.</li>
+        <li>Participating in debrief and welfare processes.</li>
+    </ul>
+
+    <div class="example-box">
+        <strong>Core Principle</strong>
+        Life-saving treatment takes priority over evidence preservation.
+    </div>
+
+</section>
+
+<section class="card section-card" id="reporting">
+
+    <h2>11. Reporting and Accountability</h2>
+
+    <p>
+        Reports should explain the decision honestly and in the order events occurred.
+    </p>
+
+    <p>A clear written account should cover:</p>
+
+    <ul>
+        <li>The information initially received.</li>
+        <li>What the officer personally saw or heard.</li>
+        <li>The threat and risk identified.</li>
+        <li>Options considered.</li>
+        <li>Action taken and why.</li>
+        <li>Any change in circumstances.</li>
+        <li>Any force used.</li>
+        <li>Aftercare and notifications completed.</li>
+    </ul>
+
+    <p>
+        Students should not write what they believe a trainer wants to hear.
+        Accounts should reflect the officer's genuine observations and reasoning.
+    </p>
+
+</section>
+
+<section class="card success" id="revision">
+
+    <h2>12. Revision Questions</h2>
+
+    <p>
+        Consider these questions before attending the trainer-led Module 3 lesson:
+    </p>
+
+    <ol class="revision-list">
+
+        <li>
+            What is the difference between reported information
+            and confirmed information?
+        </li>
+
+        <li>
+            What does necessity mean?
+        </li>
+
+        <li>
+            What does proportionality mean?
+        </li>
+
+        <li>
+            Why must officers continue reassessing an incident?
+        </li>
+
+        <li>
+            What information should an APSTRA update contain?
+        </li>
+
+        <li>
+            Why is use of force not an automatic ladder?
+        </li>
+
+        <li>
+            When should command be updated?
+        </li>
+
+        <li>
+            Why must force reduce when the threat reduces?
+        </li>
+
+        <li>
+            What are the main post-incident responsibilities?
+        </li>
+
+        <li>
+            What should a clear written account explain?
+        </li>
+
+    </ol>
+
+</section>
+
+<section class="card notice">
+
+    <h2>Module Completion</h2>
+
+    <p>Module 3 is complete when you have:</p>
+
+    <ul class="checklist">
+        <li>Read the Module 3 student material</li>
+        <li>Attended the trainer-led lesson</li>
+        <li>Participated in the decision-making discussions</li>
+        <li>Completed the written decision exercise</li>
+        <li>Completed the Module 3 knowledge check</li>
+        <li>Received trainer confirmation</li>
+    </ul>
+
+    <div class="quote">
+
+        “Good decision-making is not simply choosing an action.
+        It is understanding the information, considering the risks,
+        selecting a proportionate response and being able to explain why.”
+
+    </div>
+
+    <div class="button-row">
+
+        <a class="button"
+           href="PASTE-MODULE-3-GOOGLE-FORM-LINK-HERE"
+           target="_blank">
+
+            Complete Module 3 Knowledge Check
+
+        </a>
+
+        <a class="button secondary" href="academy.html">
+            Return to Academy
+        </a>
+
+    </div>
+
+</section>
+
+<footer class="footer">
+
+    Code44 Police Service • Armed Response Unit Academy<br>
+    Cohort 001 • Module 3 — Legal and Decision-Making
+
+</footer>
+
+</div>
+
+</body>
+</html>
