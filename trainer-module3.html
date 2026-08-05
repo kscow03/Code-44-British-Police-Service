@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Trainer Module 3 - Legal and Decision-Making</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    background:#05080d;
+    color:white;
+    font-family:Segoe UI,Arial,sans-serif;
+    line-height:1.65;
+}
+
+.page-container{
+    width:90%;
+    max-width:1150px;
+    margin:0 auto;
+    padding:35px 0 60px;
+}
+
+.navbar{
+    background:#0b111b;
+    border:1px solid #16315c;
+    border-radius:8px;
+    padding:15px;
+    margin-bottom:20px;
+}
+
+.navbar a{
+    color:#4d9dff;
+    text-decoration:none;
+    font-weight:bold;
+    margin:0 5px;
+}
+
+.navbar a:hover,
+.back-link:hover{
+    color:white;
+}
+
+.back-link{
+    display:inline-block;
+    margin-bottom:20px;
+    color:#4d9dff;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.hero{
+    background:
+        linear-gradient(rgba(2,7,14,.80),rgba(2,7,14,.94)),
+        url('arv-photo.png');
+
+    background-size:cover;
+    background-position:center;
+    border:1px solid #16315c;
+    border-radius:12px;
+    padding:58px 30px;
+    text-align:center;
+}
+
+.hero h1{
+    margin:0 0 10px;
+    color:#4d9dff;
+    font-size:2.5rem;
+}
+
+.hero p{
+    margin:5px 0;
+    color:#d3dbea;
+}
+
+.badge{
+    display:inline-block;
+    margin-top:15px;
+    padding:7px 14px;
+    background:#3a2a0d;
+    border:1px solid #a8761e;
+    border-radius:20px;
+    color:#f2c76f;
+    font-weight:bold;
+}
+
+h1,
+h2,
+h3{
+    color:#4d9dff;
+}
+
+.card{
+    background:#0b111b;
+    border:1px solid #16315c;
+    border-radius:9px;
+    padding:22px;
+    margin-top:20px;
+    transition:.25s;
+}
+
+.card:hover{
+    border-color:#4d9dff;
+}
+
+.instructor{
+    border-left:5px solid #9c6ade;
+}
+
+.activity{
+    border-left:5px solid #4da86b;
+}
+
+.assessment{
+    border-left:5px solid #4d9dff;
+}
+
+.warning{
+    border-left:5px solid #e3a629;
+}
+
+.info-grid,
+.rating-grid,
+.framework-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+    gap:15px;
+    margin-top:18px;
+}
+
+.info-box,
+.rating-box,
+.framework-box,
+.example-box{
+    background:#08111d;
+    border:1px solid #16315c;
+    border-radius:8px;
+    padding:17px;
+}
+
+.info-box strong,
+.rating-box strong,
+.framework-box strong,
+.example-box strong{
+    display:block;
+    color:#4d9dff;
+    margin-bottom:6px;
+}
+
+.delivery-table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:15px;
+}
+
+.delivery-table th,
+.delivery-table td{
+    border:1px solid #16315c;
+    padding:12px;
+    text-align:left;
+    vertical-align:top;
+}
+
+.delivery-table th{
+    background:#10203a;
+    color:#8fc2ff;
+}
+
+.checklist{
+    list-style:none;
+    padding-left:0;
+}
+
+.checklist li{
+    background:#08111d;
+    border:1px solid #16315c;
+    border-radius:7px;
+    padding:13px;
+    margin-top:9px;
+}
+
+.checklist li::before{
+    content:"☐";
+    color:#4d9dff;
+    font-weight:bold;
+    margin-right:10px;
+}
+
+ul,
+ol{
+    padding-left:22px;
+}
+
+li{
+    margin-bottom:7px;
+}
+
+.button-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:20px;
+}
+
+.button{
+    display:inline-block;
+    padding:12px 18px;
+    background:#4d9dff;
+    color:#05080d;
+    border:none;
+    border-radius:6px;
+    text-decoration:none;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.button:hover{
+    background:#77b5ff;
+}
+
+.button.secondary{
+    background:#101b2c;
+    color:#4d9dff;
+    border:1px solid #24538b;
+}
+
+.footer{
+    margin-top:30px;
+    padding-top:20px;
+    border-top:1px solid #16315c;
+    color:#8f9bad;
+    text-align:center;
+    font-size:.9rem;
+}
+
+@media(max-width:700px){
+
+    .page-container{
+        width:92%;
+    }
+
+    .hero{
+        padding:42px 18px;
+    }
+
+    .hero h1{
+        font-size:2rem;
+    }
+
+    .navbar{
+        line-height:2;
+    }
+
+    .button{
+        width:100%;
+        text-align:center;
+    }
+
+    .delivery-table{
+        font-size:.9rem;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<script>
+
+if (sessionStorage.getItem("trainerAccess") !== "granted") {
+    window.location.replace("trainers-login.html");
+}
+
+</script>
+
+<div class="page-container">
+
+<nav class="navbar">
+
+    <a href="database.html">Internal Database</a> |
+
+    <a href="academy.html">ARU Academy</a> |
+
+    <a href="trainers.html">Trainers Area</a> |
+
+    <a href="trainer-module1.html">Module 1</a> |
+
+    <a href="trainer-module2.html">Module 2</a> |
+
+    <a href="trainer-module3.html" style="color:white;">
+        Module 3
+    </a>
+
+</nav>
+
+<a class="back-link" href="trainers.html">
+    ← Return to Trainers Area
+</a>
+
+<header class="hero">
+
+    <h1>Trainer Module 3 — Legal and Decision-Making</h1>
+
+    <p>Instructor Lesson Plan</p>
+
+    <p>ARU Academy • Cohort 001</p>
+
+    <span class="badge">
+        Trainer-Only Resource
+    </span>
+
+</header>
+
+<section class="card">
+
+    <h2>Lesson Overview</h2>
+
+    <p>
+        Module 3 introduces students to the legal, policy and accountability
+        principles that support decision-making within Code44 ARU roleplay.
+    </p>
+
+    <p>
+        The lesson should focus on reasoning rather than memorising phrases.
+        Students must learn to separate confirmed information from assumptions,
+        consider reasonable options, explain their decisions and reassess when
+        circumstances change.
+    </p>
+
+    <div class="info-grid">
+
+        <div class="info-box">
+            <strong>Lesson</strong>
+            Module 3 — Legal and Decision-Making
+        </div>
+
+        <div class="info-box">
+            <strong>Recommended Duration</strong>
+            90 minutes
+        </div>
+
+        <div class="info-box">
+            <strong>Current Group</strong>
+            Two ARU students
+        </div>
+
+        <div class="info-box">
+            <strong>Delivery Style</strong>
+            Discussion, tabletop exercises and written justification
+        </div>
+
+        <div class="info-box">
+            <strong>Assessment</strong>
+            Observation, written task and knowledge check
+        </div>
+
+        <div class="info-box">
+            <strong>Pass Standard</strong>
+            Satisfactory rationale and 80% quiz score
+        </div>
+
+    </div>
+
+</section>
+
+<section class="card warning">
+
+    <h2>Important Delivery Notice</h2>
+
+    <p>
+        This lesson is written for Code44 roleplay. Trainers must deliver it
+        alongside current server rules, approved ARU policy and command direction.
+    </p>
+
+    <p>
+        Where current policy differs from this lesson plan, current approved
+        policy takes priority.
+    </p>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Trainer Preparation</h2>
+
+    <ul class="checklist">
+        <li>Confirm both students completed Module 2</li>
+        <li>Confirm both students have read Module 3</li>
+        <li>Review current Code44 use-of-force policy</li>
+        <li>Review the approved APSTRA structure</li>
+        <li>Prepare the Module 3 knowledge check</li>
+        <li>Prepare the written decision exercise</li>
+        <li>Prepare an attendance record</li>
+        <li>Confirm the trainer assessment form is available</li>
+        <li>Check the scenarios remain consistent with current server policy</li>
+    </ul>
+
+</section>
+
+<section class="card">
+
+    <h2>Required Resources</h2>
+
+    <ul>
+        <li>Module 3 student page</li>
+        <li>Current approved ARU policies</li>
+        <li>Student Handbook</li>
+        <li>Module 3 knowledge check</li>
+        <li>Written decision exercise</li>
+        <li>Attendance record</li>
+        <li>Trainer assessment form</li>
+        <li>Discord voice channel or classroom location</li>
+        <li>Notes area or shared screen for tabletop scenarios</li>
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Learning Outcomes</h2>
+
+    <p>By the end of the lesson, each student should be able to:</p>
+
+    <ul>
+        <li>Explain why operational decisions must be justified.</li>
+        <li>Describe necessity, proportionality and reasonableness.</li>
+        <li>Separate confirmed information from assumptions.</li>
+        <li>Identify risks to officers, subjects and members of the public.</li>
+        <li>Consider more than one reasonable option.</li>
+        <li>Provide a clear APSTRA update.</li>
+        <li>Explain why decisions must be reassessed.</li>
+        <li>Recognise when command should be updated.</li>
+        <li>Describe post-incident priorities.</li>
+        <li>Produce a clear written rationale.</li>
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Suggested Lesson Structure</h2>
+
+    <table class="delivery-table">
+
+        <tr>
+            <th>Stage</th>
+            <th>Time</th>
+            <th>Trainer Action</th>
+        </tr>
+
+        <tr>
+            <td>Introduction</td>
+            <td>5 minutes</td>
+            <td>
+                Explain that sound judgement and accountability are central
+                to armed policing.
+            </td>
+        </tr>
+
+        <tr>
+            <td>Core Principles</td>
+            <td>15 minutes</td>
+            <td>
+                Teach necessity, proportionality, reasonableness and protection of life.
+            </td>
+        </tr>
+
+        <tr>
+            <td>Information and Assumptions</td>
+            <td>10 minutes</td>
+            <td>
+                Explain the difference between reports, observations and confirmed facts.
+            </td>
+        </tr>
+
+        <tr>
+            <td>Decision-Making and APSTRA</td>
+            <td>20 minutes</td>
+            <td>
+                Work through the five-step mindset and APSTRA structure.
+            </td>
+        </tr>
+
+        <tr>
+            <td>Scenario Discussions</td>
+            <td>25 minutes</td>
+            <td>
+                Deliver the three tabletop scenarios and question each student.
+            </td>
+        </tr>
+
+        <tr>
+            <td>Written Exercise and Review</td>
+            <td>15 minutes</td>
+            <td>
+                Complete the written rationale, review learning and explain the quiz.
+            </td>
+        </tr>
+
+    </table>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Opening Script</h2>
+
+    <div class="example-box">
+
+        <strong>Suggested wording</strong>
+
+        <p>
+            “Module 3 focuses on legal and accountable decision-making.
+        </p>
+
+        <p>
+            As an ARU officer, it is not enough to say that you believed an action
+            was right. You must be able to explain what information you had,
+            what risk you identified, what options you considered and why your
+            decision was necessary and proportionate.
+        </p>
+
+        <p>
+            This lesson is not about memorising one perfect answer. It is about
+            showing clear, defensible and flexible reasoning.”
+        </p>
+
+    </div>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 1 — Responsibility and Accountability</h2>
+
+    <p>
+        Explain that armed policing carries increased responsibility because
+        decisions may have serious consequences.
+    </p>
+
+    <p>An ARU officer should be prepared to explain:</p>
+
+    <ul>
+        <li>What information was available.</li>
+        <li>What threat was identified.</li>
+        <li>Who was at risk.</li>
+        <li>What options were considered.</li>
+        <li>Why the chosen option was necessary.</li>
+        <li>Why the response was proportionate.</li>
+        <li>How circumstances changed.</li>
+        <li>What happened afterwards.</li>
+    </ul>
+
+    <div class="example-box">
+
+        <strong>Trainer prompt</strong>
+
+        Why is “I thought it was the right thing to do” not enough on its own?
+
+    </div>
+
+    <h3>Expected learning point</h3>
+
+    <p>
+        The officer must explain the facts, risk, options and reasoning that
+        supported the decision.
+    </p>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 2 — Core Decision-Making Principles</h2>
+
+    <div class="framework-grid">
+
+        <div class="framework-box">
+            <strong>Protection of Life</strong>
+            Preservation of life remains the primary objective.
+        </div>
+
+        <div class="framework-box">
+            <strong>Necessity</strong>
+            The action must genuinely be required.
+        </div>
+
+        <div class="framework-box">
+            <strong>Proportionality</strong>
+            The response must be balanced against the threat.
+        </div>
+
+        <div class="framework-box">
+            <strong>Reasonableness</strong>
+            The decision should make sense based on what was honestly known.
+        </div>
+
+        <div class="framework-box">
+            <strong>Accountability</strong>
+            The officer must be able to explain and record the decision.
+        </div>
+
+        <div class="framework-box">
+            <strong>Reassessment</strong>
+            The decision must change when the circumstances change.
+        </div>
+
+    </div>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Discussion — Necessary or Merely Available?</h2>
+
+    <p>Ask both students:</p>
+
+    <div class="example-box">
+
+        <strong>Question</strong>
+
+        Does having an authorised tactic or force option available automatically
+        mean it should be used?
+
+    </div>
+
+    <h3>Expected learning points</h3>
+
+    <ul>
+        <li>Availability does not equal necessity.</li>
+        <li>The option must fit the actual threat.</li>
+        <li>Reasonable alternatives should be considered.</li>
+        <li>The officer must explain why the chosen response was appropriate.</li>
+        <li>The response must be reviewed as circumstances change.</li>
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 3 — Information Before Action</h2>
+
+    <p>
+        Explain that officers must distinguish between different levels of information.
+    </p>
+
+    <div class="framework-grid">
+
+        <div class="framework-box">
+            <strong>Reported</strong>
+            Information received from a caller, witness or other source.
+        </div>
+
+        <div class="framework-box">
+            <strong>Observed</strong>
+            Information personally seen or heard by an officer.
+        </div>
+
+        <div class="framework-box">
+            <strong>Confirmed</strong>
+            Information supported by reliable evidence or direct verification.
+        </div>
+
+        <div class="framework-box">
+            <strong>Unknown</strong>
+            Important information that has not yet been established.
+        </div>
+
+    </div>
+
+    <p>Relevant information may include:</p>
+
+    <ul>
+        <li>Caller reliability</li>
+        <li>Witness accounts</li>
+        <li>Officer observations</li>
+        <li>CCTV or other evidence</li>
+        <li>Subject description</li>
+        <li>Subject behaviour</li>
+        <li>Presence of members of the public</li>
+        <li>Presence of vulnerable persons</li>
+        <li>Available support</li>
+        <li>Whether the situation is changing</li>
+    </ul>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Scenario One — Unconfirmed Firearm Report</h2>
+
+    <p>
+        ARU is deployed to reports of a male carrying a handgun near a busy
+        public area. The caller has left. Officers locate a male matching the
+        description, but no weapon is visible.
+    </p>
+
+    <p>Ask each student:</p>
+
+    <ul>
+        <li>What information is reported?</li>
+        <li>What information is confirmed?</li>
+        <li>What remains unknown?</li>
+        <li>Who may be at risk?</li>
+        <li>What reasonable options could be considered?</li>
+        <li>What should an APSTRA update include?</li>
+    </ul>
+
+    <h3>Expected learning points</h3>
+
+    <ul>
+        <li>The initial report remains relevant but is not proof.</li>
+        <li>The matching description supports further assessment.</li>
+        <li>The public location increases potential risk.</li>
+        <li>Officers should avoid treating assumptions as confirmed fact.</li>
+        <li>Communication, containment and further observation may be considered.</li>
+        <li>The plan should remain flexible.</li>
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 4 — Five-Step Decision-Making Mindset</h2>
+
+    <ol>
+
+        <li>
+            <strong>Identify the threat.</strong><br>
+            What is happening, who is at risk and how immediate is the danger?
+        </li>
+
+        <li>
+            <strong>Gather and assess information.</strong><br>
+            What is reported, observed, confirmed or unknown?
+        </li>
+
+        <li>
+            <strong>Consider available options.</strong><br>
+            Consider communication, containment, time, distance and support.
+        </li>
+
+        <li>
+            <strong>Apply necessity and proportionality.</strong><br>
+            Is the selected option required and balanced against the threat?
+        </li>
+
+        <li>
+            <strong>Communicate, record and review.</strong><br>
+            Give an APSTRA update and reassess as circumstances change.
+        </li>
+
+    </ol>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 5 — APSTRA</h2>
+
+    <p>
+        Explain that APSTRA provides a concise structure for communicating
+        the officer's understanding and intended action.
+    </p>
+
+    <div class="framework-grid">
+
+        <div class="framework-box">
+            <strong>Who</strong>
+            Officer, rank, unit or callsign.
+        </div>
+
+        <div class="framework-box">
+            <strong>What</strong>
+            Incident, threat or behaviour.
+        </div>
+
+        <div class="framework-box">
+            <strong>Where</strong>
+            Clear location.
+        </div>
+
+        <div class="framework-box">
+            <strong>Risk</strong>
+            Risk to officers, public, subject or vulnerable persons.
+        </div>
+
+        <div class="framework-box">
+            <strong>Action</strong>
+            Intended action and concise justification.
+        </div>
+
+    </div>
+
+    <div class="example-box">
+
+        <strong>Example</strong>
+
+        “PC Bloggs, ARV-2. Reports of a firearm near Legion Square.
+        One male matching the description, weapon not yet confirmed,
+        high public presence. Establishing containment and requesting
+        additional units.”
+
+    </div>
+
+    <p>Emphasise that APSTRA should be:</p>
+
+    <ul>
+        <li>Concise</li>
+        <li>Relevant</li>
+        <li>Accurate</li>
+        <li>Updated when circumstances change</li>
+        <li>Clear about what is confirmed and unconfirmed</li>
+    </ul>
+
+</section>
+
+<section class="card activity">
+
+    <h2>APSTRA Practice</h2>
+
+    <p>
+        Give each student one minute to prepare an APSTRA update for Scenario One.
+    </p>
+
+    <p>
+        Ask one student to deliver the update, then ask the second student to
+        identify what was clear and what could be improved.
+    </p>
+
+    <h3>Assess for:</h3>
+
+    <ul>
+        <li>Clear officer or unit identification</li>
+        <li>Accurate incident summary</li>
+        <li>Clear location</li>
+        <li>Identified risk</li>
+        <li>Proportionate intended action</li>
+        <li>No unsupported assumptions</li>
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 6 — Reassessment</h2>
+
+    <p>
+        Explain that a decision may be reasonable when made but may become
+        inappropriate if circumstances change.
+    </p>
+
+    <p>Officers should continually reassess:</p>
+
+    <ul>
+        <li>Whether the subject still matches the information.</li>
+        <li>Whether a weapon remains visible or confirmed.</li>
+        <li>Whether the threat remains immediate.</li>
+        <li>Whether the subject is complying.</li>
+        <li>Whether the public is entering the area.</li>
+        <li>Whether the chosen action remains necessary.</li>
+        <li>Whether command or additional resources are required.</li>
+    </ul>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Scenario Two — Subject Complies</h2>
+
+    <p>
+        Officers challenge a subject believed to be armed. The subject
+        immediately follows directions, keeps their hands visible and moves
+        away from the suspected weapon.
+    </p>
+
+    <p>Ask:</p>
+
+    <ul>
+        <li>How has the threat changed?</li>
+        <li>What actions remain necessary?</li>
+        <li>What force may no longer be justified?</li>
+        <li>What control measures may still be required?</li>
+        <li>What should be communicated to command?</li>
+    </ul>
+
+    <h3>Expected learning points</h3>
+
+    <ul>
+        <li>Compliance may reduce the immediacy of the threat.</li>
+        <li>Officers must continue controlling the incident safely.</li>
+        <li>Force should reduce when the justification reduces.</li>
+        <li>The suspected weapon may still require control and recovery.</li>
+        <li>APSTRA and command updates should reflect the change.</li>
+    </ul>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Scenario Three — Conflicting Information</h2>
+
+    <p>
+        After containment is established, a second witness states that the
+        suspected firearm may be a realistic imitation being used during filming.
+    </p>
+
+    <p>Ask:</p>
+
+    <ul>
+        <li>Does the new information remove all risk?</li>
+        <li>How should the original plan be reviewed?</li>
+        <li>What further enquiries may be useful?</li>
+        <li>How should the uncertainty be communicated?</li>
+        <li>What would justify escalation or de-escalation?</li>
+    </ul>
+
+    <h3>Expected learning points</h3>
+
+    <ul>
+        <li>New information must be considered rather than ignored.</li>
+        <li>The imitation report does not automatically prove the item is safe.</li>
+        <li>Officers should avoid unnecessary escalation.</li>
+        <li>Further observation and verification may be appropriate.</li>
+        <li>The APSTRA update should reflect the conflicting information.</li>
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 7 — Command and Escalation</h2>
+
+    <p>Command updates should include:</p>
+
+    <ul>
+        <li>Current threat</li>
+        <li>Location</li>
+        <li>Subjects and persons at risk</li>
+        <li>Actions already taken</li>
+        <li>Resources present</li>
+        <li>Resources required</li>
+        <li>Any force used</li>
+        <li>Any casualties or urgent medical needs</li>
+    </ul>
+
+    <p>
+        Explain that officers should not delay immediate action required to
+        protect life solely because a commander is not yet present.
+    </p>
+
+    <p>
+        Command should be updated as soon as reasonably possible.
+    </p>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 8 — Aftercare and Reporting</h2>
+
+    <p>Post-incident priorities may include:</p>
+
+    <ul>
+        <li>Confirming the immediate threat has ended.</li>
+        <li>Providing or requesting urgent medical assistance.</li>
+        <li>Protecting officers, subjects and the public.</li>
+        <li>Updating Force Control and firearms command.</li>
+        <li>Preserving the scene where possible.</li>
+        <li>Identifying witnesses.</li>
+        <li>Completing required reports.</li>
+        <li>Participating in debrief and welfare processes.</li>
+    </ul>
+
+    <div class="example-box">
+
+        <strong>Core principle</strong>
+
+        Life-saving treatment takes priority over evidence preservation.
+
+    </div>
+
+    <p>A clear written account should cover:</p>
+
+    <ul>
+        <li>Information initially received</li>
+        <li>Personal observations</li>
+        <li>Threat and risk identified</li>
+        <li>Options considered</li>
+        <li>Action taken and why</li>
+        <li>Changes in circumstances</li>
+        <li>Any force used</li>
+        <li>Aftercare and notifications</li>
+    </ul>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Written Decision Exercise</h2>
+
+    <p>
+        Ask each student to select one of the three scenarios and write a short
+        decision rationale.
+    </p>
+
+    <p>The response must include:</p>
+
+    <ul>
+        <li>Known information</li>
+        <li>Unconfirmed information</li>
+        <li>Threat and risk</li>
+        <li>Options considered</li>
+        <li>Chosen action</li>
+        <li>Why the action is necessary</li>
+        <li>Why the action is proportionate</li>
+        <li>What would cause the decision to change</li>
+    </ul>
+
+</section>
+
+<section class="card assessment">
+
+    <h2>Written Exercise Assessment Standard</h2>
+
+    <p>A satisfactory response should demonstrate:</p>
+
+    <ul>
+        <li>Clear separation between fact and assumption.</li>
+        <li>Recognition of risk to everyone involved.</li>
+        <li>Consideration of more than one option.</li>
+        <li>A proportionate and defensible decision.</li>
+        <li>Recognition that circumstances may change.</li>
+        <li>Clear communication and accountability.</li>
+    </ul>
+
+    <p>
+        A student who provides only a conclusion without explaining their
+        reasoning should receive further questioning or remedial learning.
+    </p>
+
+</section>
+
+<section class="card assessment">
+
+    <h2>Review Questions</h2>
+
+    <ol>
+        <li>What is the difference between reported and confirmed information?</li>
+        <li>What does necessity mean?</li>
+        <li>What does proportionality mean?</li>
+        <li>Why must decisions be reassessed?</li>
+        <li>What should an APSTRA update contain?</li>
+        <li>Why does access to an option not automatically justify its use?</li>
+        <li>When should command be updated?</li>
+        <li>Why should force reduce when the threat reduces?</li>
+        <li>What are the main post-incident priorities?</li>
+        <li>What should a written rationale explain?</li>
+    </ol>
+
+</section>
+
+<section class="card assessment">
+
+    <h2>Expected Answers</h2>
+
+    <ol>
+
+        <li>
+            Reported information comes from another source. Confirmed information
+            has been reliably verified.
+        </li>
+
+        <li>
+            The action must genuinely be required.
+        </li>
+
+        <li>
+            The response must be balanced against the threat and intended objective.
+        </li>
+
+        <li>
+            Circumstances and information can change.
+        </li>
+
+        <li>
+            Who, what, where, risk and intended action with justification.
+        </li>
+
+        <li>
+            Availability does not prove necessity or proportionality.
+        </li>
+
+        <li>
+            When material information changes, further support is required,
+            force is used or important developments occur.
+        </li>
+
+        <li>
+            The justification for force weakens when the threat weakens.
+        </li>
+
+        <li>
+            Safety, medical care, command updates, scene preservation,
+            witnesses, reports and welfare.
+        </li>
+
+        <li>
+            Information, observations, risk, options, chosen action,
+            justification, changes and aftercare.
+        </li>
+
+    </ol>
+
+</section>
+
+<section class="card assessment">
+
+    <h2>Instructor Observation Criteria</h2>
+
+    <div class="rating-grid">
+
+        <div class="rating-box">
+            <strong>Information Assessment</strong>
+            Separates fact, report and assumption.
+        </div>
+
+        <div class="rating-box">
+            <strong>Risk Recognition</strong>
+            Identifies who may be at risk.
+        </div>
+
+        <div class="rating-box">
+            <strong>Options</strong>
+            Considers more than one response.
+        </div>
+
+        <div class="rating-box">
+            <strong>Proportionality</strong>
+            Selects a balanced response.
+        </div>
+
+        <div class="rating-box">
+            <strong>APSTRA</strong>
+            Communicates clearly and concisely.
+        </div>
+
+        <div class="rating-box">
+            <strong>Reassessment</strong>
+            Changes decisions when circumstances change.
+        </div>
+
+        <div class="rating-box">
+            <strong>Accountability</strong>
+            Explains and records reasoning.
+        </div>
+
+        <div class="rating-box">
+            <strong>Professionalism</strong>
+            Participates calmly and respectfully.
+        </div>
+
+    </div>
+
+</section>
+
+<section class="card assessment">
+
+    <h2>Module Outcomes</h2>
+
+    <h3>Pass</h3>
+
+    <p>
+        Student demonstrates satisfactory decision-making, APSTRA and written justification.
+    </p>
+
+    <h3>Pass with Development Points</h3>
+
+    <p>
+        Student may progress but must address identified areas of reasoning,
+        communication or reassessment.
+    </p>
+
+    <h3>Remedial</h3>
+
+    <p>
+        Student requires further teaching, scenario discussion or reassessment.
+    </p>
+
+    <h3>Incomplete</h3>
+
+    <p>
+        Required attendance, written work or assessment remains outstanding.
+    </p>
+
+    <h3>Unsuccessful</h3>
+
+    <p>
+        Student has not demonstrated the required standard after appropriate support.
+    </p>
+
+</section>
+
+<section class="card warning">
+
+    <h2>Common Student Errors</h2>
+
+    <ul>
+        <li>Treating a report as confirmed fact.</li>
+        <li>Failing to identify who is at risk.</li>
+        <li>Selecting an action before considering alternatives.</li>
+        <li>Believing deployment automatically justifies force.</li>
+        <li>Giving vague APSTRA updates.</li>
+        <li>Failing to reassess when circumstances change.</li>
+        <li>Continuing force after the threat reduces.</li>
+        <li>Writing conclusions without explaining reasoning.</li>
+    </ul>
+
+</section>
+
+<section class="card warning">
+
+    <h2>Common Trainer Errors</h2>
+
+    <ul>
+        <li>Demanding one fixed tactical answer.</li>
+        <li>Focusing on the conclusion rather than the reasoning.</li>
+        <li>Providing the expected answer too early.</li>
+        <li>Allowing one student to dominate.</li>
+        <li>Failing to challenge unsupported assumptions.</li>
+        <li>Ignoring weak APSTRA communication.</li>
+        <li>Failing to record development points.</li>
+        <li>Using outdated policy examples.</li>
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Closing Script</h2>
+
+    <div class="example-box">
+
+        <strong>Suggested wording</strong>
+
+        <p>
+            “That concludes Module 3.
+        </p>
+
+        <p>
+            Good decision-making is not simply choosing an action. It is
+            understanding the information, recognising the risks, considering
+            options and explaining why the chosen response was necessary and
+            proportionate.
+        </p>
+
+        <p>
+            These principles will continue to be assessed throughout every
+            practical Academy exercise.”
+        </p>
+
+    </div>
+
+</section>
+
+<section class="card">
+
+    <h2>Trainer Completion Checklist</h2>
+
+    <ul class="checklist">
+        <li>Both students attended</li>
+        <li>Core decision-making principles were explained</li>
+        <li>Reported and confirmed information were discussed</li>
+        <li>The five-step mindset was taught</li>
+        <li>APSTRA practice was completed</li>
+        <li>All three scenarios were discussed</li>
+        <li>Both students completed the written exercise</li>
+        <li>Review questions were answered</li>
+        <li>Individual feedback was recorded</li>
+        <li>Students were directed to the Module 3 quiz</li>
+        <li>Module outcomes were recorded</li>
+    </ul>
+
+    <div class="button-row">
+
+        <a class="button"
+           href="PASTE-TRAINER-MODULE-3-ASSESSMENT-FORM-LINK-HERE"
+           target="_blank">
+
+            Record Module 3 Outcome
+
+        </a>
+
+        <a class="button secondary"
+           href="trainers.html">
+
+            Return to Trainers Area
+
+        </a>
+
+    </div>
+
+</section>
+
+<footer class="footer">
+
+    Code44 Police Service • Armed Response Unit Academy<br>
+
+    Trainer Module 3 — Legal and Decision-Making • Cohort 001
+
+</footer>
+
+</div>
+
+</body>
+</html>
