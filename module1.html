@@ -12,12 +12,16 @@
     box-sizing:border-box;
 }
 
+html{
+    scroll-behavior:smooth;
+}
+
 body{
     margin:0;
     background:#05080d;
     color:white;
     font-family:Segoe UI,Arial,sans-serif;
-    line-height:1.6;
+    line-height:1.65;
 }
 
 .page-container{
@@ -39,6 +43,7 @@ body{
     color:#4d9dff;
     text-decoration:none;
     font-weight:bold;
+    margin:0 5px;
 }
 
 .navbar a:hover{
@@ -53,31 +58,32 @@ body{
     font-weight:bold;
 }
 
-h1,
-h2,
-h3{
-    color:#4d9dff;
+.back-link:hover{
+    color:white;
 }
 
-.module-header{
+.hero{
     background:
-        linear-gradient(rgba(2,7,14,.82),rgba(2,7,14,.92)),
+        linear-gradient(rgba(2,7,14,.79),rgba(2,7,14,.94)),
         url('arv-photo.png');
+
     background-size:cover;
     background-position:center;
+
     border:1px solid #16315c;
-    border-radius:10px;
-    padding:50px 30px;
-    margin-bottom:20px;
+    border-radius:12px;
+
+    padding:58px 30px;
     text-align:center;
 }
 
-.module-header h1{
+.hero h1{
     margin:0 0 10px;
-    font-size:2.3rem;
+    color:#4d9dff;
+    font-size:2.5rem;
 }
 
-.module-header p{
+.hero p{
     margin:5px 0;
     color:#d3dbea;
 }
@@ -85,26 +91,51 @@ h3{
 .badge{
     display:inline-block;
     margin-top:15px;
-    padding:7px 12px;
+    padding:7px 14px;
+
     background:#10203a;
     border:1px solid #2c65a8;
     border-radius:20px;
+
     color:#8fc2ff;
-    font-size:.9rem;
     font-weight:bold;
+}
+
+h1,
+h2,
+h3{
+    color:#4d9dff;
 }
 
 .card{
     background:#0b111b;
     border:1px solid #16315c;
-    border-radius:8px;
+    border-radius:9px;
+
     padding:22px;
-    margin-top:18px;
+    margin-top:20px;
+
     transition:.25s;
 }
 
 .card:hover{
     border-color:#4d9dff;
+}
+
+.section-card{
+    border-left:4px solid #4d9dff;
+}
+
+.notice{
+    border-left:5px solid #4d9dff;
+}
+
+.warning{
+    border-left:5px solid #e3a629;
+}
+
+.success{
+    border-left:5px solid #4da86b;
 }
 
 .info-grid{
@@ -117,7 +148,7 @@ h3{
 .info-box{
     background:#08111d;
     border:1px solid #16315c;
-    border-radius:7px;
+    border-radius:8px;
     padding:17px;
 }
 
@@ -127,25 +158,74 @@ h3{
     margin-bottom:5px;
 }
 
-ul,
-ol{
-    padding-left:22px;
+.contents-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:12px;
+    margin-top:15px;
 }
 
-li{
-    margin-bottom:7px;
+.contents-link{
+    display:block;
+    background:#08111d;
+    border:1px solid #16315c;
+    border-radius:7px;
+
+    padding:14px;
+
+    color:white;
+    text-decoration:none;
+
+    transition:.25s;
 }
 
-.lesson-section{
-    border-left:4px solid #4d9dff;
+.contents-link:hover{
+    border-color:#4d9dff;
+    background:#0d1828;
 }
 
-.notice{
-    border-left:5px solid #4d9dff;
+.contents-link strong{
+    color:#4d9dff;
 }
 
-.warning{
-    border-left:5px solid #e3a629;
+.values-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:13px;
+    margin-top:15px;
+}
+
+.value-box{
+    background:#08111d;
+    border:1px solid #16315c;
+    border-radius:7px;
+    padding:17px;
+}
+
+.value-box strong{
+    display:block;
+    color:#4d9dff;
+    margin-bottom:6px;
+}
+
+.pathway{
+    list-style:none;
+    padding-left:0;
+}
+
+.pathway li{
+    background:#08111d;
+    border:1px solid #16315c;
+    border-radius:7px;
+    padding:14px;
+    margin-top:10px;
+}
+
+.pathway li::before{
+    content:"→";
+    color:#4d9dff;
+    font-weight:bold;
+    margin-right:10px;
 }
 
 .checklist{
@@ -168,6 +248,40 @@ li{
     margin-right:10px;
 }
 
+.revision-list{
+    list-style:none;
+    padding-left:0;
+}
+
+.revision-list li{
+    background:#08111d;
+    border:1px solid #16315c;
+    border-radius:7px;
+    padding:14px;
+    margin-top:10px;
+}
+
+ul,
+ol{
+    padding-left:22px;
+}
+
+li{
+    margin-bottom:7px;
+}
+
+.quote{
+    background:#08111d;
+    border:1px solid #16315c;
+    border-radius:7px;
+
+    padding:20px;
+    margin-top:15px;
+
+    color:#d8e2ef;
+    font-style:italic;
+}
+
 .button-row{
     display:flex;
     flex-wrap:wrap;
@@ -178,11 +292,14 @@ li{
 .button{
     display:inline-block;
     padding:12px 18px;
+
     background:#4d9dff;
     color:#05080d;
+
+    border-radius:6px;
+
     text-decoration:none;
     font-weight:bold;
-    border-radius:6px;
 }
 
 .button:hover{
@@ -195,27 +312,33 @@ li{
     border:1px solid #24538b;
 }
 
-.module-footer{
+.footer{
     margin-top:30px;
     padding-top:20px;
+
     border-top:1px solid #16315c;
+
     color:#8f9bad;
-    font-size:.9rem;
     text-align:center;
+    font-size:.9rem;
 }
 
-@media(max-width:600px){
+@media(max-width:650px){
 
     .page-container{
         width:92%;
     }
 
-    .module-header{
-        padding:38px 18px;
+    .hero{
+        padding:42px 18px;
     }
 
-    .module-header h1{
-        font-size:1.8rem;
+    .hero h1{
+        font-size:2rem;
+    }
+
+    .navbar{
+        line-height:2;
     }
 
     .button{
@@ -232,24 +355,46 @@ li{
 <div class="page-container">
 
 <nav class="navbar">
-    <a href="database.html">Internal Database</a> |
-    <a href="academy.html">ARU Academy</a> |
-    <a href="module1.html" style="color:white;">Module 1</a>
+
+    <a href="database.html">
+        Internal Database
+    </a>
+
+    |
+
+    <a href="academy.html">
+        ARU Academy
+    </a>
+
+    |
+
+    <a href="student-handbook.html">
+        Student Handbook
+    </a>
+
+    |
+
+    <a href="module1.html" style="color:white;">
+        Module 1
+    </a>
+
 </nav>
 
 <a class="back-link" href="academy.html">
     ← Return to ARU Academy
 </a>
 
-<header class="module-header">
+<header class="hero">
 
     <h1>Module 1 — Welcome to ARU</h1>
 
-    <p>Code44 Armed Response Unit Academy</p>
+    <p>Code44 Police Service</p>
 
-    <p>Cohort 001</p>
+    <p>Armed Response Unit Academy</p>
 
-    <span class="badge">Foundation Module</span>
+    <span class="badge">
+        Cohort 001
+    </span>
 
 </header>
 
@@ -258,237 +403,474 @@ li{
     <h2>Module Overview</h2>
 
     <p>
-        Module 1 introduces recruits to the Armed Response Unit, the ARU Academy
-        and the standards expected throughout training.
+        Module 1 introduces you to the Armed Response Unit, the purpose of the
+        ARU Academy and the standards expected throughout your training.
     </p>
 
     <p>
-        By the end of this module, recruits should understand how the course is
-        structured, who is responsible for their development and what they must
-        demonstrate before being considered for operational qualification.
+        By the end of this module, you should understand how the Academy operates,
+        what responsibilities come with joining ARU and what you must demonstrate
+        before being considered for qualification.
     </p>
 
     <div class="info-grid">
 
         <div class="info-box">
-            <strong>Estimated Duration</strong>
-            45–60 minutes
+            <strong>Estimated Reading Time</strong>
+            20–30 minutes
         </div>
 
         <div class="info-box">
-            <strong>Delivery Method</strong>
-            Classroom briefing and guided portal tour
+            <strong>Lesson Delivery</strong>
+            Trainer-led induction and discussion
         </div>
 
         <div class="info-box">
             <strong>Assessment</strong>
-            Knowledge check and instructor confirmation
+            Knowledge check and trainer confirmation
         </div>
 
         <div class="info-box">
-            <strong>Pass Standard</strong>
-            80% knowledge-check score
+            <strong>Required Before</strong>
+            Module 2
         </div>
 
     </div>
-
-</section>
-
-<section class="card lesson-section">
-
-    <h2>Learning Objectives</h2>
-
-    <p>By completing this module, recruits will be able to:</p>
-
-    <ul>
-        <li>Describe the purpose and responsibilities of the Armed Response Unit.</li>
-
-        <li>Identify the ARU chain of command and training structure.</li>
-
-        <li>Explain the standards expected of an ARU recruit.</li>
-
-        <li>Navigate the Internal Database and ARU Academy.</li>
-
-        <li>Describe the route from recruit status to operational qualification.</li>
-
-        <li>Understand the importance of confidentiality, accountability and professional conduct.</li>
-    </ul>
-
-</section>
-
-<section class="card lesson-section">
-
-    <h2>1. Welcome to the Armed Response Unit</h2>
-
-    <p>
-        The Code44 Armed Response Unit provides specialist armed-policing support
-        to the wider service. ARU personnel are expected to operate professionally,
-        communicate clearly and make considered decisions during demanding incidents.
-    </p>
-
-    <p>
-        Membership of ARU is not simply permission to carry specialist equipment.
-        It represents an increased level of responsibility, accountability and
-        commitment to training.
-    </p>
-
-</section>
-
-<section class="card lesson-section">
-
-    <h2>2. ARU Academy Purpose</h2>
-
-    <p>
-        The ARU Academy exists to ensure that every recruit receives consistent
-        training and is assessed against the same standard.
-    </p>
-
-    <p>The Academy combines:</p>
-
-    <ul>
-        <li>Classroom learning</li>
-        <li>Professional standards education</li>
-        <li>Legal and policy awareness</li>
-        <li>Communications training</li>
-        <li>Equipment familiarisation</li>
-        <li>Scenario-based roleplay assessments</li>
-        <li>Instructor feedback and mentoring</li>
-        <li>Final knowledge and practical assessments</li>
-    </ul>
-
-</section>
-
-<section class="card lesson-section">
-
-    <h2>3. Cohort 001 Training Pathway</h2>
-
-    <ol>
-        <li>Module 1 — Welcome to ARU</li>
-        <li>Module 2 — Professional Standards</li>
-        <li>Module 3 — Legal and Policy</li>
-        <li>Module 4 — Equipment and Resources</li>
-        <li>Module 5 — Communications</li>
-        <li>Module 6 — Incident Management</li>
-        <li>Module 7 — Teamwork and Leadership</li>
-        <li>Module 8 — Operational Assessment</li>
-        <li>Graduation and qualification decision</li>
-    </ol>
-
-    <p>
-        Progression is not automatic. Recruits must complete the required learning,
-        attend training and meet the relevant assessment standards.
-    </p>
-
-</section>
-
-<section class="card lesson-section">
-
-    <h2>4. Standards Expected of Recruits</h2>
-
-    <ul>
-        <li><strong>Professionalism:</strong> behave appropriately and represent the unit positively.</li>
-
-        <li><strong>Integrity:</strong> be honest about mistakes, limitations and training performance.</li>
-
-        <li><strong>Accountability:</strong> take responsibility for decisions and actions.</li>
-
-        <li><strong>Communication:</strong> provide clear information and listen to instructions.</li>
-
-        <li><strong>Teamwork:</strong> support other recruits and contribute to collective performance.</li>
-
-        <li><strong>Attendance:</strong> attend scheduled sessions or provide reasonable notice.</li>
-
-        <li><strong>Development:</strong> accept feedback and demonstrate improvement.</li>
-
-        <li><strong>Confidentiality:</strong> keep internal materials and unit information within authorised channels.</li>
-    </ul>
-
-</section>
-
-<section class="card lesson-section">
-
-    <h2>5. Academy Chain of Command</h2>
-
-    <div class="info-grid">
-
-        <div class="info-box">
-            <strong>Lead Instructor</strong>
-            Sgt K. Maddox
-        </div>
-
-        <div class="info-box">
-            <strong>Course</strong>
-            ARU Academy Cohort 001
-        </div>
-
-        <div class="info-box">
-            <strong>Recruit Status</strong>
-            AFO in Training
-        </div>
-
-        <div class="info-box">
-            <strong>Final Outcome</strong>
-            Qualified, remedial training or unsuccessful
-        </div>
-
-    </div>
-
-    <p>
-        Recruits should raise training questions with their assigned instructor
-        or mentor. Conduct, welfare or serious concerns should be escalated through
-        the appropriate ARU command structure.
-    </p>
-
-</section>
-
-<section class="card lesson-section">
-
-    <h2>6. Using the Internal Database</h2>
-
-    <p>Recruits must be able to locate and use:</p>
-
-    <ul>
-        <li>The ARU Academy homepage</li>
-        <li>Current training modules</li>
-        <li>Student resources</li>
-        <li>Academy rules</li>
-        <li>Assessment criteria</li>
-        <li>Qualification standards</li>
-        <li>Relevant SOPs and guidance</li>
-    </ul>
-
-    <p>
-        Trainer-only materials, assessment answers and personnel-management
-        records must not be accessed or shared without authorisation.
-    </p>
-
-</section>
-
-<section class="card warning">
-
-    <h2>Confidentiality Notice</h2>
-
-    <p>
-        Internal training material is provided for Code44 ARU roleplay purposes.
-        Recruits must not copy, publish or distribute restricted unit documents
-        outside authorised channels.
-    </p>
 
 </section>
 
 <section class="card">
 
-    <h2>Recruit Completion Checklist</h2>
+    <h2>Contents</h2>
+
+    <div class="contents-grid">
+
+        <a class="contents-link" href="#objectives">
+            <strong>1.</strong> Learning Objectives
+        </a>
+
+        <a class="contents-link" href="#what-is-aru">
+            <strong>2.</strong> What Is ARU?
+        </a>
+
+        <a class="contents-link" href="#responsibility">
+            <strong>3.</strong> Responsibility
+        </a>
+
+        <a class="contents-link" href="#academy-purpose">
+            <strong>4.</strong> Academy Purpose
+        </a>
+
+        <a class="contents-link" href="#pathway">
+            <strong>5.</strong> Training Pathway
+        </a>
+
+        <a class="contents-link" href="#expectations">
+            <strong>6.</strong> Recruit Expectations
+        </a>
+
+        <a class="contents-link" href="#command">
+            <strong>7.</strong> Command and Support
+        </a>
+
+        <a class="contents-link" href="#database">
+            <strong>8.</strong> Internal Database
+        </a>
+
+        <a class="contents-link" href="#progression">
+            <strong>9.</strong> Progression
+        </a>
+
+        <a class="contents-link" href="#revision">
+            <strong>10.</strong> Revision Questions
+        </a>
+
+    </div>
+
+</section>
+
+<section class="card section-card" id="objectives">
+
+    <h2>1. Learning Objectives</h2>
+
+    <p>After completing Module 1, you should be able to:</p>
+
+    <ul>
+        <li>Explain the purpose of the Armed Response Unit.</li>
+        <li>Describe the purpose of the ARU Academy.</li>
+        <li>Understand the route from student to qualified operator.</li>
+        <li>Identify the standards expected throughout the course.</li>
+        <li>Know who to contact for training support.</li>
+        <li>Navigate the Student Area and Internal Database.</li>
+        <li>Understand that qualification is earned through assessment.</li>
+    </ul>
+
+</section>
+
+<section class="card section-card" id="what-is-aru">
+
+    <h2>2. What Is the Armed Response Unit?</h2>
+
+    <p>
+        The Armed Response Unit provides specialist support to the wider Code44
+        Police Service during high-risk incidents and planned operations where
+        trained armed resources are required.
+    </p>
+
+    <p>
+        ARU supports other departments and works within an established command
+        structure. Its purpose is not simply to provide access to specialist
+        vehicles or equipment.
+    </p>
+
+    <p>ARU members are expected to demonstrate:</p>
+
+    <ul>
+        <li>Professional conduct</li>
+        <li>Clear communication</li>
+        <li>Sound judgement</li>
+        <li>Teamwork</li>
+        <li>Reliability</li>
+        <li>Accountability</li>
+        <li>Commitment to continued development</li>
+    </ul>
+
+</section>
+
+<section class="card warning" id="responsibility">
+
+    <h2>3. Responsibility of an ARU Officer</h2>
+
+    <p>
+        Joining ARU brings additional responsibility. Students and qualified
+        officers are expected to understand that specialist status does not
+        remove the need for restraint, professionalism or accountability.
+    </p>
+
+    <p>An ARU officer must be prepared to:</p>
+
+    <ul>
+        <li>Explain their decisions.</li>
+        <li>Accept constructive feedback.</li>
+        <li>Report mistakes honestly.</li>
+        <li>Follow approved policy and command direction.</li>
+        <li>Support officers from other departments.</li>
+        <li>Maintain the standards required by the unit.</li>
+        <li>Continue training after qualification.</li>
+    </ul>
+
+    <p>
+        Technical ability is important, but it does not excuse poor conduct,
+        dishonesty or an unwillingness to work as part of a team.
+    </p>
+
+</section>
+
+<section class="card section-card" id="academy-purpose">
+
+    <h2>4. Purpose of the ARU Academy</h2>
+
+    <p>
+        The Academy exists to give every student a structured and consistent
+        training experience.
+    </p>
+
+    <p>
+        Students should receive the same core learning, assessment opportunities
+        and progression standards regardless of which approved trainer delivers
+        the lesson.
+    </p>
+
+    <p>The Academy combines:</p>
+
+    <ul>
+        <li>Student reading and pre-learning</li>
+        <li>Trainer-led lessons</li>
+        <li>Classroom discussions</li>
+        <li>Knowledge checks</li>
+        <li>Practical exercises</li>
+        <li>Roleplay scenarios</li>
+        <li>Feedback and development</li>
+        <li>Final assessment</li>
+    </ul>
+
+</section>
+
+<section class="card section-card" id="pathway">
+
+    <h2>5. Cohort 001 Training Pathway</h2>
+
+    <p>
+        Students should complete modules in the order directed by the training team.
+    </p>
+
+    <ul class="pathway">
+
+        <li>Student Handbook</li>
+
+        <li>Module 1 — Welcome to ARU</li>
+
+        <li>Module 2 — Professional Standards</li>
+
+        <li>Module 3 — Legal and Decision-Making</li>
+
+        <li>Module 4 — Equipment and Resources</li>
+
+        <li>Module 5 — Communications</li>
+
+        <li>Module 6 — Incident Management</li>
+
+        <li>Module 7 — Teamwork and Leadership</li>
+
+        <li>Module 8 — Final Assessment</li>
+
+        <li>Graduation and Qualification Decision</li>
+
+    </ul>
+
+    <p>
+        Additional practical sessions may be scheduled between modules where
+        further demonstration, discussion or development is required.
+    </p>
+
+</section>
+
+<section class="card section-card" id="expectations">
+
+    <h2>6. Recruit Expectations</h2>
+
+    <p>
+        Students are assessed on more than technical performance. Conduct and
+        attitude are considered throughout the course.
+    </p>
+
+    <div class="values-grid">
+
+        <div class="value-box">
+            <strong>Professionalism</strong>
+            Behave appropriately during training, operations and internal communication.
+        </div>
+
+        <div class="value-box">
+            <strong>Integrity</strong>
+            Be honest about mistakes, experience, attendance and performance.
+        </div>
+
+        <div class="value-box">
+            <strong>Accountability</strong>
+            Take responsibility for your conduct, work and development.
+        </div>
+
+        <div class="value-box">
+            <strong>Communication</strong>
+            Listen carefully, ask questions and provide clear information.
+        </div>
+
+        <div class="value-box">
+            <strong>Teamwork</strong>
+            Support other students and contribute to shared success.
+        </div>
+
+        <div class="value-box">
+            <strong>Development</strong>
+            Accept feedback and demonstrate improvement.
+        </div>
+
+    </div>
+
+    <h3>Attendance</h3>
+
+    <p>Students should:</p>
+
+    <ul>
+        <li>Attend scheduled lessons wherever reasonably possible.</li>
+        <li>Notify trainers in advance when unavailable.</li>
+        <li>Complete required reading before training.</li>
+        <li>Arrive prepared and on time.</li>
+        <li>Arrange catch-up learning after missing a session.</li>
+    </ul>
+
+</section>
+
+<section class="card section-card" id="command">
+
+    <h2>7. Command, Trainers and Student Support</h2>
+
+    <p>
+        Students should respect the ARU command structure and understand the
+        responsibilities of trainers and supervisors.
+    </p>
+
+    <div class="info-grid">
+
+        <div class="info-box">
+            <strong>Lead Trainer</strong>
+            Sgt K. Maddox
+        </div>
+
+        <div class="info-box">
+            <strong>Current Cohort</strong>
+            Cohort 001
+        </div>
+
+        <div class="info-box">
+            <strong>Student Status</strong>
+            AFO in Training
+        </div>
+
+        <div class="info-box">
+            <strong>Course Support</strong>
+            Approved trainers, mentors and ARU supervisors
+        </div>
+
+    </div>
+
+    <p>Speak to a trainer if you:</p>
+
+    <ul>
+        <li>Do not understand part of the course.</li>
+        <li>Cannot attend a lesson.</li>
+        <li>Need additional practice.</li>
+        <li>Have concerns about your progression.</li>
+        <li>Require welfare support.</li>
+        <li>Experience a problem within the cohort.</li>
+    </ul>
+
+</section>
+
+<section class="card section-card" id="database">
+
+    <h2>8. Using the Internal Database</h2>
+
+    <p>
+        The Internal Database is the central location for approved ARU information,
+        Academy learning and student resources.
+    </p>
+
+    <p>Students should be able to locate:</p>
 
     <ul class="checklist">
-        <li>Attend the Module 1 induction briefing</li>
-        <li>Review the Academy structure</li>
-        <li>Identify the training chain of command</li>
-        <li>Read the Academy standards</li>
-        <li>Complete the Internal Database walkthrough</li>
-        <li>Complete the Module 1 knowledge check</li>
-        <li>Receive instructor confirmation</li>
+        <li>The ARU Academy homepage</li>
+        <li>The Student Handbook</li>
+        <li>Current student modules</li>
+        <li>The course timetable</li>
+        <li>The SOP Library</li>
+        <li>Student resources</li>
+        <li>Knowledge-check links</li>
+        <li>Relevant forms and documents</li>
     </ul>
+
+    <p>
+        Students must not attempt to access trainer-only lesson plans, expected
+        answers, assessment criteria, hidden scenario material or personal records.
+    </p>
+
+</section>
+
+<section class="card section-card" id="progression">
+
+    <h2>9. Assessment and Progression</h2>
+
+    <p>
+        Attendance alone does not guarantee progression or qualification.
+    </p>
+
+    <p>Students may be assessed through:</p>
+
+    <ul>
+        <li>Knowledge checks</li>
+        <li>Classroom participation</li>
+        <li>Written exercises</li>
+        <li>Practical demonstrations</li>
+        <li>Scenario-based roleplay</li>
+        <li>Instructor observation</li>
+        <li>Final assessment</li>
+    </ul>
+
+    <p>Possible outcomes include:</p>
+
+    <div class="values-grid">
+
+        <div class="value-box">
+            <strong>Pass</strong>
+            The required standard has been met.
+        </div>
+
+        <div class="value-box">
+            <strong>Pass with Development Points</strong>
+            Progression is permitted with areas to improve.
+        </div>
+
+        <div class="value-box">
+            <strong>Remedial Training</strong>
+            Further learning is required before progression.
+        </div>
+
+        <div class="value-box">
+            <strong>Incomplete</strong>
+            Required attendance or work remains outstanding.
+        </div>
+
+        <div class="value-box">
+            <strong>Unsuccessful</strong>
+            The required standard has not been met.
+        </div>
+
+    </div>
+
+</section>
+
+<section class="card success" id="revision">
+
+    <h2>10. Revision Questions</h2>
+
+    <p>
+        Consider these questions before attending the trainer-led Module 1 lesson:
+    </p>
+
+    <ol class="revision-list">
+
+        <li>
+            What is the purpose of the Armed Response Unit?
+        </li>
+
+        <li>
+            Why does joining ARU carry additional responsibility?
+        </li>
+
+        <li>
+            What is the purpose of the ARU Academy?
+        </li>
+
+        <li>
+            Does attendance automatically guarantee qualification?
+        </li>
+
+        <li>
+            What should you do when you make a mistake during training?
+        </li>
+
+        <li>
+            Who should you contact if you cannot attend a session?
+        </li>
+
+        <li>
+            Where are student learning materials stored?
+        </li>
+
+        <li>
+            What qualities make a reliable ARU officer?
+        </li>
+
+        <li>
+            Why is constructive feedback important?
+        </li>
+
+        <li>
+            What responsibilities do students have toward one another?
+        </li>
+
+    </ol>
 
 </section>
 
@@ -497,17 +879,31 @@ li{
     <h2>Module Completion</h2>
 
     <p>
-        Module 1 is complete once the recruit has attended the induction,
-        reviewed the required information and achieved the required score
-        in the knowledge check.
+        Module 1 is complete when you have:
     </p>
+
+    <ul class="checklist">
+        <li>Read the Module 1 student material</li>
+        <li>Attended the trainer-led induction</li>
+        <li>Completed the Internal Database walkthrough</li>
+        <li>Participated in the Module 1 discussion</li>
+        <li>Completed the knowledge check</li>
+        <li>Received trainer confirmation</li>
+    </ul>
+
+    <div class="quote">
+
+        “You are not expected to know everything at the beginning of the Academy.
+        You are expected to be professional, honest, prepared and willing to improve.”
+
+    </div>
 
     <div class="button-row">
 
         <a class="button"
            href="PASTE-MODULE-1-GOOGLE-FORM-LINK-HERE"
            target="_blank">
-            Complete Module 1 Quiz
+            Complete Module 1 Knowledge Check
         </a>
 
         <a class="button secondary"
@@ -519,9 +915,10 @@ li{
 
 </section>
 
-<footer class="module-footer">
+<footer class="footer">
 
     Code44 Police Service • Armed Response Unit Academy<br>
+
     Cohort 001 • Module 1 — Welcome to ARU
 
 </footer>
