@@ -1,0 +1,1897 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Trainer Module 4 - Equipment, Vehicles and PPE</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    background:#05080d;
+    color:white;
+    font-family:Segoe UI,Arial,sans-serif;
+    line-height:1.65;
+}
+
+.page-container{
+    width:90%;
+    max-width:1150px;
+    margin:0 auto;
+    padding:35px 0 60px;
+}
+
+.navbar{
+    background:#0b111b;
+    border:1px solid #16315c;
+    border-radius:8px;
+    padding:15px;
+    margin-bottom:20px;
+}
+
+.navbar a{
+    color:#4d9dff;
+    text-decoration:none;
+    font-weight:bold;
+    margin:0 5px;
+}
+
+.navbar a:hover,
+.back-link:hover{
+    color:white;
+}
+
+.back-link{
+    display:inline-block;
+    margin-bottom:20px;
+    color:#4d9dff;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.hero{
+    background:
+        linear-gradient(rgba(2,7,14,.80),rgba(2,7,14,.94)),
+        url('arv-photo.png');
+
+    background-size:cover;
+    background-position:center;
+
+    border:1px solid #16315c;
+    border-radius:12px;
+
+    padding:58px 30px;
+    text-align:center;
+}
+
+.hero h1{
+    margin:0 0 10px;
+    color:#4d9dff;
+    font-size:2.5rem;
+}
+
+.hero p{
+    margin:5px 0;
+    color:#d3dbea;
+}
+
+.badge{
+    display:inline-block;
+
+    margin-top:15px;
+    padding:7px 14px;
+
+    background:#3a2a0d;
+    border:1px solid #a8761e;
+    border-radius:20px;
+
+    color:#f2c76f;
+    font-weight:bold;
+}
+
+h1,
+h2,
+h3{
+    color:#4d9dff;
+}
+
+.card{
+    background:#0b111b;
+    border:1px solid #16315c;
+    border-radius:9px;
+
+    padding:22px;
+    margin-top:20px;
+
+    transition:.25s;
+}
+
+.card:hover{
+    border-color:#4d9dff;
+}
+
+.instructor{
+    border-left:5px solid #9c6ade;
+}
+
+.activity{
+    border-left:5px solid #4da86b;
+}
+
+.assessment{
+    border-left:5px solid #4d9dff;
+}
+
+.warning{
+    border-left:5px solid #e3a629;
+}
+
+.info-grid,
+.rating-grid,
+.equipment-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+    gap:15px;
+    margin-top:18px;
+}
+
+.info-box,
+.rating-box,
+.equipment-box,
+.example-box{
+    background:#08111d;
+    border:1px solid #16315c;
+    border-radius:8px;
+    padding:17px;
+}
+
+.info-box strong,
+.rating-box strong,
+.equipment-box strong,
+.example-box strong{
+    display:block;
+    color:#4d9dff;
+    margin-bottom:6px;
+}
+
+.delivery-table,
+.assessment-table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:15px;
+}
+
+.delivery-table th,
+.delivery-table td,
+.assessment-table th,
+.assessment-table td{
+    border:1px solid #16315c;
+    padding:12px;
+    text-align:left;
+    vertical-align:top;
+}
+
+.delivery-table th,
+.assessment-table th{
+    background:#10203a;
+    color:#8fc2ff;
+}
+
+.checklist{
+    list-style:none;
+    padding-left:0;
+}
+
+.checklist li{
+    background:#08111d;
+    border:1px solid #16315c;
+    border-radius:7px;
+
+    padding:13px;
+    margin-top:9px;
+}
+
+.checklist li::before{
+    content:"☐";
+    color:#4d9dff;
+    font-weight:bold;
+    margin-right:10px;
+}
+
+ul,
+ol{
+    padding-left:22px;
+}
+
+li{
+    margin-bottom:7px;
+}
+
+.button-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:20px;
+}
+
+.button{
+    display:inline-block;
+
+    padding:12px 18px;
+
+    background:#4d9dff;
+    color:#05080d;
+
+    border:none;
+    border-radius:6px;
+
+    text-decoration:none;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.button:hover{
+    background:#77b5ff;
+}
+
+.button.secondary{
+    background:#101b2c;
+    color:#4d9dff;
+    border:1px solid #24538b;
+}
+
+.footer{
+    margin-top:30px;
+    padding-top:20px;
+
+    border-top:1px solid #16315c;
+
+    color:#8f9bad;
+    text-align:center;
+    font-size:.9rem;
+}
+
+@media(max-width:700px){
+
+    .page-container{
+        width:92%;
+    }
+
+    .hero{
+        padding:42px 18px;
+    }
+
+    .hero h1{
+        font-size:2rem;
+    }
+
+    .navbar{
+        line-height:2;
+    }
+
+    .button{
+        width:100%;
+        text-align:center;
+    }
+
+    .delivery-table,
+    .assessment-table{
+        font-size:.9rem;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<script>
+
+if (sessionStorage.getItem("trainerAccess") !== "granted") {
+
+    window.location.replace("trainers-login.html");
+
+}
+
+</script>
+
+<div class="page-container">
+
+<nav class="navbar">
+
+    <a href="database.html">
+        Internal Database
+    </a>
+
+    |
+
+    <a href="academy.html">
+        ARU Academy
+    </a>
+
+    |
+
+    <a href="trainers.html">
+        Trainers Area
+    </a>
+
+    |
+
+    <a href="trainer-module1.html">
+        Module 1
+    </a>
+
+    |
+
+    <a href="trainer-module2.html">
+        Module 2
+    </a>
+
+    |
+
+    <a href="trainer-module3.html">
+        Module 3
+    </a>
+
+    |
+
+    <a href="trainer-module4.html" style="color:white;">
+        Module 4
+    </a>
+
+</nav>
+
+<a class="back-link" href="trainers.html">
+    ← Return to Trainers Area
+</a>
+
+<header class="hero">
+
+    <h1>Trainer Module 4 — Equipment, Vehicles and PPE</h1>
+
+    <p>Instructor Lesson Plan</p>
+
+    <p>ARU Academy • Cohort 001</p>
+
+    <span class="badge">
+        Trainer-Only Resource
+    </span>
+
+</header>
+
+<section class="card">
+
+    <h2>Lesson Overview</h2>
+
+    <p>
+        Module 4 introduces students to the equipment, vehicles, protective
+        equipment and firearms capabilities used by Code44 ARU.
+    </p>
+
+    <p>
+        This lesson focuses on identification, role, storage, accountability
+        and equipment checks. It does not provide practical instruction in
+        operating or firing firearms.
+    </p>
+
+    <p>
+        Students should leave the session understanding that specialist
+        equipment is entrusted to them and must remain secure, accounted for
+        and ready for operational use.
+    </p>
+
+    <div class="info-grid">
+
+        <div class="info-box">
+
+            <strong>Lesson</strong>
+
+            Module 4 — Equipment, Vehicles and PPE
+
+        </div>
+
+        <div class="info-box">
+
+            <strong>Recommended Duration</strong>
+
+            90 minutes
+
+        </div>
+
+        <div class="info-box">
+
+            <strong>Current Group</strong>
+
+            Two ARU students
+
+        </div>
+
+        <div class="info-box">
+
+            <strong>Delivery Style</strong>
+
+            Briefing, demonstration and vehicle walkthrough
+
+        </div>
+
+        <div class="info-box">
+
+            <strong>Assessment</strong>
+
+            Identification exercise and knowledge check
+
+        </div>
+
+        <div class="info-box">
+
+            <strong>Pass Standard</strong>
+
+            Satisfactory practical demonstration and 80% quiz score
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="card warning">
+
+    <h2>Trainer Safety Boundary</h2>
+
+    <p>
+        Module 4 is a familiarisation lesson only.
+    </p>
+
+    <p>
+        Trainers must not use this lesson to deliver firearms handling,
+        loading, firing, breaching or tactical employment instruction.
+    </p>
+
+    <p>
+        Practical firearms instruction begins during the approved firearms
+        safety and handling phase of the Academy.
+    </p>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Trainer Preparation</h2>
+
+    <p>Before delivering the session, the trainer should:</p>
+
+    <ul class="checklist">
+
+        <li>Confirm both students completed Module 3</li>
+
+        <li>Confirm both students have read Module 4</li>
+
+        <li>Prepare a marked BMW X7</li>
+
+        <li>Prepare an unmarked BMW X7 where available</li>
+
+        <li>Confirm the vehicles are parked in a suitable training location</li>
+
+        <li>Confirm representative PPE is available</li>
+
+        <li>Confirm representative medical equipment is available through roleplay</li>
+
+        <li>Confirm firearms remain secured unless required for authorised display</li>
+
+        <li>Prepare the equipment-identification exercise</li>
+
+        <li>Prepare the pre-deployment check exercise</li>
+
+        <li>Prepare the fault-reporting scenario</li>
+
+        <li>Prepare the Module 4 knowledge check</li>
+
+        <li>Prepare an attendance record</li>
+
+        <li>Confirm the trainer assessment form is available</li>
+
+    </ul>
+
+</section>
+
+<section class="card">
+
+    <h2>Required Resources</h2>
+
+    <ul>
+
+        <li>Module 4 student page</li>
+
+        <li>Marked BMW X7</li>
+
+        <li>Unmarked BMW X7 where available</li>
+
+        <li>Plate carrier and ballistic plates</li>
+
+        <li>Ballistic helmet</li>
+
+        <li>Eye and ear protection</li>
+
+        <li>Night-vision equipment</li>
+
+        <li>Gas mask</li>
+
+        <li>Ballistic shield</li>
+
+        <li>Representative medical equipment</li>
+
+        <li>Module 4 knowledge check</li>
+
+        <li>Attendance record</li>
+
+        <li>Trainer assessment form</li>
+
+        <li>Suitable Discord or in-game training channel</li>
+
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Learning Outcomes</h2>
+
+    <p>By the end of the lesson, each student should be able to:</p>
+
+    <ul>
+
+        <li>Identify the main equipment used by Code44 ARU.</li>
+
+        <li>Explain the purpose of standard ARU PPE.</li>
+
+        <li>Identify the SIG P226 personal sidearm.</li>
+
+        <li>Identify the SIG MCX primary carbine.</li>
+
+        <li>Identify the SIG 716 precision capability.</li>
+
+        <li>Explain the dedicated breaching role of the Remington shotgun.</li>
+
+        <li>Identify the marked and unmarked BMW X7.</li>
+
+        <li>Explain where long firearms must be stored.</li>
+
+        <li>Identify the sidearm exception to the vehicle-storage rule.</li>
+
+        <li>Complete a basic pre-deployment equipment check.</li>
+
+        <li>Explain how missing or damaged equipment should be reported.</li>
+
+        <li>Understand personal responsibility for issued equipment.</li>
+
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Suggested Lesson Structure</h2>
+
+    <table class="delivery-table">
+
+        <tr>
+
+            <th>Stage</th>
+
+            <th>Time</th>
+
+            <th>Trainer Action</th>
+
+        </tr>
+
+        <tr>
+
+            <td>Introduction</td>
+
+            <td>5 minutes</td>
+
+            <td>
+                Explain the purpose of familiarisation and establish the
+                practical safety boundary.
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td>Equipment Accountability</td>
+
+            <td>10 minutes</td>
+
+            <td>
+                Explain security, checking, issue, return and reporting responsibilities.
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td>PPE Familiarisation</td>
+
+            <td>15 minutes</td>
+
+            <td>
+                Introduce standard and specialist protective equipment.
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td>Medical Capability</td>
+
+            <td>10 minutes</td>
+
+            <td>
+                Explain the available medical capability and replenishment responsibilities.
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td>Firearms Role Familiarisation</td>
+
+            <td>15 minutes</td>
+
+            <td>
+                Explain the role and storage of each Code44 ARU firearm.
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td>Vehicle Walkthrough</td>
+
+            <td>15 minutes</td>
+
+            <td>
+                Walk students around the marked and unmarked BMW X7.
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td>Equipment Check Exercise</td>
+
+            <td>10 minutes</td>
+
+            <td>
+                Students complete a simulated pre-deployment check.
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td>Fault Scenario and Review</td>
+
+            <td>10 minutes</td>
+
+            <td>
+                Deliver the fault-reporting scenario and review learning.
+            </td>
+
+        </tr>
+
+    </table>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Opening Script</h2>
+
+    <div class="example-box">
+
+        <strong>Suggested wording</strong>
+
+        <p>
+            “Module 4 introduces the equipment, protective systems and vehicles
+            used by Code44 ARU.
+        </p>
+
+        <p>
+            Today is not a firearms handling lesson. You are learning what each
+            capability is, why it exists, where it is stored and what responsibility
+            you accept when it is entrusted to you.
+        </p>
+
+        <p>
+            Every item must remain secure, accounted for and ready for the next
+            officer who may depend upon it.”
+        </p>
+
+    </div>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 1 — Equipment Accountability</h2>
+
+    <p>
+        Explain that specialist equipment is issued for an operational purpose
+        and must not be treated as a status symbol.
+    </p>
+
+    <p>Students should understand that equipment must be:</p>
+
+    <ul>
+
+        <li>Appropriate for the authorised task.</li>
+
+        <li>Present and accounted for.</li>
+
+        <li>Checked before deployment.</li>
+
+        <li>Stored securely when not required.</li>
+
+        <li>Used only by trained and authorised personnel.</li>
+
+        <li>Returned to the correct location.</li>
+
+        <li>Checked for faults or damage.</li>
+
+        <li>Reported immediately if missing.</li>
+
+    </ul>
+
+    <div class="example-box">
+
+        <strong>Trainer Prompt</strong>
+
+        Why is failing to report a missing item more serious than simply
+        discovering that something is missing?
+
+    </div>
+
+    <h3>Expected learning points</h3>
+
+    <ul>
+
+        <li>The missing equipment may be required during an emergency.</li>
+
+        <li>Another crew may assume the item is available.</li>
+
+        <li>Failure to report it prevents the issue from being resolved.</li>
+
+        <li>Concealment may become a professional-standards matter.</li>
+
+    </ul>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Discussion — Equipment as a Responsibility</h2>
+
+    <p>Ask both students:</p>
+
+    <div class="example-box">
+
+        <strong>Question</strong>
+
+        What responsibilities do you accept when you remove an item from
+        an ARV or equipment store?
+
+    </div>
+
+    <h3>Expected learning points</h3>
+
+    <ul>
+
+        <li>Know what the item is for.</li>
+
+        <li>Confirm authority to use it.</li>
+
+        <li>Keep it secure.</li>
+
+        <li>Avoid unauthorised use.</li>
+
+        <li>Report faults or damage.</li>
+
+        <li>Return it to the correct place.</li>
+
+        <li>Confirm it is accounted for afterwards.</li>
+
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 2 — Personal Protective Equipment</h2>
+
+    <p>Introduce each item individually.</p>
+
+    <div class="equipment-grid">
+
+        <div class="equipment-box">
+
+            <strong>Plate Carrier</strong>
+
+            Protective and load-bearing equipment used to carry ballistic
+            protection and authorised operational items.
+
+        </div>
+
+        <div class="equipment-box">
+
+            <strong>Ballistic Plates</strong>
+
+            Protective inserts fitted within the plate carrier.
+
+        </div>
+
+        <div class="equipment-box">
+
+            <strong>Ballistic Helmet</strong>
+
+            Protective head equipment used during authorised training and deployments.
+
+        </div>
+
+        <div class="equipment-box">
+
+            <strong>Eye Protection</strong>
+
+            Protective equipment used during relevant training and operational activity.
+
+        </div>
+
+        <div class="equipment-box">
+
+            <strong>Ear Protection</strong>
+
+            Protective equipment required during firearms training and high-noise activity.
+
+        </div>
+
+        <div class="equipment-box">
+
+            <strong>Night-Vision Equipment</strong>
+
+            Specialist equipment used during authorised low-light operations and training.
+
+        </div>
+
+        <div class="equipment-box">
+
+            <strong>Gas Mask</strong>
+
+            Specialist protective equipment used where authorised by the operational plan.
+
+        </div>
+
+        <div class="equipment-box">
+
+            <strong>Ballistic Shield</strong>
+
+            Specialist protective capability used only by trained officers when appropriate.
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="card activity">
+
+    <h2>PPE Identification Exercise</h2>
+
+    <p>
+        Present or describe each item individually and ask each student to explain:
+    </p>
+
+    <ul>
+
+        <li>What the item is.</li>
+
+        <li>Its general purpose.</li>
+
+        <li>Whether it is personal or specialist equipment.</li>
+
+        <li>When trainer or command authority may be required.</li>
+
+        <li>What should happen if it is damaged.</li>
+
+    </ul>
+
+    <p>
+        Do not assess detailed tactical employment during this exercise.
+    </p>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 3 — Medical Capability</h2>
+
+    <p>
+        Explain that Code44 ARU roleplays a comprehensive trauma and emergency
+        medical capability.
+    </p>
+
+    <p>The capability includes:</p>
+
+    <ul>
+
+        <li>Individual first-aid equipment</li>
+
+        <li>Tourniquets</li>
+
+        <li>Chest seals</li>
+
+        <li>Haemostatic dressings</li>
+
+        <li>Pressure dressings</li>
+
+        <li>Trauma shears</li>
+
+        <li>Airway equipment</li>
+
+        <li>Emergency blankets</li>
+
+        <li>Oxygen equipment</li>
+
+        <li>AED</li>
+
+        <li>Medical backpack or trauma bag</li>
+
+    </ul>
+
+    <p>
+        Make clear that detailed casualty-care instruction is delivered during
+        a later tactical medical module.
+    </p>
+
+    <div class="example-box">
+
+        <strong>Key teaching point</strong>
+
+        Used medical equipment must be identified, reported and replaced before
+        the ARV is returned to service.
+    </div>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 4 — Firearms Role Familiarisation</h2>
+
+    <p>
+        Introduce the role of each firearm without teaching practical handling.
+    </p>
+
+    <table class="assessment-table">
+
+        <tr>
+
+            <th>Capability</th>
+
+            <th>Role</th>
+
+            <th>Storage Requirement</th>
+
+        </tr>
+
+        <tr>
+
+            <td>
+                SIG Sauer P226
+            </td>
+
+            <td>
+                Personal sidearm carried by trained and authorised ARU officers.
+            </td>
+
+            <td>
+                The personal sidearm is the exception to the rear vehicle
+                firearms-storage requirement.
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td>
+                SIG MCX
+            </td>
+
+            <td>
+                Primary operational carbine used during authorised ARU deployments.
+            </td>
+
+            <td>
+                Secured within the designated rear vehicle firearms storage
+                when not authorised for deployment.
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td>
+                SIG 716
+            </td>
+
+            <td>
+                Specialist precision-rifle capability used during authorised roles.
+            </td>
+
+            <td>
+                Secured within the rear vehicle firearms storage until authorised.
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td>
+                Remington Shotgun
+            </td>
+
+            <td>
+                Specialist breaching platform. It is not the routine primary
+                firearm for general ARU deployment.
+            </td>
+
+            <td>
+                Secured within the rear vehicle firearms storage unless authorised
+                for a breaching role.
+            </td>
+
+        </tr>
+
+    </table>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Firearms Role Identification Exercise</h2>
+
+    <p>
+        Name or display each capability and ask each student to identify:
+    </p>
+
+    <ul>
+
+        <li>The name of the capability.</li>
+
+        <li>Its role within Code44 ARU.</li>
+
+        <li>Whether it is personal, primary or specialist equipment.</li>
+
+        <li>Where it should be stored when not deployed.</li>
+
+        <li>Whether additional authority may be required.</li>
+
+    </ul>
+
+    <h3>Expected answers</h3>
+
+    <ul>
+
+        <li>P226 — personal sidearm.</li>
+
+        <li>MCX — primary operational carbine.</li>
+
+        <li>SIG 716 — specialist precision capability.</li>
+
+        <li>Remington — specialist breaching platform only.</li>
+
+    </ul>
+
+</section>
+
+<section class="card warning">
+
+    <h2>Remington Breaching Platform</h2>
+
+    <p>
+        Trainers must be clear that the Remington is used as a dedicated
+        breaching tool.
+    </p>
+
+    <p>
+        It is not to be presented as the standard primary firearm for routine
+        deployments or general room-search activity.
+    </p>
+
+    <p>
+        Detailed breaching instruction is delivered separately to appropriately
+        trained and authorised personnel.
+    </p>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 5 — Less-Lethal and Supporting Equipment</h2>
+
+    <div class="equipment-grid">
+
+        <div class="equipment-box">
+
+            <strong>Taser</strong>
+
+            Available to trained and authorised officers under current
+            Code44 policy and server rules.
+
+        </div>
+
+        <div class="equipment-box">
+
+            <strong>PAVA</strong>
+
+            Authorised officer-safety equipment requiring sound judgement
+            and accountability.
+
+        </div>
+
+        <div class="equipment-box">
+
+            <strong>Flashbangs</strong>
+
+            Specialist capability available where supported by the server script
+            and authorised for use.
+
+        </div>
+
+    </div>
+
+    <p>
+        Remind students that Code44 ARU does not currently have a beanbag
+        shotgun capability.
+    </p>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 6 — ARU Vehicle Familiarisation</h2>
+
+    <p>
+        Code44 ARU currently operates:
+    </p>
+
+    <ul>
+
+        <li>Marked BMW X7</li>
+
+        <li>Unmarked BMW X7</li>
+
+    </ul>
+
+    <p>
+        Explain that both variants are subject to the same security,
+        accountability and equipment-check standards.
+    </p>
+
+    <h3>Crewing</h3>
+
+    <p>
+        ARVs are normally double-crewed by trained ARU officers.
+    </p>
+
+    <p>
+        Both crew members share responsibility for:
+    </p>
+
+    <ul>
+
+        <li>Understanding the vehicle's operational status.</li>
+
+        <li>Confirming firearms are secured.</li>
+
+        <li>Confirming required PPE is present.</li>
+
+        <li>Confirming medical equipment is available.</li>
+
+        <li>Checking communications equipment.</li>
+
+        <li>Reporting faults or shortages.</li>
+
+        <li>Completing end-of-tour checks.</li>
+
+    </ul>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Marked and Unmarked X7 Walkthrough</h2>
+
+    <p>
+        Walk the students around both vehicles where available.
+    </p>
+
+    <p>Ask them to identify:</p>
+
+    <ul>
+
+        <li>The marked and unmarked vehicle.</li>
+
+        <li>Driver and passenger positions.</li>
+
+        <li>The rear equipment area.</li>
+
+        <li>The designated firearms-storage area.</li>
+
+        <li>The medical-equipment area.</li>
+
+        <li>The location of specialist PPE.</li>
+
+        <li>Any communications or supporting equipment.</li>
+
+    </ul>
+
+    <p>
+        The exact internal arrangement may vary depending upon current server
+        vehicle configuration. Trainers should teach the current approved layout.
+    </p>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 7 — Firearms Storage</h2>
+
+    <p>
+        Teach the following Code44 rule clearly:
+    </p>
+
+    <div class="example-box">
+
+        <strong>Vehicle Firearms Rule</strong>
+
+        All firearms other than the officer's personal P226 sidearm must remain
+        secured in the rear firearms-storage area of the ARV unless deployment
+        has been authorised.
+
+    </div>
+
+    <p>This includes:</p>
+
+    <ul>
+
+        <li>SIG MCX carbines</li>
+
+        <li>SIG 716 precision rifles</li>
+
+        <li>Remington breaching shotguns</li>
+
+    </ul>
+
+    <p>Students must understand:</p>
+
+    <ul>
+
+        <li>Long firearms must not be left unsecured.</li>
+
+        <li>Unauthorised removal must be reported.</li>
+
+        <li>Every firearm must be accounted for before and after deployment.</li>
+
+        <li>Returned firearms must be secured correctly.</li>
+
+        <li>The vehicle must not be left with unsecured firearms.</li>
+
+    </ul>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Pre-Deployment Check Exercise</h2>
+
+    <p>
+        Place both students beside an ARV and ask them to conduct a verbal
+        pre-deployment equipment check.
+    </p>
+
+    <p>They should confirm:</p>
+
+    <ul class="checklist">
+
+        <li>The vehicle appears serviceable</li>
+
+        <li>The marked or unmarked configuration is understood</li>
+
+        <li>Required firearms are present</li>
+
+        <li>Long firearms are secured in the rear</li>
+
+        <li>Personal sidearms are accounted for</li>
+
+        <li>Required PPE is present</li>
+
+        <li>The medical kit is present</li>
+
+        <li>The ballistic shield is present where required</li>
+
+        <li>Night-vision equipment is present where authorised</li>
+
+        <li>Communications equipment is available</li>
+
+        <li>Faults or shortages have been reported</li>
+
+    </ul>
+
+    <p>
+        Assess the students' process and communication rather than speed.
+    </p>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Scenario One — Missing Medical Equipment</h2>
+
+    <p>
+        During the pre-deployment check, a student notices that part of the
+        trauma kit is missing.
+    </p>
+
+    <p>Ask:</p>
+
+    <ul>
+
+        <li>What should the student do?</li>
+
+        <li>Can the issue simply be ignored?</li>
+
+        <li>Who should be informed?</li>
+
+        <li>What information should be provided?</li>
+
+        <li>Who decides whether the vehicle remains deployable?</li>
+
+    </ul>
+
+    <h3>Expected learning points</h3>
+
+    <ul>
+
+        <li>The shortage must be reported promptly.</li>
+
+        <li>The missing item should be identified clearly.</li>
+
+        <li>The appropriate trainer or supervisor should be informed.</li>
+
+        <li>The issue should be resolved or formally accepted.</li>
+
+        <li>The student must not conceal the shortage.</li>
+
+    </ul>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Scenario Two — Unsecured Long Firearm</h2>
+
+    <p>
+        At the end of a training exercise, a student notices that an MCX has
+        been placed in the rear of the ARV but has not been secured properly.
+    </p>
+
+    <p>Ask:</p>
+
+    <ul>
+
+        <li>What immediate action is required?</li>
+
+        <li>Should the vehicle be left unattended?</li>
+
+        <li>Who needs to be informed?</li>
+
+        <li>What should be checked afterwards?</li>
+
+        <li>Why is this an accountability issue?</li>
+
+    </ul>
+
+    <h3>Expected learning points</h3>
+
+    <ul>
+
+        <li>The firearm must be secured immediately by authorised personnel.</li>
+
+        <li>The vehicle must not be left with an unsecured firearm.</li>
+
+        <li>The issue should be reported.</li>
+
+        <li>All other firearms should also be checked.</li>
+
+        <li>The circumstances should be reviewed to prevent repetition.</li>
+
+    </ul>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Scenario Three — Damaged PPE</h2>
+
+    <p>
+        A student discovers visible damage to a ballistic helmet before training.
+    </p>
+
+    <p>Ask:</p>
+
+    <ul>
+
+        <li>Should the helmet continue to be used?</li>
+
+        <li>What should the student do?</li>
+
+        <li>Who should be informed?</li>
+
+        <li>What alternative equipment may be required?</li>
+
+        <li>Why must the fault be recorded?</li>
+
+    </ul>
+
+    <h3>Expected learning points</h3>
+
+    <ul>
+
+        <li>The damage must not be ignored.</li>
+
+        <li>The trainer or supervisor should be informed.</li>
+
+        <li>A replacement should be considered.</li>
+
+        <li>The damaged item should be removed from normal use where appropriate.</li>
+
+        <li>The fault should be documented.</li>
+
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 8 — End-of-Tour Checks</h2>
+
+    <p>Students should confirm:</p>
+
+    <ul class="checklist">
+
+        <li>All deployed firearms have been returned</li>
+
+        <li>All long firearms are secured</li>
+
+        <li>No equipment remains at the training or incident location</li>
+
+        <li>Used medical items have been identified</li>
+
+        <li>Damaged equipment has been reported</li>
+
+        <li>Missing equipment has been reported</li>
+
+        <li>The vehicle has been checked for damage</li>
+
+        <li>The vehicle is ready for the next crew</li>
+
+        <li>Relevant records have been completed</li>
+
+    </ul>
+
+</section>
+
+<section class="card assessment">
+
+    <h2>Review Questions</h2>
+
+    <ol>
+
+        <li>
+            What responsibility does an officer accept when issued specialist equipment?
+        </li>
+
+        <li>
+            What PPE is available to Code44 ARU?
+        </li>
+
+        <li>
+            What is the role of the SIG P226?
+        </li>
+
+        <li>
+            What is the role of the SIG MCX?
+        </li>
+
+        <li>
+            What is the role of the SIG 716?
+        </li>
+
+        <li>
+            What is the Remington shotgun used for?
+        </li>
+
+        <li>
+            Where must long firearms be stored when not deployed?
+        </li>
+
+        <li>
+            What is the exception to the rear firearms-storage rule?
+        </li>
+
+        <li>
+            What ARVs does Code44 operate?
+        </li>
+
+        <li>
+            How are ARVs normally crewed?
+        </li>
+
+        <li>
+            What should happen when equipment is missing or damaged?
+        </li>
+
+        <li>
+            What must happen to used medical equipment?
+        </li>
+
+        <li>
+            Does Module 4 authorise practical firearms handling?
+        </li>
+
+    </ol>
+
+</section>
+
+<section class="card assessment">
+
+    <h2>Expected Answers</h2>
+
+    <ol>
+
+        <li>
+            Keep it secure, use it appropriately, report faults and return it correctly.
+        </li>
+
+        <li>
+            Plate carrier, ballistic plates, helmet, eye and ear protection,
+            NVG, gas mask and ballistic shield.
+        </li>
+
+        <li>
+            Personal sidearm carried by trained and authorised ARU officers.
+        </li>
+
+        <li>
+            Primary operational carbine.
+        </li>
+
+        <li>
+            Specialist precision-rifle capability.
+        </li>
+
+        <li>
+            Specialist breaching platform only.
+        </li>
+
+        <li>
+            Within the designated rear firearms-storage area of the ARV.
+        </li>
+
+        <li>
+            The officer's personal P226 sidearm.
+        </li>
+
+        <li>
+            Marked and unmarked BMW X7.
+        </li>
+
+        <li>
+            Normally double-crewed by trained ARU officers.
+        </li>
+
+        <li>
+            Report the issue promptly and provide clear details.
+        </li>
+
+        <li>
+            It must be identified, reported and replaced.
+        </li>
+
+        <li>
+            No. Module 4 is familiarisation only.
+        </li>
+
+    </ol>
+
+</section>
+
+<section class="card assessment">
+
+    <h2>Instructor Observation Criteria</h2>
+
+    <div class="rating-grid">
+
+        <div class="rating-box">
+
+            <strong>Equipment Identification</strong>
+
+            Correctly identifies principal ARU equipment.
+
+        </div>
+
+        <div class="rating-box">
+
+            <strong>PPE Knowledge</strong>
+
+            Explains the general purpose of protective equipment.
+
+        </div>
+
+        <div class="rating-box">
+
+            <strong>Firearms Roles</strong>
+
+            Correctly identifies each firearm's assigned role.
+
+        </div>
+
+        <div class="rating-box">
+
+            <strong>Storage Knowledge</strong>
+
+            Understands rear storage and the sidearm exception.
+
+        </div>
+
+        <div class="rating-box">
+
+            <strong>Vehicle Familiarisation</strong>
+
+            Identifies both X7 variants and core equipment areas.
+
+        </div>
+
+        <div class="rating-box">
+
+            <strong>Equipment Checks</strong>
+
+            Completes a logical pre-deployment check.
+
+        </div>
+
+        <div class="rating-box">
+
+            <strong>Fault Reporting</strong>
+
+            Reports shortages or damage appropriately.
+
+        </div>
+
+        <div class="rating-box">
+
+            <strong>Professionalism</strong>
+
+            Treats equipment responsibly and follows trainer direction.
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="card assessment">
+
+    <h2>Module Outcomes</h2>
+
+    <h3>Pass</h3>
+
+    <p>
+        The student identifies the principal equipment, understands storage
+        requirements and completes the vehicle check satisfactorily.
+    </p>
+
+    <h3>Pass with Development Points</h3>
+
+    <p>
+        The student may progress but has limited areas requiring further review.
+    </p>
+
+    <h3>Remedial</h3>
+
+    <p>
+        The student requires further familiarisation, questioning or another
+        vehicle-check exercise.
+    </p>
+
+    <h3>Incomplete</h3>
+
+    <p>
+        Required attendance, practical familiarisation or assessment remains outstanding.
+    </p>
+
+    <h3>Unsuccessful</h3>
+
+    <p>
+        The student has not met the required standard after appropriate support.
+    </p>
+
+</section>
+
+<section class="card warning">
+
+    <h2>Common Student Errors</h2>
+
+    <ul>
+
+        <li>Treating equipment as an entitlement rather than a responsibility.</li>
+
+        <li>Confusing the role of the MCX and SIG 716.</li>
+
+        <li>Describing the Remington as a routine primary firearm.</li>
+
+        <li>Forgetting that long firearms must remain secured in the rear.</li>
+
+        <li>Failing to identify the P226 sidearm exception.</li>
+
+        <li>Completing checks too quickly and missing items.</li>
+
+        <li>Failing to report missing or damaged equipment.</li>
+
+        <li>Assuming the other crew member completed the check.</li>
+
+    </ul>
+
+</section>
+
+<section class="card warning">
+
+    <h2>Common Trainer Errors</h2>
+
+    <ul>
+
+        <li>Turning familiarisation into practical firearms handling.</li>
+
+        <li>Teaching detailed tactical use too early.</li>
+
+        <li>Failing to explain equipment accountability.</li>
+
+        <li>Skipping the unmarked vehicle walkthrough.</li>
+
+        <li>Allowing students to observe without participating.</li>
+
+        <li>Failing to assess both students individually.</li>
+
+        <li>Not correcting the role of the Remington shotgun.</li>
+
+        <li>Failing to record equipment-identification weaknesses.</li>
+
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Closing Script</h2>
+
+    <div class="example-box">
+
+        <strong>Suggested wording</strong>
+
+        <p>
+            “That concludes Module 4.
+        </p>
+
+        <p>
+            You should now understand the principal equipment and vehicles used
+            by Code44 ARU, where firearms must be stored and what responsibility
+            you accept when equipment is entrusted to you.
+        </p>
+
+        <p>
+            Module 5 begins the firearms safety and handling phase. Until that
+            lesson is delivered, you are not authorised by this module to conduct
+            practical firearms handling.”
+        </p>
+
+    </div>
+
+</section>
+
+<section class="card">
+
+    <h2>Trainer Completion Checklist</h2>
+
+    <ul class="checklist">
+
+        <li>Both students attended</li>
+
+        <li>Equipment accountability was explained</li>
+
+        <li>PPE familiarisation was completed</li>
+
+        <li>Medical capability was explained</li>
+
+        <li>Firearms roles were explained correctly</li>
+
+        <li>The Remington was identified as a breaching platform</li>
+
+        <li>Less-lethal equipment was explained</li>
+
+        <li>The marked X7 walkthrough was completed</li>
+
+        <li>The unmarked X7 walkthrough was completed where available</li>
+
+        <li>Firearms-storage requirements were explained</li>
+
+        <li>Both students completed the pre-deployment check</li>
+
+        <li>All three fault scenarios were discussed</li>
+
+        <li>Review questions were answered</li>
+
+        <li>Individual feedback was recorded</li>
+
+        <li>Students were directed to the Module 4 quiz</li>
+
+        <li>Module outcomes were recorded</li>
+
+    </ul>
+
+    <div class="button-row">
+
+        <a class="button"
+           href="PASTE-TRAINER-MODULE-4-ASSESSMENT-FORM-LINK-HERE"
+           target="_blank">
+
+            Record Module 4 Outcome
+
+        </a>
+
+        <a class="button secondary"
+           href="trainers.html">
+
+            Return to Trainers Area
+
+        </a>
+
+    </div>
+
+</section>
+
+<footer class="footer">
+
+    Code44 Police Service • Armed Response Unit Academy<br>
+
+    Trainer Module 4 — Equipment, Vehicles and PPE • Cohort 001
+
+</footer>
+
+</div>
+
+</body>
+
+</html>
