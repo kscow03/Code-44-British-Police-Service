@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Trainer Module 2 - Professional Standards</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    background:#05080d;
+    color:white;
+    font-family:Segoe UI,Arial,sans-serif;
+    line-height:1.65;
+}
+
+.page-container{
+    width:90%;
+    max-width:1150px;
+    margin:0 auto;
+    padding:35px 0 60px;
+}
+
+.navbar{
+    background:#0b111b;
+    border:1px solid #16315c;
+    border-radius:8px;
+    padding:15px;
+    margin-bottom:20px;
+}
+
+.navbar a{
+    color:#4d9dff;
+    text-decoration:none;
+    font-weight:bold;
+    margin:0 5px;
+}
+
+.navbar a:hover,
+.back-link:hover{
+    color:white;
+}
+
+.back-link{
+    display:inline-block;
+    margin-bottom:20px;
+    color:#4d9dff;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.hero{
+    background:
+        linear-gradient(rgba(2,7,14,.80),rgba(2,7,14,.94)),
+        url('arv-photo.png');
+
+    background-size:cover;
+    background-position:center;
+    border:1px solid #16315c;
+    border-radius:12px;
+    padding:58px 30px;
+    text-align:center;
+}
+
+.hero h1{
+    margin:0 0 10px;
+    color:#4d9dff;
+    font-size:2.5rem;
+}
+
+.hero p{
+    margin:5px 0;
+    color:#d3dbea;
+}
+
+.badge{
+    display:inline-block;
+    margin-top:15px;
+    padding:7px 14px;
+    background:#3a2a0d;
+    border:1px solid #a8761e;
+    border-radius:20px;
+    color:#f2c76f;
+    font-weight:bold;
+}
+
+h1,
+h2,
+h3{
+    color:#4d9dff;
+}
+
+.card{
+    background:#0b111b;
+    border:1px solid #16315c;
+    border-radius:9px;
+    padding:22px;
+    margin-top:20px;
+    transition:.25s;
+}
+
+.card:hover{
+    border-color:#4d9dff;
+}
+
+.instructor{
+    border-left:5px solid #9c6ade;
+}
+
+.activity{
+    border-left:5px solid #4da86b;
+}
+
+.assessment{
+    border-left:5px solid #4d9dff;
+}
+
+.warning{
+    border-left:5px solid #e3a629;
+}
+
+.info-grid,
+.rating-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+    gap:15px;
+    margin-top:18px;
+}
+
+.info-box,
+.rating-box,
+.example-box{
+    background:#08111d;
+    border:1px solid #16315c;
+    border-radius:8px;
+    padding:17px;
+}
+
+.info-box strong,
+.rating-box strong,
+.example-box strong{
+    display:block;
+    color:#4d9dff;
+    margin-bottom:6px;
+}
+
+.delivery-table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:15px;
+}
+
+.delivery-table th,
+.delivery-table td{
+    border:1px solid #16315c;
+    padding:12px;
+    text-align:left;
+    vertical-align:top;
+}
+
+.delivery-table th{
+    background:#10203a;
+    color:#8fc2ff;
+}
+
+.checklist{
+    list-style:none;
+    padding-left:0;
+}
+
+.checklist li{
+    background:#08111d;
+    border:1px solid #16315c;
+    border-radius:7px;
+    padding:13px;
+    margin-top:9px;
+}
+
+.checklist li::before{
+    content:"☐";
+    color:#4d9dff;
+    font-weight:bold;
+    margin-right:10px;
+}
+
+ul,
+ol{
+    padding-left:22px;
+}
+
+li{
+    margin-bottom:7px;
+}
+
+.button-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:20px;
+}
+
+.button{
+    display:inline-block;
+    padding:12px 18px;
+    background:#4d9dff;
+    color:#05080d;
+    border:none;
+    border-radius:6px;
+    text-decoration:none;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.button:hover{
+    background:#77b5ff;
+}
+
+.button.secondary{
+    background:#101b2c;
+    color:#4d9dff;
+    border:1px solid #24538b;
+}
+
+.footer{
+    margin-top:30px;
+    padding-top:20px;
+    border-top:1px solid #16315c;
+    color:#8f9bad;
+    text-align:center;
+    font-size:.9rem;
+}
+
+@media(max-width:700px){
+
+    .page-container{
+        width:92%;
+    }
+
+    .hero{
+        padding:42px 18px;
+    }
+
+    .hero h1{
+        font-size:2rem;
+    }
+
+    .navbar{
+        line-height:2;
+    }
+
+    .button{
+        width:100%;
+        text-align:center;
+    }
+
+    .delivery-table{
+        font-size:.9rem;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<script>
+
+if (sessionStorage.getItem("trainerAccess") !== "granted") {
+    window.location.replace("trainers-login.html");
+}
+
+</script>
+
+<div class="page-container">
+
+<nav class="navbar">
+
+    <a href="database.html">Internal Database</a> |
+
+    <a href="academy.html">ARU Academy</a> |
+
+    <a href="trainers.html">Trainers Area</a> |
+
+    <a href="trainer-module1.html">Module 1</a> |
+
+    <a href="trainer-module2.html" style="color:white;">
+        Module 2
+    </a>
+
+</nav>
+
+<a class="back-link" href="trainers.html">
+    ← Return to Trainers Area
+</a>
+
+<header class="hero">
+
+    <h1>Trainer Module 2 — Professional Standards</h1>
+
+    <p>Instructor Lesson Plan</p>
+
+    <p>ARU Academy • Cohort 001</p>
+
+    <span class="badge">
+        Trainer-Only Resource
+    </span>
+
+</header>
+
+<section class="card">
+
+    <h2>Lesson Overview</h2>
+
+    <p>
+        Module 2 establishes the professional behaviour expected from every
+        ARU student and qualified officer.
+    </p>
+
+    <p>
+        The lesson should make clear that technical ability does not excuse
+        dishonesty, poor conduct, disrespect or an unwillingness to develop.
+    </p>
+
+    <div class="info-grid">
+
+        <div class="info-box">
+            <strong>Lesson</strong>
+            Module 2 — Professional Standards
+        </div>
+
+        <div class="info-box">
+            <strong>Recommended Duration</strong>
+            75 minutes
+        </div>
+
+        <div class="info-box">
+            <strong>Current Group</strong>
+            Two ARU students
+        </div>
+
+        <div class="info-box">
+            <strong>Delivery Style</strong>
+            Discussion, activities and reflection
+        </div>
+
+        <div class="info-box">
+            <strong>Assessment</strong>
+            Observation and knowledge check
+        </div>
+
+        <div class="info-box">
+            <strong>Pass Standard</strong>
+            Satisfactory participation and 80% quiz score
+        </div>
+
+    </div>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Trainer Preparation</h2>
+
+    <ul class="checklist">
+        <li>Confirm both students completed Module 1</li>
+        <li>Confirm both students have read Module 2</li>
+        <li>Prepare the Module 2 knowledge check</li>
+        <li>Prepare an attendance record</li>
+        <li>Review current Academy conduct expectations</li>
+        <li>Prepare examples of professional and poor conduct</li>
+        <li>Prepare a short reflection task</li>
+        <li>Confirm the trainer assessment form is available</li>
+    </ul>
+
+</section>
+
+<section class="card">
+
+    <h2>Required Resources</h2>
+
+    <ul>
+        <li>Module 2 student page</li>
+        <li>Student Handbook</li>
+        <li>Module 2 knowledge check</li>
+        <li>Attendance record</li>
+        <li>Trainer assessment form</li>
+        <li>Discord voice channel or classroom location</li>
+        <li>Notes area for student reflection tasks</li>
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Learning Outcomes</h2>
+
+    <p>By the end of the lesson, each student should be able to:</p>
+
+    <ul>
+        <li>Explain professionalism within ARU.</li>
+        <li>Describe the importance of integrity.</li>
+        <li>Understand personal accountability.</li>
+        <li>Communicate respectfully during disagreement.</li>
+        <li>Explain why teamwork and trust are essential.</li>
+        <li>Receive and apply constructive feedback.</li>
+        <li>Understand attendance and commitment expectations.</li>
+        <li>Recognise confidentiality requirements.</li>
+        <li>Raise concerns through the correct channels.</li>
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Suggested Lesson Structure</h2>
+
+    <table class="delivery-table">
+
+        <tr>
+            <th>Stage</th>
+            <th>Time</th>
+            <th>Trainer Action</th>
+        </tr>
+
+        <tr>
+            <td>Introduction</td>
+            <td>5 minutes</td>
+            <td>
+                Explain why professional standards are assessed throughout
+                every Academy module.
+            </td>
+        </tr>
+
+        <tr>
+            <td>Professionalism and Integrity</td>
+            <td>15 minutes</td>
+            <td>
+                Discuss behaviour, honesty, trust and responsibility.
+            </td>
+        </tr>
+
+        <tr>
+            <td>Communication and Teamwork</td>
+            <td>15 minutes</td>
+            <td>
+                Discuss respectful communication, teamwork and disagreement.
+            </td>
+        </tr>
+
+        <tr>
+            <td>Feedback and Accountability</td>
+            <td>10 minutes</td>
+            <td>
+                Explain how students should receive and apply feedback.
+            </td>
+        </tr>
+
+        <tr>
+            <td>Scenario Discussions</td>
+            <td>20 minutes</td>
+            <td>
+                Deliver the scenarios and ask each student to explain their view.
+            </td>
+        </tr>
+
+        <tr>
+            <td>Reflection and Review</td>
+            <td>10 minutes</td>
+            <td>
+                Complete the reflection task, review questions and explain
+                the knowledge check.
+            </td>
+        </tr>
+
+    </table>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Opening Script</h2>
+
+    <div class="example-box">
+
+        <strong>Suggested wording</strong>
+
+        <p>
+            “Module 2 focuses on professional standards.
+        </p>
+
+        <p>
+            ARU officers are judged on more than tactical or technical ability.
+            Your attitude, honesty, communication and ability to work with others
+            will be assessed throughout the Academy.
+        </p>
+
+        <p>
+            A technically capable officer can still be unsuitable for ARU if
+            they cannot act professionally, accept feedback or maintain trust.”
+        </p>
+
+    </div>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 1 — Professionalism</h2>
+
+    <p>Explain that professionalism applies during:</p>
+
+    <ul>
+        <li>Academy lessons</li>
+        <li>Practical training</li>
+        <li>Operational roleplay</li>
+        <li>Discord discussions</li>
+        <li>Briefings and debriefings</li>
+        <li>Interaction with other departments</li>
+        <li>Use of internal systems and forms</li>
+    </ul>
+
+    <p>A professional ARU student should:</p>
+
+    <ul>
+        <li>Arrive prepared.</li>
+        <li>Listen when others are speaking.</li>
+        <li>Communicate respectfully.</li>
+        <li>Remain calm during disagreement.</li>
+        <li>Follow reasonable instructions.</li>
+        <li>Represent the unit positively.</li>
+        <li>Separate personal issues from professional duties.</li>
+    </ul>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Discussion — Technical Skill Versus Attitude</h2>
+
+    <p>Ask both students:</p>
+
+    <div class="example-box">
+
+        <strong>Question</strong>
+
+        Would you rather work with an officer who has excellent technical
+        knowledge but a poor attitude, or an inexperienced officer who listens,
+        learns and supports the team?
+
+    </div>
+
+    <h3>Expected learning points</h3>
+
+    <ul>
+        <li>Technical knowledge can be developed.</li>
+        <li>Poor attitude damages trust.</li>
+        <li>ARU depends upon teamwork.</li>
+        <li>Students must be willing to learn.</li>
+        <li>Professional conduct remains essential after qualification.</li>
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 2 — Integrity</h2>
+
+    <p>
+        Explain that integrity means being honest even when admitting something
+        may be uncomfortable.
+    </p>
+
+    <p>Examples include:</p>
+
+    <ul>
+        <li>Reporting mistakes promptly.</li>
+        <li>Giving accurate accounts.</li>
+        <li>Being honest about attendance.</li>
+        <li>Not exaggerating experience.</li>
+        <li>Completing assessments independently.</li>
+        <li>Not hiding another officer's error.</li>
+        <li>Using restricted systems appropriately.</li>
+    </ul>
+
+    <div class="example-box">
+
+        <strong>Key message</strong>
+
+        A training mistake can usually be corrected. Dishonesty damages the trust
+        required for someone to remain within ARU.
+
+    </div>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Scenario One — Hidden Mistake</h2>
+
+    <p>
+        A student makes an error during training. The trainer does not notice,
+        and the student believes they can avoid mentioning it.
+    </p>
+
+    <p>Ask:</p>
+
+    <ul>
+        <li>What should the student do?</li>
+        <li>Why should the mistake be reported?</li>
+        <li>Would the original error automatically mean failure?</li>
+        <li>What would make the matter more serious?</li>
+    </ul>
+
+    <h3>Expected learning points</h3>
+
+    <ul>
+        <li>The student should report the error.</li>
+        <li>The mistake can be used for development.</li>
+        <li>Concealing the error damages trust.</li>
+        <li>Dishonesty may become more serious than the original mistake.</li>
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 3 — Accountability</h2>
+
+    <p>Students are responsible for:</p>
+
+    <ul>
+        <li>Attendance</li>
+        <li>Preparation</li>
+        <li>Completing required work</li>
+        <li>Raising problems early</li>
+        <li>Applying feedback</li>
+        <li>Explaining decisions</li>
+        <li>Maintaining equipment properly</li>
+        <li>Arranging catch-up learning</li>
+    </ul>
+
+    <div class="example-box">
+
+        <strong>Trainer prompt</strong>
+
+        What is the difference between explaining why something happened and
+        making excuses?
+
+    </div>
+
+    <h3>Expected learning point</h3>
+
+    <p>
+        Accountability means recognising the circumstances while still taking
+        responsibility and agreeing how to improve.
+    </p>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 4 — Communication and Teamwork</h2>
+
+    <p>Explain that professional communication includes:</p>
+
+    <ul>
+        <li>Listening before responding.</li>
+        <li>Using clear and respectful language.</li>
+        <li>Asking for clarification when needed.</li>
+        <li>Avoiding unnecessary arguments.</li>
+        <li>Using the correct radio or Discord channel.</li>
+        <li>Giving useful information without dominating discussion.</li>
+        <li>Raising concerns professionally.</li>
+    </ul>
+
+    <p>Effective team members:</p>
+
+    <ul>
+        <li>Share relevant information.</li>
+        <li>Support colleagues.</li>
+        <li>Carry out assigned responsibilities.</li>
+        <li>Ask for assistance when required.</li>
+        <li>Resolve disagreements professionally.</li>
+        <li>Place team success above personal recognition.</li>
+    </ul>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Scenario Two — Disagreement During Training</h2>
+
+    <p>
+        Two students disagree during an exercise. One begins criticising the
+        other in front of the group and refuses to continue working with them.
+    </p>
+
+    <p>Ask:</p>
+
+    <ul>
+        <li>What standards are not being met?</li>
+        <li>How should the disagreement be handled?</li>
+        <li>When should a trainer intervene?</li>
+        <li>How can the students rebuild trust?</li>
+    </ul>
+
+    <h3>Expected learning points</h3>
+
+    <ul>
+        <li>The disagreement should remain respectful.</li>
+        <li>The issue should be discussed calmly.</li>
+        <li>Personal criticism should be avoided.</li>
+        <li>The trainer should intervene if the exercise is disrupted.</li>
+        <li>Both students should agree a professional way forward.</li>
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 5 — Receiving Feedback</h2>
+
+    <p>Students should be taught to:</p>
+
+    <ol>
+        <li>Listen fully.</li>
+        <li>Avoid becoming immediately defensive.</li>
+        <li>Ask for clarification.</li>
+        <li>Reflect on the issue.</li>
+        <li>Agree an improvement action.</li>
+        <li>Apply the feedback later.</li>
+        <li>Request extra support where needed.</li>
+    </ol>
+
+    <p>
+        Explain that students may respectfully question feedback, but should
+        focus on the issue rather than attacking the trainer.
+    </p>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Scenario Three — Rejecting Feedback</h2>
+
+    <p>
+        A trainer gives a student feedback following an exercise. The student
+        immediately argues, says the trainer is wrong and refuses to discuss
+        improvement.
+    </p>
+
+    <p>Ask:</p>
+
+    <ul>
+        <li>What standard is not being met?</li>
+        <li>How should the student respond instead?</li>
+        <li>Can a student disagree professionally?</li>
+        <li>What should happen if the behaviour continues?</li>
+    </ul>
+
+    <h3>Expected learning points</h3>
+
+    <ul>
+        <li>The student should listen first.</li>
+        <li>Clarification can be requested respectfully.</li>
+        <li>Repeated refusal to accept feedback may affect progression.</li>
+        <li>The focus should remain on development.</li>
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 6 — Attendance and Commitment</h2>
+
+    <p>Explain that students should:</p>
+
+    <ul>
+        <li>Attend wherever reasonably possible.</li>
+        <li>Provide advance notice when unavailable.</li>
+        <li>Arrive prepared and on time.</li>
+        <li>Complete assigned work.</li>
+        <li>Participate meaningfully.</li>
+        <li>Arrange catch-up learning.</li>
+        <li>Raise difficulties early.</li>
+    </ul>
+
+    <p>
+        Genuine absence should be managed fairly. The concern is repeated
+        unexplained absence or failure to engage.
+    </p>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 7 — Confidentiality and Internal Conduct</h2>
+
+    <p>Students must not share:</p>
+
+    <ul>
+        <li>Assessment answers</li>
+        <li>Trainer resources</li>
+        <li>Scenario injects</li>
+        <li>Restricted documents</li>
+        <li>Personal student records</li>
+        <li>Passwords</li>
+        <li>Restricted screenshots</li>
+        <li>Internal command discussions</li>
+    </ul>
+
+    <p>Professional standards also apply to:</p>
+
+    <ul>
+        <li>Discord</li>
+        <li>Direct messages</li>
+        <li>Google Forms</li>
+        <li>Internal website pages</li>
+        <li>Written reports</li>
+    </ul>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Student Reflection Task</h2>
+
+    <p>Ask each student to answer:</p>
+
+    <div class="example-box">
+
+        <strong>Reflection question</strong>
+
+        What professional standard will you personally commit to during Cohort 001,
+        and how will you demonstrate it?
+
+    </div>
+
+    <p>
+        Each response should include one practical commitment, such as:
+    </p>
+
+    <ul>
+        <li>Arriving prepared</li>
+        <li>Supporting the other student</li>
+        <li>Asking for feedback</li>
+        <li>Reporting mistakes honestly</li>
+        <li>Completing work on time</li>
+    </ul>
+
+    <p>
+        Keep the response for review during the final Academy interview.
+    </p>
+
+</section>
+
+<section class="card assessment">
+
+    <h2>Review Questions</h2>
+
+    <ol>
+        <li>What does professionalism mean within ARU?</li>
+        <li>Why is integrity essential?</li>
+        <li>What does accountability mean?</li>
+        <li>How should feedback be received?</li>
+        <li>How should disagreement be raised?</li>
+        <li>What should happen after a missed lesson?</li>
+        <li>Why is teamwork important?</li>
+        <li>What information must remain confidential?</li>
+        <li>Does technical ability excuse poor conduct?</li>
+        <li>How can poor behaviour affect the wider unit?</li>
+    </ol>
+
+</section>
+
+<section class="card assessment">
+
+    <h2>Expected Answers</h2>
+
+    <ol>
+        <li>
+            Consistently behaving appropriately during training, operations
+            and internal communication.
+        </li>
+
+        <li>
+            Integrity creates trust and ensures mistakes or concerns are reported honestly.
+        </li>
+
+        <li>
+            Taking responsibility for actions, attendance, work and development.
+        </li>
+
+        <li>
+            Listen, clarify, reflect and apply the feedback.
+        </li>
+
+        <li>
+            Calmly, respectfully and through the correct channel.
+        </li>
+
+        <li>
+            Notify the trainer and arrange catch-up learning.
+        </li>
+
+        <li>
+            ARU relies upon trust, communication and shared performance.
+        </li>
+
+        <li>
+            Restricted documents, answers, records, passwords and trainer materials.
+        </li>
+
+        <li>
+            No. Technical ability does not excuse poor conduct.
+        </li>
+
+        <li>
+            It can damage trust, morale, reputation and operational teamwork.
+        </li>
+    </ol>
+
+</section>
+
+<section class="card assessment">
+
+    <h2>Instructor Observation Criteria</h2>
+
+    <div class="rating-grid">
+
+        <div class="rating-box">
+            <strong>Professionalism</strong>
+            Behaves appropriately throughout.
+        </div>
+
+        <div class="rating-box">
+            <strong>Integrity</strong>
+            Demonstrates honesty and openness.
+        </div>
+
+        <div class="rating-box">
+            <strong>Communication</strong>
+            Speaks respectfully and listens.
+        </div>
+
+        <div class="rating-box">
+            <strong>Teamwork</strong>
+            Supports the other student.
+        </div>
+
+        <div class="rating-box">
+            <strong>Reflection</strong>
+            Identifies meaningful development.
+        </div>
+
+        <div class="rating-box">
+            <strong>Feedback</strong>
+            Responds appropriately to guidance.
+        </div>
+
+    </div>
+
+</section>
+
+<section class="card assessment">
+
+    <h2>Module Outcomes</h2>
+
+    <h3>Pass</h3>
+
+    <p>
+        Student participated appropriately, understood the professional standards
+        and completed the required assessment.
+    </p>
+
+    <h3>Pass with Development Points</h3>
+
+    <p>
+        Student may progress but must address clearly identified development areas.
+    </p>
+
+    <h3>Remedial</h3>
+
+    <p>
+        Student requires further discussion, reflection or reassessment before progression.
+    </p>
+
+    <h3>Incomplete</h3>
+
+    <p>
+        Required attendance, reflection or assessment remains outstanding.
+    </p>
+
+    <h3>Unsuccessful</h3>
+
+    <p>
+        Student has not met the required standard after appropriate support and review.
+    </p>
+
+</section>
+
+<section class="card warning">
+
+    <h2>Common Trainer Errors</h2>
+
+    <ul>
+        <li>Turning the lesson into a lecture.</li>
+        <li>Reading the student page word-for-word.</li>
+        <li>Ignoring poor behaviour during the lesson.</li>
+        <li>Allowing one student to dominate.</li>
+        <li>Confusing respectful challenge with disrespect.</li>
+        <li>Failing to record development points.</li>
+        <li>Using feedback as punishment rather than development.</li>
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Closing Script</h2>
+
+    <div class="example-box">
+
+        <strong>Suggested wording</strong>
+
+        <p>
+            “That concludes Module 2.
+        </p>
+
+        <p>
+            Professional standards are not limited to this lesson. Your conduct,
+            attitude, communication and response to feedback will continue to be
+            assessed throughout the Academy.
+        </p>
+
+        <p>
+            Before Module 3, complete the knowledge check and reflect on the
+            personal standard you have committed to maintaining.”
+        </p>
+
+    </div>
+
+</section>
+
+<section class="card">
+
+    <h2>Trainer Completion Checklist</h2>
+
+    <ul class="checklist">
+        <li>Both students attended</li>
+        <li>Professionalism was explained</li>
+        <li>Integrity and accountability were discussed</li>
+        <li>Communication and teamwork were discussed</li>
+        <li>All scenarios were completed</li>
+        <li>Both students completed the reflection task</li>
+        <li>Review questions were answered</li>
+        <li>Individual feedback was recorded</li>
+        <li>Students were directed to the Module 2 quiz</li>
+        <li>Module outcomes were recorded</li>
+    </ul>
+
+    <div class="button-row">
+
+        <a class="button"
+           href="PASTE-TRAINER-MODULE-2-ASSESSMENT-FORM-LINK-HERE"
+           target="_blank">
+
+            Record Module 2 Outcome
+
+        </a>
+
+        <a class="button secondary"
+           href="trainers.html">
+
+            Return to Trainers Area
+
+        </a>
+
+    </div>
+
+</section>
+
+<footer class="footer">
+
+    Code44 Police Service • Armed Response Unit Academy<br>
+
+    Trainer Module 2 — Professional Standards • Cohort 001
+
+</footer>
+
+</div>
+
+</body>
+</html>
