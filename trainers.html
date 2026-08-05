@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ARU Trainers Area</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    background:#05080d;
+    color:white;
+    font-family:Segoe UI,Arial,sans-serif;
+    line-height:1.6;
+}
+
+.page-container{
+    width:90%;
+    max-width:1200px;
+    margin:0 auto;
+    padding:35px 0 60px;
+}
+
+.navbar{
+    background:#0b111b;
+    border:1px solid #16315c;
+    border-radius:8px;
+    padding:15px;
+    margin-bottom:20px;
+}
+
+.navbar a{
+    color:#4d9dff;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.navbar a:hover{
+    color:white;
+}
+
+.back-link{
+    display:inline-block;
+    margin-bottom:20px;
+    color:#4d9dff;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.hero{
+    background:
+        linear-gradient(rgba(2,7,14,.82),rgba(2,7,14,.94)),
+        url('arv-photo.png');
+
+    background-size:cover;
+    background-position:center;
+
+    border:1px solid #16315c;
+    border-radius:10px;
+
+    padding:50px 30px;
+    text-align:center;
+}
+
+.hero h1{
+    margin:0 0 10px;
+    color:#4d9dff;
+    font-size:2.4rem;
+}
+
+.hero p{
+    margin:5px 0;
+    color:#d3dbea;
+}
+
+.badge{
+    display:inline-block;
+
+    margin-top:14px;
+    padding:7px 13px;
+
+    background:#3a2a0d;
+    border:1px solid #a8761e;
+    border-radius:20px;
+
+    color:#f2c76f;
+    font-weight:bold;
+}
+
+h1,
+h2,
+h3{
+    color:#4d9dff;
+}
+
+.card{
+    background:#0b111b;
+    border:1px solid #16315c;
+    border-radius:8px;
+
+    padding:22px;
+    margin-top:20px;
+
+    transition:.25s;
+}
+
+.card:hover{
+    border-color:#4d9dff;
+}
+
+.dashboard-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+    gap:15px;
+    margin-top:18px;
+}
+
+.stat-box{
+    background:#08111d;
+    border:1px solid #16315c;
+    border-radius:7px;
+
+    padding:17px;
+    text-align:center;
+}
+
+.stat-box strong{
+    display:block;
+    color:#4d9dff;
+    margin-bottom:5px;
+}
+
+.trainer-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:16px;
+    margin-top:18px;
+}
+
+.trainer-link{
+    display:block;
+
+    background:#08111d;
+    border:1px solid #16315c;
+    border-radius:8px;
+
+    padding:18px;
+
+    color:white;
+    text-decoration:none;
+
+    transition:.25s;
+}
+
+.trainer-link:hover{
+    border-color:#4d9dff;
+    background:#0d1828;
+    transform:translateY(-2px);
+}
+
+.trainer-link strong{
+    display:block;
+    color:#4d9dff;
+    margin-bottom:5px;
+}
+
+.pending{
+    opacity:.55;
+    cursor:default;
+}
+
+.pending:hover{
+    transform:none;
+    border-color:#16315c;
+    background:#08111d;
+}
+
+.warning{
+    border-left:5px solid #e3a629;
+}
+
+.button-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:20px;
+}
+
+.button{
+    display:inline-block;
+
+    padding:12px 18px;
+
+    background:#4d9dff;
+    color:#05080d;
+
+    border:none;
+    border-radius:6px;
+
+    text-decoration:none;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.button:hover{
+    background:#77b5ff;
+}
+
+.button.secondary{
+    background:#101b2c;
+    color:#4d9dff;
+    border:1px solid #24538b;
+}
+
+.footer{
+    margin-top:30px;
+    padding-top:20px;
+
+    border-top:1px solid #16315c;
+
+    color:#8f9bad;
+    text-align:center;
+    font-size:.9rem;
+}
+
+@media(max-width:600px){
+
+    .page-container{
+        width:92%;
+    }
+
+    .hero{
+        padding:40px 18px;
+    }
+
+    .hero h1{
+        font-size:2rem;
+    }
+
+    .button{
+        width:100%;
+        text-align:center;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<script>
+
+/*
+    This page checks whether the trainer logged in
+    through trainers-login.html during this browser session.
+*/
+
+if (sessionStorage.getItem("trainerAccess") !== "granted") {
+
+    window.location.replace("trainers-login.html");
+
+}
+
+</script>
+
+<div class="page-container">
+
+<nav class="navbar">
+
+    <a href="database.html">Internal Database</a> |
+
+    <a href="academy.html">ARU Academy</a> |
+
+    <a href="trainers.html" style="color:white;">Trainers Area</a>
+
+</nav>
+
+<a class="back-link" href="academy.html">
+    ← Return to ARU Academy
+</a>
+
+<header class="hero">
+
+    <h1>ARU Trainers Area</h1>
+
+    <p>Instructor Resources and Cohort Management</p>
+
+    <p>Code44 Armed Response Unit Academy</p>
+
+    <span class="badge">Restricted Access</span>
+
+</header>
+
+<section class="card">
+
+    <h2>Trainer Dashboard</h2>
+
+    <p>
+        This area contains restricted lesson plans, assessment material,
+        scenario information and recruit-management resources.
+    </p>
+
+    <p>
+        Trainer documents must not be shared with recruits unless specifically
+        authorised for release.
+    </p>
+
+    <div class="dashboard-grid">
+
+        <div class="stat-box">
+            <strong>Current Cohort</strong>
+            Cohort 001
+        </div>
+
+        <div class="stat-box">
+            <strong>Active Recruits</strong>
+            2
+        </div>
+
+        <div class="stat-box">
+            <strong>Lead Trainer</strong>
+            Sgt K. Maddox
+        </div>
+
+        <div class="stat-box">
+            <strong>Current Stage</strong>
+            Module 1
+        </div>
+
+    </div>
+
+</section>
+
+<section class="card">
+
+    <h2>Lesson Plans</h2>
+
+    <div class="trainer-grid">
+
+        <a class="trainer-link" href="trainer-module1.html">
+
+            <strong>Module 1 Lesson Plan</strong>
+
+            Welcome, induction, Academy structure and recruit expectations.
+
+        </a>
+
+        <div class="trainer-link pending">
+
+            <strong>Module 2 Lesson Plan</strong>
+
+            Professional standards and recruit conduct. Coming soon.
+
+        </div>
+
+        <div class="trainer-link pending">
+
+            <strong>Module 3 Lesson Plan</strong>
+
+            Legal framework and decision-making. Coming soon.
+
+        </div>
+
+        <div class="trainer-link pending">
+
+            <strong>Module 4 Lesson Plan</strong>
+
+            Equipment and resources. Coming soon.
+
+        </div>
+
+        <div class="trainer-link pending">
+
+            <strong>Module 5 Lesson Plan</strong>
+
+            Communications. Coming soon.
+
+        </div>
+
+        <div class="trainer-link pending">
+
+            <strong>Module 6 Lesson Plan</strong>
+
+            Incident management. Coming soon.
+
+        </div>
+
+        <div class="trainer-link pending">
+
+            <strong>Module 7 Lesson Plan</strong>
+
+            Teamwork and leadership. Coming soon.
+
+        </div>
+
+        <div class="trainer-link pending">
+
+            <strong>Module 8 Assessment Pack</strong>
+
+            Final assessment material. Restricted until completed.
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="card">
+
+    <h2>Training Management</h2>
+
+    <div class="trainer-grid">
+
+        <div class="trainer-link pending">
+
+            <strong>Recruit Tracker</strong>
+
+            Record student progression and module completion. Coming soon.
+
+        </div>
+
+        <div class="trainer-link pending">
+
+            <strong>Attendance Register</strong>
+
+            Record Academy attendance and missed sessions. Coming soon.
+
+        </div>
+
+        <div class="trainer-link pending">
+
+            <strong>Assessment Documents</strong>
+
+            Marking sheets, standards and feedback forms. Coming soon.
+
+        </div>
+
+        <div class="trainer-link pending">
+
+            <strong>Scenario Library</strong>
+
+            Trainer-only objectives, setup notes and scenario injects. Coming soon.
+
+        </div>
+
+        <div class="trainer-link pending">
+
+            <strong>Remedial Training</strong>
+
+            Improvement plans and reassessment records. Coming soon.
+
+        </div>
+
+        <div class="trainer-link pending">
+
+            <strong>Instructor Resources</strong>
+
+            Templates, delivery guidance and quality standards. Coming soon.
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="card warning">
+
+    <h2>Restricted Information</h2>
+
+    <p>
+        Do not distribute lesson plans, expected answers, assessment criteria,
+        scenario injects or personal recruit records outside authorised trainer channels.
+    </p>
+
+    <p>
+        This system uses basic browser-session access control. Do not store real
+        sensitive information or genuine personal data on GitHub Pages.
+    </p>
+
+</section>
+
+<section class="card">
+
+    <h2>Trainer Session</h2>
+
+    <p>
+        Trainer access remains active until the browser or tab session is closed,
+        or until the trainer selects Logout below.
+    </p>
+
+    <div class="button-row">
+
+        <a class="button secondary" href="academy.html">
+            Return to Academy
+        </a>
+
+        <button class="button" type="button" onclick="trainerLogout()">
+            Logout
+        </button>
+
+    </div>
+
+</section>
+
+<footer class="footer">
+
+    Code44 Police Service • Armed Response Unit Academy<br>
+    Trainers Area • Restricted Access
+
+</footer>
+
+</div>
+
+<script>
+
+function trainerLogout() {
+
+    sessionStorage.removeItem("trainerAccess");
+
+    window.location.href = "trainers-login.html";
+
+}
+
+</script>
+
+</body>
+</html>
