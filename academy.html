@@ -12,6 +12,10 @@
     box-sizing:border-box;
 }
 
+html{
+    scroll-behavior:smooth;
+}
+
 body{
     margin:0;
     background:#05080d;
@@ -39,6 +43,7 @@ body{
     color:#4d9dff;
     text-decoration:none;
     font-weight:bold;
+    margin:0 5px;
 }
 
 .navbar a:hover{
@@ -53,37 +58,46 @@ body{
     font-weight:bold;
 }
 
+.back-link:hover{
+    color:white;
+}
+
 .hero{
     background:
-        linear-gradient(rgba(2,7,14,.80),rgba(2,7,14,.94)),
+        linear-gradient(rgba(2,7,14,.78),rgba(2,7,14,.94)),
         url('arv-photo.png');
 
     background-size:cover;
     background-position:center;
+
     border:1px solid #16315c;
-    border-radius:10px;
-    padding:55px 30px;
+    border-radius:12px;
+
+    padding:60px 30px;
     text-align:center;
 }
 
 .hero h1{
-    color:#4d9dff;
     margin:0 0 10px;
-    font-size:2.5rem;
+    color:#4d9dff;
+    font-size:2.6rem;
 }
 
 .hero p{
-    color:#d3dbea;
     margin:5px 0;
+    color:#d3dbea;
 }
 
 .badge{
     display:inline-block;
+
     margin-top:15px;
-    padding:7px 13px;
+    padding:7px 14px;
+
     background:#10203a;
     border:1px solid #2c65a8;
     border-radius:20px;
+
     color:#8fc2ff;
     font-weight:bold;
 }
@@ -97,9 +111,11 @@ h3{
 .card{
     background:#0b111b;
     border:1px solid #16315c;
-    border-radius:8px;
+    border-radius:9px;
+
     padding:22px;
     margin-top:20px;
+
     transition:.25s;
 }
 
@@ -107,17 +123,18 @@ h3{
     border-color:#4d9dff;
 }
 
-.dashboard-grid{
+.stats-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:18px;
-    margin-top:20px;
+    grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+    gap:15px;
+    margin-top:18px;
 }
 
 .stat-box{
     background:#08111d;
     border:1px solid #16315c;
     border-radius:8px;
+
     padding:18px;
     text-align:center;
 }
@@ -125,7 +142,7 @@ h3{
 .stat-box strong{
     display:block;
     color:#4d9dff;
-    margin-bottom:6px;
+    margin-bottom:5px;
 }
 
 .area-grid{
@@ -137,87 +154,152 @@ h3{
 
 .area-card{
     display:block;
+
     background:#0b111b;
     border:1px solid #16315c;
     border-radius:10px;
+
     padding:28px;
+
     color:white;
     text-decoration:none;
+
     transition:.25s;
 }
 
 .area-card:hover{
     border-color:#4d9dff;
-    transform:translateY(-2px);
+    transform:translateY(-3px);
 }
 
 .area-card h2{
     margin-top:0;
 }
 
-.area-card.locked{
+.area-card p{
+    color:#c9d4e3;
+}
+
+.area-card strong{
+    color:#4d9dff;
+}
+
+.area-card.trainer{
     border-left:5px solid #e3a629;
 }
 
-.module-list{
+.area-card.trainer strong{
+    color:#f2c76f;
+}
+
+.module-grid{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:12px;
-    margin-top:15px;
+    gap:14px;
+    margin-top:18px;
 }
 
 .module{
     display:block;
+
     background:#08111d;
     border:1px solid #16315c;
-    border-radius:7px;
-    padding:16px;
+    border-radius:8px;
+
+    padding:17px;
+
     color:white;
     text-decoration:none;
+
     transition:.25s;
 }
 
 .module:hover{
     border-color:#4d9dff;
     background:#0d1828;
+    transform:translateY(-2px);
 }
 
 .module strong{
     display:block;
     color:#4d9dff;
-    margin-bottom:4px;
+    margin-bottom:5px;
+}
+
+.module span{
+    display:block;
+    color:#aab8ca;
+    font-size:.92rem;
 }
 
 .module.pending{
-    opacity:.6;
+    opacity:.55;
     cursor:default;
+}
+
+.module.pending:hover{
+    transform:none;
+    border-color:#16315c;
+    background:#08111d;
 }
 
 .notice{
     border-left:5px solid #4d9dff;
 }
 
+.warning{
+    border-left:5px solid #e3a629;
+}
+
+.progress{
+    width:100%;
+    height:20px;
+
+    background:#18212c;
+    border-radius:20px;
+
+    overflow:hidden;
+    margin-top:15px;
+}
+
+.progress-bar{
+    width:0%;
+    height:100%;
+    background:#4d9dff;
+}
+
+.small-text{
+    color:#8f9bad;
+    font-size:.9rem;
+}
+
 .footer{
     margin-top:30px;
     padding-top:20px;
+
     border-top:1px solid #16315c;
+
     color:#8f9bad;
     text-align:center;
     font-size:.9rem;
 }
 
-@media(max-width:600px){
+@media(max-width:650px){
 
     .page-container{
         width:92%;
     }
 
     .hero{
-        padding:40px 18px;
+        padding:42px 18px;
     }
 
     .hero h1{
         font-size:2rem;
+    }
+
+    .navbar{
+        line-height:2;
     }
 }
 
@@ -229,10 +311,29 @@ h3{
 <div class="page-container">
 
 <nav class="navbar">
-    <a href="database.html">Internal Database</a> |
-    <a href="academy.html" style="color:white;">ARU Academy</a> |
-    <a href="sops.html">SOP Library</a> |
-    <a href="forms.html">Forms</a>
+
+    <a href="database.html">
+        Internal Database
+    </a>
+
+    |
+
+    <a href="academy.html" style="color:white;">
+        ARU Academy
+    </a>
+
+    |
+
+    <a href="student-handbook.html">
+        Student Handbook
+    </a>
+
+    |
+
+    <a href="trainers-login.html">
+        Trainers Area
+    </a>
+
 </nav>
 
 <a class="back-link" href="database.html">
@@ -245,9 +346,11 @@ h3{
 
     <p>Code44 Police Service</p>
 
-    <p>Training and Standards</p>
+    <p>Armed Response Unit Training & Standards</p>
 
-    <span class="badge">Cohort 001</span>
+    <span class="badge">
+        Cohort 001
+    </span>
 
 </header>
 
@@ -256,36 +359,49 @@ h3{
     <h2>Academy Overview</h2>
 
     <p>
-        The ARU Academy provides a structured development pathway for officers
-        selected to undertake Armed Response Unit training.
+        The ARU Academy provides a structured training pathway for officers
+        selected to begin development within the Armed Response Unit.
     </p>
 
     <p>
-        Students receive access to approved learning materials, Academy guidance,
-        assessments and course resources. Trainers use a separate restricted area
-        to manage lesson delivery, assessment and student progression.
+        Students receive access to approved learning materials, course modules,
+        revision resources and assessments. Trainers use a separate restricted
+        area containing lesson plans, assessment guidance and recruit-management
+        documents.
     </p>
 
-    <div class="dashboard-grid">
+    <div class="stats-grid">
 
         <div class="stat-box">
+
             <strong>Current Cohort</strong>
+
             Cohort 001
+
         </div>
 
         <div class="stat-box">
-            <strong>Course Status</strong>
-            In Preparation
+
+            <strong>Active Students</strong>
+
+            2
+
         </div>
 
         <div class="stat-box">
+
             <strong>Lead Trainer</strong>
+
             Sgt K. Maddox
+
         </div>
 
         <div class="stat-box">
-            <strong>Student Modules</strong>
-            8 Modules
+
+            <strong>Course Status</strong>
+
+            In Progress
+
         </div>
 
     </div>
@@ -299,24 +415,28 @@ h3{
         <h2>🎓 Student Area</h2>
 
         <p>
-            Access course modules, student guidance, revision materials,
-            timetables and Academy resources.
+            Access the Student Handbook, learning modules, revision material,
+            course information and assessments.
         </p>
 
-        <strong>Open Student Area →</strong>
+        <strong>
+            Open Student Area →
+        </strong>
 
     </a>
 
-    <a class="area-card locked" href="trainers.html">
+    <a class="area-card trainer" href="trainers-login.html">
 
         <h2>🔒 Trainers Area</h2>
 
         <p>
-            Restricted access for approved trainers. Contains lesson plans,
-            assessment material, scenario packs and recruit-management tools.
+            Restricted access for approved ARU trainers. Contains lesson plans,
+            expected answers, assessment material and recruit records.
         </p>
 
-        <strong>Trainer Login →</strong>
+        <strong>
+            Trainer Login →
+        </strong>
 
     </a>
 
@@ -327,69 +447,148 @@ h3{
     <h2>Student Area</h2>
 
     <p>
-        Students should complete modules in the order directed by their trainer.
-        Module pages contain learning material only. Assessment answers and
-        instructor guidance are not available in this area.
+        Students should complete modules in the order directed by the training team.
+        Each module contains approved student learning material and revision content.
     </p>
 
-    <div class="module-list">
+    <p>
+        Instructor notes, expected answers, assessment criteria and hidden scenario
+        information are held separately within the Trainers Area.
+    </p>
+
+    <div class="module-grid">
 
         <a class="module" href="student-handbook.html">
+
             <strong>Student Handbook</strong>
-            Academy rules, expectations and course information.
+
+            <span>
+                Academy rules, standards, attendance, assessments and progression.
+            </span>
+
         </a>
 
         <a class="module" href="module1.html">
+
             <strong>Module 1 — Welcome to ARU</strong>
-            Academy introduction and recruit expectations.
+
+            <span>
+                Academy introduction, course structure and recruit expectations.
+            </span>
+
         </a>
 
         <a class="module" href="module2.html">
+
             <strong>Module 2 — Professional Standards</strong>
-            Integrity, accountability, teamwork and conduct.
+
+            <span>
+                Integrity, accountability, professionalism, teamwork and conduct.
+            </span>
+
         </a>
 
         <a class="module" href="module3.html">
+
             <strong>Module 3 — Legal and Decision-Making</strong>
-            Policy awareness and accountable decision-making.
+
+            <span>
+                Policy awareness, proportionality and accountable decision-making.
+            </span>
+
         </a>
 
         <div class="module pending">
+
             <strong>Module 4 — Equipment and Resources</strong>
-            Coming soon.
+
+            <span>
+                Coming soon.
+            </span>
+
         </div>
 
         <div class="module pending">
+
             <strong>Module 5 — Communications</strong>
-            Coming soon.
+
+            <span>
+                Coming soon.
+            </span>
+
         </div>
 
         <div class="module pending">
+
             <strong>Module 6 — Incident Management</strong>
-            Coming soon.
+
+            <span>
+                Coming soon.
+            </span>
+
         </div>
 
         <div class="module pending">
+
             <strong>Module 7 — Teamwork and Leadership</strong>
-            Coming soon.
+
+            <span>
+                Coming soon.
+            </span>
+
         </div>
 
         <div class="module pending">
+
             <strong>Module 8 — Final Assessment</strong>
-            Released by the training team when appropriate.
+
+            <span>
+                Released by the training team when authorised.
+            </span>
+
         </div>
 
         <a class="module" href="academy-timetable.html">
+
             <strong>Course Timetable</strong>
-            View upcoming lessons and Academy dates.
+
+            <span>
+                View scheduled lessons, assessments and Academy dates.
+            </span>
+
         </a>
 
         <a class="module" href="student-resources.html">
+
             <strong>Student Resources</strong>
-            Revision material, forms and useful documents.
+
+            <span>
+                Revision material, approved documents and useful links.
+            </span>
+
         </a>
 
     </div>
+
+</section>
+
+<section class="card">
+
+    <h2>Cohort 001 Progress</h2>
+
+    <p>
+        Cohort progression will be updated by the ARU training team.
+    </p>
+
+    <div class="progress">
+
+        <div class="progress-bar"></div>
+
+    </div>
+
+    <p class="small-text">
+        Overall Cohort Progress: 0%
+    </p>
 
 </section>
 
@@ -398,9 +597,32 @@ h3{
     <h2>Student Notice</h2>
 
     <p>
-        Students must not attempt to access trainer-only resources, assessment
-        answers or restricted recruit records. Questions about course content
-        should be directed to an approved ARU trainer.
+        Students must complete required pre-learning before attending practical
+        lessons and should raise questions with an approved trainer whenever
+        clarification is required.
+    </p>
+
+    <p>
+        Qualification is not automatic. Students must meet the required standards
+        across attendance, professionalism, knowledge, practical performance and
+        final assessment.
+    </p>
+
+</section>
+
+<section class="card warning">
+
+    <h2>Restricted Access</h2>
+
+    <p>
+        Students must not attempt to access trainer-only materials, assessment
+        answers, marking guidance, hidden scenario information or personal recruit
+        records.
+    </p>
+
+    <p>
+        Trainer resources must not be copied, distributed or shared outside
+        authorised ARU training channels.
     </p>
 
 </section>
@@ -408,7 +630,8 @@ h3{
 <footer class="footer">
 
     Code44 Police Service • Armed Response Unit Academy<br>
-    Cohort 001 • Training and Standards
+
+    Cohort 001 • Training & Standards
 
 </footer>
 
