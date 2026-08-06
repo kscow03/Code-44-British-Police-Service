@@ -1,0 +1,2202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Trainer Module 6 - Firearms Fundamentals and Operational Readiness</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    background:#05080d;
+    color:white;
+    font-family:Segoe UI,Arial,sans-serif;
+    line-height:1.65;
+}
+
+.page-container{
+    width:90%;
+    max-width:1150px;
+    margin:0 auto;
+    padding:35px 0 60px;
+}
+
+.navbar{
+    background:#0b111b;
+    border:1px solid #16315c;
+    border-radius:8px;
+    padding:15px;
+    margin-bottom:20px;
+}
+
+.navbar a{
+    color:#4d9dff;
+    text-decoration:none;
+    font-weight:bold;
+    margin:0 5px;
+}
+
+.navbar a:hover,
+.back-link:hover{
+    color:white;
+}
+
+.back-link{
+    display:inline-block;
+    margin-bottom:20px;
+    color:#4d9dff;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.hero{
+    background:
+        linear-gradient(rgba(2,7,14,.80),rgba(2,7,14,.94)),
+        url('arv-photo.png');
+
+    background-size:cover;
+    background-position:center;
+
+    border:1px solid #16315c;
+    border-radius:12px;
+
+    padding:58px 30px;
+    text-align:center;
+}
+
+.hero h1{
+    margin:0 0 10px;
+    color:#4d9dff;
+    font-size:2.5rem;
+}
+
+.hero p{
+    margin:5px 0;
+    color:#d3dbea;
+}
+
+.badge{
+    display:inline-block;
+    margin-top:15px;
+    padding:7px 14px;
+
+    background:#3a2a0d;
+    border:1px solid #a8761e;
+    border-radius:20px;
+
+    color:#f2c76f;
+    font-weight:bold;
+}
+
+h1,
+h2,
+h3{
+    color:#4d9dff;
+}
+
+.card{
+    background:#0b111b;
+    border:1px solid #16315c;
+    border-radius:9px;
+
+    padding:22px;
+    margin-top:20px;
+
+    transition:.25s;
+}
+
+.card:hover{
+    border-color:#4d9dff;
+}
+
+.instructor{
+    border-left:5px solid #9c6ade;
+}
+
+.activity{
+    border-left:5px solid #4da86b;
+}
+
+.assessment{
+    border-left:5px solid #4d9dff;
+}
+
+.warning{
+    border-left:5px solid #e3a629;
+}
+
+.danger{
+    border-left:5px solid #d84d5f;
+}
+
+.success{
+    border-left:5px solid #4da86b;
+}
+
+.info-grid,
+.rating-grid,
+.principles-grid,
+.role-grid,
+.readiness-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+    gap:15px;
+    margin-top:18px;
+}
+
+.info-box,
+.rating-box,
+.principle-box,
+.role-box,
+.readiness-box,
+.example-box{
+    background:#08111d;
+    border:1px solid #16315c;
+    border-radius:8px;
+    padding:17px;
+}
+
+.info-box strong,
+.rating-box strong,
+.principle-box strong,
+.role-box strong,
+.readiness-box strong,
+.example-box strong{
+    display:block;
+    color:#4d9dff;
+    margin-bottom:6px;
+}
+
+.delivery-table,
+.assessment-table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:15px;
+}
+
+.delivery-table th,
+.delivery-table td,
+.assessment-table th,
+.assessment-table td{
+    border:1px solid #16315c;
+    padding:12px;
+    text-align:left;
+    vertical-align:top;
+}
+
+.delivery-table th,
+.assessment-table th{
+    background:#10203a;
+    color:#8fc2ff;
+}
+
+.checklist{
+    list-style:none;
+    padding-left:0;
+}
+
+.checklist li{
+    background:#08111d;
+    border:1px solid #16315c;
+    border-radius:7px;
+
+    padding:13px;
+    margin-top:9px;
+}
+
+.checklist li::before{
+    content:"☐";
+    color:#4d9dff;
+    font-weight:bold;
+    margin-right:10px;
+}
+
+.status-tag{
+    display:inline-block;
+    padding:4px 9px;
+    border-radius:12px;
+    font-size:.82rem;
+    font-weight:bold;
+    margin-top:8px;
+}
+
+.status-primary{
+    background:#10203a;
+    border:1px solid #2c65a8;
+    color:#8fc2ff;
+}
+
+.status-personal{
+    background:#203017;
+    border:1px solid #4f7f32;
+    color:#bde99f;
+}
+
+.status-specialist{
+    background:#3a2a0d;
+    border:1px solid #a8761e;
+    color:#f2c76f;
+}
+
+ul,
+ol{
+    padding-left:22px;
+}
+
+li{
+    margin-bottom:7px;
+}
+
+.button-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:20px;
+}
+
+.button{
+    display:inline-block;
+
+    padding:12px 18px;
+
+    background:#4d9dff;
+    color:#05080d;
+
+    border:none;
+    border-radius:6px;
+
+    text-decoration:none;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.button:hover{
+    background:#77b5ff;
+}
+
+.button.secondary{
+    background:#101b2c;
+    color:#4d9dff;
+    border:1px solid #24538b;
+}
+
+.footer{
+    margin-top:30px;
+    padding-top:20px;
+
+    border-top:1px solid #16315c;
+
+    color:#8f9bad;
+    text-align:center;
+    font-size:.9rem;
+}
+
+@media(max-width:700px){
+
+    .page-container{
+        width:92%;
+    }
+
+    .hero{
+        padding:42px 18px;
+    }
+
+    .hero h1{
+        font-size:2rem;
+    }
+
+    .navbar{
+        line-height:2;
+    }
+
+    .button{
+        width:100%;
+        text-align:center;
+    }
+
+    .delivery-table,
+    .assessment-table{
+        font-size:.9rem;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<script>
+
+if (sessionStorage.getItem("trainerAccess") !== "granted") {
+
+    window.location.replace("trainers-login.html");
+
+}
+
+</script>
+
+<div class="page-container">
+
+<nav class="navbar">
+
+    <a href="aru-members.html">
+        Internal Database
+    </a>
+
+    |
+
+    <a href="academy.html">
+        ARU Academy
+    </a>
+
+    |
+
+    <a href="trainers.html">
+        Trainers Area
+    </a>
+
+    |
+
+    <a href="trainer-module4.html">
+        Module 4
+    </a>
+
+    |
+
+    <a href="trainer-module5.html">
+        Module 5
+    </a>
+
+    |
+
+    <a href="trainer-module6.html" style="color:white;">
+        Module 6
+    </a>
+
+</nav>
+
+<a class="back-link" href="trainers.html">
+    ← Return to Trainers Area
+</a>
+
+<header class="hero">
+
+    <h1>Trainer Module 6 — Firearms Fundamentals & Operational Readiness</h1>
+
+    <p>Instructor Lesson Plan</p>
+
+    <p>ARU Academy • Cohort 001</p>
+
+    <span class="badge">
+        Trainer-Only Resource
+    </span>
+
+</header>
+
+<section class="card">
+
+    <h2>Lesson Overview</h2>
+
+    <p>
+        Module 6 develops the firearms-safety standards introduced during
+        Module 5 and begins preparing students to operate responsibly as
+        armed officers within Code44.
+    </p>
+
+    <p>
+        The lesson focuses on operational readiness, communication, team
+        awareness, decision-making, server mechanics and equipment
+        accountability.
+    </p>
+
+    <p>
+        Trainers should assess whether students can combine the learning from
+        Modules 1–5 while operating within controlled FiveM simulations.
+    </p>
+
+    <div class="info-grid">
+
+        <div class="info-box">
+
+            <strong>Lesson</strong>
+
+            Module 6 — Firearms Fundamentals & Operational Readiness
+
+        </div>
+
+        <div class="info-box">
+
+            <strong>Recommended Duration</strong>
+
+            90–120 minutes
+
+        </div>
+
+        <div class="info-box">
+
+            <strong>Current Group</strong>
+
+            Two ARU students
+
+        </div>
+
+        <div class="info-box">
+
+            <strong>Delivery Style</strong>
+
+            Briefing, supervised practical exercises and debrief
+
+        </div>
+
+        <div class="info-box">
+
+            <strong>Assessment</strong>
+
+            Continuous observation and knowledge check
+
+        </div>
+
+        <div class="info-box">
+
+            <strong>Pass Standard</strong>
+
+            Satisfactory practical performance and 80% quiz score
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="card danger">
+
+    <h2>Mandatory Training Boundary</h2>
+
+    <p>
+        This lesson is designed for Code44 FiveM roleplay and simulated
+        training only.
+    </p>
+
+    <p>
+        Trainers should focus on server mechanics, communication, judgement,
+        teamwork, safety and accountability.
+    </p>
+
+    <p>
+        This lesson must not be presented as real-world firearms instruction.
+    </p>
+
+    <p>
+        If a student becomes confused, ignores a safety command or acts outside
+        the agreed exercise boundaries, the exercise must be stopped.
+    </p>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Trainer Preparation</h2>
+
+    <ul class="checklist">
+
+        <li>Confirm both students completed Module 5</li>
+
+        <li>Confirm both students have read Module 6</li>
+
+        <li>Prepare a controlled training location</li>
+
+        <li>Confirm unrelated roleplay will not interfere</li>
+
+        <li>Prepare a marked or unmarked BMW X7</li>
+
+        <li>Prepare the approved Code44 simulated-firearms setup</li>
+
+        <li>Confirm students understand trainer safety commands</li>
+
+        <li>Prepare the operational-readiness discussion</li>
+
+        <li>Prepare the communication exercise</li>
+
+        <li>Prepare the team-awareness exercise</li>
+
+        <li>Prepare the changing-threat scenario</li>
+
+        <li>Prepare the server-mechanics exercise</li>
+
+        <li>Prepare the equipment-fault scenario</li>
+
+        <li>Prepare the Module 6 knowledge check</li>
+
+        <li>Prepare an attendance record</li>
+
+        <li>Confirm the trainer assessment form is available</li>
+
+    </ul>
+
+</section>
+
+<section class="card">
+
+    <h2>Required Resources</h2>
+
+    <ul>
+
+        <li>Module 6 student page</li>
+
+        <li>Controlled in-game training location</li>
+
+        <li>Marked or unmarked BMW X7</li>
+
+        <li>Approved Code44 simulated-firearms setup</li>
+
+        <li>Trainer safety-command sheet</li>
+
+        <li>Scenario briefing notes</li>
+
+        <li>Observation and feedback notes</li>
+
+        <li>Module 6 knowledge check</li>
+
+        <li>Attendance record</li>
+
+        <li>Trainer assessment form</li>
+
+        <li>Main operational radio channel</li>
+
+        <li>ARU training channel where required</li>
+
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Learning Outcomes</h2>
+
+    <p>By the end of the lesson, each student should be able to:</p>
+
+    <ul>
+
+        <li>Explain operational readiness within Code44 ARU.</li>
+
+        <li>Prepare appropriately for a trainer-led simulated deployment.</li>
+
+        <li>Identify the standard roles of the P226 and SIG MCX.</li>
+
+        <li>Explain why specialist equipment is not used automatically.</li>
+
+        <li>Communicate clearly with their ARU partner.</li>
+
+        <li>Maintain awareness of other officers and roleplayers.</li>
+
+        <li>Separate known, reported, observed and suspected information.</li>
+
+        <li>Recognise changes in subject behaviour and threat.</li>
+
+        <li>Reassess an initial decision when circumstances change.</li>
+
+        <li>Use Code44 server mechanics sufficiently for later scenarios.</li>
+
+        <li>Respond correctly when equipment or scripts fail.</li>
+
+        <li>Maintain equipment and firearms accountability.</li>
+
+        <li>Participate constructively in a debrief.</li>
+
+        <li>Accept and apply trainer feedback.</li>
+
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Suggested Lesson Structure</h2>
+
+    <table class="delivery-table">
+
+        <tr>
+
+            <th>Stage</th>
+
+            <th>Time</th>
+
+            <th>Trainer Action</th>
+
+        </tr>
+
+        <tr>
+
+            <td>Introduction</td>
+
+            <td>5 minutes</td>
+
+            <td>
+                Explain the purpose of Module 6 and reinforce the simulation
+                boundary.
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td>Operational Readiness</td>
+
+            <td>15 minutes</td>
+
+            <td>
+                Discuss equipment, information, communication, awareness
+                and professional preparation.
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td>Firearms Roles and Selection</td>
+
+            <td>10 minutes</td>
+
+            <td>
+                Review the role of each Code44 firearm and challenge automatic
+                or inappropriate selection.
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td>Crew Communication</td>
+
+            <td>15 minutes</td>
+
+            <td>
+                Run a simple information-sharing and radio exercise.
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td>Team Awareness</td>
+
+            <td>15 minutes</td>
+
+            <td>
+                Assess environmental awareness and communication with a partner.
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td>Threat Assessment</td>
+
+            <td>15 minutes</td>
+
+            <td>
+                Deliver the information-classification and changing-threat exercise.
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td>Server Mechanics</td>
+
+            <td>15 minutes</td>
+
+            <td>
+                Confirm students can use the relevant Code44 mechanics under
+                trainer supervision.
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td>Accountability and Debrief</td>
+
+            <td>10 minutes</td>
+
+            <td>
+                Complete end-of-exercise checks, debrief students and record
+                development points.
+            </td>
+
+        </tr>
+
+    </table>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Opening Script</h2>
+
+    <div class="example-box">
+
+        <strong>Suggested wording</strong>
+
+        <p>
+            “Module 6 moves beyond basic safety and begins preparing you to
+            operate responsibly as an armed officer within Code44.
+        </p>
+
+        <p>
+            You will be assessed on much more than the server's weapon mechanics.
+            Trainers will be watching your communication, judgement, awareness,
+            teamwork and ability to respond when circumstances change.
+        </p>
+
+        <p>
+            This is not a speed exercise and it is not a competition.
+        </p>
+
+        <p>
+            Control, communication and good decisions matter more than trying
+            to look experienced.”
+        </p>
+
+    </div>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 1 — Operational Readiness</h2>
+
+    <p>
+        Explain that operational readiness is a combination of equipment,
+        information, mindset, communication and teamwork.
+    </p>
+
+    <div class="readiness-grid">
+
+        <div class="readiness-box">
+
+            <strong>Equipment</strong>
+
+            Required equipment is available, accounted for and appropriate
+            for the exercise.
+
+        </div>
+
+        <div class="readiness-box">
+
+            <strong>Information</strong>
+
+            The crew understands what has been reported and identifies what
+            remains unknown.
+
+        </div>
+
+        <div class="readiness-box">
+
+            <strong>Communication</strong>
+
+            Crew members share important information clearly.
+
+        </div>
+
+        <div class="readiness-box">
+
+            <strong>Awareness</strong>
+
+            Officers remain aware of their partner, other units and roleplayers.
+
+        </div>
+
+        <div class="readiness-box">
+
+            <strong>Professionalism</strong>
+
+            Students remain controlled and follow trainer direction.
+
+        </div>
+
+        <div class="readiness-box">
+
+            <strong>Decision-Making</strong>
+
+            Actions are based on the circumstances within the scenario.
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Operational-Readiness Discussion</h2>
+
+    <p>
+        Ask each student to explain what they would check or confirm before
+        beginning an ARU training deployment.
+    </p>
+
+    <h3>Strong answers may include:</h3>
+
+    <ul>
+
+        <li>Required PPE is present.</li>
+
+        <li>Vehicle equipment is accounted for.</li>
+
+        <li>Long firearms are secured.</li>
+
+        <li>Personal sidearms are accounted for.</li>
+
+        <li>Medical equipment is available.</li>
+
+        <li>The correct radio channel is selected.</li>
+
+        <li>The crew understands the information provided.</li>
+
+        <li>Roles or responsibilities have been discussed.</li>
+
+        <li>Important information gaps are recognised.</li>
+
+        <li>The crew understands the trainer's safety boundaries.</li>
+
+    </ul>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Exercise One — Pre-Deployment Crew Brief</h2>
+
+    <p>
+        Give both students a short fictional incident briefing.
+    </p>
+
+    <p>
+        Ask them to conduct a brief discussion covering:
+    </p>
+
+    <ul>
+
+        <li>What has been reported.</li>
+
+        <li>What remains unknown.</li>
+
+        <li>Who may be at risk.</li>
+
+        <li>What equipment is required.</li>
+
+        <li>Which radio channel will be used.</li>
+
+        <li>How information will be shared.</li>
+
+        <li>What would cause them to stop and ask for clarification.</li>
+
+    </ul>
+
+    <h3>Trainer assessment</h3>
+
+    <p>
+        Look for a clear exchange of information rather than one student
+        making every decision.
+    </p>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 2 — Code44 Firearms Roles</h2>
+
+    <div class="role-grid">
+
+        <div class="role-box">
+
+            <strong>SIG Sauer P226</strong>
+
+            Personal sidearm carried by trained and authorised ARU officers.
+
+            <span class="status-tag status-personal">
+                Personal Sidearm
+            </span>
+
+        </div>
+
+        <div class="role-box">
+
+            <strong>SIG MCX</strong>
+
+            Primary operational carbine available for authorised deployments.
+
+            <span class="status-tag status-primary">
+                Primary Carbine
+            </span>
+
+        </div>
+
+        <div class="role-box">
+
+            <strong>SIG 716</strong>
+
+            Specialist precision capability requiring an appropriate role
+            and authorisation.
+
+            <span class="status-tag status-specialist">
+                Specialist Capability
+            </span>
+
+        </div>
+
+        <div class="role-box">
+
+            <strong>Remington</strong>
+
+            Specialist breaching platform. It is not the normal primary firearm
+            for routine ARU deployments.
+
+            <span class="status-tag status-specialist">
+                Breaching Capability
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Discussion — Appropriate Selection</h2>
+
+    <p>Ask both students:</p>
+
+    <div class="example-box">
+
+        <strong>Question</strong>
+
+        Does being deployed to an armed incident automatically mean every officer
+        should remove an MCX from the vehicle?
+
+    </div>
+
+    <h3>Expected learning points</h3>
+
+    <ul>
+
+        <li>No automatic answer applies to every scenario.</li>
+
+        <li>Selection should reflect information, role and command direction.</li>
+
+        <li>Students should not choose equipment because it looks impressive.</li>
+
+        <li>Deployment decisions should be reassessed when circumstances change.</li>
+
+        <li>The P226 remains the normal personal sidearm.</li>
+
+        <li>The SIG 716 and Remington are specialist capabilities.</li>
+
+    </ul>
+
+</section>
+
+<section class="card warning">
+
+    <h2>Specialist Capability Boundary</h2>
+
+    <p>
+        Module 6 does not qualify students as precision-rifle operators or
+        breaching specialists.
+    </p>
+
+    <p>
+        The SIG 716 and Remington may be discussed as Code44 capabilities,
+        but detailed specialist instruction belongs within later qualification
+        packages.
+    </p>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 3 — Firearm Deployment and Reassessment</h2>
+
+    <p>
+        Explain that deployment of an ARU resource does not remove the need for
+        continuing judgement.
+    </p>
+
+    <p>Students should consider:</p>
+
+    <ul>
+
+        <li>Information available at the time.</li>
+
+        <li>Subject behaviour.</li>
+
+        <li>Whether a weapon has been confirmed.</li>
+
+        <li>Risk to officers and members of the public.</li>
+
+        <li>The environment.</li>
+
+        <li>The officer's assigned role.</li>
+
+        <li>Trainer or command direction.</li>
+
+        <li>New information or changing circumstances.</li>
+
+    </ul>
+
+    <div class="example-box">
+
+        <strong>Trainer Prompt</strong>
+
+        What may cause an officer to reduce their level of armed intervention
+        during a scenario?
+
+    </div>
+
+    <h3>Expected learning points</h3>
+
+    <ul>
+
+        <li>The subject complies.</li>
+
+        <li>A suspected weapon is disproved.</li>
+
+        <li>The immediate threat reduces.</li>
+
+        <li>New information changes the assessment.</li>
+
+        <li>Command direction changes.</li>
+
+        <li>The officer's role changes.</li>
+
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 4 — Crew Communication</h2>
+
+    <p>
+        Explain that students must not assume their partner has received or
+        understood the same information.
+    </p>
+
+    <p>Useful communication includes:</p>
+
+    <ul>
+
+        <li>Relevant observations.</li>
+
+        <li>Changes in subject behaviour.</li>
+
+        <li>Information received over the radio.</li>
+
+        <li>Members of the public entering the area.</li>
+
+        <li>Changes in officer positions.</li>
+
+        <li>Equipment or server problems.</li>
+
+        <li>Uncertainty or missing information.</li>
+
+        <li>Changes in the team's role.</li>
+
+    </ul>
+
+    <div class="example-box">
+
+        <strong>Key teaching point</strong>
+
+        Useful communication is clear, relevant and timely.
+
+        Constant talking may prevent important information from being heard.
+    </div>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Exercise Two — Information Relay</h2>
+
+    <p>
+        Place students in the marked or unmarked X7.
+    </p>
+
+    <p>
+        Give each student different pieces of scenario information.
+    </p>
+
+    <p>
+        They must communicate and produce a shared understanding covering:
+    </p>
+
+    <ul>
+
+        <li>The reported incident.</li>
+
+        <li>Subject description.</li>
+
+        <li>Known risks.</li>
+
+        <li>Information gaps.</li>
+
+        <li>Who else may be involved.</li>
+
+        <li>What information should be passed over the radio.</li>
+
+    </ul>
+
+    <h3>Assess for:</h3>
+
+    <ul>
+
+        <li>Listening.</li>
+
+        <li>Clear summaries.</li>
+
+        <li>Avoiding unnecessary repetition.</li>
+
+        <li>Recognising conflicting information.</li>
+
+        <li>Confirming shared understanding.</li>
+
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 5 — Radio Use</h2>
+
+    <p>
+        Code44 ARU normally operates on the main operational radio channel
+        alongside other units.
+    </p>
+
+    <p>
+        A dedicated ARU channel may be used for training or operations when
+        directed.
+    </p>
+
+    <p>Students should demonstrate:</p>
+
+    <ul>
+
+        <li>Listening before transmitting.</li>
+
+        <li>Clear and concise updates.</li>
+
+        <li>Correct use of the assigned channel.</li>
+
+        <li>Relevant information only.</li>
+
+        <li>Recognition of priority traffic.</li>
+
+        <li>Professional communication.</li>
+
+    </ul>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Radio Update Exercise</h2>
+
+    <p>
+        Provide a short developing incident and require each student to deliver
+        a concise radio update.
+    </p>
+
+    <p>The update should include:</p>
+
+    <ul>
+
+        <li>Who is transmitting.</li>
+
+        <li>Current location.</li>
+
+        <li>What has been reported or observed.</li>
+
+        <li>Who may be at risk.</li>
+
+        <li>Current action.</li>
+
+        <li>Any support required.</li>
+
+    </ul>
+
+    <p>
+        This exercise should reinforce Module 3 APSTRA learning without turning
+        into a lengthy speech.
+    </p>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 6 — Team and Environmental Awareness</h2>
+
+    <p>
+        Explain that ARU officers must remain aware of more than the subject.
+    </p>
+
+    <p>Students should monitor:</p>
+
+    <ul>
+
+        <li>Their ARU partner.</li>
+
+        <li>Other officers.</li>
+
+        <li>Roleplayers.</li>
+
+        <li>Members of the public.</li>
+
+        <li>Vehicles and obstructions.</li>
+
+        <li>Doorways or access routes.</li>
+
+        <li>Changes in the training environment.</li>
+
+        <li>Radio traffic.</li>
+
+    </ul>
+
+    <p>
+        Trainers should actively watch for tunnel vision.
+    </p>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Exercise Three — Changing Officer Positions</h2>
+
+    <p>
+        Place students in a simple controlled scene.
+    </p>
+
+    <p>
+        During the exercise, move another authorised roleplayer or officer into
+        a different position.
+    </p>
+
+    <p>Assess whether students:</p>
+
+    <ul>
+
+        <li>Notice the change.</li>
+
+        <li>Communicate the change.</li>
+
+        <li>Maintain awareness of their partner.</li>
+
+        <li>Avoid acting as though the scene is fixed.</li>
+
+        <li>Request clarification if the movement creates uncertainty.</li>
+
+    </ul>
+
+    <p>
+        Do not introduce complicated tactical movement. The purpose is awareness,
+        communication and control.
+    </p>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 7 — Classifying Information</h2>
+
+    <p>
+        Students should be able to separate four information categories.
+    </p>
+
+    <div class="principles-grid">
+
+        <div class="principle-box">
+
+            <strong>Known</strong>
+
+            Information established within the scenario.
+
+        </div>
+
+        <div class="principle-box">
+
+            <strong>Reported</strong>
+
+            Information provided by another source.
+
+        </div>
+
+        <div class="principle-box">
+
+            <strong>Observed</strong>
+
+            Information personally seen or heard by the student.
+
+        </div>
+
+        <div class="principle-box">
+
+            <strong>Suspected</strong>
+
+            Something that may be true but has not been confirmed.
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Exercise Four — Information Classification</h2>
+
+    <p>
+        Read the following information to the students:
+    </p>
+
+    <div class="example-box">
+
+        <strong>Scenario Information</strong>
+
+        A caller reports that a male in a dark jacket displayed a firearm near
+        a vehicle. An officer later sees a male in a dark jacket nearby but does
+        not see a weapon. A witness says the object may have been a phone.
+    </div>
+
+    <p>Ask students to identify:</p>
+
+    <ul>
+
+        <li>What is reported.</li>
+
+        <li>What has been personally observed.</li>
+
+        <li>What is known.</li>
+
+        <li>What remains suspected.</li>
+
+        <li>What further information may be required.</li>
+
+    </ul>
+
+    <h3>Expected learning points</h3>
+
+    <ul>
+
+        <li>The firearm report is relevant but remains reported information.</li>
+
+        <li>The matching clothing does not confirm identity.</li>
+
+        <li>No weapon has been personally observed.</li>
+
+        <li>The alternative explanation should be considered.</li>
+
+        <li>The assessment should remain flexible.</li>
+
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 8 — Changing Threats and Reassessment</h2>
+
+    <p>
+        Explain that the initial assessment must not remain fixed when new
+        information becomes available.
+    </p>
+
+    <p>Students should reassess when:</p>
+
+    <ul>
+
+        <li>Subject behaviour changes.</li>
+
+        <li>New information is received.</li>
+
+        <li>A suspected weapon is confirmed or disproved.</li>
+
+        <li>The risk increases or decreases.</li>
+
+        <li>Members of the public enter or leave.</li>
+
+        <li>Additional officers arrive.</li>
+
+        <li>Command direction changes.</li>
+
+        <li>The student's assigned role changes.</li>
+
+    </ul>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Scenario One — Threat Reduces</h2>
+
+    <p>
+        Students are responding to a report of an armed subject.
+    </p>
+
+    <p>
+        During the controlled scenario, the subject follows every instruction,
+        keeps their hands visible and moves away from the suspected item.
+    </p>
+
+    <p>Ask:</p>
+
+    <ul>
+
+        <li>How has the risk changed?</li>
+
+        <li>What controls may still be required?</li>
+
+        <li>What actions may no longer be necessary?</li>
+
+        <li>What should be communicated to the partner and trainer?</li>
+
+        <li>Why is de-escalation still a successful outcome?</li>
+
+    </ul>
+
+    <h3>Expected learning points</h3>
+
+    <ul>
+
+        <li>Compliance may reduce the immediacy of the threat.</li>
+
+        <li>The scene still requires safe control.</li>
+
+        <li>Actions should reflect the reduced risk.</li>
+
+        <li>Communication should explain the change.</li>
+
+        <li>Force is not the measure of operational success.</li>
+
+    </ul>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Scenario Two — Threat Increases</h2>
+
+    <p>
+        During a controlled scenario, new information confirms a credible
+        weapon and the subject begins behaving aggressively.
+    </p>
+
+    <p>Ask:</p>
+
+    <ul>
+
+        <li>What has changed?</li>
+
+        <li>Who is now at greater risk?</li>
+
+        <li>What information should be communicated?</li>
+
+        <li>Does the crew need additional support?</li>
+
+        <li>How should the earlier plan be reviewed?</li>
+
+    </ul>
+
+    <h3>Expected learning points</h3>
+
+    <ul>
+
+        <li>The information and behaviour have changed materially.</li>
+
+        <li>The crew must reassess immediately.</li>
+
+        <li>Relevant information should be shared promptly.</li>
+
+        <li>Support or command direction may be required.</li>
+
+        <li>The students should remain controlled rather than rushing.</li>
+
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 9 — Code44 Server Mechanics</h2>
+
+    <p>
+        Trainers should ensure students understand the Code44 mechanics they
+        will encounter in later operational scenarios.
+    </p>
+
+    <p>Assess whether students can:</p>
+
+    <ul>
+
+        <li>Follow trainer directions while using the relevant systems.</li>
+
+        <li>Use the appropriate controls during simulation.</li>
+
+        <li>Remain aware while interacting with equipment.</li>
+
+        <li>Recognise when an action has not worked.</li>
+
+        <li>Communicate a technical problem promptly.</li>
+
+        <li>Return to a trainer-directed safe state.</li>
+
+    </ul>
+
+    <p>
+        Trainers should teach the current server mechanics only. If scripts
+        change, the lesson should be updated.
+    </p>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Exercise Five — Supervised Mechanics Familiarisation</h2>
+
+    <p>
+        Each student should complete a controlled familiarisation exercise using
+        the current Code44 systems.
+    </p>
+
+    <p>The trainer should assess:</p>
+
+    <ul>
+
+        <li>Listening to instructions.</li>
+
+        <li>Controlled behaviour.</li>
+
+        <li>Communication when something does not work.</li>
+
+        <li>Awareness of the other student.</li>
+
+        <li>Response to stop or safety commands.</li>
+
+        <li>Ability to apply correction.</li>
+
+    </ul>
+
+    <p>
+        This exercise is about safe and reliable use of the server mechanics,
+        not speed or competitive shooting.
+    </p>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Scenario Three — Script Failure</h2>
+
+    <p>
+        During the practical exercise, a weapon animation or inventory function
+        does not behave as expected.
+    </p>
+
+    <p>Ask:</p>
+
+    <ul>
+
+        <li>Should the student continue?</li>
+
+        <li>What should be communicated?</li>
+
+        <li>Who decides whether the exercise restarts?</li>
+
+        <li>Is the technical problem automatically a student failure?</li>
+
+    </ul>
+
+    <h3>Expected learning points</h3>
+
+    <ul>
+
+        <li>The student should stop where appropriate.</li>
+
+        <li>The issue should be reported clearly.</li>
+
+        <li>The trainer controls the restart.</li>
+
+        <li>A technical fault is not automatically a student failure.</li>
+
+        <li>Ignoring or concealing the problem may become a training issue.</li>
+
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 10 — Post-Exercise Accountability</h2>
+
+    <p>
+        The exercise does not end until equipment and students are accounted for.
+    </p>
+
+    <p>Students should confirm:</p>
+
+    <ul class="checklist">
+
+        <li>All issued equipment is accounted for</li>
+
+        <li>Long firearms have been returned where required</li>
+
+        <li>Vehicle firearms are secured</li>
+
+        <li>Personal sidearms remain accounted for</li>
+
+        <li>Equipment or script faults have been reported</li>
+
+        <li>The training area has been checked</li>
+
+        <li>Relevant information has been passed to the trainer</li>
+
+        <li>Both students are ready for the debrief</li>
+
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 11 — Debrief</h2>
+
+    <p>
+        Debrief each student individually and then as a crew.
+    </p>
+
+    <p>Ask each student:</p>
+
+    <ul>
+
+        <li>What information influenced your decisions?</li>
+
+        <li>What did your partner communicate effectively?</li>
+
+        <li>What changed during the scenario?</li>
+
+        <li>Did your plan change?</li>
+
+        <li>What went well?</li>
+
+        <li>What would you improve?</li>
+
+        <li>What feedback will you apply next time?</li>
+
+    </ul>
+
+    <p>
+        Trainers should focus on reasoning, communication and development rather
+        than simply revealing a preferred answer.
+    </p>
+
+</section>
+
+<section class="card assessment">
+
+    <h2>Practical Assessment Standard</h2>
+
+    <p>
+        A satisfactory Module 6 performance should demonstrate:
+    </p>
+
+    <ul>
+
+        <li>Professional preparation.</li>
+
+        <li>Compliance with Module 5 safety standards.</li>
+
+        <li>Clear communication with the ARU partner.</li>
+
+        <li>Awareness of other officers and roleplayers.</li>
+
+        <li>Recognition of important information.</li>
+
+        <li>Separation of fact and assumption.</li>
+
+        <li>Recognition of changing circumstances.</li>
+
+        <li>Appropriate response to trainer commands.</li>
+
+        <li>Sufficient understanding of Code44 mechanics.</li>
+
+        <li>Honest reporting of faults or mistakes.</li>
+
+        <li>Equipment accountability.</li>
+
+        <li>Constructive participation in the debrief.</li>
+
+    </ul>
+
+</section>
+
+<section class="card assessment">
+
+    <h2>Review Questions</h2>
+
+    <ol>
+
+        <li>What does operational readiness mean?</li>
+
+        <li>How are Code44 ARVs normally crewed?</li>
+
+        <li>What is the normal role of the P226?</li>
+
+        <li>What is the normal role of the SIG MCX?</li>
+
+        <li>Why are the SIG 716 and Remington treated as specialist capabilities?</li>
+
+        <li>Does deployment to an armed incident automatically determine firearm selection?</li>
+
+        <li>Why is crew communication important?</li>
+
+        <li>What is the difference between known, reported, observed and suspected information?</li>
+
+        <li>Why must officers continually reassess?</li>
+
+        <li>What should happen if the Code44 server mechanics fail?</li>
+
+        <li>Where must long firearms be stored when no longer required?</li>
+
+        <li>What should happen after the practical exercise?</li>
+
+    </ol>
+
+</section>
+
+<section class="card assessment">
+
+    <h2>Expected Answers</h2>
+
+    <ol>
+
+        <li>
+            Being appropriately equipped, informed, prepared, communicative
+            and capable of working effectively as part of the crew.
+        </li>
+
+        <li>
+            Normally double-crewed by trained ARU officers.
+        </li>
+
+        <li>
+            Personal sidearm carried by trained and authorised ARU officers.
+        </li>
+
+        <li>
+            Primary operational carbine available for authorised deployment.
+        </li>
+
+        <li>
+            The SIG 716 provides a precision capability and the Remington is
+            a dedicated breaching platform. Both require an appropriate
+            specialist role or authority.
+        </li>
+
+        <li>
+            No. Selection depends upon information, role, circumstances and
+            trainer or command direction.
+        </li>
+
+        <li>
+            Partners may not have seen, heard or understood the same information.
+        </li>
+
+        <li>
+            Known information is established, reported information comes from
+            another source, observed information is personally seen or heard,
+            and suspected information remains unconfirmed.
+        </li>
+
+        <li>
+            Information, behaviour, risk and command direction can change.
+        </li>
+
+        <li>
+            Stop where appropriate, communicate the issue and follow trainer direction.
+        </li>
+
+        <li>
+            Within the designated rear firearms-storage area of the ARV.
+        </li>
+
+        <li>
+            Account for and secure equipment, report problems and participate
+            in the debrief.
+        </li>
+
+    </ol>
+
+</section>
+
+<section class="card assessment">
+
+    <h2>Instructor Observation Criteria</h2>
+
+    <div class="rating-grid">
+
+        <div class="rating-box">
+
+            <strong>Preparation</strong>
+
+            Arrives ready and understands the exercise.
+
+        </div>
+
+        <div class="rating-box">
+
+            <strong>Safety</strong>
+
+            Maintains Module 5 safety standards.
+
+        </div>
+
+        <div class="rating-box">
+
+            <strong>Communication</strong>
+
+            Shares relevant information clearly.
+
+        </div>
+
+        <div class="rating-box">
+
+            <strong>Team Awareness</strong>
+
+            Remains aware of their ARU partner and others.
+
+        </div>
+
+        <div class="rating-box">
+
+            <strong>Information Assessment</strong>
+
+            Separates facts, reports, observations and suspicions.
+
+        </div>
+
+        <div class="rating-box">
+
+            <strong>Reassessment</strong>
+
+            Recognises and responds to changing circumstances.
+
+        </div>
+
+        <div class="rating-box">
+
+            <strong>Server Mechanics</strong>
+
+            Uses Code44 systems sufficiently and reports problems.
+
+        </div>
+
+        <div class="rating-box">
+
+            <strong>Accountability</strong>
+
+            Keeps equipment accounted for and reports mistakes.
+
+        </div>
+
+        <div class="rating-box">
+
+            <strong>Professionalism</strong>
+
+            Remains controlled and accepts feedback.
+
+        </div>
+
+        <div class="rating-box">
+
+            <strong>Debrief</strong>
+
+            Reflects honestly and identifies development.
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="card assessment">
+
+    <h2>Immediate Stop Criteria</h2>
+
+    <p>
+        Stop the exercise immediately if a student:
+    </p>
+
+    <ul>
+
+        <li>Ignores a trainer safety command.</li>
+
+        <li>Continues while confused.</li>
+
+        <li>Acts outside the agreed simulation boundary.</li>
+
+        <li>Displays repeated poor awareness.</li>
+
+        <li>Fails to communicate a serious script or equipment problem.</li>
+
+        <li>Behaves recklessly.</li>
+
+        <li>Uses specialist equipment without authority.</li>
+
+        <li>Refuses to follow trainer direction.</li>
+
+        <li>Demonstrates conduct that may compromise the other student.</li>
+
+    </ul>
+
+</section>
+
+<section class="card assessment">
+
+    <h2>Module Outcomes</h2>
+
+    <h3>Pass</h3>
+
+    <p>
+        The student demonstrates satisfactory safety, communication, awareness,
+        judgement, server-mechanics competence and equipment accountability.
+    </p>
+
+    <h3>Pass with Development Points</h3>
+
+    <p>
+        The student may progress but must address limited issues identified
+        during practical observation.
+    </p>
+
+    <h3>Remedial</h3>
+
+    <p>
+        The student requires further coaching or another controlled exercise
+        before progressing to ARV deployment training.
+    </p>
+
+    <h3>Incomplete</h3>
+
+    <p>
+        Required reading, attendance, practical work or assessment remains outstanding.
+    </p>
+
+    <h3>Unsuccessful</h3>
+
+    <p>
+        The student has not demonstrated the required standard after appropriate
+        training, feedback and reassessment.
+    </p>
+
+</section>
+
+<section class="card warning">
+
+    <h2>Common Student Errors</h2>
+
+    <ul>
+
+        <li>Rushing to appear confident.</li>
+
+        <li>Allowing one student to make every decision.</li>
+
+        <li>Failing to communicate information to the partner.</li>
+
+        <li>Talking constantly and missing important radio traffic.</li>
+
+        <li>Treating reported information as confirmed fact.</li>
+
+        <li>Failing to notice changes in subject behaviour.</li>
+
+        <li>Continuing with an outdated plan.</li>
+
+        <li>Focusing only on the subject and losing team awareness.</li>
+
+        <li>Ignoring a server-mechanics problem.</li>
+
+        <li>Forgetting equipment accountability after the exercise.</li>
+
+        <li>Becoming defensive during the debrief.</li>
+
+    </ul>
+
+</section>
+
+<section class="card warning">
+
+    <h2>Common Trainer Errors</h2>
+
+    <ul>
+
+        <li>Introducing hard stops, CQB or complex tactics too early.</li>
+
+        <li>Turning the exercise into a shooting competition.</li>
+
+        <li>Assessing speed rather than control and judgement.</li>
+
+        <li>Giving one student all the information.</li>
+
+        <li>Allowing one student to dominate the crew.</li>
+
+        <li>Failing to challenge unsupported assumptions.</li>
+
+        <li>Making the scenario too complicated.</li>
+
+        <li>Failing to assess both students individually.</li>
+
+        <li>Providing the expected answer before the debrief.</li>
+
+        <li>Failing to record development points.</li>
+
+        <li>Using outdated Code44 mechanics.</li>
+
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Closing Script</h2>
+
+    <div class="example-box">
+
+        <strong>Suggested wording</strong>
+
+        <p>
+            “That concludes Module 6.
+        </p>
+
+        <p>
+            You have now moved beyond basic safety and started demonstrating
+            whether you can operate responsibly as an armed officer within
+            Code44.
+        </p>
+
+        <p>
+            The standard is not based solely on how quickly you complete a
+            scenario or how accurately you use the server mechanics.
+        </p>
+
+        <p>
+            Communication, awareness, judgement, reassessment and accountability
+            will remain central throughout the rest of the Academy.
+        </p>
+
+        <p>
+            Module 7 will place these skills into ARV deployments and developing
+            armed incidents.”
+        </p>
+
+    </div>
+
+</section>
+
+<section class="card">
+
+    <h2>Trainer Completion Checklist</h2>
+
+    <ul class="checklist">
+
+        <li>Both students attended</li>
+
+        <li>The Module 6 boundary was explained</li>
+
+        <li>Operational readiness was discussed</li>
+
+        <li>The pre-deployment crew brief was completed</li>
+
+        <li>Code44 firearms roles were reviewed</li>
+
+        <li>Appropriate selection was discussed</li>
+
+        <li>Crew communication was assessed</li>
+
+        <li>The information-relay exercise was completed</li>
+
+        <li>Radio updates were assessed</li>
+
+        <li>Team awareness was assessed</li>
+
+        <li>Information classification was completed</li>
+
+        <li>Threat reduction was discussed</li>
+
+        <li>Threat escalation was discussed</li>
+
+        <li>Server-mechanics familiarisation was completed</li>
+
+        <li>The script-failure scenario was discussed</li>
+
+        <li>Post-exercise accountability was completed</li>
+
+        <li>Both students participated in the debrief</li>
+
+        <li>Review questions were answered</li>
+
+        <li>Individual feedback was recorded</li>
+
+        <li>Students were directed to the Module 6 quiz</li>
+
+        <li>Module outcomes were recorded</li>
+
+    </ul>
+
+    <div class="button-row">
+
+        <a class="button"
+           href="PASTE-TRAINER-MODULE-6-ASSESSMENT-FORM-LINK-HERE"
+           target="_blank">
+
+            Record Module 6 Outcome
+
+        </a>
+
+        <a class="button secondary"
+           href="trainers.html">
+
+            Return to Trainers Area
+
+        </a>
+
+    </div>
+
+</section>
+
+<footer class="footer">
+
+    Code44 Police Service • Armed Response Unit Academy<br>
+
+    Trainer Module 6 — Firearms Fundamentals & Operational Readiness • Cohort 001
+
+</footer>
+
+</div>
+
+</body>
+
+</html>
