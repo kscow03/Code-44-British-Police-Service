@@ -1,0 +1,2347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Trainer Module 7 - ARV Deployment and Armed Incident Response</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    background:#05080d;
+    color:white;
+    font-family:Segoe UI,Arial,sans-serif;
+    line-height:1.65;
+}
+
+.page-container{
+    width:90%;
+    max-width:1150px;
+    margin:0 auto;
+    padding:35px 0 60px;
+}
+
+.navbar{
+    background:#0b111b;
+    border:1px solid #16315c;
+    border-radius:8px;
+    padding:15px;
+    margin-bottom:20px;
+}
+
+.navbar a{
+    color:#4d9dff;
+    text-decoration:none;
+    font-weight:bold;
+    margin:0 5px;
+}
+
+.navbar a:hover,
+.back-link:hover{
+    color:white;
+}
+
+.back-link{
+    display:inline-block;
+    margin-bottom:20px;
+    color:#4d9dff;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.hero{
+    background:
+        linear-gradient(rgba(2,7,14,.80),rgba(2,7,14,.94)),
+        url('arv-photo.png');
+
+    background-size:cover;
+    background-position:center;
+
+    border:1px solid #16315c;
+    border-radius:12px;
+
+    padding:58px 30px;
+    text-align:center;
+}
+
+.hero h1{
+    margin:0 0 10px;
+    color:#4d9dff;
+    font-size:2.5rem;
+}
+
+.hero p{
+    margin:5px 0;
+    color:#d3dbea;
+}
+
+.badge{
+    display:inline-block;
+
+    margin-top:15px;
+    padding:7px 14px;
+
+    background:#3a2a0d;
+    border:1px solid #a8761e;
+    border-radius:20px;
+
+    color:#f2c76f;
+    font-weight:bold;
+}
+
+h1,
+h2,
+h3{
+    color:#4d9dff;
+}
+
+.card{
+    background:#0b111b;
+    border:1px solid #16315c;
+    border-radius:9px;
+
+    padding:22px;
+    margin-top:20px;
+
+    transition:.25s;
+}
+
+.card:hover{
+    border-color:#4d9dff;
+}
+
+.instructor{
+    border-left:5px solid #9c6ade;
+}
+
+.activity{
+    border-left:5px solid #4da86b;
+}
+
+.assessment{
+    border-left:5px solid #4d9dff;
+}
+
+.warning{
+    border-left:5px solid #e3a629;
+}
+
+.danger{
+    border-left:5px solid #d84d5f;
+}
+
+.success{
+    border-left:5px solid #4da86b;
+}
+
+.info-grid,
+.rating-grid,
+.principles-grid,
+.role-grid,
+.response-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+    gap:15px;
+    margin-top:18px;
+}
+
+.info-box,
+.rating-box,
+.principle-box,
+.role-box,
+.response-box,
+.example-box{
+    background:#08111d;
+    border:1px solid #16315c;
+    border-radius:8px;
+    padding:17px;
+}
+
+.info-box strong,
+.rating-box strong,
+.principle-box strong,
+.role-box strong,
+.response-box strong,
+.example-box strong{
+    display:block;
+    color:#4d9dff;
+    margin-bottom:6px;
+}
+
+.delivery-table,
+.assessment-table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:15px;
+}
+
+.delivery-table th,
+.delivery-table td,
+.assessment-table th,
+.assessment-table td{
+    border:1px solid #16315c;
+    padding:12px;
+    text-align:left;
+    vertical-align:top;
+}
+
+.delivery-table th,
+.assessment-table th{
+    background:#10203a;
+    color:#8fc2ff;
+}
+
+.checklist{
+    list-style:none;
+    padding-left:0;
+}
+
+.checklist li{
+    background:#08111d;
+    border:1px solid #16315c;
+    border-radius:7px;
+
+    padding:13px;
+    margin-top:9px;
+}
+
+.checklist li::before{
+    content:"☐";
+    color:#4d9dff;
+    font-weight:bold;
+    margin-right:10px;
+}
+
+ul,
+ol{
+    padding-left:22px;
+}
+
+li{
+    margin-bottom:7px;
+}
+
+.button-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:20px;
+}
+
+.button{
+    display:inline-block;
+
+    padding:12px 18px;
+
+    background:#4d9dff;
+    color:#05080d;
+
+    border:none;
+    border-radius:6px;
+
+    text-decoration:none;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.button:hover{
+    background:#77b5ff;
+}
+
+.button.secondary{
+    background:#101b2c;
+    color:#4d9dff;
+    border:1px solid #24538b;
+}
+
+.footer{
+    margin-top:30px;
+    padding-top:20px;
+
+    border-top:1px solid #16315c;
+
+    color:#8f9bad;
+    text-align:center;
+    font-size:.9rem;
+}
+
+@media(max-width:700px){
+
+    .page-container{
+        width:92%;
+    }
+
+    .hero{
+        padding:42px 18px;
+    }
+
+    .hero h1{
+        font-size:2rem;
+    }
+
+    .navbar{
+        line-height:2;
+    }
+
+    .button{
+        width:100%;
+        text-align:center;
+    }
+
+    .delivery-table,
+    .assessment-table{
+        font-size:.9rem;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<script>
+
+if (sessionStorage.getItem("trainerAccess") !== "granted") {
+
+    window.location.replace("trainers-login.html");
+
+}
+
+</script>
+
+<div class="page-container">
+
+<nav class="navbar">
+
+    <a href="aru-members.html">
+        Internal Database
+    </a>
+
+    |
+
+    <a href="academy.html">
+        ARU Academy
+    </a>
+
+    |
+
+    <a href="trainers.html">
+        Trainers Area
+    </a>
+
+    |
+
+    <a href="trainer-module5.html">
+        Module 5
+    </a>
+
+    |
+
+    <a href="trainer-module6.html">
+        Module 6
+    </a>
+
+    |
+
+    <a href="trainer-module7.html" style="color:white;">
+        Module 7
+    </a>
+
+</nav>
+
+<a class="back-link" href="trainers.html">
+    ← Return to Trainers Area
+</a>
+
+<header class="hero">
+
+    <h1>Trainer Module 7 — ARV Deployment & Armed Incident Response</h1>
+
+    <p>Instructor Lesson Plan</p>
+
+    <p>ARU Academy • Cohort 001</p>
+
+    <span class="badge">
+        Trainer-Only Resource
+    </span>
+
+</header>
+
+<section class="card">
+
+    <h2>Lesson Overview</h2>
+
+    <p>
+        Module 7 introduces students to deployment as part of a double-crewed
+        Code44 Armed Response Vehicle.
+    </p>
+
+    <p>
+        Students must demonstrate that they can receive and assess deployment
+        information, communicate as a crew, prepare while travelling, conduct
+        an initial arrival assessment and provide clear updates during a
+        developing armed incident.
+    </p>
+
+    <p>
+        This lesson builds upon the safety, communication, decision-making and
+        operational-readiness standards established throughout Modules 1–6.
+    </p>
+
+    <div class="info-grid">
+
+        <div class="info-box">
+
+            <strong>Lesson</strong>
+
+            Module 7 — ARV Deployment & Armed Incident Response
+
+        </div>
+
+        <div class="info-box">
+
+            <strong>Recommended Duration</strong>
+
+            120–150 minutes
+
+        </div>
+
+        <div class="info-box">
+
+            <strong>Current Group</strong>
+
+            Two ARU students
+
+        </div>
+
+        <div class="info-box">
+
+            <strong>Delivery Style</strong>
+
+            Briefing, ARV exercises, scenarios and debrief
+
+        </div>
+
+        <div class="info-box">
+
+            <strong>Assessment</strong>
+
+            Continuous practical observation and knowledge check
+
+        </div>
+
+        <div class="info-box">
+
+            <strong>Pass Standard</strong>
+
+            Satisfactory crew performance and 80% knowledge-check score
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="card danger">
+
+    <h2>Mandatory Training Boundary</h2>
+
+    <p>
+        Module 7 is designed for Code44 FiveM roleplay and controlled
+        scenario-based training.
+    </p>
+
+    <p>
+        This module does not qualify students in TPAC, hard stops,
+        smash-and-grab tactics, dynamic building entry, breaching or specialist
+        firearms roles.
+    </p>
+
+    <p>
+        Trainers must focus upon information handling, crew communication,
+        arrival assessment, early scene control, APSTRA, command updates,
+        reassessment and incident handover.
+    </p>
+
+    <p>
+        Any exercise must stop if a student ignores a safety command, becomes
+        confused or acts outside the agreed scenario boundaries.
+    </p>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Trainer Preparation</h2>
+
+    <ul class="checklist">
+
+        <li>Confirm both students completed Module 6</li>
+
+        <li>Confirm both students have read Module 7</li>
+
+        <li>Prepare a marked or unmarked BMW X7</li>
+
+        <li>Prepare a suitable deployment route</li>
+
+        <li>Prepare a controlled incident location</li>
+
+        <li>Confirm unrelated roleplay will not interfere</li>
+
+        <li>Prepare the main operational radio channel</li>
+
+        <li>Prepare the ARU training channel where required</li>
+
+        <li>Prepare roleplayers or supporting officers where available</li>
+
+        <li>Prepare the deployment-information exercise</li>
+
+        <li>Prepare the crew-briefing exercise</li>
+
+        <li>Prepare the arrival-assessment exercise</li>
+
+        <li>Prepare the APSTRA exercise</li>
+
+        <li>Prepare the support-request exercise</li>
+
+        <li>Prepare the changing-circumstances scenarios</li>
+
+        <li>Prepare the post-incident handover exercise</li>
+
+        <li>Prepare the Module 7 knowledge check</li>
+
+        <li>Prepare an attendance record</li>
+
+        <li>Confirm the trainer assessment form is available</li>
+
+    </ul>
+
+</section>
+
+<section class="card">
+
+    <h2>Required Resources</h2>
+
+    <ul>
+
+        <li>Module 7 student page</li>
+
+        <li>Marked or unmarked BMW X7</li>
+
+        <li>Controlled in-game deployment route</li>
+
+        <li>Controlled incident location</li>
+
+        <li>Approved Code44 simulated-firearms setup</li>
+
+        <li>Main operational radio channel</li>
+
+        <li>ARU training channel where directed</li>
+
+        <li>Scenario briefing notes</li>
+
+        <li>Supporting roleplayers where available</li>
+
+        <li>Observation and feedback notes</li>
+
+        <li>Module 7 knowledge check</li>
+
+        <li>Attendance record</li>
+
+        <li>Trainer assessment form</li>
+
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Learning Outcomes</h2>
+
+    <p>By the end of the lesson, each student should be able to:</p>
+
+    <ul>
+
+        <li>Explain the role of an Armed Response Vehicle.</li>
+
+        <li>Identify relevant information before deployment.</li>
+
+        <li>Recognise gaps or uncertainty in the initial report.</li>
+
+        <li>Conduct an effective ARV crew briefing.</li>
+
+        <li>Share deployment responsibilities between both officers.</li>
+
+        <li>Use travel time to prepare for arrival.</li>
+
+        <li>Conduct an initial assessment on arrival.</li>
+
+        <li>Identify risks to officers, subjects and members of the public.</li>
+
+        <li>Explain the purpose of early scene control.</li>
+
+        <li>Provide a concise APSTRA or radio update.</li>
+
+        <li>Request suitable resources and explain why they are needed.</li>
+
+        <li>Work appropriately with response, RPU, NPAS, K9 and medical support.</li>
+
+        <li>Recognise and respond to changing circumstances.</li>
+
+        <li>Provide a clear incident handover.</li>
+
+        <li>Participate honestly in a debrief.</li>
+
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Suggested Lesson Structure</h2>
+
+    <table class="delivery-table">
+
+        <tr>
+
+            <th>Stage</th>
+
+            <th>Time</th>
+
+            <th>Trainer Action</th>
+
+        </tr>
+
+        <tr>
+
+            <td>Introduction and Module Boundary</td>
+
+            <td>10 minutes</td>
+
+            <td>
+                Explain the purpose of Module 7 and identify the specialist
+                tactics that are not included.
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td>Role of the ARV</td>
+
+            <td>10 minutes</td>
+
+            <td>
+                Explain spontaneous and planned ARV deployment responsibilities.
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td>Deployment Information</td>
+
+            <td>15 minutes</td>
+
+            <td>
+                Teach students to identify known, reported, observed and
+                missing information.
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td>Crew Responsibilities</td>
+
+            <td>15 minutes</td>
+
+            <td>
+                Explain shared responsibility between the driver and passenger.
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td>Travel and Crew Briefing</td>
+
+            <td>15 minutes</td>
+
+            <td>
+                Run a moving or stationary ARV crew-briefing exercise.
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td>Arrival Assessment</td>
+
+            <td>20 minutes</td>
+
+            <td>
+                Run a controlled arrival and initial-assessment exercise.
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td>Communications and APSTRA</td>
+
+            <td>15 minutes</td>
+
+            <td>
+                Assess concise radio updates and requests for support.
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td>Changing Circumstances</td>
+
+            <td>20 minutes</td>
+
+            <td>
+                Run threat-reduction and threat-escalation scenarios.
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td>Resolution and Handover</td>
+
+            <td>15 minutes</td>
+
+            <td>
+                Assess post-incident responsibilities and handover quality.
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td>Debrief and Review</td>
+
+            <td>15 minutes</td>
+
+            <td>
+                Debrief both students, record feedback and explain the knowledge check.
+            </td>
+
+        </tr>
+
+    </table>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Opening Script</h2>
+
+    <div class="example-box">
+
+        <strong>Suggested wording</strong>
+
+        <p>
+            “Module 7 moves you into deployment as part of a double-crewed
+            Armed Response Vehicle.
+        </p>
+
+        <p>
+            You will be assessed on how you receive information, communicate
+            with your crew partner, prepare while travelling and assess the
+            incident when you arrive.
+        </p>
+
+        <p>
+            The aim is not to reach the incident and immediately force a
+            tactical outcome.
+        </p>
+
+        <p>
+            Good ARV officers establish what is happening, understand who is
+            at risk, communicate clearly and use proportionate options as the
+            incident develops.”
+        </p>
+
+    </div>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 1 — Role of the ARV</h2>
+
+    <p>
+        Explain that an ARV provides a mobile armed-response capability for
+        spontaneous and planned incidents.
+    </p>
+
+    <p>ARV crews may be deployed to:</p>
+
+    <ul>
+
+        <li>Reports involving firearms or suspected firearms.</li>
+
+        <li>High-risk incidents requiring trained armed support.</li>
+
+        <li>Incidents involving an immediate threat to officers or the public.</li>
+
+        <li>Developing incidents requiring early containment and assessment.</li>
+
+        <li>Planned operations authorised by firearms command.</li>
+
+        <li>Incidents requiring specialist equipment or medical capability.</li>
+
+    </ul>
+
+    <div class="example-box">
+
+        <strong>Trainer Prompt</strong>
+
+        Does deployment of an ARV automatically mean that force or specialist
+        tactics will be required?
+
+    </div>
+
+    <h3>Expected learning points</h3>
+
+    <ul>
+
+        <li>No automatic outcome applies.</li>
+
+        <li>The crew must assess current circumstances.</li>
+
+        <li>The initial report may change.</li>
+
+        <li>Communication and proportionate decision-making remain essential.</li>
+
+        <li>A controlled resolution without force remains a successful outcome.</li>
+
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 2 — Deployment Information</h2>
+
+    <p>
+        Students should identify the following before arrival:
+    </p>
+
+    <div class="principles-grid">
+
+        <div class="principle-box">
+
+            <strong>Incident</strong>
+
+            What has happened and why armed support was requested.
+
+        </div>
+
+        <div class="principle-box">
+
+            <strong>Persons</strong>
+
+            Suspects, victims, witnesses, officers and vulnerable persons.
+
+        </div>
+
+        <div class="principle-box">
+
+            <strong>Location</strong>
+
+            Exact location, direction of travel and relevant access information.
+
+        </div>
+
+        <div class="principle-box">
+
+            <strong>Weapon</strong>
+
+            Whether the item is reported, described, observed, confirmed or suspected.
+
+        </div>
+
+        <div class="principle-box">
+
+            <strong>Behaviour</strong>
+
+            What the subject is currently doing.
+
+        </div>
+
+        <div class="principle-box">
+
+            <strong>Risk</strong>
+
+            Who may be at risk and why.
+
+        </div>
+
+        <div class="principle-box">
+
+            <strong>Resources</strong>
+
+            Units and capabilities already available.
+
+        </div>
+
+        <div class="principle-box">
+
+            <strong>Unknowns</strong>
+
+            Important information that has not yet been established.
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Exercise One — Deployment Information Classification</h2>
+
+    <div class="example-box">
+
+        <strong>Scenario Briefing</strong>
+
+        A caller reports seeing a male carrying what appeared to be a handgun
+        outside a convenience store. The male is described as wearing a dark
+        jacket and entering a silver vehicle. Response officers are travelling,
+        but nobody has yet confirmed the weapon or vehicle registration.
+    </div>
+
+    <p>Ask students to identify:</p>
+
+    <ul>
+
+        <li>What has been reported.</li>
+
+        <li>What has been confirmed.</li>
+
+        <li>What remains unknown.</li>
+
+        <li>Who may be at risk.</li>
+
+        <li>What further information they would request.</li>
+
+        <li>Which details must not be communicated as confirmed fact.</li>
+
+    </ul>
+
+    <h3>Expected learning points</h3>
+
+    <ul>
+
+        <li>The firearm is reported but not confirmed.</li>
+
+        <li>The vehicle and registration remain unconfirmed.</li>
+
+        <li>The subject's current location may have changed.</li>
+
+        <li>The store, public and attending officers may be at risk.</li>
+
+        <li>Students should seek updates without inventing missing information.</li>
+
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 3 — ARV Crew Responsibilities</h2>
+
+    <p>
+        Explain that responsibilities may change according to the scenario,
+        but both officers remain actively involved.
+    </p>
+
+    <div class="role-grid">
+
+        <div class="role-box">
+
+            <strong>Driver</strong>
+
+            Maintains safe vehicle operation, monitors updates and positions
+            the vehicle according to the current information and direction.
+
+        </div>
+
+        <div class="role-box">
+
+            <strong>Passenger / Crew Partner</strong>
+
+            Supports navigation, monitors radio information, communicates
+            updates and helps prepare the crew.
+
+        </div>
+
+        <div class="role-box">
+
+            <strong>Contact Responsibility</strong>
+
+            Where assigned, communicates with Force Control, other officers,
+            witnesses or the subject.
+
+        </div>
+
+        <div class="role-box">
+
+            <strong>Cover and Wider Awareness</strong>
+
+            Where assigned, maintains awareness of changing risks and communicates
+            relevant observations.
+
+        </div>
+
+    </div>
+
+    <p>
+        Roles should support teamwork rather than prevent either officer from
+        raising important information.
+    </p>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Exercise Two — Shared Crew Briefing</h2>
+
+    <p>
+        Seat both students within the ARV and provide a short incident briefing.
+    </p>
+
+    <p>
+        Ask them to produce a shared crew plan covering:
+    </p>
+
+    <ul>
+
+        <li>What has been reported.</li>
+
+        <li>What remains unknown.</li>
+
+        <li>The immediate risk.</li>
+
+        <li>Current resources.</li>
+
+        <li>The radio channel in use.</li>
+
+        <li>Who will monitor communications.</li>
+
+        <li>Who will deliver the initial update.</li>
+
+        <li>What their priority will be on arrival.</li>
+
+    </ul>
+
+    <h3>Assess for:</h3>
+
+    <ul>
+
+        <li>Both students contributing.</li>
+
+        <li>Clear summary of information.</li>
+
+        <li>Recognition of uncertainty.</li>
+
+        <li>Shared understanding.</li>
+
+        <li>No unnecessary tactical detail before arrival.</li>
+
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 4 — Travelling to the Incident</h2>
+
+    <p>
+        Explain that travel time should be used constructively.
+    </p>
+
+    <p>The crew should:</p>
+
+    <ul>
+
+        <li>Monitor radio updates.</li>
+
+        <li>Confirm the location.</li>
+
+        <li>Clarify the subject and vehicle description.</li>
+
+        <li>Identify whether the weapon remains reported or has been confirmed.</li>
+
+        <li>Identify officers and members of the public at risk.</li>
+
+        <li>Discuss relevant supporting resources.</li>
+
+        <li>Recognise changes in the incident.</li>
+
+        <li>Review the immediate priority for arrival.</li>
+
+    </ul>
+
+    <div class="example-box">
+
+        <strong>Trainer Question</strong>
+
+        What has changed since the original deployment message, and does it
+        affect the crew's immediate priority?
+
+    </div>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Exercise Three — Developing Radio Information</h2>
+
+    <p>
+        Provide new pieces of information while the students are travelling
+        or roleplaying travel to the incident.
+    </p>
+
+    <p>Possible updates include:</p>
+
+    <ul>
+
+        <li>The subject has changed location.</li>
+
+        <li>The vehicle description has been updated.</li>
+
+        <li>A weapon has been seen by an officer.</li>
+
+        <li>The caller has withdrawn part of the original information.</li>
+
+        <li>A vulnerable person may be involved.</li>
+
+        <li>Response officers have arrived.</li>
+
+    </ul>
+
+    <p>Assess whether students:</p>
+
+    <ul>
+
+        <li>Notice the change.</li>
+
+        <li>Share it with their partner.</li>
+
+        <li>Update their understanding.</li>
+
+        <li>Avoid treating outdated information as current.</li>
+
+        <li>Ask appropriate questions.</li>
+
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 5 — Arrival and Initial Assessment</h2>
+
+    <p>
+        Students must assess the circumstances they find rather than blindly
+        following the original report.
+    </p>
+
+    <p>On arrival, students should consider:</p>
+
+    <ul>
+
+        <li>Current subject location.</li>
+
+        <li>Whether the subject matches the description.</li>
+
+        <li>Whether a weapon is visible or confirmed.</li>
+
+        <li>Current subject behaviour.</li>
+
+        <li>Members of the public nearby.</li>
+
+        <li>Positions of other officers.</li>
+
+        <li>Available distance and protection.</li>
+
+        <li>Access and exit routes.</li>
+
+        <li>Whether urgent life-saving action is required.</li>
+
+        <li>Whether further support is needed.</li>
+
+    </ul>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Exercise Four — Arrival Assessment</h2>
+
+    <p>
+        Position a roleplayer, response officer and member of the public within
+        a controlled scene.
+    </p>
+
+    <p>
+        Students should arrive and verbally identify:
+    </p>
+
+    <ul>
+
+        <li>The subject or possible subject.</li>
+
+        <li>The current behaviour.</li>
+
+        <li>Whether a weapon is visible.</li>
+
+        <li>Who may be at risk.</li>
+
+        <li>Where other officers are positioned.</li>
+
+        <li>What immediate scene-control issue exists.</li>
+
+        <li>Whether urgent intervention is required.</li>
+
+        <li>What information should be communicated.</li>
+
+    </ul>
+
+    <p>
+        Do not assess advanced vehicle positioning or complex tactics during
+        this exercise. Those are developed later.
+    </p>
+
+</section>
+
+<section class="card success">
+
+    <h2>Control Before Complexity</h2>
+
+    <p>
+        Reinforce that early incident management should establish what is
+        happening and control the immediate risk.
+    </p>
+
+    <p>
+        Students should not rush into specialist tactics simply because they
+        are armed officers.
+    </p>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 6 — Early Scene Control</h2>
+
+    <p>
+        Early scene control may involve:
+    </p>
+
+    <ul>
+
+        <li>Identifying the immediate threat area.</li>
+
+        <li>Keeping members of the public away from danger.</li>
+
+        <li>Communicating with officers already present.</li>
+
+        <li>Establishing a safe working area.</li>
+
+        <li>Using available time and distance.</li>
+
+        <li>Requesting support for outer scene management.</li>
+
+        <li>Identifying safe medical access.</li>
+
+        <li>Maintaining observation and information flow.</li>
+
+        <li>Preserving options rather than forcing escalation.</li>
+
+    </ul>
+
+    <p>
+        Detailed armed-containment procedures are reserved for Module 9.
+    </p>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 7 — Communications and APSTRA</h2>
+
+    <p>A useful update should include:</p>
+
+    <div class="response-grid">
+
+        <div class="response-box">
+
+            <strong>Identity</strong>
+
+            Officer, unit or ARV callsign.
+
+        </div>
+
+        <div class="response-box">
+
+            <strong>Location</strong>
+
+            Clear current location.
+
+        </div>
+
+        <div class="response-box">
+
+            <strong>Incident</strong>
+
+            What has been reported or observed.
+
+        </div>
+
+        <div class="response-box">
+
+            <strong>Risk</strong>
+
+            Who is at risk and why.
+
+        </div>
+
+        <div class="response-box">
+
+            <strong>Action</strong>
+
+            What the crew is currently doing.
+
+        </div>
+
+        <div class="response-box">
+
+            <strong>Requirement</strong>
+
+            Support, command or medical resources required.
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Exercise Five — Initial APSTRA Update</h2>
+
+    <p>
+        Following the arrival exercise, require each student to deliver an
+        individual APSTRA or radio update.
+    </p>
+
+    <p>Assess whether the update:</p>
+
+    <ul>
+
+        <li>Identifies the transmitting unit.</li>
+
+        <li>Gives a clear location.</li>
+
+        <li>Separates reports from observations.</li>
+
+        <li>Identifies current risk.</li>
+
+        <li>Explains the crew's immediate action.</li>
+
+        <li>Requests appropriate support.</li>
+
+        <li>Remains concise.</li>
+
+    </ul>
+
+    <div class="example-box">
+
+        <strong>Example</strong>
+
+        “ARV-2 at Legion Square. One male matching the description located near
+        the reported vehicle. No weapon currently visible. High public presence.
+        Establishing scene control and requesting additional units for public
+        management.”
+
+    </div>
+
+</section>
+
+<section class="card warning">
+
+    <h2>Radio Discipline</h2>
+
+    <p>
+        Correct students who provide long, repetitive updates containing no
+        useful change.
+    </p>
+
+    <p>
+        Concise communication should not become vague communication. The update
+        must still explain the current incident, risk and action.
+    </p>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 8 — Command and Escalation</h2>
+
+    <p>Command should be updated when:</p>
+
+    <ul>
+
+        <li>The threat materially changes.</li>
+
+        <li>A weapon is confirmed or disproved.</li>
+
+        <li>The subject changes location.</li>
+
+        <li>Initial scene control succeeds or fails.</li>
+
+        <li>Further specialist resources are required.</li>
+
+        <li>Force is used.</li>
+
+        <li>A casualty is identified.</li>
+
+        <li>An urgent tactical decision is required.</li>
+
+        <li>The current plan is no longer suitable.</li>
+
+    </ul>
+
+    <p>
+        Students should understand that urgent action required to protect life
+        must not be delayed solely because a commander is not yet present.
+    </p>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Exercise Six — Resource Request</h2>
+
+    <p>
+        Give students an incident requiring one or more supporting resources.
+    </p>
+
+    <p>
+        Require them to identify:
+    </p>
+
+    <ul>
+
+        <li>What resource is needed.</li>
+
+        <li>Why it is needed.</li>
+
+        <li>Where it should support.</li>
+
+        <li>What risk the request addresses.</li>
+
+    </ul>
+
+    <h3>Possible resources</h3>
+
+    <ul>
+
+        <li>Additional ARV.</li>
+
+        <li>Response officers.</li>
+
+        <li>Roads Policing.</li>
+
+        <li>NPAS.</li>
+
+        <li>K9.</li>
+
+        <li>Ambulance or medical support.</li>
+
+        <li>Firearms command.</li>
+
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 9 — Working With Other Units</h2>
+
+    <div class="role-grid">
+
+        <div class="role-box">
+
+            <strong>Response Officers</strong>
+
+            May provide information, witness management and outer scene support.
+
+        </div>
+
+        <div class="role-box">
+
+            <strong>Roads Policing</strong>
+
+            May assist with vehicle management, traffic control and authorised
+            pursuit activity.
+
+        </div>
+
+        <div class="role-box">
+
+            <strong>NPAS</strong>
+
+            May provide observation, tracking and wider situational awareness.
+
+        </div>
+
+        <div class="role-box">
+
+            <strong>K9</strong>
+
+            May support searches, tracking and authorised specialist tasks.
+
+        </div>
+
+        <div class="role-box">
+
+            <strong>Medical Support</strong>
+
+            Provides casualty care once safe access is established.
+
+        </div>
+
+        <div class="role-box">
+
+            <strong>Firearms Command</strong>
+
+            Provides oversight, tactical direction and coordination where required.
+
+        </div>
+
+    </div>
+
+    <p>
+        Resource requests must explain what support is required and why.
+    </p>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 10 — Changing Circumstances</h2>
+
+    <p>
+        Explain that students must change their assessment when relevant facts
+        or behaviour change.
+    </p>
+
+    <p>Material changes may include:</p>
+
+    <ul>
+
+        <li>The subject begins complying.</li>
+
+        <li>The subject becomes more aggressive.</li>
+
+        <li>A weapon is confirmed.</li>
+
+        <li>A suspected item is disproved.</li>
+
+        <li>The subject enters a vehicle or building.</li>
+
+        <li>A hostage or vulnerable person is identified.</li>
+
+        <li>The public enters the scene.</li>
+
+        <li>Additional officers arrive.</li>
+
+        <li>A casualty requires urgent assistance.</li>
+
+        <li>Command direction changes.</li>
+
+    </ul>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Scenario One — Threat Reduces</h2>
+
+    <p>
+        Students arrive following a report that a male displayed a handgun.
+        The male follows all directions, keeps his hands visible and moves away
+        from an object on the ground.
+    </p>
+
+    <p>Ask:</p>
+
+    <ul>
+
+        <li>How has the immediate risk changed?</li>
+
+        <li>What control measures remain appropriate?</li>
+
+        <li>What actions may no longer be necessary?</li>
+
+        <li>What should be communicated?</li>
+
+        <li>What must happen regarding the object?</li>
+
+    </ul>
+
+    <h3>Expected learning points</h3>
+
+    <ul>
+
+        <li>Compliance may reduce the immediate threat.</li>
+
+        <li>The incident still requires safe control.</li>
+
+        <li>The response should reflect the reduced risk.</li>
+
+        <li>The object remains relevant and must be assessed safely.</li>
+
+        <li>APSTRA and command updates should reflect the change.</li>
+
+    </ul>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Scenario Two — Threat Escalates</h2>
+
+    <p>
+        During the incident, new information confirms a credible weapon and the
+        subject begins threatening a nearby member of the public.
+    </p>
+
+    <p>Ask:</p>
+
+    <ul>
+
+        <li>What has changed?</li>
+
+        <li>Who is now at increased risk?</li>
+
+        <li>What must be communicated?</li>
+
+        <li>What support may be required?</li>
+
+        <li>Does the existing plan remain suitable?</li>
+
+    </ul>
+
+    <h3>Expected learning points</h3>
+
+    <ul>
+
+        <li>The information and behaviour have materially changed.</li>
+
+        <li>Risk to the public has increased.</li>
+
+        <li>The crew must reassess immediately.</li>
+
+        <li>Command and supporting units require an update.</li>
+
+        <li>Students should remain controlled rather than rushing blindly.</li>
+
+    </ul>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Scenario Three — Conflicting Information</h2>
+
+    <p>
+        A witness states that the reported handgun was a phone, while another
+        caller continues to insist that it was a firearm.
+    </p>
+
+    <p>Ask:</p>
+
+    <ul>
+
+        <li>Does either statement automatically settle the incident?</li>
+
+        <li>What remains uncertain?</li>
+
+        <li>What further information could help?</li>
+
+        <li>How should the conflicting information be communicated?</li>
+
+        <li>What should happen to the current plan?</li>
+
+    </ul>
+
+    <h3>Expected learning points</h3>
+
+    <ul>
+
+        <li>Neither account automatically proves what the object was.</li>
+
+        <li>The crew should recognise and communicate the uncertainty.</li>
+
+        <li>Further assessment may be required.</li>
+
+        <li>Unnecessary escalation should be avoided.</li>
+
+        <li>The plan should remain flexible.</li>
+
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 11 — Resolution and Handover</h2>
+
+    <p>
+        Once the immediate threat has been controlled, students should consider:
+    </p>
+
+    <ul>
+
+        <li>Subject status.</li>
+
+        <li>Weapons or suspected weapons located.</li>
+
+        <li>Medical requirements.</li>
+
+        <li>Updates to Force Control and firearms command.</li>
+
+        <li>Scene protection.</li>
+
+        <li>Witness identification.</li>
+
+        <li>Separation of involved persons.</li>
+
+        <li>Equipment accountability.</li>
+
+        <li>Required reports.</li>
+
+    </ul>
+
+    <p>
+        Life-saving care takes priority over evidence preservation.
+    </p>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Exercise Seven — Incident Handover</h2>
+
+    <p>
+        Following one of the scenarios, require each student to provide a brief
+        handover covering:
+    </p>
+
+    <ul>
+
+        <li>Original report.</li>
+
+        <li>What the ARV crew observed.</li>
+
+        <li>Current subject status.</li>
+
+        <li>Weapons or relevant items.</li>
+
+        <li>Force used, if any.</li>
+
+        <li>Casualties or medical requirements.</li>
+
+        <li>Witnesses.</li>
+
+        <li>Outstanding risks.</li>
+
+        <li>Resources still required.</li>
+
+    </ul>
+
+    <p>
+        Assess accuracy, structure and honesty rather than dramatic presentation.
+    </p>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 12 — Debrief</h2>
+
+    <p>
+        Debrief each student individually and then as a crew.
+    </p>
+
+    <p>Ask:</p>
+
+    <ul>
+
+        <li>What information did you receive?</li>
+
+        <li>What remained uncertain?</li>
+
+        <li>What did you communicate to your partner?</li>
+
+        <li>What did you identify on arrival?</li>
+
+        <li>What changed during the scenario?</li>
+
+        <li>How did your plan change?</li>
+
+        <li>What went well?</li>
+
+        <li>What would you improve?</li>
+
+        <li>What feedback will you apply next time?</li>
+
+    </ul>
+
+</section>
+
+<section class="card assessment">
+
+    <h2>Practical Assessment Standard</h2>
+
+    <p>A satisfactory performance should demonstrate:</p>
+
+    <ul>
+
+        <li>Professional preparation.</li>
+
+        <li>Effective crew communication.</li>
+
+        <li>Accurate handling of deployment information.</li>
+
+        <li>Recognition of information gaps.</li>
+
+        <li>Constructive use of travel time.</li>
+
+        <li>Controlled arrival assessment.</li>
+
+        <li>Recognition of risks to everyone involved.</li>
+
+        <li>Appropriate early scene-control decisions.</li>
+
+        <li>Clear APSTRA or radio updates.</li>
+
+        <li>Appropriate requests for support.</li>
+
+        <li>Recognition of changing circumstances.</li>
+
+        <li>Proportionate reassessment.</li>
+
+        <li>Clear incident handover.</li>
+
+        <li>Equipment accountability.</li>
+
+        <li>Constructive debrief participation.</li>
+
+    </ul>
+
+</section>
+
+<section class="card assessment">
+
+    <h2>Review Questions</h2>
+
+    <ol>
+
+        <li>What is the role of an Armed Response Vehicle?</li>
+
+        <li>How are Code44 ARVs normally crewed?</li>
+
+        <li>What information should be obtained before arrival?</li>
+
+        <li>Why must reported information be separated from confirmed information?</li>
+
+        <li>How should travel time be used?</li>
+
+        <li>What should be assessed on arrival?</li>
+
+        <li>What is the purpose of early scene control?</li>
+
+        <li>What information should an APSTRA update contain?</li>
+
+        <li>When should command be updated?</li>
+
+        <li>How can other departments support the incident?</li>
+
+        <li>Why must the response change when circumstances change?</li>
+
+        <li>What responsibilities remain after the immediate threat ends?</li>
+
+        <li>What should students explain during the debrief?</li>
+
+    </ol>
+
+</section>
+
+<section class="card assessment">
+
+    <h2>Expected Answers</h2>
+
+    <ol>
+
+        <li>
+            To provide a mobile armed-response capability for spontaneous and
+            planned incidents requiring trained armed support.
+        </li>
+
+        <li>
+            Normally double-crewed by trained ARU officers.
+        </li>
+
+        <li>
+            Incident, persons involved, location, weapon information, current
+            behaviour, risks, available resources and important unknowns.
+        </li>
+
+        <li>
+            Initial reports may be incomplete or inaccurate and should not be
+            communicated as proven fact.
+        </li>
+
+        <li>
+            To monitor updates, clarify information, identify risks, share
+            responsibilities and prepare for arrival.
+        </li>
+
+        <li>
+            Subject location and behaviour, weapon information, public and
+            officer positions, available protection, access routes, urgent risks
+            and resource requirements.
+        </li>
+
+        <li>
+            To understand and manage the immediate risk, protect people and
+            preserve safe options.
+        </li>
+
+        <li>
+            Identity, location, incident, risk, current action and required support.
+        </li>
+
+        <li>
+            Whenever the threat, weapon information, subject location, resources,
+            casualties, force used or current plan materially changes.
+        </li>
+
+        <li>
+            Response can support scene management, RPU can assist with roads and
+            vehicles, NPAS can observe, K9 can support searches, medical resources
+            can treat casualties and command can coordinate the response.
+        </li>
+
+        <li>
+            Because new information or behaviour may increase or reduce the risk
+            and make the original plan unsuitable.
+        </li>
+
+        <li>
+            Medical care, command updates, scene protection, witness identification,
+            handover, equipment accountability and reports.
+        </li>
+
+        <li>
+            Information received, identified risks, decisions, communication,
+            changes during the scenario, strengths and areas for improvement.
+        </li>
+
+    </ol>
+
+</section>
+
+<section class="card assessment">
+
+    <h2>Instructor Observation Criteria</h2>
+
+    <div class="rating-grid">
+
+        <div class="rating-box">
+
+            <strong>Preparation</strong>
+
+            Arrives ready and understands the exercise boundary.
+
+        </div>
+
+        <div class="rating-box">
+
+            <strong>Information Handling</strong>
+
+            Separates reports, facts, observations and unknowns.
+
+        </div>
+
+        <div class="rating-box">
+
+            <strong>Crew Communication</strong>
+
+            Shares information and supports their partner.
+
+        </div>
+
+        <div class="rating-box">
+
+            <strong>Radio Discipline</strong>
+
+            Provides concise and relevant updates.
+
+        </div>
+
+        <div class="rating-box">
+
+            <strong>Arrival Assessment</strong>
+
+            Assesses the actual incident rather than relying only on the report.
+
+        </div>
+
+        <div class="rating-box">
+
+            <strong>Risk Recognition</strong>
+
+            Identifies risks to officers, subjects and the public.
+
+        </div>
+
+        <div class="rating-box">
+
+            <strong>Scene Control</strong>
+
+            Makes proportionate early scene-management decisions.
+
+        </div>
+
+        <div class="rating-box">
+
+            <strong>Support Requests</strong>
+
+            Requests relevant resources and explains why.
+
+        </div>
+
+        <div class="rating-box">
+
+            <strong>Reassessment</strong>
+
+            Changes the response when circumstances change.
+
+        </div>
+
+        <div class="rating-box">
+
+            <strong>Handover</strong>
+
+            Provides an accurate and structured incident summary.
+
+        </div>
+
+        <div class="rating-box">
+
+            <strong>Accountability</strong>
+
+            Accounts for decisions and equipment.
+
+        </div>
+
+        <div class="rating-box">
+
+            <strong>Professionalism</strong>
+
+            Remains controlled and accepts feedback.
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="card assessment">
+
+    <h2>Immediate Stop Criteria</h2>
+
+    <p>Stop the exercise immediately if a student:</p>
+
+    <ul>
+
+        <li>Ignores a trainer safety command.</li>
+
+        <li>Continues while confused.</li>
+
+        <li>Acts outside the exercise boundary.</li>
+
+        <li>Displays reckless vehicle or firearms behaviour.</li>
+
+        <li>Uses specialist tactics not authorised within the module.</li>
+
+        <li>Fails to communicate a serious equipment or script problem.</li>
+
+        <li>Repeatedly disregards their crew partner.</li>
+
+        <li>Creates unnecessary risk to roleplayers or supporting officers.</li>
+
+        <li>Refuses trainer direction.</li>
+
+    </ul>
+
+</section>
+
+<section class="card assessment">
+
+    <h2>Module Outcomes</h2>
+
+    <h3>Pass</h3>
+
+    <p>
+        The student demonstrates satisfactory information handling, crew
+        communication, arrival assessment, radio discipline, reassessment,
+        handover and accountability.
+    </p>
+
+    <h3>Pass with Development Points</h3>
+
+    <p>
+        The student may progress but must address limited development areas
+        identified during practical observation.
+    </p>
+
+    <h3>Remedial</h3>
+
+    <p>
+        The student requires further coaching or another controlled ARV-response
+        scenario before progression.
+    </p>
+
+    <h3>Incomplete</h3>
+
+    <p>
+        Required reading, attendance, practical exercises or assessment remain
+        outstanding.
+    </p>
+
+    <h3>Unsuccessful</h3>
+
+    <p>
+        The student has not demonstrated the required standard after appropriate
+        training, feedback and reassessment.
+    </p>
+
+</section>
+
+<section class="card warning">
+
+    <h2>Common Student Errors</h2>
+
+    <ul>
+
+        <li>Treating the initial report as confirmed fact.</li>
+
+        <li>Failing to identify information gaps.</li>
+
+        <li>Allowing one crew member to manage everything.</li>
+
+        <li>Failing to use travel time constructively.</li>
+
+        <li>Arriving with a fixed plan.</li>
+
+        <li>Ignoring members of the public or other officers.</li>
+
+        <li>Providing excessively long radio updates.</li>
+
+        <li>Requesting resources without explaining why.</li>
+
+        <li>Failing to reassess after a material change.</li>
+
+        <li>Rushing towards a tactical outcome.</li>
+
+        <li>Failing to provide an accurate handover.</li>
+
+        <li>Becoming defensive during the debrief.</li>
+
+    </ul>
+
+</section>
+
+<section class="card warning">
+
+    <h2>Common Trainer Errors</h2>
+
+    <ul>
+
+        <li>Making the scenario too complex for the module stage.</li>
+
+        <li>Introducing hard stops, TPAC, breaching or CQB prematurely.</li>
+
+        <li>Giving students a fixed tactical answer.</li>
+
+        <li>Allowing one student to dominate every role.</li>
+
+        <li>Providing every piece of information without requiring questions.</li>
+
+        <li>Failing to change the scenario information.</li>
+
+        <li>Assessing drama or speed rather than control.</li>
+
+        <li>Failing to challenge unsupported assumptions.</li>
+
+        <li>Failing to assess each student individually.</li>
+
+        <li>Revealing expected answers before the debrief.</li>
+
+        <li>Failing to record development points.</li>
+
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Closing Script</h2>
+
+    <div class="example-box">
+
+        <strong>Suggested wording</strong>
+
+        <p>
+            “That concludes Module 7.
+        </p>
+
+        <p>
+            You should now understand how a double-crewed ARV receives information,
+            prepares while travelling, assesses an incident on arrival and supports
+            the early management of an armed incident.
+        </p>
+
+        <p>
+            Strong ARV performance is not measured by how quickly you force an
+            outcome.
+        </p>
+
+        <p>
+            It is measured by accurate information handling, communication,
+            control, proportionate decisions and your ability to adapt when the
+            circumstances change.
+        </p>
+
+        <p>
+            Module 8 will build upon these standards through armed vehicle tactics
+            and coordinated vehicle-related incidents.”
+        </p>
+
+    </div>
+
+</section>
+
+<section class="card">
+
+    <h2>Trainer Completion Checklist</h2>
+
+    <ul class="checklist">
+
+        <li>Both students attended</li>
+
+        <li>The Module 7 boundary was explained</li>
+
+        <li>The role of the ARV was explained</li>
+
+        <li>Deployment information was classified</li>
+
+        <li>The shared crew briefing was completed</li>
+
+        <li>Developing radio information was introduced</li>
+
+        <li>The arrival-assessment exercise was completed</li>
+
+        <li>Early scene-control principles were discussed</li>
+
+        <li>Both students delivered an APSTRA update</li>
+
+        <li>Radio discipline was assessed</li>
+
+        <li>Command and escalation were discussed</li>
+
+        <li>The resource-request exercise was completed</li>
+
+        <li>Multi-unit support was explained</li>
+
+        <li>The threat-reduction scenario was completed</li>
+
+        <li>The threat-escalation scenario was completed</li>
+
+        <li>The conflicting-information scenario was completed</li>
+
+        <li>Both students completed an incident handover</li>
+
+        <li>Both students participated in the debrief</li>
+
+        <li>Review questions were answered</li>
+
+        <li>Individual feedback was recorded</li>
+
+        <li>Students were directed to the Module 7 knowledge check</li>
+
+        <li>Module outcomes were recorded</li>
+
+    </ul>
+
+    <div class="button-row">
+
+        <a class="button"
+           href="PASTE-TRAINER-MODULE-7-ASSESSMENT-FORM-LINK-HERE"
+           target="_blank">
+
+            Record Module 7 Outcome
+
+        </a>
+
+        <a class="button secondary"
+           href="trainers.html">
+
+            Return to Trainers Area
+
+        </a>
+
+    </div>
+
+</section>
+
+<footer class="footer">
+
+    Code44 Police Service • Armed Response Unit Academy<br>
+
+    Trainer Module 7 — ARV Deployment & Armed Incident Response • Cohort 001
+
+</footer>
+
+</div>
+
+</body>
+
+</html>
