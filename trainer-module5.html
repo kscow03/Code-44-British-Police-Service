@@ -1,0 +1,1900 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Trainer Module 5 - Firearms Safety and Handling</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    background:#05080d;
+    color:white;
+    font-family:Segoe UI,Arial,sans-serif;
+    line-height:1.65;
+}
+
+.page-container{
+    width:90%;
+    max-width:1150px;
+    margin:0 auto;
+    padding:35px 0 60px;
+}
+
+.navbar{
+    background:#0b111b;
+    border:1px solid #16315c;
+    border-radius:8px;
+    padding:15px;
+    margin-bottom:20px;
+}
+
+.navbar a{
+    color:#4d9dff;
+    text-decoration:none;
+    font-weight:bold;
+    margin:0 5px;
+}
+
+.navbar a:hover,
+.back-link:hover{
+    color:white;
+}
+
+.back-link{
+    display:inline-block;
+    margin-bottom:20px;
+    color:#4d9dff;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.hero{
+    background:
+        linear-gradient(rgba(2,7,14,.80),rgba(2,7,14,.94)),
+        url('arv-photo.png');
+
+    background-size:cover;
+    background-position:center;
+
+    border:1px solid #16315c;
+    border-radius:12px;
+
+    padding:58px 30px;
+    text-align:center;
+}
+
+.hero h1{
+    margin:0 0 10px;
+    color:#4d9dff;
+    font-size:2.5rem;
+}
+
+.hero p{
+    margin:5px 0;
+    color:#d3dbea;
+}
+
+.badge{
+    display:inline-block;
+
+    margin-top:15px;
+    padding:7px 14px;
+
+    background:#3a2a0d;
+    border:1px solid #a8761e;
+    border-radius:20px;
+
+    color:#f2c76f;
+    font-weight:bold;
+}
+
+h1,
+h2,
+h3{
+    color:#4d9dff;
+}
+
+.card{
+    background:#0b111b;
+    border:1px solid #16315c;
+    border-radius:9px;
+
+    padding:22px;
+    margin-top:20px;
+
+    transition:.25s;
+}
+
+.card:hover{
+    border-color:#4d9dff;
+}
+
+.instructor{
+    border-left:5px solid #9c6ade;
+}
+
+.activity{
+    border-left:5px solid #4da86b;
+}
+
+.assessment{
+    border-left:5px solid #4d9dff;
+}
+
+.warning{
+    border-left:5px solid #e3a629;
+}
+
+.danger{
+    border-left:5px solid #d84d5f;
+}
+
+.info-grid,
+.rating-grid,
+.principles-grid,
+.weapon-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+    gap:15px;
+    margin-top:18px;
+}
+
+.info-box,
+.rating-box,
+.principle-box,
+.weapon-box,
+.example-box{
+    background:#08111d;
+    border:1px solid #16315c;
+    border-radius:8px;
+    padding:17px;
+}
+
+.info-box strong,
+.rating-box strong,
+.principle-box strong,
+.weapon-box strong,
+.example-box strong{
+    display:block;
+    color:#4d9dff;
+    margin-bottom:6px;
+}
+
+.delivery-table,
+.assessment-table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:15px;
+}
+
+.delivery-table th,
+.delivery-table td,
+.assessment-table th,
+.assessment-table td{
+    border:1px solid #16315c;
+    padding:12px;
+    text-align:left;
+    vertical-align:top;
+}
+
+.delivery-table th,
+.assessment-table th{
+    background:#10203a;
+    color:#8fc2ff;
+}
+
+.checklist{
+    list-style:none;
+    padding-left:0;
+}
+
+.checklist li{
+    background:#08111d;
+    border:1px solid #16315c;
+    border-radius:7px;
+
+    padding:13px;
+    margin-top:9px;
+}
+
+.checklist li::before{
+    content:"☐";
+    color:#4d9dff;
+    font-weight:bold;
+    margin-right:10px;
+}
+
+ul,
+ol{
+    padding-left:22px;
+}
+
+li{
+    margin-bottom:7px;
+}
+
+.button-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:20px;
+}
+
+.button{
+    display:inline-block;
+
+    padding:12px 18px;
+
+    background:#4d9dff;
+    color:#05080d;
+
+    border:none;
+    border-radius:6px;
+
+    text-decoration:none;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.button:hover{
+    background:#77b5ff;
+}
+
+.button.secondary{
+    background:#101b2c;
+    color:#4d9dff;
+    border:1px solid #24538b;
+}
+
+.footer{
+    margin-top:30px;
+    padding-top:20px;
+
+    border-top:1px solid #16315c;
+
+    color:#8f9bad;
+    text-align:center;
+    font-size:.9rem;
+}
+
+@media(max-width:700px){
+
+    .page-container{
+        width:92%;
+    }
+
+    .hero{
+        padding:42px 18px;
+    }
+
+    .hero h1{
+        font-size:2rem;
+    }
+
+    .navbar{
+        line-height:2;
+    }
+
+    .button{
+        width:100%;
+        text-align:center;
+    }
+
+    .delivery-table,
+    .assessment-table{
+        font-size:.9rem;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<script>
+
+if (sessionStorage.getItem("trainerAccess") !== "granted") {
+
+    window.location.replace("trainers-login.html");
+
+}
+
+</script>
+
+<div class="page-container">
+
+<nav class="navbar">
+
+    <a href="database.html">
+        Internal Database
+    </a>
+
+    |
+
+    <a href="academy.html">
+        ARU Academy
+    </a>
+
+    |
+
+    <a href="trainers.html">
+        Trainers Area
+    </a>
+
+    |
+
+    <a href="trainer-module1.html">
+        Module 1
+    </a>
+
+    |
+
+    <a href="trainer-module2.html">
+        Module 2
+    </a>
+
+    |
+
+    <a href="trainer-module3.html">
+        Module 3
+    </a>
+
+    |
+
+    <a href="trainer-module4.html">
+        Module 4
+    </a>
+
+    |
+
+    <a href="trainer-module5.html" style="color:white;">
+        Module 5
+    </a>
+
+</nav>
+
+<a class="back-link" href="trainers.html">
+    ← Return to Trainers Area
+</a>
+
+<header class="hero">
+
+    <h1>Trainer Module 5 — Firearms Safety and Handling</h1>
+
+    <p>Instructor Lesson Plan</p>
+
+    <p>ARU Academy • Cohort 001</p>
+
+    <span class="badge">
+        Trainer-Only Resource
+    </span>
+
+</header>
+
+<section class="card">
+
+    <h2>Lesson Overview</h2>
+
+    <p>
+        Module 5 begins the firearms-safety phase of the ARU Academy.
+    </p>
+
+    <p>
+        This session teaches safe behaviour, trainer commands, environmental
+        awareness, accountability and the professional standards expected during
+        simulated firearms training.
+    </p>
+
+    <p>
+        The emphasis is on disciplined conduct and safe decision-making. This
+        lesson must not be used to teach real-world firing, loading, breaching
+        or weapon-operation procedures.
+    </p>
+
+    <div class="info-grid">
+
+        <div class="info-box">
+
+            <strong>Lesson</strong>
+
+            Module 5 — Firearms Safety and Handling
+
+        </div>
+
+        <div class="info-box">
+
+            <strong>Recommended Duration</strong>
+
+            90 minutes
+
+        </div>
+
+        <div class="info-box">
+
+            <strong>Current Group</strong>
+
+            Two ARU students
+
+        </div>
+
+        <div class="info-box">
+
+            <strong>Delivery Style</strong>
+
+            Briefing, demonstration and supervised simulation
+
+        </div>
+
+        <div class="info-box">
+
+            <strong>Assessment</strong>
+
+            Safety observation and knowledge check
+
+        </div>
+
+        <div class="info-box">
+
+            <strong>Pass Standard</strong>
+
+            Safe conduct, satisfactory participation and 80% quiz score
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="card danger">
+
+    <h2>Mandatory Trainer Boundary</h2>
+
+    <p>
+        This lesson is designed for Code44 FiveM roleplay.
+    </p>
+
+    <p>
+        Trainers must not use this page as real-world weapons instruction.
+    </p>
+
+    <p>
+        The session must remain focused on simulation safety, trainer commands,
+        professional conduct, storage, accountability and scenario control.
+    </p>
+
+    <p>
+        Any exercise must stop immediately if a student becomes confused,
+        ignores a safety command or acts outside the agreed roleplay boundaries.
+    </p>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Trainer Preparation</h2>
+
+    <ul class="checklist">
+
+        <li>Confirm both students completed Module 4</li>
+
+        <li>Confirm both students have read Module 5</li>
+
+        <li>Prepare a controlled training location</li>
+
+        <li>Confirm the training area is free from unrelated roleplay activity</li>
+
+        <li>Prepare simulated firearms or approved server equipment</li>
+
+        <li>Prepare clear start, stop and safety commands</li>
+
+        <li>Prepare the safety-observation exercise</li>
+
+        <li>Prepare the positive-identification discussion</li>
+
+        <li>Prepare the simulated decision scenario</li>
+
+        <li>Prepare the Module 5 knowledge check</li>
+
+        <li>Prepare an attendance record</li>
+
+        <li>Confirm the trainer assessment form is available</li>
+
+        <li>Confirm all students understand the exercise is simulation only</li>
+
+    </ul>
+
+</section>
+
+<section class="card">
+
+    <h2>Required Resources</h2>
+
+    <ul>
+
+        <li>Module 5 student page</li>
+
+        <li>Suitable in-game training environment</li>
+
+        <li>Approved simulated-firearms setup</li>
+
+        <li>Marked boundaries for the exercise</li>
+
+        <li>Trainer safety-command sheet</li>
+
+        <li>Scenario briefing notes</li>
+
+        <li>Module 5 knowledge check</li>
+
+        <li>Attendance record</li>
+
+        <li>Trainer assessment form</li>
+
+        <li>Suitable Discord or in-game training channel</li>
+
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Learning Outcomes</h2>
+
+    <p>By the end of the lesson, each student should be able to:</p>
+
+    <ul>
+
+        <li>Explain why firearms safety is everyone's responsibility.</li>
+
+        <li>Respond immediately to trainer safety commands.</li>
+
+        <li>Maintain awareness of other officers and roleplayers.</li>
+
+        <li>Explain the importance of safe direction.</li>
+
+        <li>Demonstrate appropriate trigger discipline in simulation.</li>
+
+        <li>Explain the need for positive identification.</li>
+
+        <li>Recognise when an exercise must be stopped.</li>
+
+        <li>Communicate clearly when confused or uncertain.</li>
+
+        <li>Identify the role of each Code44 firearm.</li>
+
+        <li>Explain the ARV storage and accountability requirements.</li>
+
+        <li>Respond professionally to correction.</li>
+
+        <li>Demonstrate safe conduct during supervised roleplay.</li>
+
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Suggested Lesson Structure</h2>
+
+    <table class="delivery-table">
+
+        <tr>
+
+            <th>Stage</th>
+
+            <th>Time</th>
+
+            <th>Trainer Action</th>
+
+        </tr>
+
+        <tr>
+
+            <td>Introduction and Safety Boundary</td>
+
+            <td>10 minutes</td>
+
+            <td>
+                Explain the purpose of the module and establish the mandatory
+                roleplay safety rules.
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td>Core Safety Principles</td>
+
+            <td>15 minutes</td>
+
+            <td>
+                Explain safe direction, awareness, trigger discipline and
+                trainer-command compliance.
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td>Trainer Commands</td>
+
+            <td>10 minutes</td>
+
+            <td>
+                Practise the response to stop, hold, safe and stand-down commands.
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td>Environmental Awareness</td>
+
+            <td>10 minutes</td>
+
+            <td>
+                Discuss officer positions, roleplayers, vehicles and changing
+                scenario conditions.
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td>Positive Identification</td>
+
+            <td>10 minutes</td>
+
+            <td>
+                Use a tabletop discussion to separate facts, assumptions and
+                confirmed threats.
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td>Supervised Simulation</td>
+
+            <td>20 minutes</td>
+
+            <td>
+                Run a controlled safety-focused simulation with no tactical
+                complexity.
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td>Safety Scenarios</td>
+
+            <td>10 minutes</td>
+
+            <td>
+                Deliver the uncertainty, command and equipment-fault scenarios.
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td>Review and Assessment</td>
+
+            <td>5 minutes</td>
+
+            <td>
+                Review the key points and direct students to the knowledge check.
+            </td>
+
+        </tr>
+
+    </table>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Opening Script</h2>
+
+    <div class="example-box">
+
+        <strong>Suggested wording</strong>
+
+        <p>
+            “Module 5 begins the firearms-safety phase of the Academy.
+        </p>
+
+        <p>
+            This lesson is about discipline, awareness, communication and
+            responding correctly to trainer commands.
+        </p>
+
+        <p>
+            It is not about speed, showing off or trying to look experienced.
+        </p>
+
+        <p>
+            If you are unsure at any point, stop and ask. A scenario can be
+            restarted, but unsafe behaviour will always take priority over
+            completing the exercise.”
+        </p>
+
+    </div>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 1 — Shared Safety Responsibility</h2>
+
+    <p>
+        Explain that safety is not solely the responsibility of the instructor.
+    </p>
+
+    <p>Every student must:</p>
+
+    <ul>
+
+        <li>Listen fully to the briefing.</li>
+
+        <li>Follow trainer commands immediately.</li>
+
+        <li>Maintain awareness of other people.</li>
+
+        <li>Speak up when something appears unsafe.</li>
+
+        <li>Stop when confused.</li>
+
+        <li>Report mistakes honestly.</li>
+
+        <li>Avoid rushing or showing off.</li>
+
+        <li>Treat simulated training seriously.</li>
+
+        <li>Accept correction professionally.</li>
+
+    </ul>
+
+    <div class="example-box">
+
+        <strong>Trainer Prompt</strong>
+
+        If you notice another student has misunderstood an instruction,
+        should you remain silent because the trainer is in charge?
+
+    </div>
+
+    <h3>Expected learning points</h3>
+
+    <ul>
+
+        <li>Safety is shared.</li>
+
+        <li>Students should raise concerns promptly.</li>
+
+        <li>Professional challenge is acceptable when safety is involved.</li>
+
+        <li>The trainer retains control of the exercise.</li>
+
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 2 — Core Safety Principles</h2>
+
+    <div class="principles-grid">
+
+        <div class="principle-box">
+
+            <strong>Treat the Exercise Seriously</strong>
+
+            Simulation does not make careless behaviour acceptable.
+
+        </div>
+
+        <div class="principle-box">
+
+            <strong>Maintain Safe Direction</strong>
+
+            Remain aware of where the firearm is directed and who is nearby.
+
+        </div>
+
+        <div class="principle-box">
+
+            <strong>Trigger Discipline</strong>
+
+            Avoid unnecessary trigger contact and follow trainer direction.
+
+        </div>
+
+        <div class="principle-box">
+
+            <strong>Positive Identification</strong>
+
+            Confirm who and what is being assessed before making a simulated decision.
+
+        </div>
+
+        <div class="principle-box">
+
+            <strong>Follow Commands</strong>
+
+            Stop, hold and safety instructions must be obeyed immediately.
+
+        </div>
+
+        <div class="principle-box">
+
+            <strong>Stop When Unsure</strong>
+
+            Clarification is safer than guessing.
+
+        </div>
+
+        <div class="principle-box">
+
+            <strong>Maintain Control</strong>
+
+            Do not rush or allow excitement to replace discipline.
+
+        </div>
+
+        <div class="principle-box">
+
+            <strong>Report Errors</strong>
+
+            Honest reporting allows mistakes to be corrected.
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Discussion — What Stops the Exercise?</h2>
+
+    <p>
+        Ask each student to identify circumstances that should cause them to stop.
+    </p>
+
+    <h3>Strong answers may include:</h3>
+
+    <ul>
+
+        <li>They do not understand the instruction.</li>
+
+        <li>Another officer moves unexpectedly.</li>
+
+        <li>A roleplayer enters the wrong area.</li>
+
+        <li>The server script behaves unexpectedly.</li>
+
+        <li>An item appears faulty.</li>
+
+        <li>A trainer gives a stop command.</li>
+
+        <li>The student loses awareness of their assigned role.</li>
+
+        <li>The student believes a safety concern exists.</li>
+
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 3 — Trainer and Safety Commands</h2>
+
+    <p>
+        The exact wording may vary, but students must understand the following:
+    </p>
+
+    <table class="assessment-table">
+
+        <tr>
+
+            <th>Command</th>
+
+            <th>Expected Student Response</th>
+
+        </tr>
+
+        <tr>
+
+            <td>Stop</td>
+
+            <td>
+                Immediately stop the current action and await further instruction.
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td>Hold Position</td>
+
+            <td>
+                Remain in place and avoid unnecessary movement.
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td>Safe</td>
+
+            <td>
+                Return to the trainer-directed safe condition for the simulation.
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td>Stand Down</td>
+
+            <td>
+                Recognise that the current phase or exercise has ended.
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td>Do Not Continue</td>
+
+            <td>
+                Await clarification before taking further action.
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <td>Safety Stop</td>
+
+            <td>
+                Stop immediately because an actual or potential concern has arisen.
+            </td>
+
+        </tr>
+
+    </table>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Command Response Drill</h2>
+
+    <p>
+        Place both students within the controlled training area.
+    </p>
+
+    <p>
+        Give each command individually and assess whether the students:
+    </p>
+
+    <ul>
+
+        <li>Respond immediately.</li>
+
+        <li>Stop unnecessary movement.</li>
+
+        <li>Avoid talking over the trainer.</li>
+
+        <li>Wait for further instruction.</li>
+
+        <li>Remain calm and professional.</li>
+
+    </ul>
+
+    <p>
+        Repeat any command that is not understood consistently.
+    </p>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 4 — Safe Direction and Awareness</h2>
+
+    <p>
+        Explain that a safe direction depends upon the environment and the
+        positions of everyone involved.
+    </p>
+
+    <p>Students must remain aware of:</p>
+
+    <ul>
+
+        <li>Other officers.</li>
+
+        <li>Trainers.</li>
+
+        <li>Roleplayers.</li>
+
+        <li>Vehicles.</li>
+
+        <li>Doorways and access routes.</li>
+
+        <li>Members of the public within the scenario.</li>
+
+        <li>Changes in team position.</li>
+
+        <li>The wider area around the intended subject.</li>
+
+    </ul>
+
+    <div class="example-box">
+
+        <strong>Key teaching point</strong>
+
+        Looking in a new direction does not remove responsibility for maintaining
+        awareness of the simulated firearm and surrounding officers.
+
+    </div>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Environmental Awareness Exercise</h2>
+
+    <p>
+        Place the students in a simple controlled scene.
+    </p>
+
+    <p>
+        Ask each student to identify:
+    </p>
+
+    <ul>
+
+        <li>Where the trainer is positioned.</li>
+
+        <li>Where the other student is positioned.</li>
+
+        <li>Where roleplayers may enter.</li>
+
+        <li>Which areas should remain clear.</li>
+
+        <li>What could cause the situation to become unsafe.</li>
+
+        <li>When they would call a safety stop.</li>
+
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 5 — Trigger Discipline</h2>
+
+    <p>
+        Explain that trigger discipline is a constant safety expectation.
+    </p>
+
+    <p>
+        Poor trigger discipline may demonstrate:
+    </p>
+
+    <ul>
+
+        <li>Lack of concentration.</li>
+
+        <li>Rushing.</li>
+
+        <li>Poor environmental awareness.</li>
+
+        <li>Failure to follow instructions.</li>
+
+        <li>Unsafe habits within the simulation.</li>
+
+    </ul>
+
+    <p>
+        Repeated concerns should result in the exercise being stopped and
+        remedial coaching being delivered.
+    </p>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Trigger-Discipline Observation</h2>
+
+    <p>
+        During a stationary simulation, observe whether each student:
+    </p>
+
+    <ul>
+
+        <li>Remains attentive to trainer direction.</li>
+
+        <li>Avoids unnecessary trigger contact.</li>
+
+        <li>Maintains controlled behaviour.</li>
+
+        <li>Stops when corrected.</li>
+
+        <li>Applies the correction consistently.</li>
+
+    </ul>
+
+    <p>
+        This is an observation exercise, not a firing or weapon-operation drill.
+    </p>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 6 — Positive Identification</h2>
+
+    <p>
+        Explain that students must separate:
+    </p>
+
+    <div class="principles-grid">
+
+        <div class="principle-box">
+
+            <strong>Reported Information</strong>
+
+            Information provided by another person or source.
+
+        </div>
+
+        <div class="principle-box">
+
+            <strong>Personal Observation</strong>
+
+            Information personally seen or heard.
+
+        </div>
+
+        <div class="principle-box">
+
+            <strong>Confirmed Threat</strong>
+
+            Information sufficiently supported within the scenario.
+
+        </div>
+
+        <div class="principle-box">
+
+            <strong>Assumption</strong>
+
+            A belief that has not yet been confirmed.
+
+        </div>
+
+    </div>
+
+    <p>
+        Clothing, location, another officer's shout or a matching description
+        should not automatically be treated as complete proof.
+    </p>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Scenario One — Conflicting Descriptions</h2>
+
+    <p>
+        Students are told that a subject in dark clothing may be armed.
+        Two roleplayers in dark clothing are present, and no weapon is visible.
+    </p>
+
+    <p>Ask:</p>
+
+    <ul>
+
+        <li>What is known?</li>
+
+        <li>What remains unconfirmed?</li>
+
+        <li>What further information may be required?</li>
+
+        <li>Why would assumption be dangerous?</li>
+
+        <li>When should the exercise be paused?</li>
+
+    </ul>
+
+    <h3>Expected learning points</h3>
+
+    <ul>
+
+        <li>The description alone does not confirm identity.</li>
+
+        <li>Students should continue assessing the scene.</li>
+
+        <li>Clear communication is required.</li>
+
+        <li>Uncertainty should be acknowledged.</li>
+
+        <li>The trainer controls the scenario boundaries.</li>
+
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 7 — Code44 Firearms Roles</h2>
+
+    <div class="weapon-grid">
+
+        <div class="weapon-box">
+
+            <strong>SIG Sauer P226</strong>
+
+            Personal sidearm carried by trained and authorised ARU officers.
+
+        </div>
+
+        <div class="weapon-box">
+
+            <strong>SIG MCX</strong>
+
+            Primary operational carbine used during authorised deployments.
+
+        </div>
+
+        <div class="weapon-box">
+
+            <strong>SIG 716</strong>
+
+            Specialist precision capability used during authorised roles.
+
+        </div>
+
+        <div class="weapon-box">
+
+            <strong>Remington Shotgun</strong>
+
+            Dedicated breaching platform, not a routine primary firearm.
+
+        </div>
+
+    </div>
+
+    <p>
+        Reinforce that practical use remains subject to trainer control and later
+        authorised Academy instruction.
+    </p>
+
+</section>
+
+<section class="card warning">
+
+    <h2>Remington Role Reminder</h2>
+
+    <p>
+        The Remington is a specialist breaching platform.
+    </p>
+
+    <p>
+        It must not be presented as the routine firearm for general patrol,
+        ordinary building searches or standard engagements.
+    </p>
+
+    <p>
+        Detailed breaching instruction sits outside this module.
+    </p>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 8 — Storage and Accountability</h2>
+
+    <p>
+        All firearms other than the officer's personal P226 sidearm must remain
+        secured within the designated rear firearms-storage area of the ARV
+        unless authorised for deployment.
+    </p>
+
+    <p>This includes:</p>
+
+    <ul>
+
+        <li>SIG MCX carbines.</li>
+
+        <li>SIG 716 precision rifles.</li>
+
+        <li>Remington breaching shotguns.</li>
+
+    </ul>
+
+    <p>Students must understand:</p>
+
+    <ul>
+
+        <li>Long firearms must remain secured when not deployed.</li>
+
+        <li>Every item must remain accounted for.</li>
+
+        <li>Unauthorised removal must be reported.</li>
+
+        <li>Returned equipment must be secured correctly.</li>
+
+        <li>Damage, loss or script issues must be reported.</li>
+
+        <li>Responsibility continues until the item is secured and returned.</li>
+
+    </ul>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Scenario Two — Equipment Script Failure</h2>
+
+    <p>
+        During training, a simulated firearm or animation stops behaving as
+        expected because of a script issue.
+    </p>
+
+    <p>Ask:</p>
+
+    <ul>
+
+        <li>Should the student continue?</li>
+
+        <li>What should be communicated?</li>
+
+        <li>Who controls the restart?</li>
+
+        <li>Why should the issue not be ignored?</li>
+
+    </ul>
+
+    <h3>Expected learning points</h3>
+
+    <ul>
+
+        <li>The student should stop and inform the trainer.</li>
+
+        <li>The exercise should remain paused.</li>
+
+        <li>The trainer decides whether to reset or abandon the exercise.</li>
+
+        <li>Script uncertainty can affect the safety and fairness of the scenario.</li>
+
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 9 — Supervised Safety Simulation</h2>
+
+    <p>
+        Run a basic simulation focused solely on:
+    </p>
+
+    <ul>
+
+        <li>Listening to commands.</li>
+
+        <li>Maintaining awareness.</li>
+
+        <li>Controlled movement.</li>
+
+        <li>Trigger discipline.</li>
+
+        <li>Clear communication.</li>
+
+        <li>Stopping when uncertain.</li>
+
+    </ul>
+
+    <p>
+        Do not introduce complex tactical objectives during this lesson.
+    </p>
+
+    <p>
+        One student should participate while the second observes. They then swap.
+    </p>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Peer Observation Task</h2>
+
+    <p>
+        The observing student should identify:
+    </p>
+
+    <ul>
+
+        <li>One thing completed safely.</li>
+
+        <li>One communication strength.</li>
+
+        <li>One point requiring improvement.</li>
+
+        <li>Whether trainer commands were followed.</li>
+
+        <li>Whether the student stopped appropriately when unsure.</li>
+
+    </ul>
+
+    <p>
+        Feedback must remain respectful and focused on behaviour.
+    </p>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Scenario Three — Missed Safety Command</h2>
+
+    <p>
+        During simulation, a trainer gives a stop command. One student continues
+        moving because they are focused on the roleplay.
+    </p>
+
+    <p>Ask:</p>
+
+    <ul>
+
+        <li>What should happen immediately?</li>
+
+        <li>Why is continuing unacceptable?</li>
+
+        <li>Should the student automatically fail?</li>
+
+        <li>What remedial action may be appropriate?</li>
+
+    </ul>
+
+    <h3>Expected learning points</h3>
+
+    <ul>
+
+        <li>The exercise must stop.</li>
+
+        <li>The command must be acknowledged.</li>
+
+        <li>The trainer should identify why it was missed.</li>
+
+        <li>The command-response drill may need repeating.</li>
+
+        <li>Repeated disregard may affect progression.</li>
+
+    </ul>
+
+</section>
+
+<section class="card assessment">
+
+    <h2>Review Questions</h2>
+
+    <ol>
+
+        <li>Who is responsible for safety during training?</li>
+
+        <li>What should a student do when unsure?</li>
+
+        <li>Why must trainer commands be followed immediately?</li>
+
+        <li>What does safe-direction awareness involve?</li>
+
+        <li>Why is trigger discipline important?</li>
+
+        <li>What is positive identification?</li>
+
+        <li>What should happen when a script fails?</li>
+
+        <li>What is the role of the P226?</li>
+
+        <li>What is the role of the MCX?</li>
+
+        <li>What is the role of the SIG 716?</li>
+
+        <li>What is the role of the Remington?</li>
+
+        <li>Where must long firearms be stored when not deployed?</li>
+
+        <li>What is the storage exception?</li>
+
+        <li>When should a safety stop be called?</li>
+
+    </ol>
+
+</section>
+
+<section class="card assessment">
+
+    <h2>Expected Answers</h2>
+
+    <ol>
+
+        <li>
+            Everyone participating shares responsibility, with the trainer
+            controlling the exercise.
+        </li>
+
+        <li>
+            Stop and request clarification.
+        </li>
+
+        <li>
+            They maintain control and prevent confusion or unsafe behaviour.
+        </li>
+
+        <li>
+            Remaining aware of where the simulated firearm is directed and who
+            is nearby.
+        </li>
+
+        <li>
+            It prevents careless or unintended actions during simulation.
+        </li>
+
+        <li>
+            Confirming the correct subject and relevant threat information
+            rather than relying on assumptions.
+        </li>
+
+        <li>
+            Stop, inform the trainer and await direction.
+        </li>
+
+        <li>
+            Personal sidearm.
+        </li>
+
+        <li>
+            Primary operational carbine.
+        </li>
+
+        <li>
+            Specialist precision capability.
+        </li>
+
+        <li>
+            Specialist breaching platform only.
+        </li>
+
+        <li>
+            In the designated rear firearms-storage area of the ARV.
+        </li>
+
+        <li>
+            The officer's personal P226 sidearm.
+        </li>
+
+        <li>
+            Whenever safety, instructions, equipment or scenario conditions
+            become unclear.
+        </li>
+
+    </ol>
+
+</section>
+
+<section class="card assessment">
+
+    <h2>Instructor Observation Criteria</h2>
+
+    <div class="rating-grid">
+
+        <div class="rating-box">
+
+            <strong>Command Response</strong>
+
+            Responds immediately to trainer instructions.
+
+        </div>
+
+        <div class="rating-box">
+
+            <strong>Awareness</strong>
+
+            Maintains awareness of officers and roleplayers.
+
+        </div>
+
+        <div class="rating-box">
+
+            <strong>Safe Direction</strong>
+
+            Demonstrates controlled environmental awareness.
+
+        </div>
+
+        <div class="rating-box">
+
+            <strong>Trigger Discipline</strong>
+
+            Avoids unnecessary trigger contact in simulation.
+
+        </div>
+
+        <div class="rating-box">
+
+            <strong>Positive Identification</strong>
+
+            Separates confirmed information from assumption.
+
+        </div>
+
+        <div class="rating-box">
+
+            <strong>Communication</strong>
+
+            Raises uncertainty promptly and clearly.
+
+        </div>
+
+        <div class="rating-box">
+
+            <strong>Accountability</strong>
+
+            Reports mistakes or equipment issues honestly.
+
+        </div>
+
+        <div class="rating-box">
+
+            <strong>Professionalism</strong>
+
+            Accepts correction and remains disciplined.
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="card assessment">
+
+    <h2>Immediate Safety Concerns</h2>
+
+    <p>
+        The exercise should be stopped immediately if a student:
+    </p>
+
+    <ul>
+
+        <li>Ignores a trainer safety command.</li>
+
+        <li>Continues while confused.</li>
+
+        <li>Displays repeated poor awareness.</li>
+
+        <li>Displays repeated trigger-discipline concerns.</li>
+
+        <li>Acts outside the exercise boundary.</li>
+
+        <li>Uses equipment contrary to trainer direction.</li>
+
+        <li>Attempts to turn the lesson into unsupervised training.</li>
+
+        <li>Behaves recklessly or unprofessionally.</li>
+
+    </ul>
+
+</section>
+
+<section class="card assessment">
+
+    <h2>Module Outcomes</h2>
+
+    <h3>Pass</h3>
+
+    <p>
+        The student consistently follows safety commands, communicates clearly
+        and demonstrates satisfactory simulated safety behaviour.
+    </p>
+
+    <h3>Pass with Development Points</h3>
+
+    <p>
+        The student may progress but must address limited issues identified
+        during observation.
+    </p>
+
+    <h3>Remedial</h3>
+
+    <p>
+        The student requires additional command practice, safety coaching or
+        another supervised simulation.
+    </p>
+
+    <h3>Incomplete</h3>
+
+    <p>
+        Required attendance, simulation or assessment remains outstanding.
+    </p>
+
+    <h3>Unsuccessful</h3>
+
+    <p>
+        The student has not met the required safety standard after appropriate
+        support and reassessment.
+    </p>
+
+</section>
+
+<section class="card warning">
+
+    <h2>Common Student Errors</h2>
+
+    <ul>
+
+        <li>Focusing on the scenario instead of the trainer.</li>
+
+        <li>Continuing when unsure.</li>
+
+        <li>Responding slowly to a stop command.</li>
+
+        <li>Rushing to appear confident.</li>
+
+        <li>Failing to communicate confusion.</li>
+
+        <li>Treating reported information as confirmed fact.</li>
+
+        <li>Ignoring a script or equipment fault.</li>
+
+        <li>Becoming defensive when corrected.</li>
+
+    </ul>
+
+</section>
+
+<section class="card warning">
+
+    <h2>Common Trainer Errors</h2>
+
+    <ul>
+
+        <li>Introducing complex tactics too early.</li>
+
+        <li>Teaching real-world weapon-operation procedures.</li>
+
+        <li>Failing to explain the simulation boundary.</li>
+
+        <li>Giving unclear safety commands.</li>
+
+        <li>Allowing one student to dominate.</li>
+
+        <li>Failing to stop repeated unsafe behaviour.</li>
+
+        <li>Assessing speed instead of discipline.</li>
+
+        <li>Failing to record safety-development points.</li>
+
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Closing Script</h2>
+
+    <div class="example-box">
+
+        <strong>Suggested wording</strong>
+
+        <p>
+            “That concludes Module 5.
+        </p>
+
+        <p>
+            Firearms safety is not something you demonstrate once. It is a
+            professional habit shown through discipline, awareness, communication
+            and the willingness to stop when anything becomes unclear.
+        </p>
+
+        <p>
+            Module 6 will build upon these standards. The safety expectations
+            from today remain in force throughout every later Academy exercise.”
+        </p>
+
+    </div>
+
+</section>
+
+<section class="card">
+
+    <h2>Trainer Completion Checklist</h2>
+
+    <ul class="checklist">
+
+        <li>Both students attended</li>
+
+        <li>The simulation boundary was explained</li>
+
+        <li>Shared safety responsibility was discussed</li>
+
+        <li>Core safety principles were explained</li>
+
+        <li>Trainer commands were practised</li>
+
+        <li>Environmental awareness was assessed</li>
+
+        <li>Trigger discipline was observed</li>
+
+        <li>Positive identification was discussed</li>
+
+        <li>Code44 firearms roles were reviewed</li>
+
+        <li>Storage and accountability were reviewed</li>
+
+        <li>Both students completed the supervised simulation</li>
+
+        <li>Both students completed the peer-observation task</li>
+
+        <li>All three scenarios were discussed</li>
+
+        <li>Review questions were answered</li>
+
+        <li>Individual feedback was recorded</li>
+
+        <li>Students were directed to the Module 5 quiz</li>
+
+        <li>Module outcomes were recorded</li>
+
+    </ul>
+
+    <div class="button-row">
+
+        <a class="button"
+           href="PASTE-TRAINER-MODULE-5-ASSESSMENT-FORM-LINK-HERE"
+           target="_blank">
+
+            Record Module 5 Outcome
+
+        </a>
+
+        <a class="button secondary"
+           href="trainers.html">
+
+            Return to Trainers Area
+
+        </a>
+
+    </div>
+
+</section>
+
+<footer class="footer">
+
+    Code44 Police Service • Armed Response Unit Academy<br>
+
+    Trainer Module 5 — Firearms Safety and Handling • Cohort 001
+
+</footer>
+
+</div>
+
+</body>
+
+</html>
