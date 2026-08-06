@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -10,6 +12,10 @@
 
 *{
     box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
 }
 
 body{
@@ -39,6 +45,7 @@ body{
     color:#4d9dff;
     text-decoration:none;
     font-weight:bold;
+    margin:0 5px;
 }
 
 .navbar a:hover{
@@ -51,6 +58,10 @@ body{
     color:#4d9dff;
     text-decoration:none;
     font-weight:bold;
+}
+
+.back-link:hover{
+    color:white;
 }
 
 .hero{
@@ -136,6 +147,15 @@ h3{
     margin-bottom:5px;
 }
 
+.student-stage{
+    line-height:1.8;
+}
+
+.student-stage span{
+    display:block;
+    color:#c9d4e3;
+}
+
 .trainer-grid{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
@@ -181,8 +201,20 @@ h3{
     background:#08111d;
 }
 
+.phase-title{
+    margin-top:30px;
+    margin-bottom:5px;
+    padding-bottom:8px;
+    border-bottom:1px solid #16315c;
+    color:#8fc2ff;
+}
+
 .warning{
     border-left:5px solid #e3a629;
+}
+
+.notice{
+    border-left:5px solid #4d9dff;
 }
 
 .button-row{
@@ -243,6 +275,10 @@ h3{
         font-size:2rem;
     }
 
+    .navbar{
+        line-height:2;
+    }
+
     .button{
         width:100%;
         text-align:center;
@@ -250,6 +286,7 @@ h3{
 }
 
 </style>
+
 </head>
 
 <body>
@@ -273,11 +310,21 @@ if (sessionStorage.getItem("trainerAccess") !== "granted") {
 
 <nav class="navbar">
 
-    <a href="database.html">Internal Database</a> |
+    <a href="aru-members.html">
+        Internal Database
+    </a>
 
-    <a href="academy.html">ARU Academy</a> |
+    |
 
-    <a href="trainers.html" style="color:white;">Trainers Area</a>
+    <a href="academy.html">
+        ARU Academy
+    </a>
+
+    |
+
+    <a href="trainers.html" style="color:white;">
+        Trainers Area
+    </a>
 
 </nav>
 
@@ -293,7 +340,9 @@ if (sessionStorage.getItem("trainerAccess") !== "granted") {
 
     <p>Code44 Armed Response Unit Academy</p>
 
-    <span class="badge">Restricted Access</span>
+    <span class="badge">
+        Restricted Access
+    </span>
 
 </header>
 
@@ -314,24 +363,41 @@ if (sessionStorage.getItem("trainerAccess") !== "granted") {
     <div class="dashboard-grid">
 
         <div class="stat-box">
+
             <strong>Current Cohort</strong>
+
             Cohort 001
+
         </div>
 
         <div class="stat-box">
+
             <strong>Active Recruits</strong>
+
             2
+
         </div>
 
         <div class="stat-box">
+
             <strong>Lead Trainer</strong>
+
             PC K. Maddox
+
         </div>
 
-        <div class="stat-box">
-            <strong>Current Stage</strong>
-            MASSARELLI - MODULE 1 KNOWLEDGE CHECK
-            ROWLEY - PENDING MODULE 1 
+        <div class="stat-box student-stage">
+
+            <strong>Current Student Progress</strong>
+
+            <span>
+                Massarelli — Module 1 Knowledge Check
+            </span>
+
+            <span>
+                Rowley — Pending Module 1
+            </span>
+
         </div>
 
     </div>
@@ -342,62 +408,151 @@ if (sessionStorage.getItem("trainerAccess") !== "granted") {
 
     <h2>Lesson Plans</h2>
 
+    <p>
+        Trainer lesson plans should be delivered alongside the relevant student
+        module. Students should complete modules in the order directed by the
+        training team.
+    </p>
+
+    <h3 class="phase-title">
+        Phase One — Foundation
+    </h3>
+
     <div class="trainer-grid">
 
-        <div class="trainer-grid">
+        <a class="trainer-link" href="trainer-module1.html">
 
-    <a class="trainer-link" href="trainer-module1.html">
-        <strong>Module 1 Lesson Plan</strong>
-        Welcome, induction, Academy structure and recruit expectations.
-    </a>
+            <strong>Module 1 Lesson Plan</strong>
 
-    <a class="trainer-link" href="trainer-module2.html">
-        <strong>Module 2 Lesson Plan</strong>
-        Professional standards, integrity, accountability, communication and teamwork.
-    </a>
+            Welcome, induction, Academy structure and recruit expectations.
 
-    <a class="trainer-link" href="trainer-module3.html">
-        <strong>Module 3 Lesson Plan</strong>
-        Legal principles, APSTRA, decision-making, reassessment and accountability.
-    </a>
+        </a>
 
-    <a class="trainer-link" href="trainer-module4.html">
-        <strong>Module 4 Lesson Plan</strong>
-        Equipment, PPE, firearms roles, vehicle familiarisation and accountability.
-    </a>
+        <a class="trainer-link" href="trainer-module2.html">
 
-</div>
-        </div>
+            <strong>Module 2 Lesson Plan</strong>
 
-        <div class="trainer-module5.html">
+            Professional standards, integrity, accountability, communication
+            and teamwork.
+
+        </a>
+
+        <a class="trainer-link" href="trainer-module3.html">
+
+            <strong>Module 3 Lesson Plan</strong>
+
+            Legal principles, APSTRA, decision-making, reassessment
+            and accountability.
+
+        </a>
+
+    </div>
+
+    <h3 class="phase-title">
+        Phase Two — Equipment and Firearms Development
+    </h3>
+
+    <div class="trainer-grid">
+
+        <a class="trainer-link" href="trainer-module4.html">
+
+            <strong>Module 4 Lesson Plan</strong>
+
+            Equipment, PPE, firearms roles, vehicle familiarisation
+            and accountability.
+
+        </a>
+
+        <a class="trainer-link" href="trainer-module5.html">
 
             <strong>Module 5 Lesson Plan</strong>
 
-          Firearms safety, trainer commands, simulated handling and safety assessment
+            Firearms safety, trainer commands, simulated handling
+            and safety assessment.
 
-        </div>
+        </a>
 
-        <div class="trainer-link pending">
+        <a class="trainer-link" href="trainer-module6.html">
 
             <strong>Module 6 Lesson Plan</strong>
 
-            Incident management. Coming soon.
+            Operational readiness, crew communication, team awareness,
+            threat reassessment and supervised firearms development.
 
-        </div>
+        </a>
 
-        <div class="trainer-link pending">
+    </div>
+
+    <h3 class="phase-title">
+        Phase Three — Operational Deployment
+    </h3>
+
+    <div class="trainer-grid">
+
+        <a class="trainer-link" href="trainer-module7.html">
 
             <strong>Module 7 Lesson Plan</strong>
 
-            Teamwork and leadership. Coming soon.
+            ARV deployment information, crew responsibilities, arrival assessment,
+            scene control, APSTRA, support requests and incident handover.
+
+        </a>
+
+        <div class="trainer-link pending">
+
+            <strong>Module 8 Lesson Plan</strong>
+
+            Armed vehicle tactics, coordinated vehicle incidents and Roads
+            Policing integration. Coming soon.
 
         </div>
 
         <div class="trainer-link pending">
 
-            <strong>Module 8 Assessment Pack</strong>
+            <strong>Module 9 Lesson Plan</strong>
 
-            Final assessment material. Restricted until completed.
+            Armed containment, searches and high-risk warrants. Coming soon.
+
+        </div>
+
+        <div class="trainer-link pending">
+
+            <strong>Module 10 Lesson Plan</strong>
+
+            Building operations, CQB principles and tactical movement. Coming soon.
+
+        </div>
+
+    </div>
+
+    <h3 class="phase-title">
+        Phase Four — Complex Operations and Assessment
+    </h3>
+
+    <div class="trainer-grid">
+
+        <div class="trainer-link pending">
+
+            <strong>Module 11 Lesson Plan</strong>
+
+            Complex armed incidents and integrated operations. Coming soon.
+
+        </div>
+
+        <div class="trainer-link pending">
+
+            <strong>Module 12 Lesson Plan</strong>
+
+            Consolidation, scenario development and final preparation. Coming soon.
+
+        </div>
+
+        <div class="trainer-link pending">
+
+            <strong>Module 13 Assessment Pack</strong>
+
+            Final written assessment, practical scenarios and qualification
+            recommendation. Restricted until completed.
 
         </div>
 
@@ -423,7 +578,8 @@ if (sessionStorage.getItem("trainerAccess") !== "granted") {
 
             <strong>Attendance Register</strong>
 
-            Record Academy attendance and missed sessions. Coming soon.
+            Record Academy attendance, availability and missed learning.
+            Coming soon.
 
         </div>
 
@@ -439,7 +595,8 @@ if (sessionStorage.getItem("trainerAccess") !== "granted") {
 
             <strong>Scenario Library</strong>
 
-            Trainer-only objectives, setup notes and scenario injects. Coming soon.
+            Trainer-only objectives, setup notes and scenario injects.
+            Coming soon.
 
         </div>
 
@@ -447,7 +604,8 @@ if (sessionStorage.getItem("trainerAccess") !== "granted") {
 
             <strong>Remedial Training</strong>
 
-            Improvement plans and reassessment records. Coming soon.
+            Improvement plans, additional coaching and reassessment records.
+            Coming soon.
 
         </div>
 
@@ -455,11 +613,29 @@ if (sessionStorage.getItem("trainerAccess") !== "granted") {
 
             <strong>Instructor Resources</strong>
 
-            Templates, delivery guidance and quality standards. Coming soon.
+            Templates, delivery guidance and Academy quality standards.
+            Coming soon.
 
         </div>
 
     </div>
+
+</section>
+
+<section class="card notice">
+
+    <h2>Training Delivery</h2>
+
+    <p>
+        Academy sessions are delivered when approved trainers, students and
+        suitable resources are available within the city.
+    </p>
+
+    <p>
+        Modules do not require a fixed weekly timetable. Trainers should record
+        completed learning, outstanding requirements and the student's current
+        progression stage.
+    </p>
 
 </section>
 
@@ -469,7 +645,8 @@ if (sessionStorage.getItem("trainerAccess") !== "granted") {
 
     <p>
         Do not distribute lesson plans, expected answers, assessment criteria,
-        scenario injects or personal recruit records outside authorised trainer channels.
+        scenario injects or personal recruit records outside authorised trainer
+        channels.
     </p>
 
     <p>
@@ -491,11 +668,17 @@ if (sessionStorage.getItem("trainerAccess") !== "granted") {
     <div class="button-row">
 
         <a class="button secondary" href="academy.html">
+
             Return to Academy
+
         </a>
 
-        <button class="button" type="button" onclick="trainerLogout()">
+        <button class="button"
+                type="button"
+                onclick="trainerLogout()">
+
             Logout
+
         </button>
 
     </div>
@@ -505,6 +688,7 @@ if (sessionStorage.getItem("trainerAccess") !== "granted") {
 <footer class="footer">
 
     Code44 Police Service • Armed Response Unit Academy<br>
+
     Trainers Area • Restricted Access
 
 </footer>
@@ -524,4 +708,5 @@ function trainerLogout() {
 </script>
 
 </body>
+
 </html>
