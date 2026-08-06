@@ -1,0 +1,1434 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Module 6 - Firearms Fundamentals & Operational Readiness</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    background:#05080d;
+    color:white;
+    font-family:Segoe UI,Arial,sans-serif;
+    line-height:1.65;
+}
+
+.page-container{
+    width:90%;
+    max-width:1150px;
+    margin:0 auto;
+    padding:35px 0 60px;
+}
+
+.navbar{
+    background:#0b111b;
+    border:1px solid #16315c;
+    border-radius:8px;
+    padding:15px;
+    margin-bottom:20px;
+}
+
+.navbar a{
+    color:#4d9dff;
+    text-decoration:none;
+    font-weight:bold;
+    margin:0 5px;
+}
+
+.navbar a:hover,
+.back-link:hover{
+    color:white;
+}
+
+.back-link{
+    display:inline-block;
+    margin-bottom:20px;
+    color:#4d9dff;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.hero{
+    background:
+        linear-gradient(rgba(2,7,14,.79),rgba(2,7,14,.94)),
+        url('arv-photo.png');
+
+    background-size:cover;
+    background-position:center;
+
+    border:1px solid #16315c;
+    border-radius:12px;
+
+    padding:58px 30px;
+    text-align:center;
+}
+
+.hero h1{
+    margin:0 0 10px;
+    color:#4d9dff;
+    font-size:2.5rem;
+}
+
+.hero p{
+    margin:5px 0;
+    color:#d3dbea;
+}
+
+.badge{
+    display:inline-block;
+    margin-top:15px;
+    padding:7px 14px;
+
+    background:#10203a;
+    border:1px solid #2c65a8;
+    border-radius:20px;
+
+    color:#8fc2ff;
+    font-weight:bold;
+}
+
+h1,
+h2,
+h3{
+    color:#4d9dff;
+}
+
+.card{
+    background:#0b111b;
+    border:1px solid #16315c;
+    border-radius:9px;
+
+    padding:22px;
+    margin-top:20px;
+
+    transition:.25s;
+}
+
+.card:hover{
+    border-color:#4d9dff;
+}
+
+.section-card{
+    border-left:4px solid #4d9dff;
+}
+
+.notice{
+    border-left:5px solid #4d9dff;
+}
+
+.warning{
+    border-left:5px solid #e3a629;
+}
+
+.danger{
+    border-left:5px solid #d84d5f;
+}
+
+.success{
+    border-left:5px solid #4da86b;
+}
+
+.info-grid,
+.contents-grid,
+.principles-grid,
+.role-grid,
+.readiness-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:15px;
+    margin-top:18px;
+}
+
+.info-box,
+.principle-box,
+.role-box,
+.readiness-box,
+.example-box{
+    background:#08111d;
+    border:1px solid #16315c;
+    border-radius:8px;
+    padding:17px;
+}
+
+.info-box strong,
+.principle-box strong,
+.role-box strong,
+.readiness-box strong,
+.example-box strong{
+    display:block;
+    color:#4d9dff;
+    margin-bottom:6px;
+}
+
+.contents-link{
+    display:block;
+    background:#08111d;
+    border:1px solid #16315c;
+    border-radius:7px;
+
+    padding:14px;
+
+    color:white;
+    text-decoration:none;
+
+    transition:.25s;
+}
+
+.contents-link:hover{
+    border-color:#4d9dff;
+    background:#0d1828;
+}
+
+.contents-link strong{
+    color:#4d9dff;
+}
+
+.status-tag{
+    display:inline-block;
+    padding:4px 9px;
+    border-radius:12px;
+    font-size:.82rem;
+    font-weight:bold;
+    margin-top:8px;
+}
+
+.status-primary{
+    background:#10203a;
+    border:1px solid #2c65a8;
+    color:#8fc2ff;
+}
+
+.status-personal{
+    background:#203017;
+    border:1px solid #4f7f32;
+    color:#bde99f;
+}
+
+.status-specialist{
+    background:#3a2a0d;
+    border:1px solid #a8761e;
+    color:#f2c76f;
+}
+
+.checklist,
+.revision-list{
+    list-style:none;
+    padding-left:0;
+}
+
+.checklist li,
+.revision-list li{
+    background:#08111d;
+    border:1px solid #16315c;
+    border-radius:7px;
+
+    padding:14px;
+    margin-top:10px;
+}
+
+.checklist li::before{
+    content:"☐";
+    color:#4d9dff;
+    font-weight:bold;
+    margin-right:10px;
+}
+
+ul,
+ol{
+    padding-left:22px;
+}
+
+li{
+    margin-bottom:7px;
+}
+
+.quote{
+    background:#08111d;
+    border:1px solid #16315c;
+    border-radius:7px;
+
+    padding:20px;
+    margin-top:15px;
+
+    color:#d8e2ef;
+    font-style:italic;
+}
+
+.button-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:20px;
+}
+
+.button{
+    display:inline-block;
+
+    padding:12px 18px;
+
+    background:#4d9dff;
+    color:#05080d;
+
+    border-radius:6px;
+
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.button:hover{
+    background:#77b5ff;
+}
+
+.button.secondary{
+    background:#101b2c;
+    color:#4d9dff;
+    border:1px solid #24538b;
+}
+
+.footer{
+    margin-top:30px;
+    padding-top:20px;
+
+    border-top:1px solid #16315c;
+
+    color:#8f9bad;
+    text-align:center;
+    font-size:.9rem;
+}
+
+@media(max-width:700px){
+
+    .page-container{
+        width:92%;
+    }
+
+    .hero{
+        padding:42px 18px;
+    }
+
+    .hero h1{
+        font-size:2rem;
+    }
+
+    .navbar{
+        line-height:2;
+    }
+
+    .button{
+        width:100%;
+        text-align:center;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="page-container">
+
+<nav class="navbar">
+
+    <a href="aru-members.html">
+        Internal Database
+    </a>
+
+    |
+
+    <a href="academy.html">
+        ARU Academy
+    </a>
+
+    |
+
+    <a href="student-handbook.html">
+        Student Handbook
+    </a>
+
+    |
+
+    <a href="module4.html">
+        Module 4
+    </a>
+
+    |
+
+    <a href="module5.html">
+        Module 5
+    </a>
+
+    |
+
+    <a href="module6.html" style="color:white;">
+        Module 6
+    </a>
+
+</nav>
+
+<a class="back-link" href="academy.html">
+    ← Return to ARU Academy
+</a>
+
+<header class="hero">
+
+    <h1>Module 6 — Firearms Fundamentals & Operational Readiness</h1>
+
+    <p>Code44 Police Service</p>
+
+    <p>Armed Response Unit Academy</p>
+
+    <span class="badge">
+        Cohort 001
+    </span>
+
+</header>
+
+<section class="card">
+
+    <h2>Module Overview</h2>
+
+    <p>
+        Module 6 develops the safety principles introduced during Module 5
+        and begins preparing students to operate responsibly as armed officers
+        within Code44.
+    </p>
+
+    <p>
+        The focus of this module is not simply the possession of a firearm.
+        Students must demonstrate discipline, communication, judgement,
+        awareness and accountability while operating as part of an ARU crew.
+    </p>
+
+    <p>
+        Students will complete trainer-led practical exercises using the
+        Code44 FiveM firearms system and simulated training scenarios.
+    </p>
+
+    <div class="info-grid">
+
+        <div class="info-box">
+
+            <strong>Training Phase</strong>
+
+            Firearms Development
+
+        </div>
+
+        <div class="info-box">
+
+            <strong>Delivery</strong>
+
+            Trainer-led practical training
+
+        </div>
+
+        <div class="info-box">
+
+            <strong>Assessment</strong>
+
+            Continuous observation and knowledge check
+
+        </div>
+
+        <div class="info-box">
+
+            <strong>Progression</strong>
+
+            Required before Module 7
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="card warning">
+
+    <h2>Important</h2>
+
+    <p>
+        Module 6 is designed around Code44 FiveM roleplay and the server's
+        firearms mechanics.
+    </p>
+
+    <p>
+        Practical exercises must be conducted under the direction of an
+        approved ARU trainer.
+    </p>
+
+    <p>
+        Students are not expected to arrive already knowing how every exercise
+        works. They are expected to listen, learn, communicate and apply
+        trainer feedback.
+    </p>
+
+</section>
+
+<section class="card">
+
+    <h2>Module Contents</h2>
+
+    <div class="contents-grid">
+
+        <a class="contents-link" href="#objectives">
+            <strong>1.</strong> Learning Objectives
+        </a>
+
+        <a class="contents-link" href="#readiness">
+            <strong>2.</strong> Operational Readiness
+        </a>
+
+        <a class="contents-link" href="#platforms">
+            <strong>3.</strong> Firearms Roles
+        </a>
+
+        <a class="contents-link" href="#deployment">
+            <strong>4.</strong> Firearm Deployment
+        </a>
+
+        <a class="contents-link" href="#selection">
+            <strong>5.</strong> Appropriate Selection
+        </a>
+
+        <a class="contents-link" href="#communication">
+            <strong>6.</strong> Communication
+        </a>
+
+        <a class="contents-link" href="#team-awareness">
+            <strong>7.</strong> Team Awareness
+        </a>
+
+        <a class="contents-link" href="#threat">
+            <strong>8.</strong> Threat Assessment
+        </a>
+
+        <a class="contents-link" href="#reassessment">
+            <strong>9.</strong> Reassessment
+        </a>
+
+        <a class="contents-link" href="#mechanics">
+            <strong>10.</strong> Server Mechanics
+        </a>
+
+        <a class="contents-link" href="#problems">
+            <strong>11.</strong> Equipment Problems
+        </a>
+
+        <a class="contents-link" href="#accountability">
+            <strong>12.</strong> Accountability
+        </a>
+
+        <a class="contents-link" href="#revision">
+            <strong>13.</strong> Revision
+        </a>
+
+    </div>
+
+</section>
+
+<section class="card section-card" id="objectives">
+
+    <h2>1. Learning Objectives</h2>
+
+    <p>By the end of Module 6, students should be able to:</p>
+
+    <ul>
+
+        <li>Explain what operational readiness means within ARU.</li>
+
+        <li>Identify the normal roles of the P226 and SIG MCX.</li>
+
+        <li>Demonstrate disciplined behaviour while armed in simulation.</li>
+
+        <li>Understand that ARU status does not mean a firearm must always be deployed.</li>
+
+        <li>Communicate clearly with their ARU partner.</li>
+
+        <li>Maintain awareness of other officers during practical exercises.</li>
+
+        <li>Recognise changing circumstances within a scenario.</li>
+
+        <li>Reassess decisions when the threat or information changes.</li>
+
+        <li>Use Code44 firearms mechanics safely and appropriately.</li>
+
+        <li>Respond correctly when equipment or server mechanics fail.</li>
+
+        <li>Maintain accountability for issued equipment.</li>
+
+        <li>Accept and apply trainer feedback.</li>
+
+    </ul>
+
+</section>
+
+<section class="card section-card" id="readiness">
+
+    <h2>2. Operational Readiness</h2>
+
+    <p>
+        Operational readiness means more than having the correct equipment.
+    </p>
+
+    <p>
+        An ARU officer must be mentally prepared, appropriately equipped,
+        aware of their responsibilities and capable of working effectively
+        with their crew.
+    </p>
+
+    <div class="readiness-grid">
+
+        <div class="readiness-box">
+
+            <strong>Equipment</strong>
+
+            Required equipment should be available, accounted for and ready
+            for the role being performed.
+
+        </div>
+
+        <div class="readiness-box">
+
+            <strong>Information</strong>
+
+            Officers should understand the information available to them and
+            identify important gaps.
+
+        </div>
+
+        <div class="readiness-box">
+
+            <strong>Communication</strong>
+
+            Crew members should communicate clearly and understand their
+            responsibilities.
+
+        </div>
+
+        <div class="readiness-box">
+
+            <strong>Professionalism</strong>
+
+            Officers must remain disciplined regardless of how routine or
+            exciting an incident appears.
+
+        </div>
+
+        <div class="readiness-box">
+
+            <strong>Awareness</strong>
+
+            Officers should remain aware of colleagues, subjects and the wider
+            environment.
+
+        </div>
+
+        <div class="readiness-box">
+
+            <strong>Decision-Making</strong>
+
+            Decisions should reflect the circumstances that actually exist,
+            not assumptions about what may happen.
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="card notice">
+
+    <h2>ARV Crewing</h2>
+
+    <p>
+        Code44 ARVs are normally double-crewed by trained ARU officers.
+    </p>
+
+    <p>
+        Operating as a crew means communicating, sharing information and
+        supporting each other's awareness.
+    </p>
+
+    <p>
+        Two officers sitting in the same vehicle does not automatically make
+        them an effective team.
+    </p>
+
+</section>
+
+<section class="card section-card" id="platforms">
+
+    <h2>3. Firearms Roles</h2>
+
+    <p>
+        Students were introduced to Code44 firearms during previous modules.
+        Module 6 focuses primarily on the standard operational platforms they
+        will encounter as ARU officers.
+    </p>
+
+    <div class="role-grid">
+
+        <div class="role-box">
+
+            <strong>SIG Sauer P226</strong>
+
+            The P226 is the personal sidearm available to trained and authorised
+            ARU officers.
+
+            <span class="status-tag status-personal">
+                Personal Sidearm
+            </span>
+
+        </div>
+
+        <div class="role-box">
+
+            <strong>SIG MCX</strong>
+
+            The MCX is the primary operational carbine available for authorised
+            ARU deployments.
+
+            <span class="status-tag status-primary">
+                Primary Carbine
+            </span>
+
+        </div>
+
+        <div class="role-box">
+
+            <strong>SIG 716</strong>
+
+            The SIG 716 provides a specialist precision capability.
+
+            Detailed specialist training sits outside this stage of the
+            initial ARU Academy.
+
+            <span class="status-tag status-specialist">
+                Specialist Capability
+            </span>
+
+        </div>
+
+        <div class="role-box">
+
+            <strong>Remington</strong>
+
+            The Remington is a specialist breaching platform.
+
+            It is not the routine primary firearm for ordinary ARU deployments.
+
+            <span class="status-tag status-specialist">
+                Breaching Capability
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="card section-card" id="deployment">
+
+    <h2>4. Deploying a Firearm</h2>
+
+    <p>
+        Being an ARU officer does not mean that a firearm should automatically
+        be deployed at every incident.
+    </p>
+
+    <p>
+        Students must develop the judgement to recognise that the presence of
+        armed officers and the deployment of firearms are separate considerations.
+    </p>
+
+    <p>
+        Decisions should reflect:
+    </p>
+
+    <ul>
+
+        <li>The information currently available.</li>
+
+        <li>The behaviour being displayed.</li>
+
+        <li>Known or suspected weapons.</li>
+
+        <li>The potential threat to officers or others.</li>
+
+        <li>The environment.</li>
+
+        <li>The role assigned to the officer.</li>
+
+        <li>Instructions or command decisions.</li>
+
+        <li>Changes in circumstances.</li>
+
+    </ul>
+
+</section>
+
+<section class="card warning">
+
+    <h2>Do Not Operate on Autopilot</h2>
+
+    <p>
+        “Armed job” does not mean every decision has already been made.
+    </p>
+
+    <p>
+        Students must continue observing, communicating and reassessing
+        throughout an incident.
+    </p>
+
+    <p>
+        What was appropriate thirty seconds ago may no longer be appropriate
+        after the circumstances change.
+    </p>
+
+</section>
+
+<section class="card section-card" id="selection">
+
+    <h2>5. Appropriate Firearm Selection</h2>
+
+    <p>
+        Students should understand the intended role of available equipment
+        and follow trainer or command direction regarding its use.
+    </p>
+
+    <p>
+        Selection should not be based upon:
+    </p>
+
+    <ul>
+
+        <li>Which firearm looks more impressive.</li>
+
+        <li>Personal preference alone.</li>
+
+        <li>What another officer happens to be carrying.</li>
+
+        <li>A desire to escalate the roleplay.</li>
+
+    </ul>
+
+    <p>
+        Students should instead consider the assigned role, available
+        information and direction provided by trainers or commanders.
+    </p>
+
+</section>
+
+<section class="card section-card" id="communication">
+
+    <h2>6. Communication</h2>
+
+    <p>
+        Communication is one of the most important skills an ARU student will
+        develop.
+    </p>
+
+    <p>
+        Officers cannot assume that their partner has seen, heard or understood
+        the same information.
+    </p>
+
+    <p>Useful communication may include:</p>
+
+    <ul>
+
+        <li>Relevant observations.</li>
+
+        <li>Changes in subject behaviour.</li>
+
+        <li>Important information received over the radio.</li>
+
+        <li>Changes in the environment.</li>
+
+        <li>Equipment problems.</li>
+
+        <li>Uncertainty or missing information.</li>
+
+        <li>Changes to the team's role.</li>
+
+        <li>Information relevant to other officers.</li>
+
+    </ul>
+
+    <div class="example-box">
+
+        <strong>Remember</strong>
+
+        Good communication is clear, relevant and timely.
+
+        Talking constantly is not the same as communicating effectively.
+
+    </div>
+
+</section>
+
+<section class="card notice">
+
+    <h2>ARU Radio Channels</h2>
+
+    <p>
+        ARU officers normally operate on the main operational radio channel
+        alongside other units.
+    </p>
+
+    <p>
+        ARU also has access to its own channel for training or operations when
+        required.
+    </p>
+
+    <p>
+        Students must listen to trainer instructions regarding which channel
+        should be used during an exercise.
+    </p>
+
+</section>
+
+<section class="card section-card" id="team-awareness">
+
+    <h2>7. Team Awareness</h2>
+
+    <p>
+        Firearms deployments are team activities.
+    </p>
+
+    <p>
+        Students must remain aware of where other officers are positioned and
+        how their own actions may affect them.
+    </p>
+
+    <p>During practical training, consider:</p>
+
+    <ul>
+
+        <li>Where is my ARU partner?</li>
+
+        <li>Where are other officers?</li>
+
+        <li>Has somebody moved?</li>
+
+        <li>Has another unit entered the scene?</li>
+
+        <li>Has my assigned responsibility changed?</li>
+
+        <li>Am I still receiving radio information?</li>
+
+        <li>Do I need to communicate something?</li>
+
+    </ul>
+
+    <p>
+        Tunnel vision is something trainers will actively look for during
+        practical exercises.
+    </p>
+
+</section>
+
+<section class="card section-card" id="threat">
+
+    <h2>8. Threat Identification</h2>
+
+    <p>
+        Students should separate what they know from what they suspect.
+    </p>
+
+    <div class="principles-grid">
+
+        <div class="principle-box">
+
+            <strong>Known</strong>
+
+            Information that has been established within the scenario.
+
+        </div>
+
+        <div class="principle-box">
+
+            <strong>Reported</strong>
+
+            Information supplied by another person or source.
+
+        </div>
+
+        <div class="principle-box">
+
+            <strong>Observed</strong>
+
+            Information personally seen or heard by the officer.
+
+        </div>
+
+        <div class="principle-box">
+
+            <strong>Suspected</strong>
+
+            Something that may be true but has not yet been confirmed.
+
+        </div>
+
+    </div>
+
+    <p>
+        Students should be able to explain which information influenced their
+        decisions rather than simply saying that they “thought” something was
+        happening.
+    </p>
+
+</section>
+
+<section class="card section-card" id="reassessment">
+
+    <h2>9. Reassessment</h2>
+
+    <p>
+        An incident is not frozen at the moment ARU arrives.
+    </p>
+
+    <p>
+        Information and behaviour can change rapidly.
+    </p>
+
+    <p>Students should continuously consider:</p>
+
+    <ul>
+
+        <li>Has the subject's behaviour changed?</li>
+
+        <li>Has new information been received?</li>
+
+        <li>Has a suspected weapon been confirmed or disproved?</li>
+
+        <li>Has the threat increased?</li>
+
+        <li>Has the threat reduced?</li>
+
+        <li>Have members of the public entered or left the area?</li>
+
+        <li>Have additional officers arrived?</li>
+
+        <li>Has command direction changed?</li>
+
+        <li>Does my current action remain appropriate?</li>
+
+    </ul>
+
+</section>
+
+<section class="card success">
+
+    <h2>De-escalation Is Still Success</h2>
+
+    <p>
+        A firearms deployment does not need to end with force for ARU to have
+        performed effectively.
+    </p>
+
+    <p>
+        If circumstances change and the threat reduces, officers should be
+        capable of adapting accordingly.
+    </p>
+
+    <p>
+        Professional ARU officers are judged by their decision-making and
+        control — not by how much force they use.
+    </p>
+
+</section>
+
+<section class="card section-card" id="mechanics">
+
+    <h2>10. Code44 Firearms Mechanics</h2>
+
+    <p>
+        Trainers will provide supervised familiarisation with the firearms
+        mechanics used on the Code44 server.
+    </p>
+
+    <p>
+        The purpose of this stage is to ensure that students understand how
+        the server behaves before those mechanics are introduced into more
+        demanding operational scenarios.
+    </p>
+
+    <p>Students may be assessed on their ability to:</p>
+
+    <ul>
+
+        <li>Follow trainer instructions.</li>
+
+        <li>Use the appropriate server controls during simulation.</li>
+
+        <li>Maintain awareness while interacting with equipment.</li>
+
+        <li>Recognise when something has not worked correctly.</li>
+
+        <li>Communicate technical problems immediately.</li>
+
+        <li>Return to a safe training state when instructed.</li>
+
+    </ul>
+
+</section>
+
+<section class="card section-card" id="problems">
+
+    <h2>11. Equipment and Script Problems</h2>
+
+    <p>
+        FiveM mechanics do not always behave as expected.
+    </p>
+
+    <p>
+        If equipment, animations, inventory systems or another server mechanic
+        behaves unexpectedly during training, students should not attempt to
+        hide the problem or continue regardless.
+    </p>
+
+    <p>The correct approach is:</p>
+
+    <ol>
+
+        <li>Stop where appropriate.</li>
+
+        <li>Communicate the issue.</li>
+
+        <li>Follow trainer direction.</li>
+
+        <li>Allow the exercise to be reset if required.</li>
+
+    </ol>
+
+    <div class="example-box">
+
+        <strong>Training Principle</strong>
+
+        A technical issue is not a student failure.
+
+        Failing to communicate a known problem may become a training issue.
+
+    </div>
+
+</section>
+
+<section class="card section-card" id="accountability">
+
+    <h2>12. Post-Exercise Accountability</h2>
+
+    <p>
+        The end of a scenario does not mean the officer's responsibilities
+        immediately disappear.
+    </p>
+
+    <p>Students should ensure that:</p>
+
+    <ul>
+
+        <li>Issued equipment remains accounted for.</li>
+
+        <li>Long firearms are returned to the ARV when no longer required.</li>
+
+        <li>Firearms are secured appropriately.</li>
+
+        <li>Equipment problems are reported.</li>
+
+        <li>Relevant information is passed to the trainer.</li>
+
+        <li>Students participate properly in the debrief.</li>
+
+    </ul>
+
+</section>
+
+<section class="card notice">
+
+    <h2>ARV Firearms Storage</h2>
+
+    <p>
+        All long firearms carried within Code44 ARVs must remain secured in
+        the rear firearms-storage area when they are not authorised for
+        deployment.
+    </p>
+
+    <p>
+        The normal exception is the trained officer's P226 personal sidearm.
+    </p>
+
+</section>
+
+<section class="card section-card">
+
+    <h2>Practical Training</h2>
+
+    <p>
+        Module 6 contains a significant practical element.
+    </p>
+
+    <p>
+        Trainers will use controlled exercises to assess how students combine
+        the knowledge learned throughout Modules 1–6.
+    </p>
+
+    <p>Practical training may assess:</p>
+
+    <ul>
+
+        <li>Professional preparation.</li>
+
+        <li>Communication.</li>
+
+        <li>Team awareness.</li>
+
+        <li>Firearms discipline.</li>
+
+        <li>Response to trainer commands.</li>
+
+        <li>Threat identification.</li>
+
+        <li>Reassessment.</li>
+
+        <li>Equipment accountability.</li>
+
+        <li>Ability to accept feedback.</li>
+
+    </ul>
+
+    <p>
+        Scenario details and assessment criteria are intentionally not provided
+        within the student material.
+    </p>
+
+</section>
+
+<section class="card warning">
+
+    <h2>What Trainers Are Looking For</h2>
+
+    <p>
+        Module 6 is not a competition to see who can complete an exercise
+        fastest.
+    </p>
+
+    <p>Students should demonstrate:</p>
+
+    <ul>
+
+        <li>Control.</li>
+
+        <li>Awareness.</li>
+
+        <li>Communication.</li>
+
+        <li>Judgement.</li>
+
+        <li>Professionalism.</li>
+
+        <li>Accountability.</li>
+
+        <li>Willingness to learn.</li>
+
+    </ul>
+
+    <p>
+        A student who slows down and asks for clarification may demonstrate
+        better judgement than a student who rushes forward without understanding
+        the situation.
+    </p>
+
+</section>
+
+<section class="card section-card" id="revision">
+
+    <h2>13. Module 6 Revision</h2>
+
+    <p>
+        Before completing the Module 6 knowledge check, students should be
+        comfortable answering the following:
+    </p>
+
+    <ol class="revision-list">
+
+        <li>
+            What does operational readiness mean for an ARU officer?
+        </li>
+
+        <li>
+            How are Code44 ARVs normally crewed?
+        </li>
+
+        <li>
+            What is the normal role of the P226?
+        </li>
+
+        <li>
+            What is the normal role of the SIG MCX?
+        </li>
+
+        <li>
+            Why are the SIG 716 and Remington treated differently?
+        </li>
+
+        <li>
+            Does attending an armed incident automatically mean a firearm
+            must remain deployed throughout?
+        </li>
+
+        <li>
+            Why is communication between ARU crew members important?
+        </li>
+
+        <li>
+            What is the difference between known, reported, observed and
+            suspected information?
+        </li>
+
+        <li>
+            Why must officers continually reassess an incident?
+        </li>
+
+        <li>
+            What should you do when a Code44 server mechanic does not behave
+            as expected?
+        </li>
+
+        <li>
+            Where should long firearms be stored when they are no longer
+            required?
+        </li>
+
+        <li>
+            What should happen after a practical exercise finishes?
+        </li>
+
+    </ol>
+
+</section>
+
+<section class="card success">
+
+    <h2>Progression Standard</h2>
+
+    <p>
+        Successful completion of Module 6 requires more than passing the
+        knowledge check.
+    </p>
+
+    <p>Students must demonstrate satisfactory performance in:</p>
+
+    <ul class="checklist">
+
+        <li>Module 6 student learning completed</li>
+
+        <li>Trainer-led practical training completed</li>
+
+        <li>Firearms safety standards maintained</li>
+
+        <li>Appropriate communication demonstrated</li>
+
+        <li>Team awareness demonstrated</li>
+
+        <li>Threat information assessed appropriately</li>
+
+        <li>Changing circumstances recognised</li>
+
+        <li>Trainer commands followed</li>
+
+        <li>Server mechanics understood sufficiently</li>
+
+        <li>Equipment accountability maintained</li>
+
+        <li>Knowledge check completed</li>
+
+        <li>Trainer sign-off received</li>
+
+    </ul>
+
+</section>
+
+<section class="card notice">
+
+    <h2>Looking Ahead — Module 7</h2>
+
+    <p>
+        Module 7 moves from individual operational readiness into
+        <strong>ARV Deployment & Armed Incident Response</strong>.
+    </p>
+
+    <p>
+        Students will begin applying their existing knowledge as part of an
+        ARV crew responding to developing armed incidents.
+    </p>
+
+    <p>
+        The standards introduced throughout Modules 1–6 remain in force
+        throughout every later Academy module.
+    </p>
+
+</section>
+
+<section class="card">
+
+    <h2>Module 6 Knowledge Check</h2>
+
+    <p>
+        Complete the knowledge check after finishing the student material and
+        trainer-led training.
+    </p>
+
+    <p>
+        The knowledge check confirms understanding of the principles covered
+        during Module 6. Practical performance is assessed separately by the
+        trainer.
+    </p>
+
+    <div class="button-row">
+
+        <a class="button"
+           href="PASTE-MODULE-6-GOOGLE-FORM-LINK-HERE"
+           target="_blank">
+
+            Complete Module 6 Knowledge Check
+
+        </a>
+
+        <a class="button secondary"
+           href="academy.html">
+
+            Return to Academy
+
+        </a>
+
+    </div>
+
+</section>
+
+<footer class="footer">
+
+    Code44 Police Service • Armed Response Unit Academy<br>
+
+    Cohort 001 • Module 6 — Firearms Fundamentals & Operational Readiness
+
+</footer>
+
+</div>
+
+</body>
+
+</html>
