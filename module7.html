@@ -1,0 +1,1548 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Module 7 - ARV Deployment and Armed Incident Response</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    background:#05080d;
+    color:white;
+    font-family:Segoe UI,Arial,sans-serif;
+    line-height:1.65;
+}
+
+.page-container{
+    width:90%;
+    max-width:1150px;
+    margin:0 auto;
+    padding:35px 0 60px;
+}
+
+.navbar{
+    background:#0b111b;
+    border:1px solid #16315c;
+    border-radius:8px;
+    padding:15px;
+    margin-bottom:20px;
+}
+
+.navbar a{
+    color:#4d9dff;
+    text-decoration:none;
+    font-weight:bold;
+    margin:0 5px;
+}
+
+.navbar a:hover,
+.back-link:hover{
+    color:white;
+}
+
+.back-link{
+    display:inline-block;
+    margin-bottom:20px;
+    color:#4d9dff;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.hero{
+    background:
+        linear-gradient(rgba(2,7,14,.79),rgba(2,7,14,.94)),
+        url('arv-photo.png');
+
+    background-size:cover;
+    background-position:center;
+
+    border:1px solid #16315c;
+    border-radius:12px;
+
+    padding:58px 30px;
+    text-align:center;
+}
+
+.hero h1{
+    margin:0 0 10px;
+    color:#4d9dff;
+    font-size:2.5rem;
+}
+
+.hero p{
+    margin:5px 0;
+    color:#d3dbea;
+}
+
+.badge{
+    display:inline-block;
+    margin-top:15px;
+    padding:7px 14px;
+
+    background:#10203a;
+    border:1px solid #2c65a8;
+    border-radius:20px;
+
+    color:#8fc2ff;
+    font-weight:bold;
+}
+
+h1,
+h2,
+h3{
+    color:#4d9dff;
+}
+
+.card{
+    background:#0b111b;
+    border:1px solid #16315c;
+    border-radius:9px;
+
+    padding:22px;
+    margin-top:20px;
+
+    transition:.25s;
+}
+
+.card:hover{
+    border-color:#4d9dff;
+}
+
+.section-card{
+    border-left:4px solid #4d9dff;
+}
+
+.notice{
+    border-left:5px solid #4d9dff;
+}
+
+.warning{
+    border-left:5px solid #e3a629;
+}
+
+.danger{
+    border-left:5px solid #d84d5f;
+}
+
+.success{
+    border-left:5px solid #4da86b;
+}
+
+.info-grid,
+.contents-grid,
+.principles-grid,
+.role-grid,
+.response-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:15px;
+    margin-top:18px;
+}
+
+.info-box,
+.principle-box,
+.role-box,
+.response-box,
+.example-box{
+    background:#08111d;
+    border:1px solid #16315c;
+    border-radius:8px;
+    padding:17px;
+}
+
+.info-box strong,
+.principle-box strong,
+.role-box strong,
+.response-box strong,
+.example-box strong{
+    display:block;
+    color:#4d9dff;
+    margin-bottom:6px;
+}
+
+.contents-link{
+    display:block;
+    background:#08111d;
+    border:1px solid #16315c;
+    border-radius:7px;
+
+    padding:14px;
+
+    color:white;
+    text-decoration:none;
+
+    transition:.25s;
+}
+
+.contents-link:hover{
+    border-color:#4d9dff;
+    background:#0d1828;
+}
+
+.contents-link strong{
+    color:#4d9dff;
+}
+
+.checklist,
+.revision-list{
+    list-style:none;
+    padding-left:0;
+}
+
+.checklist li,
+.revision-list li{
+    background:#08111d;
+    border:1px solid #16315c;
+    border-radius:7px;
+
+    padding:14px;
+    margin-top:10px;
+}
+
+.checklist li::before{
+    content:"☐";
+    color:#4d9dff;
+    font-weight:bold;
+    margin-right:10px;
+}
+
+.phase-table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:15px;
+}
+
+.phase-table th,
+.phase-table td{
+    border:1px solid #16315c;
+    padding:12px;
+    text-align:left;
+    vertical-align:top;
+}
+
+.phase-table th{
+    background:#10203a;
+    color:#8fc2ff;
+}
+
+ul,
+ol{
+    padding-left:22px;
+}
+
+li{
+    margin-bottom:7px;
+}
+
+.quote{
+    background:#08111d;
+    border:1px solid #16315c;
+    border-radius:7px;
+
+    padding:20px;
+    margin-top:15px;
+
+    color:#d8e2ef;
+    font-style:italic;
+}
+
+.button-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:20px;
+}
+
+.button{
+    display:inline-block;
+
+    padding:12px 18px;
+
+    background:#4d9dff;
+    color:#05080d;
+
+    border-radius:6px;
+
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.button:hover{
+    background:#77b5ff;
+}
+
+.button.secondary{
+    background:#101b2c;
+    color:#4d9dff;
+    border:1px solid #24538b;
+}
+
+.footer{
+    margin-top:30px;
+    padding-top:20px;
+
+    border-top:1px solid #16315c;
+
+    color:#8f9bad;
+    text-align:center;
+    font-size:.9rem;
+}
+
+@media(max-width:700px){
+
+    .page-container{
+        width:92%;
+    }
+
+    .hero{
+        padding:42px 18px;
+    }
+
+    .hero h1{
+        font-size:2rem;
+    }
+
+    .navbar{
+        line-height:2;
+    }
+
+    .button{
+        width:100%;
+        text-align:center;
+    }
+
+    .phase-table{
+        font-size:.9rem;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="page-container">
+
+<nav class="navbar">
+
+    <a href="aru-members.html">
+        Internal Database
+    </a>
+
+    |
+
+    <a href="academy.html">
+        ARU Academy
+    </a>
+
+    |
+
+    <a href="student-handbook.html">
+        Student Handbook
+    </a>
+
+    |
+
+    <a href="module5.html">
+        Module 5
+    </a>
+
+    |
+
+    <a href="module6.html">
+        Module 6
+    </a>
+
+    |
+
+    <a href="module7.html" style="color:white;">
+        Module 7
+    </a>
+
+</nav>
+
+<a class="back-link" href="academy.html">
+    ← Return to ARU Academy
+</a>
+
+<header class="hero">
+
+    <h1>Module 7 — ARV Deployment & Armed Incident Response</h1>
+
+    <p>Code44 Police Service</p>
+
+    <p>Armed Response Unit Academy</p>
+
+    <span class="badge">
+        Cohort 001
+    </span>
+
+</header>
+
+<section class="card">
+
+    <h2>Module Overview</h2>
+
+    <p>
+        Module 7 introduces students to deployment as part of a double-crewed
+        Armed Response Vehicle.
+    </p>
+
+    <p>
+        Students will learn how an ARV crew receives information, prepares for
+        deployment, communicates while travelling, arrives at an incident,
+        supports initial scene control and provides clear updates to Force Control
+        and firearms command.
+    </p>
+
+    <p>
+        This module focuses on safe and accountable incident response. Specialist
+        vehicle-interception tactics, building-entry methods and advanced armed
+        operations are taught separately in later modules.
+    </p>
+
+    <div class="info-grid">
+
+        <div class="info-box">
+
+            <strong>Training Phase</strong>
+
+            Operational Deployment
+
+        </div>
+
+        <div class="info-box">
+
+            <strong>Delivery</strong>
+
+            Trainer-led classroom and practical scenarios
+
+        </div>
+
+        <div class="info-box">
+
+            <strong>Assessment</strong>
+
+            Continuous practical observation and knowledge check
+
+        </div>
+
+        <div class="info-box">
+
+            <strong>Progression</strong>
+
+            Required before Module 8
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="card warning">
+
+    <h2>Module Boundary</h2>
+
+    <p>
+        Module 7 teaches the principles of responding to and managing developing
+        armed incidents within Code44 roleplay.
+    </p>
+
+    <p>
+        It does not qualify students in TPAC, hard stops, smash-and-grab tactics,
+        dynamic building entry, breaching or specialist firearms roles.
+    </p>
+
+    <p>
+        Students must follow trainer instructions, current Code44 policy and
+        the scenario boundaries provided during every practical exercise.
+    </p>
+
+</section>
+
+<section class="card">
+
+    <h2>Module Contents</h2>
+
+    <div class="contents-grid">
+
+        <a class="contents-link" href="#objectives">
+            <strong>1.</strong> Learning Objectives
+        </a>
+
+        <a class="contents-link" href="#arv-role">
+            <strong>2.</strong> Role of the ARV
+        </a>
+
+        <a class="contents-link" href="#deployment-information">
+            <strong>3.</strong> Deployment Information
+        </a>
+
+        <a class="contents-link" href="#crew">
+            <strong>4.</strong> Crew Responsibilities
+        </a>
+
+        <a class="contents-link" href="#journey">
+            <strong>5.</strong> Travelling to the Incident
+        </a>
+
+        <a class="contents-link" href="#arrival">
+            <strong>6.</strong> Arrival and Initial Assessment
+        </a>
+
+        <a class="contents-link" href="#scene-control">
+            <strong>7.</strong> Scene Control
+        </a>
+
+        <a class="contents-link" href="#communication">
+            <strong>8.</strong> Communications and APSTRA
+        </a>
+
+        <a class="contents-link" href="#command">
+            <strong>9.</strong> Command and Escalation
+        </a>
+
+        <a class="contents-link" href="#support">
+            <strong>10.</strong> Working With Other Units
+        </a>
+
+        <a class="contents-link" href="#changing">
+            <strong>11.</strong> Changing Circumstances
+        </a>
+
+        <a class="contents-link" href="#resolution">
+            <strong>12.</strong> Resolution and Handover
+        </a>
+
+        <a class="contents-link" href="#debrief">
+            <strong>13.</strong> Debrief and Accountability
+        </a>
+
+        <a class="contents-link" href="#revision">
+            <strong>14.</strong> Revision
+        </a>
+
+    </div>
+
+</section>
+
+<section class="card section-card" id="objectives">
+
+    <h2>1. Learning Objectives</h2>
+
+    <p>By the end of Module 7, students should be able to:</p>
+
+    <ul>
+
+        <li>Explain the role of a Code44 Armed Response Vehicle.</li>
+
+        <li>Describe the responsibilities shared by a double-crewed ARV.</li>
+
+        <li>Identify important information required before deployment.</li>
+
+        <li>Recognise information gaps and ask appropriate questions.</li>
+
+        <li>Maintain communication while travelling to an incident.</li>
+
+        <li>Conduct an initial assessment on arrival.</li>
+
+        <li>Recognise the importance of using distance, time and available protection.</li>
+
+        <li>Provide a concise APSTRA update.</li>
+
+        <li>Request appropriate support.</li>
+
+        <li>Work professionally with response, RPU, NPAS, K9 and medical resources.</li>
+
+        <li>Recognise when circumstances have changed.</li>
+
+        <li>Update the plan and command when required.</li>
+
+        <li>Understand post-incident handover and accountability.</li>
+
+    </ul>
+
+</section>
+
+<section class="card section-card" id="arv-role">
+
+    <h2>2. Role of the Armed Response Vehicle</h2>
+
+    <p>
+        The ARV provides a mobile armed-response capability for spontaneous
+        and planned incidents.
+    </p>
+
+    <p>
+        ARV crews may be deployed to:
+    </p>
+
+    <ul>
+
+        <li>Reports involving firearms or suspected firearms.</li>
+
+        <li>High-risk incidents requiring trained armed support.</li>
+
+        <li>Incidents where officers or members of the public may face an immediate threat.</li>
+
+        <li>Developing incidents requiring containment and specialist assessment.</li>
+
+        <li>Planned operations authorised by firearms command.</li>
+
+        <li>Incidents where specialist equipment or medical capability may be required.</li>
+
+    </ul>
+
+    <p>
+        The presence of an ARV does not automatically determine how an incident
+        will be resolved.
+    </p>
+
+    <p>
+        The crew must still gather information, assess risk, communicate and use
+        proportionate options.
+    </p>
+
+</section>
+
+<section class="card notice">
+
+    <h2>Double-Crewed Capability</h2>
+
+    <p>
+        Code44 ARVs are normally double-crewed by trained ARU officers.
+    </p>
+
+    <p>
+        Both officers are responsible for supporting the deployment. One officer
+        should not carry the entire information, communication or decision-making
+        workload while the other remains passive.
+    </p>
+
+</section>
+
+<section class="card section-card" id="deployment-information">
+
+    <h2>3. Information Before Deployment</h2>
+
+    <p>
+        The initial information received may be incomplete, inaccurate or changing.
+    </p>
+
+    <p>Students should identify:</p>
+
+    <div class="principles-grid">
+
+        <div class="principle-box">
+
+            <strong>What Has Happened?</strong>
+
+            The reported incident and reason armed support has been requested.
+
+        </div>
+
+        <div class="principle-box">
+
+            <strong>Who Is Involved?</strong>
+
+            Suspects, victims, witnesses, officers and vulnerable persons.
+
+        </div>
+
+        <div class="principle-box">
+
+            <strong>Where Is It Happening?</strong>
+
+            Exact location, direction of travel and relevant access information.
+
+        </div>
+
+        <div class="principle-box">
+
+            <strong>What Weapon Is Reported?</strong>
+
+            Whether a weapon has been seen, described, confirmed or only suspected.
+
+        </div>
+
+        <div class="principle-box">
+
+            <strong>What Is the Current Behaviour?</strong>
+
+            What the subject is doing now, rather than only what happened earlier.
+
+        </div>
+
+        <div class="principle-box">
+
+            <strong>Who Is at Risk?</strong>
+
+            Members of the public, officers, hostages, victims or the subject.
+
+        </div>
+
+        <div class="principle-box">
+
+            <strong>What Resources Are Present?</strong>
+
+            Response officers, RPU, NPAS, K9, ambulance or other ARVs.
+
+        </div>
+
+        <div class="principle-box">
+
+            <strong>What Remains Unknown?</strong>
+
+            Important gaps that may affect the response.
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="card warning">
+
+    <h2>Initial Reports Are Not Automatically Confirmed Facts</h2>
+
+    <p>
+        A caller reporting a firearm provides important information, but the
+        crew must continue assessing what is known, observed, confirmed and
+        still uncertain.
+    </p>
+
+    <p>
+        Students must not add details to a report or communicate assumptions
+        as though they have been confirmed.
+    </p>
+
+</section>
+
+<section class="card section-card" id="crew">
+
+    <h2>4. ARV Crew Responsibilities</h2>
+
+    <p>
+        Exact responsibilities may change depending upon the incident, vehicle
+        position, information and command direction.
+    </p>
+
+    <p>
+        The crew should nevertheless establish a shared understanding before arrival.
+    </p>
+
+    <div class="role-grid">
+
+        <div class="role-box">
+
+            <strong>Driver</strong>
+
+            Maintains safe vehicle operation, listens to updates and positions
+            the vehicle in accordance with the developing situation and trainer
+            or command direction.
+
+        </div>
+
+        <div class="role-box">
+
+            <strong>Passenger / Crew Partner</strong>
+
+            Supports navigation, monitors radio information, updates the driver
+            and helps prepare the crew for arrival.
+
+        </div>
+
+        <div class="role-box">
+
+            <strong>Contact Responsibility</strong>
+
+            Where assigned, communicates with the subject, witnesses, officers
+            or Force Control.
+
+        </div>
+
+        <div class="role-box">
+
+            <strong>Cover and Awareness</strong>
+
+            Where assigned, maintains wider awareness and communicates changes
+            affecting the crew.
+
+        </div>
+
+    </div>
+
+    <p>
+        These responsibilities are not rigid titles that prevent communication.
+        Both officers remain accountable for what they observe and do.
+    </p>
+
+</section>
+
+<section class="card section-card" id="journey">
+
+    <h2>5. Travelling to the Incident</h2>
+
+    <p>
+        Travel time should be used to prepare rather than simply waiting to arrive.
+    </p>
+
+    <p>The crew should:</p>
+
+    <ul>
+
+        <li>Listen to radio updates.</li>
+
+        <li>Confirm the location.</li>
+
+        <li>Clarify the subject description.</li>
+
+        <li>Identify whether a weapon is confirmed or suspected.</li>
+
+        <li>Discuss known risks.</li>
+
+        <li>Identify vulnerable persons.</li>
+
+        <li>Consider what other units are present.</li>
+
+        <li>Confirm which radio channel is being used.</li>
+
+        <li>Discuss immediate priorities.</li>
+
+        <li>Recognise when information changes.</li>
+
+    </ul>
+
+    <div class="example-box">
+
+        <strong>Crew Question</strong>
+
+        “What do we know, what do we not know, and what is our immediate priority
+        when we arrive?”
+
+    </div>
+
+</section>
+
+<section class="card section-card" id="arrival">
+
+    <h2>6. Arrival and Initial Assessment</h2>
+
+    <p>
+        The crew should avoid arriving with a fixed plan that ignores what is
+        actually happening.
+    </p>
+
+    <p>On arrival, students should assess:</p>
+
+    <ul>
+
+        <li>The current location of the subject.</li>
+
+        <li>Whether the subject matches the information provided.</li>
+
+        <li>Whether a weapon is visible or confirmed.</li>
+
+        <li>Current subject behaviour.</li>
+
+        <li>Members of the public in the area.</li>
+
+        <li>Positions of other officers.</li>
+
+        <li>Available distance and protection.</li>
+
+        <li>Access and exit routes.</li>
+
+        <li>Whether urgent life-saving action is required.</li>
+
+        <li>Whether additional resources are needed.</li>
+
+    </ul>
+
+    <p>
+        Students should communicate important observations rather than assuming
+        their partner or Force Control has seen the same thing.
+    </p>
+
+</section>
+
+<section class="card success">
+
+    <h2>Control Before Complexity</h2>
+
+    <p>
+        Early incident management should focus on understanding and controlling
+        the immediate risk.
+    </p>
+
+    <p>
+        Students should not rush into specialist tactics simply because ARU has arrived.
+    </p>
+
+    <p>
+        Time, communication, distance and containment may provide a safer and
+        more proportionate response where immediate action is not required.
+    </p>
+
+</section>
+
+<section class="card section-card" id="scene-control">
+
+    <h2>7. Initial Scene Control</h2>
+
+    <p>
+        Initial scene control may involve:
+    </p>
+
+    <ul>
+
+        <li>Identifying the immediate threat area.</li>
+
+        <li>Preventing members of the public entering danger.</li>
+
+        <li>Communicating with officers already present.</li>
+
+        <li>Establishing a safe working area.</li>
+
+        <li>Using available time and distance.</li>
+
+        <li>Requesting unarmed officers to support outer scene control where appropriate.</li>
+
+        <li>Identifying safe access for medical support.</li>
+
+        <li>Maintaining observation and information flow.</li>
+
+        <li>Preserving options rather than forcing unnecessary escalation.</li>
+
+    </ul>
+
+    <p>
+        Detailed armed-containment tactics are covered in Module 9. Module 7
+        introduces the purpose and principles of early scene control only.
+    </p>
+
+</section>
+
+<section class="card section-card" id="communication">
+
+    <h2>8. Communications and APSTRA</h2>
+
+    <p>
+        Communications should help Force Control, other officers and firearms
+        command understand what is happening.
+    </p>
+
+    <p>A useful update should include:</p>
+
+    <div class="response-grid">
+
+        <div class="response-box">
+
+            <strong>Identity</strong>
+
+            Officer, unit or ARV callsign.
+
+        </div>
+
+        <div class="response-box">
+
+            <strong>Location</strong>
+
+            Clear current location.
+
+        </div>
+
+        <div class="response-box">
+
+            <strong>Incident</strong>
+
+            What has been reported or observed.
+
+        </div>
+
+        <div class="response-box">
+
+            <strong>Risk</strong>
+
+            Who may be at risk and why.
+
+        </div>
+
+        <div class="response-box">
+
+            <strong>Action</strong>
+
+            What the crew is currently doing.
+
+        </div>
+
+        <div class="response-box">
+
+            <strong>Requirement</strong>
+
+            Resources, command or medical support required.
+
+        </div>
+
+    </div>
+
+    <div class="example-box">
+
+        <strong>Example APSTRA Update</strong>
+
+        “ARV-2 at Legion Square. One male matching the description located near
+        the reported vehicle. No weapon currently visible. High public presence.
+        Establishing scene control and requesting additional units for public
+        management.”
+
+    </div>
+
+    <p>
+        Updates should be refreshed when the threat, location, subject behaviour,
+        available information or tactical plan changes.
+    </p>
+
+</section>
+
+<section class="card warning">
+
+    <h2>Do Not Flood the Radio</h2>
+
+    <p>
+        Radio updates should be relevant, clear and timely.
+    </p>
+
+    <p>
+        Students should avoid long, repetitive transmissions that prevent other
+        officers from passing urgent information.
+    </p>
+
+</section>
+
+<section class="card section-card" id="command">
+
+    <h2>9. Command and Escalation</h2>
+
+    <p>
+        Students should understand when firearms command or supervisory direction
+        may be required.
+    </p>
+
+    <p>Command should be updated when:</p>
+
+    <ul>
+
+        <li>The threat materially changes.</li>
+
+        <li>A weapon is confirmed or disproved.</li>
+
+        <li>The subject moves location.</li>
+
+        <li>Containment is established or fails.</li>
+
+        <li>Additional specialist resources are required.</li>
+
+        <li>Force is used.</li>
+
+        <li>A casualty is identified.</li>
+
+        <li>An urgent tactical decision is required.</li>
+
+        <li>The current plan is no longer suitable.</li>
+
+    </ul>
+
+    <p>
+        Officers should not delay immediate action genuinely required to protect
+        life solely because a commander is not yet present.
+    </p>
+
+    <p>
+        Command must be updated as soon as reasonably possible.
+    </p>
+
+</section>
+
+<section class="card section-card" id="support">
+
+    <h2>10. Working With Other Units</h2>
+
+    <p>
+        ARU exists to support the wider police service, not operate separately
+        from it.
+    </p>
+
+    <div class="role-grid">
+
+        <div class="role-box">
+
+            <strong>Response Officers</strong>
+
+            May provide initial information, witnesses, scene control and support
+            away from the immediate threat area.
+
+        </div>
+
+        <div class="role-box">
+
+            <strong>Roads Policing</strong>
+
+            May support vehicle containment, traffic management and pursuit activity
+            within their authorised role.
+
+        </div>
+
+        <div class="role-box">
+
+            <strong>NPAS</strong>
+
+            May provide aerial observation, subject tracking and wider situational
+            awareness.
+
+        </div>
+
+        <div class="role-box">
+
+            <strong>K9</strong>
+
+            May support searches, tracking and specialist operational tasks when directed.
+
+        </div>
+
+        <div class="role-box">
+
+            <strong>Ambulance / Medical Support</strong>
+
+            Provides casualty care when safe access has been established.
+
+        </div>
+
+        <div class="role-box">
+
+            <strong>Firearms Command</strong>
+
+            Provides command oversight, tactical direction and coordination where required.
+
+        </div>
+
+    </div>
+
+    <p>
+        Requests should explain what support is needed and why.
+    </p>
+
+</section>
+
+<section class="card section-card" id="changing">
+
+    <h2>11. Changing Circumstances</h2>
+
+    <p>
+        Students must remain capable of adjusting the response as the incident develops.
+    </p>
+
+    <p>Examples of material change include:</p>
+
+    <ul>
+
+        <li>The subject begins complying.</li>
+
+        <li>The subject becomes more aggressive.</li>
+
+        <li>A reported weapon is located.</li>
+
+        <li>The suspected item is shown not to be a weapon.</li>
+
+        <li>The subject enters a building or vehicle.</li>
+
+        <li>A hostage or vulnerable person is identified.</li>
+
+        <li>Members of the public enter the scene.</li>
+
+        <li>Additional officers arrive.</li>
+
+        <li>Medical urgency increases.</li>
+
+        <li>Command direction changes.</li>
+
+    </ul>
+
+    <div class="example-box">
+
+        <strong>Reassessment Question</strong>
+
+        “What has changed, what does that mean for the risk, and does our current
+        plan remain appropriate?”
+
+    </div>
+
+</section>
+
+<section class="card success">
+
+    <h2>A Controlled Resolution Is a Successful Resolution</h2>
+
+    <p>
+        Students should not measure success by whether a firearm was deployed
+        or force was used.
+    </p>
+
+    <p>
+        Good ARV performance may involve controlling the scene, gathering better
+        information, reducing risk, supporting communication and resolving the
+        incident without further escalation.
+    </p>
+
+</section>
+
+<section class="card section-card" id="resolution">
+
+    <h2>12. Resolution and Handover</h2>
+
+    <p>
+        Once the immediate threat has been controlled, the crew must transition
+        into post-incident responsibilities.
+    </p>
+
+    <p>These may include:</p>
+
+    <ul>
+
+        <li>Confirming the subject's status.</li>
+
+        <li>Confirming whether weapons have been located.</li>
+
+        <li>Providing or requesting medical care.</li>
+
+        <li>Updating Force Control and firearms command.</li>
+
+        <li>Protecting the scene.</li>
+
+        <li>Identifying witnesses.</li>
+
+        <li>Separating involved persons where appropriate.</li>
+
+        <li>Providing a clear handover.</li>
+
+        <li>Accounting for ARU equipment.</li>
+
+        <li>Completing required reports.</li>
+
+    </ul>
+
+    <p>
+        Life-saving care takes priority over evidence preservation.
+    </p>
+
+</section>
+
+<section class="card section-card" id="debrief">
+
+    <h2>13. Debrief and Accountability</h2>
+
+    <p>
+        Students should participate honestly in the post-exercise debrief.
+    </p>
+
+    <p>They should be able to explain:</p>
+
+    <ul>
+
+        <li>What information they received.</li>
+
+        <li>What they believed the threat to be.</li>
+
+        <li>What remained unknown.</li>
+
+        <li>What they communicated to their partner.</li>
+
+        <li>What decisions they made.</li>
+
+        <li>What changed during the scenario.</li>
+
+        <li>How their response changed.</li>
+
+        <li>What went well.</li>
+
+        <li>What they would improve.</li>
+
+        <li>What equipment or server issues occurred.</li>
+
+    </ul>
+
+    <p>
+        Honest reflection is part of operational competence. Students should not
+        attempt to create a perfect answer after the event.
+    </p>
+
+</section>
+
+<section class="card notice">
+
+    <h2>Practical Training</h2>
+
+    <p>
+        Module 7 includes several trainer-led ARV response scenarios.
+    </p>
+
+    <p>Students may be assessed on:</p>
+
+    <ul>
+
+        <li>Pre-deployment information gathering.</li>
+
+        <li>Crew communication.</li>
+
+        <li>Radio discipline.</li>
+
+        <li>Arrival assessment.</li>
+
+        <li>Recognition of public and officer risk.</li>
+
+        <li>Initial scene-control decisions.</li>
+
+        <li>APSTRA updates.</li>
+
+        <li>Requests for support.</li>
+
+        <li>Response to changing circumstances.</li>
+
+        <li>Post-incident handover.</li>
+
+        <li>Debrief participation.</li>
+
+    </ul>
+
+    <p>
+        Hidden scenario information and trainer assessment guidance are not
+        included within the student material.
+    </p>
+
+</section>
+
+<section class="card warning">
+
+    <h2>What Trainers Are Looking For</h2>
+
+    <p>
+        Trainers are not looking for students to rush into the incident or force
+        a dramatic outcome.
+    </p>
+
+    <p>Students should demonstrate:</p>
+
+    <ul>
+
+        <li>Professional preparation.</li>
+
+        <li>Clear communication.</li>
+
+        <li>Shared crew responsibility.</li>
+
+        <li>Controlled decision-making.</li>
+
+        <li>Accurate information handling.</li>
+
+        <li>Awareness of wider risks.</li>
+
+        <li>Appropriate requests for assistance.</li>
+
+        <li>Reassessment.</li>
+
+        <li>Accountability.</li>
+
+    </ul>
+
+</section>
+
+<section class="card section-card" id="revision">
+
+    <h2>14. Module 7 Revision</h2>
+
+    <p>
+        Before completing the knowledge check, students should be comfortable
+        answering the following:
+    </p>
+
+    <ol class="revision-list">
+
+        <li>
+            What is the purpose of an Armed Response Vehicle?
+        </li>
+
+        <li>
+            How are Code44 ARVs normally crewed?
+        </li>
+
+        <li>
+            What information should the crew obtain before arrival?
+        </li>
+
+        <li>
+            Why must reported information be separated from confirmed information?
+        </li>
+
+        <li>
+            What should the crew discuss while travelling to the incident?
+        </li>
+
+        <li>
+            What should officers assess when they first arrive?
+        </li>
+
+        <li>
+            Why are time, communication and distance important?
+        </li>
+
+        <li>
+            What information should be included within an APSTRA update?
+        </li>
+
+        <li>
+            When should firearms command be updated?
+        </li>
+
+        <li>
+            How can response, RPU, NPAS and K9 support an incident?
+        </li>
+
+        <li>
+            Why must the tactical plan change when circumstances change?
+        </li>
+
+        <li>
+            What responsibilities remain after the immediate threat ends?
+        </li>
+
+        <li>
+            What should a student explain during the debrief?
+        </li>
+
+    </ol>
+
+</section>
+
+<section class="card success">
+
+    <h2>Progression Standard</h2>
+
+    <p>
+        Module 7 is complete when the student has:
+    </p>
+
+    <ul class="checklist">
+
+        <li>Completed the Module 7 student learning</li>
+
+        <li>Attended the trainer-led lesson</li>
+
+        <li>Completed the ARV crew briefing exercise</li>
+
+        <li>Demonstrated effective crew communication</li>
+
+        <li>Delivered a clear radio or APSTRA update</li>
+
+        <li>Completed an arrival-assessment exercise</li>
+
+        <li>Recognised public, officer and subject risks</li>
+
+        <li>Requested appropriate support</li>
+
+        <li>Responded to changing scenario information</li>
+
+        <li>Completed a post-incident handover</li>
+
+        <li>Participated properly in the debrief</li>
+
+        <li>Completed the Module 7 knowledge check</li>
+
+        <li>Received trainer sign-off</li>
+
+    </ul>
+
+</section>
+
+<section class="card notice">
+
+    <h2>Looking Ahead — Module 8</h2>
+
+    <p>
+        Module 8 will focus on:
+    </p>
+
+    <h3>Armed Vehicle Tactics</h3>
+
+    <p>
+        Students will begin learning Code44 procedures for vehicle-related armed
+        incidents, including vehicle containment, coordinated armed stops and
+        working with Roads Policing.
+    </p>
+
+    <p>
+        The safety, communication and decision-making standards introduced in
+        Modules 1–7 remain in force.
+    </p>
+
+</section>
+
+<section class="card">
+
+    <h2>Module 7 Knowledge Check</h2>
+
+    <p>
+        Complete the knowledge check after finishing the student learning and
+        trainer-led practical exercises.
+    </p>
+
+    <p>
+        Practical performance is assessed separately by the trainer.
+    </p>
+
+    <div class="button-row">
+
+        <a class="button"
+           href="PASTE-MODULE-7-GOOGLE-FORM-LINK-HERE"
+           target="_blank">
+
+            Complete Module 7 Knowledge Check
+
+        </a>
+
+        <a class="button secondary"
+           href="academy.html">
+
+            Return to Academy
+
+        </a>
+
+    </div>
+
+</section>
+
+<footer class="footer">
+
+    Code44 Police Service • Armed Response Unit Academy<br>
+
+    Cohort 001 • Module 7 — ARV Deployment & Armed Incident Response
+
+</footer>
+
+</div>
+
+</body>
+
+</html>
