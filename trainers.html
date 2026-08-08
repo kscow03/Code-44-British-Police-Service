@@ -344,6 +344,18 @@ if(sessionStorage.getItem("trainerAccess") !== "granted"){
 
     |
 
+    <a href="training-records.html">
+        Training Records
+    </a>
+
+    |
+
+    <a href="knowledge-check-records.html">
+        Knowledge Checks
+    </a>
+
+    |
+
     <a href="trainers.html" style="color:white;">
         Trainers Area
     </a>
@@ -669,25 +681,25 @@ if(sessionStorage.getItem("trainerAccess") !== "granted"){
 
         </a>
 
-        <div class="trainer-link pending">
+        <a class="trainer-link management"
+           href="training-records.html">
 
             <strong>Training Records</strong>
 
-            Record and review completed module training,
-            assessment outcomes and trainer feedback.
-            Coming soon.
+            Record Module 1–13 completion, practical training,
+            assessment outcomes, trainer feedback and student progression.
 
-        </div>
+        </a>
 
-        <div class="trainer-link pending">
+        <a class="trainer-link management"
+           href="knowledge-check-records.html">
 
             <strong>Knowledge Check Records</strong>
 
-            Record knowledge-check results,
-            marks and identified development areas.
-            Coming soon.
+            Record Module 1–13 knowledge-check results,
+            scores, feedback, development points and reassessment requirements.
 
-        </div>
+        </a>
 
         <div class="trainer-link pending">
 
@@ -720,6 +732,30 @@ if(sessionStorage.getItem("trainerAccess") !== "granted"){
         </div>
 
     </div>
+
+</section>
+
+
+<section class="card notice">
+
+    <h2>Training Management System</h2>
+
+    <p>
+        The Recruit Tracker, Training Records and Knowledge Check Records are
+        designed to work together.
+    </p>
+
+    <p>
+        The Recruit Tracker provides an overview of where each student currently
+        sits within the Academy. Training Records document completed learning and
+        practical elements, while Knowledge Check Records separately record the
+        student's understanding of module content.
+    </p>
+
+    <p>
+        These systems currently use browser local storage and are intended for
+        Code44 Academy administration only.
+    </p>
 
 </section>
 
@@ -789,9 +825,9 @@ if(sessionStorage.getItem("trainerAccess") !== "granted"){
     </p>
 
     <p>
-        This system uses basic browser-session access control. It should not
-        be treated as secure storage for real sensitive information,
-        passwords or genuine personal data.
+        This system uses basic browser-session access control and browser
+        local storage. It should not be treated as secure storage for real
+        sensitive information, passwords or genuine personal data.
     </p>
 
 </section>
@@ -816,7 +852,19 @@ if(sessionStorage.getItem("trainerAccess") !== "granted"){
 
         <a class="button secondary" href="recruit-tracker.html">
 
-            Open Recruit Tracker
+            Recruit Tracker
+
+        </a>
+
+        <a class="button secondary" href="training-records.html">
+
+            Training Records
+
+        </a>
+
+        <a class="button secondary" href="knowledge-check-records.html">
+
+            Knowledge Checks
 
         </a>
 
