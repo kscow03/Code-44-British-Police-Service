@@ -234,15 +234,12 @@ h3{
     font-size:.92rem;
 }
 
-.module.pending{
-    opacity:.55;
-    cursor:default;
+.module.final{
+    border-left:5px solid #e3a629;
 }
 
-.module.pending:hover{
-    transform:none;
-    border-color:#16315c;
-    background:#08111d;
+.module.final strong{
+    color:#f2c76f;
 }
 
 .notice{
@@ -251,6 +248,10 @@ h3{
 
 .warning{
     border-left:5px solid #e3a629;
+}
+
+.success{
+    border-left:5px solid #45b36b;
 }
 
 .progress{
@@ -333,6 +334,12 @@ h3{
 
     |
 
+    <a href="student-resources.html">
+        Student Resources
+    </a>
+
+    |
+
     <a href="trainers-login.html">
         Trainers Area
     </a>
@@ -357,27 +364,33 @@ h3{
 
 </header>
 
+
 <section class="card">
 
     <h2>Academy Overview</h2>
 
     <p>
-        The ARU Academy provides a structured training pathway for officers
+        The ARU Academy provides the structured training pathway for officers
         selected to begin development within the Armed Response Unit.
     </p>
 
     <p>
-        Students receive access to approved learning materials, course modules,
-        revision resources and assessments. Trainers use a separate restricted
-        area containing lesson plans, assessment guidance and recruit-management
-        documents.
+        The Academy develops students from initial induction through professional
+        standards, decision-making, equipment, firearms development and ARV
+        operations before progressing into advanced operational scenarios and
+        final qualification.
     </p>
 
     <p>
-        Academy modules combine self-directed learning, trainer input and practical
-        training. Not every module requires a formal classroom lesson. Students are
-        expected to complete assigned learning independently before attending
-        practical training where required.
+        Students have access to approved learning modules and reference material.
+        Practical training, coaching and assessment are delivered by authorised
+        ARU trainers.
+    </p>
+
+    <p>
+        Not every module requires a formal classroom session. Students are expected
+        to complete assigned pre-learning independently and arrive at practical
+        training prepared to apply what they have learned.
     </p>
 
     <div class="stats-grid">
@@ -408,6 +421,14 @@ h3{
 
         <div class="stat-box">
 
+            <strong>Academy Modules</strong>
+
+            13
+
+        </div>
+
+        <div class="stat-box">
+
             <strong>Course Status</strong>
 
             In Progress
@@ -418,6 +439,7 @@ h3{
 
 </section>
 
+
 <section class="area-grid">
 
     <a class="area-card" href="#student-area">
@@ -425,8 +447,8 @@ h3{
         <h2>🎓 Student Area</h2>
 
         <p>
-            Access the Student Handbook, Academy modules, revision material
-            and assessments.
+            Access the Student Handbook, all Academy learning modules,
+            revision material and approved student resources.
         </p>
 
         <strong>
@@ -441,7 +463,7 @@ h3{
 
         <p>
             Restricted access for approved ARU trainers. Contains lesson plans,
-            expected answers, assessment material and recruit records.
+            expected answers, scenario information, assessments and recruit records.
         </p>
 
         <strong>
@@ -452,90 +474,114 @@ h3{
 
 </section>
 
+
 <section class="card" id="student-area">
 
     <h2>Student Area</h2>
 
     <p>
         Students should complete Academy modules in the order directed by the
-        training team.
+        ARU Training Team.
     </p>
 
     <p>
-        Some modules are primarily self-directed learning, while others include
-        trainer-led discussions, practical exercises or scenario-based training.
+        Modules remain available after completion so officers can return to them
+        for revision and operational refresher learning.
     </p>
 
     <p>
-        Instructor notes, expected answers, assessment criteria and hidden
-        scenario information are held separately within the Trainers Area.
+        Trainer notes, assessment answers, scenario injects and marking guidance
+        are held separately within the restricted Trainers Area.
     </p>
 
     <div class="module-grid">
+
+
+        <!-- STUDENT HANDBOOK -->
 
         <a class="module" href="student-handbook.html">
 
             <strong>Student Handbook</strong>
 
             <span>
-                Academy rules, standards, learning requirements,
-                assessments and progression.
+                Academy rules, professional standards, attendance,
+                assessments and progression requirements.
             </span>
 
         </a>
+
+
+        <!-- MODULE 1 -->
 
         <a class="module" href="module1.html">
 
             <strong>Module 1 — Welcome to ARU</strong>
 
             <span>
-                Academy introduction, course structure and student expectations.
+                Academy induction, course structure, expectations
+                and responsibilities associated with ARU development.
             </span>
 
         </a>
+
+
+        <!-- MODULE 2 -->
 
         <a class="module" href="module2.html">
 
             <strong>Module 2 — Professional Standards</strong>
 
             <span>
-                Integrity, accountability, professionalism, teamwork and conduct.
+                Integrity, accountability, professionalism,
+                communication, teamwork and conduct.
             </span>
 
         </a>
+
+
+        <!-- MODULE 3 -->
 
         <a class="module" href="module3.html">
 
             <strong>Module 3 — Legal &amp; Decision-Making</strong>
 
             <span>
-                Legal principles, APSTRA, proportionality, reassessment
-                and accountable decision-making.
+                Legal awareness, APSTRA, proportionality,
+                continuous reassessment and accountable decision-making.
             </span>
 
         </a>
+
+
+        <!-- MODULE 4 -->
 
         <a class="module" href="module4.html">
 
             <strong>Module 4 — Equipment, Vehicles &amp; PPE</strong>
 
             <span>
-                ARU equipment, protective equipment, firearms roles,
-                vehicle familiarisation and accountability.
+                ARU equipment, PPE, firearms roles, ARV familiarisation,
+                specialist equipment and accountability.
             </span>
 
         </a>
+
+
+        <!-- MODULE 5 -->
 
         <a class="module" href="module5.html">
 
             <strong>Module 5 — Firearms Safety &amp; Handling</strong>
 
             <span>
-                Firearms safety, trainer commands, simulated handling
-                and firearms accountability.
+                Firearms safety principles, trainer commands,
+                simulated handling and firearms accountability.
             </span>
 
         </a>
+
+
+        <!-- MODULE 6 -->
 
         <a class="module" href="module6.html">
 
@@ -548,92 +594,114 @@ h3{
 
         </a>
 
+
+        <!-- MODULE 7 -->
+
         <a class="module" href="module7.html">
 
             <strong>Module 7 — ARV Deployment &amp; Armed Incident Response</strong>
 
             <span>
-                ARV crew responsibilities, deployment information, arrival assessment,
-                scene control, APSTRA, command updates and incident handover.
+                ARV crew responsibilities, deployment information,
+                arrival assessment, scene control, command updates
+                and incident handover.
             </span>
 
         </a>
 
-        <div class="module pending">
+
+        <!-- MODULE 8 -->
+
+        <a class="module" href="module8.html">
 
             <strong>Module 8 — Armed Vehicle Tactics</strong>
 
             <span>
                 Armed vehicle incidents, coordinated vehicle operations,
-                Roads Policing integration and tactical decision-making.
-                Coming soon.
+                TPAC awareness, hard stops, smash-and-grab operations,
+                Roads Policing integration and reassessment.
             </span>
 
-        </div>
+        </a>
 
-        <div class="module pending">
 
-            <strong>Module 9 — Armed Containment, Searches &amp; Warrants</strong>
+        <!-- MODULE 9 -->
+
+        <a class="module" href="module9.html">
+
+            <strong>Module 9 — Armed Containment, Searches &amp; High-Risk Warrants</strong>
 
             <span>
-                Armed containment, high-risk searches, warrants,
-                scene management and coordinated operations.
-                Coming soon.
+                Armed containment, coordinated searches, high-risk warrants,
+                specialist-resource integration and operational handover.
             </span>
 
-        </div>
+        </a>
 
-        <div class="module pending">
+
+        <!-- MODULE 10 -->
+
+        <a class="module" href="module10.html">
 
             <strong>Module 10 — Building Operations &amp; CQB</strong>
 
             <span>
                 Building operations, CQB principles, team coordination,
-                tactical movement and specialist resources.
-                Coming soon.
+                communication, specialist resources and tactical reassessment.
             </span>
 
-        </div>
+        </a>
 
-        <div class="module pending">
+
+        <!-- MODULE 11 -->
+
+        <a class="module" href="module11.html">
 
             <strong>Module 11 — Complex Armed Incidents &amp; Integrated Operations</strong>
 
             <span>
-                Complex incidents, multi-unit operations, specialist capabilities,
-                NPAS, K9 and command integration.
-                Coming soon.
+                Multi-unit armed incidents, command awareness,
+                NPAS and K9 integration, casualties, competing priorities
+                and specialist-resource coordination.
             </span>
 
-        </div>
+        </a>
 
-        <div class="module pending">
+
+        <!-- MODULE 12 -->
+
+        <a class="module" href="module12.html">
 
             <strong>Module 12 — Consolidation &amp; Scenario Development</strong>
 
             <span>
-                Combined scenario training, development exercises,
-                revision and preparation for final assessment.
-                Coming soon.
+                Academy-wide consolidation, scenario development,
+                individual improvement, remedial training and preparation
+                for final assessment.
             </span>
 
-        </div>
+        </a>
 
-        <div class="module pending">
+
+        <!-- MODULE 13 -->
+
+        <a class="module final" href="module13.html">
 
             <strong>Module 13 — Final Assessment &amp; Qualification</strong>
 
             <span>
-                Final knowledge assessment, practical scenarios,
-                debrief and qualification decision.
-                Released when authorised.
+                Final knowledge and practical assessment covering professionalism,
+                communication, decision-making, teamwork, operational performance
+                and qualification readiness.
             </span>
 
-        </div>
+        </a>
+
 
     </div>
 
 </section>
+
 
 <section class="card">
 
@@ -646,7 +714,8 @@ h3{
             <strong>Student Resources</strong>
 
             <span>
-                Revision material, approved documents and useful Academy links.
+                Revision material, approved documents,
+                useful links and Academy reference material.
             </span>
 
         </a>
@@ -655,13 +724,36 @@ h3{
 
 </section>
 
+
+<section class="card success">
+
+    <h2>Academy Structure</h2>
+
+    <p>
+        The Academy progressively develops officers through 13 modules.
+    </p>
+
+    <p>
+        Earlier modules establish the professional, legal and operational
+        foundations required within ARU. Later modules increasingly focus on
+        practical application, integrated incidents and independent performance.
+    </p>
+
+    <p>
+        Modules 12 and 13 represent the final development and assessment stages
+        before qualification.
+    </p>
+
+</section>
+
+
 <section class="card">
 
     <h2>Cohort 001 Progress</h2>
 
     <p>
-        Cohort progression will be updated by the ARU training team as Academy
-        learning and assessments are completed.
+        Cohort progression will be updated by the ARU Training Team as learning,
+        practical elements and assessments are completed.
     </p>
 
     <div class="progress">
@@ -676,6 +768,7 @@ h3{
 
 </section>
 
+
 <section class="card notice">
 
     <h2>Student Notice</h2>
@@ -688,24 +781,53 @@ h3{
 
     <p>
         Training sessions are delivered when students, trainers and appropriate
-        resources are available within the city.
+        resources are available within the city rather than through a fixed timetable.
+    </p>
+
+    <p>
+        Students should continue using completed Academy pages for revision
+        throughout the course.
     </p>
 
     <p>
         Qualification is not automatic. Students must meet the required standards
-        across professionalism, knowledge, practical performance and final assessment.
+        across professionalism, knowledge, practical performance, communication,
+        teamwork, decision-making and final assessment.
     </p>
 
 </section>
+
+
+<section class="card warning">
+
+    <h2>Module 13 Access</h2>
+
+    <p>
+        Students may read the Module 13 student information page for final
+        assessment preparation.
+    </p>
+
+    <p>
+        Progression into the actual final assessment must be authorised by the
+        ARU Training Team following satisfactory completion of Module 12.
+    </p>
+
+    <p>
+        Final assessment scenarios, marking criteria, expected responses and
+        trainer guidance remain restricted.
+    </p>
+
+</section>
+
 
 <section class="card warning">
 
     <h2>Restricted Access</h2>
 
     <p>
-        Students must not attempt to access trainer-only materials, assessment
-        answers, marking guidance, hidden scenario information or personal recruit
-        records.
+        Students must not attempt to access trainer-only materials,
+        assessment answers, marking guidance, scenario injects,
+        assessment-bank information or personal recruit records.
     </p>
 
     <p>
@@ -715,11 +837,12 @@ h3{
 
 </section>
 
+
 <footer class="footer">
 
     Code44 Police Service • Armed Response Unit Academy<br>
 
-    Cohort 001 • Training &amp; Standards
+    Cohort 001 • 13-Module Training &amp; Qualification Programme
 
 </footer>
 
