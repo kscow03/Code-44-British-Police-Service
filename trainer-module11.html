@@ -1,0 +1,1935 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Trainer Module 11 - Complex Armed Incidents & Integrated Operations</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    background:#05080d;
+    color:white;
+    font-family:Segoe UI,Arial,sans-serif;
+    line-height:1.65;
+}
+
+.page-container{
+    width:90%;
+    max-width:1150px;
+    margin:0 auto;
+    padding:35px 0 60px;
+}
+
+.navbar{
+    background:#0b111b;
+    border:1px solid #16315c;
+    border-radius:8px;
+    padding:15px;
+    margin-bottom:20px;
+}
+
+.navbar a{
+    color:#4d9dff;
+    text-decoration:none;
+    font-weight:bold;
+    margin:0 5px;
+}
+
+.navbar a:hover,
+.back-link:hover{
+    color:white;
+}
+
+.back-link{
+    display:inline-block;
+    margin-bottom:20px;
+    color:#4d9dff;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.hero{
+    background:
+        linear-gradient(rgba(2,7,14,.80),rgba(2,7,14,.94)),
+        url('arv-photo.png');
+
+    background-size:cover;
+    background-position:center;
+
+    border:1px solid #16315c;
+    border-radius:12px;
+
+    padding:58px 30px;
+    text-align:center;
+}
+
+.hero h1{
+    margin:0 0 10px;
+    color:#4d9dff;
+    font-size:2.5rem;
+}
+
+.hero p{
+    margin:5px 0;
+    color:#d3dbea;
+}
+
+.badge{
+    display:inline-block;
+    margin-top:15px;
+    padding:7px 14px;
+
+    background:#3a2a0d;
+    border:1px solid #a8761e;
+    border-radius:20px;
+
+    color:#f2c76f;
+    font-weight:bold;
+}
+
+h1,
+h2,
+h3{
+    color:#4d9dff;
+}
+
+.card{
+    background:#0b111b;
+    border:1px solid #16315c;
+    border-radius:9px;
+
+    padding:22px;
+    margin-top:20px;
+
+    transition:.25s;
+}
+
+.card:hover{
+    border-color:#4d9dff;
+}
+
+.instructor{
+    border-left:5px solid #9c6ade;
+}
+
+.activity{
+    border-left:5px solid #4da86b;
+}
+
+.assessment{
+    border-left:5px solid #4d9dff;
+}
+
+.warning{
+    border-left:5px solid #e3a629;
+}
+
+.danger{
+    border-left:5px solid #d84d5f;
+}
+
+.success{
+    border-left:5px solid #4da86b;
+}
+
+.info-grid,
+.rating-grid,
+.role-grid,
+.principles-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:15px;
+    margin-top:18px;
+}
+
+.info-box,
+.rating-box,
+.role-box,
+.principle-box,
+.example-box{
+    background:#08111d;
+    border:1px solid #16315c;
+    border-radius:8px;
+    padding:17px;
+}
+
+.info-box strong,
+.rating-box strong,
+.role-box strong,
+.principle-box strong,
+.example-box strong{
+    display:block;
+    color:#4d9dff;
+    margin-bottom:6px;
+}
+
+.delivery-table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:15px;
+}
+
+.delivery-table th,
+.delivery-table td{
+    border:1px solid #16315c;
+    padding:12px;
+    text-align:left;
+    vertical-align:top;
+}
+
+.delivery-table th{
+    background:#10203a;
+    color:#8fc2ff;
+}
+
+.checklist{
+    list-style:none;
+    padding-left:0;
+}
+
+.checklist li{
+    background:#08111d;
+    border:1px solid #16315c;
+    border-radius:7px;
+
+    padding:13px;
+    margin-top:9px;
+}
+
+.checklist li::before{
+    content:"☐";
+    color:#4d9dff;
+    font-weight:bold;
+    margin-right:10px;
+}
+
+ul,
+ol{
+    padding-left:22px;
+}
+
+li{
+    margin-bottom:7px;
+}
+
+.button-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:20px;
+}
+
+.button{
+    display:inline-block;
+
+    padding:12px 18px;
+
+    background:#4d9dff;
+    color:#05080d;
+
+    border:none;
+    border-radius:6px;
+
+    text-decoration:none;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.button:hover{
+    background:#77b5ff;
+}
+
+.button.secondary{
+    background:#101b2c;
+    color:#4d9dff;
+    border:1px solid #24538b;
+}
+
+.footer{
+    margin-top:30px;
+    padding-top:20px;
+
+    border-top:1px solid #16315c;
+
+    color:#8f9bad;
+    text-align:center;
+    font-size:.9rem;
+}
+
+@media(max-width:700px){
+
+    .page-container{
+        width:92%;
+    }
+
+    .hero{
+        padding:42px 18px;
+    }
+
+    .hero h1{
+        font-size:2rem;
+    }
+
+    .navbar{
+        line-height:2;
+    }
+
+    .button{
+        width:100%;
+        text-align:center;
+    }
+
+    .delivery-table{
+        font-size:.9rem;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<script>
+
+if (sessionStorage.getItem("trainerAccess") !== "granted") {
+
+    window.location.replace("trainers-login.html");
+
+}
+
+</script>
+
+<div class="page-container">
+
+<nav class="navbar">
+
+    <a href="aru-members.html">
+        Internal Database
+    </a>
+
+    |
+
+    <a href="academy.html">
+        ARU Academy
+    </a>
+
+    |
+
+    <a href="trainers.html">
+        Trainers Area
+    </a>
+
+    |
+
+    <a href="trainer-module10.html">
+        Module 10
+    </a>
+
+    |
+
+    <a href="trainer-module11.html" style="color:white;">
+        Module 11
+    </a>
+
+</nav>
+
+<a class="back-link" href="trainers.html">
+    ← Return to Trainers Area
+</a>
+
+<header class="hero">
+
+    <h1>Trainer Module 11 — Complex Armed Incidents & Integrated Operations</h1>
+
+    <p>Instructor Lesson Plan</p>
+
+    <p>ARU Academy • Cohort 001</p>
+
+    <span class="badge">
+        Trainer-Only Resource
+    </span>
+
+</header>
+
+<section class="card">
+
+    <h2>Lesson Overview</h2>
+
+    <p>
+        Module 11 consolidates the student's previous Academy learning through
+        complex, multi-resource armed incidents.
+    </p>
+
+    <p>
+        This module introduces very little new theory. The main purpose is to
+        assess whether students can combine the standards developed throughout
+        Modules 1–10 while dealing with competing priorities, changing
+        intelligence, multiple subjects, several locations and specialist resources.
+    </p>
+
+    <p>
+        Trainers should deliberately create pressure through information and
+        changing circumstances rather than simply increasing the number of
+        firearms or roleplayers involved.
+    </p>
+
+    <div class="info-grid">
+
+        <div class="info-box">
+            <strong>Lesson</strong>
+            Module 11 — Complex Armed Incidents & Integrated Operations
+        </div>
+
+        <div class="info-box">
+            <strong>Recommended Duration</strong>
+            120–180 minutes
+        </div>
+
+        <div class="info-box">
+            <strong>Delivery Style</strong>
+            Briefing, integrated scenarios and structured debrief
+        </div>
+
+        <div class="info-box">
+            <strong>Assessment</strong>
+            Continuous practical assessment
+        </div>
+
+        <div class="info-box">
+            <strong>Primary Focus</strong>
+            Prioritisation, integration, communication and adaptability
+        </div>
+
+        <div class="info-box">
+            <strong>Progression</strong>
+            Required before Module 12
+        </div>
+
+    </div>
+
+</section>
+
+<section class="card danger">
+
+    <h2>Training Boundary</h2>
+
+    <p>
+        Module 11 is designed for Code44 FiveM scenario training.
+    </p>
+
+    <p>
+        It should assess previously taught Code44 principles and server mechanics
+        rather than introduce real-world specialist operational procedures.
+    </p>
+
+    <p>
+        Awareness of specialist capability does not qualify a student in
+        precision firearms, breaching, Counter Terrorism, VIP protection,
+        rope access, fast-rope or other specialist disciplines.
+    </p>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Trainer Preparation</h2>
+
+    <ul class="checklist">
+
+        <li>Confirm students completed Module 10</li>
+
+        <li>Confirm Module 11 pre-learning has been completed</li>
+
+        <li>Prepare one simple integrated warm-up scenario</li>
+
+        <li>Prepare one full complex armed incident</li>
+
+        <li>Arrange roleplayers where available</li>
+
+        <li>Arrange response support where available</li>
+
+        <li>Arrange Roads Policing where appropriate</li>
+
+        <li>Arrange NPAS integration where available</li>
+
+        <li>Arrange K9 integration where available</li>
+
+        <li>Prepare medical or casualty injects</li>
+
+        <li>Prepare multiple-subject information</li>
+
+        <li>Prepare changing-location information</li>
+
+        <li>Prepare conflicting intelligence</li>
+
+        <li>Prepare command-direction changes</li>
+
+        <li>Prepare a communications challenge</li>
+
+        <li>Prepare an operational handover exercise</li>
+
+        <li>Prepare observation and assessment notes</li>
+
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Learning Outcomes</h2>
+
+    <p>Students should demonstrate the ability to:</p>
+
+    <ul>
+
+        <li>Identify the immediate operational priority.</li>
+
+        <li>Understand their assigned responsibility.</li>
+
+        <li>Remain aware of firearms command and the wider objective.</li>
+
+        <li>Process changing information without becoming overwhelmed.</li>
+
+        <li>Distinguish important information from unnecessary noise.</li>
+
+        <li>Work effectively with other police resources.</li>
+
+        <li>Use NPAS and K9 for appropriate operational purposes.</li>
+
+        <li>Recognise medical priorities.</li>
+
+        <li>Account for multiple subjects and locations.</li>
+
+        <li>Recognise competing operational priorities.</li>
+
+        <li>Communicate significant changes.</li>
+
+        <li>Reassess when circumstances materially change.</li>
+
+        <li>Transition appropriately as threats are resolved.</li>
+
+        <li>Provide a clear handover.</li>
+
+        <li>Explain decisions during debrief.</li>
+
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Suggested Lesson Structure</h2>
+
+    <table class="delivery-table">
+
+        <tr>
+            <th>Stage</th>
+            <th>Time</th>
+            <th>Trainer Action</th>
+        </tr>
+
+        <tr>
+            <td>Introduction</td>
+            <td>10 minutes</td>
+            <td>
+                Explain that Module 11 assesses integration of previous learning.
+            </td>
+        </tr>
+
+        <tr>
+            <td>Prioritisation Discussion</td>
+            <td>10 minutes</td>
+            <td>
+                Review how students identify immediate risks and assigned tasks.
+            </td>
+        </tr>
+
+        <tr>
+            <td>Integrated Warm-Up</td>
+            <td>20 minutes</td>
+            <td>
+                Run a relatively simple multi-resource scenario.
+            </td>
+        </tr>
+
+        <tr>
+            <td>Resource Integration</td>
+            <td>15 minutes</td>
+            <td>
+                Review ARU, response, RPU, NPAS, K9 and medical roles.
+            </td>
+        </tr>
+
+        <tr>
+            <td>Complex Scenario One</td>
+            <td>30 minutes</td>
+            <td>
+                Run a developing incident with multiple subjects and information changes.
+            </td>
+        </tr>
+
+        <tr>
+            <td>Complex Scenario Two</td>
+            <td>30 minutes</td>
+            <td>
+                Run a different incident involving competing priorities and resources.
+            </td>
+        </tr>
+
+        <tr>
+            <td>Handover</td>
+            <td>10 minutes</td>
+            <td>
+                Require students to provide a structured operational handover.
+            </td>
+        </tr>
+
+        <tr>
+            <td>Debrief</td>
+            <td>20 minutes</td>
+            <td>
+                Assess decisions, communication and individual development.
+            </td>
+        </tr>
+
+    </table>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Opening Script</h2>
+
+    <div class="example-box">
+
+        <strong>Suggested wording</strong>
+
+        <p>
+            “Module 11 is where we stop looking at individual skills in isolation.
+        </p>
+
+        <p>
+            You have already covered decision-making, equipment, firearms safety,
+            ARV response, vehicle incidents, containment, searches and building operations.
+        </p>
+
+        <p>
+            Today I want to see whether you can still apply those standards when
+            several things start happening at once.
+        </p>
+
+        <p>
+            Do not try to solve every problem personally. Understand your task,
+            communicate, prioritise and use the resources around you.”
+        </p>
+
+    </div>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 1 — Prioritisation</h2>
+
+    <p>
+        Students should understand that complex incidents may contain several
+        legitimate priorities.
+    </p>
+
+    <p>Ask students to continually consider:</p>
+
+    <ul>
+
+        <li>What is the immediate threat?</li>
+
+        <li>Who is currently at greatest risk?</li>
+
+        <li>What is the wider operational objective?</li>
+
+        <li>What task have I been assigned?</li>
+
+        <li>What are other resources already managing?</li>
+
+        <li>What information needs escalating?</li>
+
+        <li>What can safely wait?</li>
+
+    </ul>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Exercise One — Competing Priorities Discussion</h2>
+
+    <div class="example-box">
+
+        <strong>Scenario</strong>
+
+        One armed suspect remains outstanding.
+        A second suspect has been detained.
+        A civilian has been injured.
+        A vehicle linked to the incident has begun moving away.
+        Response officers are requesting instructions.
+    </div>
+
+    <p>Ask students:</p>
+
+    <ul>
+
+        <li>What are the current problems?</li>
+
+        <li>Which one represents the greatest immediate risk?</li>
+
+        <li>Does one ARV need to solve every problem?</li>
+
+        <li>What other resources can be used?</li>
+
+        <li>What information does command need?</li>
+
+    </ul>
+
+    <h3>Expected learning points</h3>
+
+    <ul>
+
+        <li>Several priorities can exist simultaneously.</li>
+
+        <li>Tasks should be distributed appropriately.</li>
+
+        <li>Officers should remain focused on assigned critical responsibilities.</li>
+
+        <li>Communication and command coordination are essential.</li>
+
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 2 — Command Awareness</h2>
+
+    <p>
+        Students should know who is coordinating the armed response and what
+        their own responsibility is.
+    </p>
+
+    <p>
+        Command should receive relevant updates where:
+    </p>
+
+    <ul>
+
+        <li>The threat materially changes.</li>
+
+        <li>A new subject is identified.</li>
+
+        <li>A subject changes location.</li>
+
+        <li>A weapon is confirmed or disproved.</li>
+
+        <li>A casualty occurs.</li>
+
+        <li>Containment is established or lost.</li>
+
+        <li>A vehicle becomes relevant.</li>
+
+        <li>An assigned task cannot be completed.</li>
+
+        <li>A specialist resource is required.</li>
+
+        <li>The current plan is no longer suitable.</li>
+
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 3 — Information Management</h2>
+
+    <p>
+        Trainers should deliberately provide students with more information than
+        they need.
+    </p>
+
+    <p>
+        Students should identify what affects:
+    </p>
+
+    <ul>
+
+        <li>The current threat.</li>
+
+        <li>Their assigned role.</li>
+
+        <li>Subject location.</li>
+
+        <li>Public or officer safety.</li>
+
+        <li>Weapons.</li>
+
+        <li>Casualties.</li>
+
+        <li>The wider operational plan.</li>
+
+    </ul>
+
+    <div class="example-box">
+
+        <strong>Trainer Prompt</strong>
+
+        “Does that information actually change your task?”
+
+    </div>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Exercise Two — Information Overload</h2>
+
+    <p>
+        Provide several updates in quick succession.
+    </p>
+
+    <p>For example:</p>
+
+    <ul>
+
+        <li>A witness gives a new clothing description.</li>
+
+        <li>NPAS sees movement nearby.</li>
+
+        <li>A vehicle registration is provided.</li>
+
+        <li>Response requests assistance with a civilian.</li>
+
+        <li>A firearm is reportedly located.</li>
+
+        <li>A different subject is detained.</li>
+
+    </ul>
+
+    <p>Assess whether students:</p>
+
+    <ul>
+
+        <li>Identify what matters to their current task.</li>
+
+        <li>Communicate significant changes.</li>
+
+        <li>Avoid reacting unnecessarily to every update.</li>
+
+        <li>Recognise when clarification is required.</li>
+
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 4 — Integrated Resources</h2>
+
+    <div class="role-grid">
+
+        <div class="role-box">
+
+            <strong>ARU</strong>
+
+            Armed response and specialist firearms capability.
+
+        </div>
+
+        <div class="role-box">
+
+            <strong>Response</strong>
+
+            Scene management, witnesses, evacuations and general policing support.
+
+        </div>
+
+        <div class="role-box">
+
+            <strong>Roads Policing</strong>
+
+            Vehicle incidents, traffic management and authorised pursuit support.
+
+        </div>
+
+        <div class="role-box">
+
+            <strong>NPAS</strong>
+
+            Observation, tracking and wider situational awareness.
+
+        </div>
+
+        <div class="role-box">
+
+            <strong>K9</strong>
+
+            Search, tracking and authorised specialist support.
+
+        </div>
+
+        <div class="role-box">
+
+            <strong>Medical</strong>
+
+            Casualty management.
+
+        </div>
+
+    </div>
+
+    <p>
+        Students should be capable of explaining why a resource is required.
+    </p>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Exercise Three — Resource Selection</h2>
+
+    <p>
+        Give students several operational problems.
+    </p>
+
+    <p>Examples:</p>
+
+    <ul>
+
+        <li>A subject has fled into open terrain.</li>
+
+        <li>A vehicle connected to the incident is moving.</li>
+
+        <li>A large public cordon is required.</li>
+
+        <li>A casualty requires treatment.</li>
+
+        <li>An external overview of a location is required.</li>
+
+    </ul>
+
+    <p>
+        Ask students what resource could assist and, most importantly,
+        <strong>why</strong>.
+    </p>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 5 — NPAS Integration</h2>
+
+    <p>
+        Students should give NPAS useful operational tasks rather than vague requests.
+    </p>
+
+    <p>Possible tasks include:</p>
+
+    <ul>
+
+        <li>Observing a location.</li>
+
+        <li>Tracking a moving subject.</li>
+
+        <li>Tracking a vehicle.</li>
+
+        <li>Providing wider scene awareness.</li>
+
+        <li>Supporting a search.</li>
+
+    </ul>
+
+    <div class="example-box">
+
+        <strong>Trainer Question</strong>
+
+        “What exactly do you want NPAS to do for you?”
+
+    </div>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 6 — K9 Integration</h2>
+
+    <p>
+        Students should identify:
+    </p>
+
+    <ul>
+
+        <li>What K9 is being requested to achieve.</li>
+
+        <li>What information the handler needs.</li>
+
+        <li>How the task fits into the wider operation.</li>
+
+        <li>What ARU responsibilities remain while K9 operates.</li>
+
+    </ul>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Scenario One — Subject Leaves Containment</h2>
+
+    <p>
+        An outstanding armed subject leaves the believed containment and enters
+        a larger search area.
+    </p>
+
+    <p>Ask:</p>
+
+    <ul>
+
+        <li>What has changed?</li>
+
+        <li>Who needs to know?</li>
+
+        <li>What happens to the existing containment plan?</li>
+
+        <li>Could NPAS or K9 assist?</li>
+
+        <li>What responsibilities remain for ARU?</li>
+
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 7 — Casualty Management</h2>
+
+    <p>
+        Casualties should change the operational picture but do not automatically
+        remove an existing threat.
+    </p>
+
+    <p>Students should consider:</p>
+
+    <ul>
+
+        <li>Does the immediate threat remain?</li>
+
+        <li>Who needs treatment?</li>
+
+        <li>What medical capability exists?</li>
+
+        <li>Can another officer manage the casualty?</li>
+
+        <li>Can ambulance resources access safely within the scenario?</li>
+
+        <li>What information must be communicated?</li>
+
+    </ul>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Scenario Two — Officer Casualty</h2>
+
+    <p>
+        During an active incident, one officer becomes a simulated casualty while
+        an armed subject remains outstanding.
+    </p>
+
+    <p>Assess whether students:</p>
+
+    <ul>
+
+        <li>Recognise both problems.</li>
+
+        <li>Communicate the casualty.</li>
+
+        <li>Consider available medical capability.</li>
+
+        <li>Avoid automatically abandoning every other operational responsibility.</li>
+
+        <li>Request appropriate support.</li>
+
+        <li>Reassess the wider plan.</li>
+
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 8 — Multiple Subjects</h2>
+
+    <p>
+        Students should continually account for how many subjects are believed
+        to be involved and how many have actually been controlled.
+    </p>
+
+    <div class="example-box">
+
+        <strong>Trainer Prompt</strong>
+
+        “We originally had three reported suspects. You have detained one.
+        What happened to the other two?”
+
+    </div>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Scenario Three — Premature Resolution</h2>
+
+    <p>
+        Students successfully detain one armed subject.
+    </p>
+
+    <p>
+        The original briefing identified two possible additional subjects.
+    </p>
+
+    <p>Assess whether students:</p>
+
+    <ul>
+
+        <li>Remember the outstanding subjects.</li>
+
+        <li>Communicate that the incident remains active.</li>
+
+        <li>Avoid treating one arrest as complete resolution.</li>
+
+        <li>Reassess available information.</li>
+
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 9 — Multiple Locations</h2>
+
+    <p>
+        Complex incidents may develop across different areas.
+    </p>
+
+    <p>Students should consider:</p>
+
+    <ul>
+
+        <li>Which location currently presents the greatest threat.</li>
+
+        <li>What resources are already allocated.</li>
+
+        <li>Whether both locations are genuinely connected.</li>
+
+        <li>Whether command needs separate resources or objectives.</li>
+
+        <li>Whether moving officers creates a new gap elsewhere.</li>
+
+    </ul>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Scenario Four — Second Location</h2>
+
+    <p>
+        During an active operation, intelligence identifies a second location
+        linked to the incident.
+    </p>
+
+    <p>Ask:</p>
+
+    <ul>
+
+        <li>Does every officer immediately leave for the second location?</li>
+
+        <li>What remains unresolved at the first location?</li>
+
+        <li>Who needs the new information?</li>
+
+        <li>What additional resources may be required?</li>
+
+        <li>How should priorities be reassessed?</li>
+
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 10 — Specialist Capabilities</h2>
+
+    <p>
+        Students should recognise the capabilities available within Code44 ARU
+        without treating them as automatic solutions.
+    </p>
+
+    <div class="role-grid">
+
+        <div class="role-box">
+
+            <strong>SIG 716</strong>
+
+            Specialist precision capability where authorised.
+
+        </div>
+
+        <div class="role-box">
+
+            <strong>Remington</strong>
+
+            Specialist breaching capability.
+
+        </div>
+
+        <div class="role-box">
+
+            <strong>Ballistic Shield</strong>
+
+            Specialist protective capability.
+
+        </div>
+
+        <div class="role-box">
+
+            <strong>Counter Terrorism</strong>
+
+            Specialist operational capability where authorised.
+
+        </div>
+
+        <div class="role-box">
+
+            <strong>VIP Protection</strong>
+
+            Protective capability where required.
+
+        </div>
+
+        <div class="role-box">
+
+            <strong>Specialist Access</strong>
+
+            Rope access, fast-rope or other server-supported capabilities.
+        </div>
+
+    </div>
+
+</section>
+
+<section class="card warning">
+
+    <h2>Capability Does Not Equal Requirement</h2>
+
+    <p>
+        If a student requests a specialist capability, ask:
+    </p>
+
+    <div class="example-box">
+
+        <strong>“What operational problem are you trying to solve?”</strong>
+
+    </div>
+
+    <p>
+        If they cannot explain the need, the request may not be justified.
+    </p>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 11 — Complex Scenario</h2>
+
+    <p>
+        The main Module 11 scenario should combine several previously learned elements.
+    </p>
+
+    <p>A suitable scenario may involve:</p>
+
+    <ul>
+
+        <li>An initial firearms deployment.</li>
+
+        <li>A moving vehicle.</li>
+
+        <li>A building or containment element.</li>
+
+        <li>Multiple subjects.</li>
+
+        <li>At least one civilian.</li>
+
+        <li>NPAS or K9 availability.</li>
+
+        <li>A casualty.</li>
+
+        <li>Conflicting intelligence.</li>
+
+        <li>A changing operational objective.</li>
+
+    </ul>
+
+    <p>
+        Do not include every possible complication simply to make the scenario difficult.
+    </p>
+
+    <p>
+        Every inject should test a specific learning point.
+    </p>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Example Complex Scenario</h2>
+
+    <div class="example-box">
+
+        <strong>Initial Briefing</strong>
+
+        Police receive reports of three masked individuals involved in an armed robbery.
+
+        The group leaves in a dark SUV.
+
+        ARV and Roads Policing locate a vehicle matching the description.
+
+        A firearm has been reported but not yet confirmed.
+    </div>
+
+    <h3>Possible Trainer Injects</h3>
+
+    <ol>
+
+        <li>
+            The vehicle stops and two subjects run towards separate areas.
+        </li>
+
+        <li>
+            A third subject remains with the vehicle.
+        </li>
+
+        <li>
+            NPAS becomes available.
+        </li>
+
+        <li>
+            One subject enters a building.
+        </li>
+
+        <li>
+            A civilian is discovered inside.
+        </li>
+
+        <li>
+            Another subject is believed to have entered open ground.
+        </li>
+
+        <li>
+            K9 becomes available.
+        </li>
+
+        <li>
+            One simulated casualty occurs.
+        </li>
+
+        <li>
+            New information confirms a firearm connected with one subject.
+        </li>
+
+        <li>
+            Command changes one operational priority.
+        </li>
+
+    </ol>
+
+    <p>
+        Trainers should introduce injects gradually.
+    </p>
+
+</section>
+
+<section class="card assessment">
+
+    <h2>What To Assess During Complex Scenarios</h2>
+
+    <div class="rating-grid">
+
+        <div class="rating-box">
+            <strong>Prioritisation</strong>
+            Identifies immediate risks and important tasks.
+        </div>
+
+        <div class="rating-box">
+            <strong>Command Awareness</strong>
+            Understands the wider objective and command direction.
+        </div>
+
+        <div class="rating-box">
+            <strong>Information Management</strong>
+            Processes significant information without becoming overwhelmed.
+        </div>
+
+        <div class="rating-box">
+            <strong>Communication</strong>
+            Passes relevant updates clearly.
+        </div>
+
+        <div class="rating-box">
+            <strong>Role Discipline</strong>
+            Maintains assigned responsibilities unless change is required.
+        </div>
+
+        <div class="rating-box">
+            <strong>Resource Integration</strong>
+            Uses other units for clear operational purposes.
+        </div>
+
+        <div class="rating-box">
+            <strong>Subject Accountability</strong>
+            Maintains awareness of outstanding subjects.
+        </div>
+
+        <div class="rating-box">
+            <strong>Medical Awareness</strong>
+            Recognises casualties and available support.
+        </div>
+
+        <div class="rating-box">
+            <strong>Reassessment</strong>
+            Updates decisions when information changes.
+        </div>
+
+        <div class="rating-box">
+            <strong>Professional Control</strong>
+            Remains calm when the scenario becomes complicated.
+        </div>
+
+    </div>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 12 — Transition & Resolution</h2>
+
+    <p>
+        Students should understand that parts of the incident may resolve at different times.
+    </p>
+
+    <p>Possible transitions include:</p>
+
+    <ul>
+
+        <li>Vehicle phase into armed containment.</li>
+
+        <li>Containment into search.</li>
+
+        <li>Arrest into ongoing search for outstanding subjects.</li>
+
+        <li>Threat management into casualty care.</li>
+
+        <li>Armed operation into investigation.</li>
+
+    </ul>
+
+    <p>
+        Students should continually ask what threat or responsibility remains outstanding.
+    </p>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Exercise Four — Operational Handover</h2>
+
+    <p>
+        After the main scenario, require each student to provide a handover.
+    </p>
+
+    <p>The handover should cover:</p>
+
+    <ul>
+
+        <li>Original incident.</li>
+
+        <li>Subjects originally reported.</li>
+
+        <li>Subjects accounted for.</li>
+
+        <li>Outstanding subjects.</li>
+
+        <li>Weapon information.</li>
+
+        <li>Vehicles.</li>
+
+        <li>Relevant locations.</li>
+
+        <li>Casualties.</li>
+
+        <li>Force used if relevant.</li>
+
+        <li>Outstanding risks.</li>
+
+        <li>Resources still deployed.</li>
+
+        <li>Further action required.</li>
+
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 13 — Debrief</h2>
+
+    <p>
+        Debrief students individually before discussing the scenario as a team.
+    </p>
+
+    <p>Ask:</p>
+
+    <ul>
+
+        <li>What was your immediate priority?</li>
+
+        <li>What task were you assigned?</li>
+
+        <li>What information mattered most?</li>
+
+        <li>What information did you disregard and why?</li>
+
+        <li>What changed during the incident?</li>
+
+        <li>How did your decisions change?</li>
+
+        <li>What resource did you request and why?</li>
+
+        <li>Did you lose awareness of anything?</li>
+
+        <li>What went well?</li>
+
+        <li>What would you improve?</li>
+
+    </ul>
+
+</section>
+
+<section class="card assessment">
+
+    <h2>Module 11 Assessment Standard</h2>
+
+    <p>
+        A satisfactory student should demonstrate:
+    </p>
+
+    <ul>
+
+        <li>Professional control under increased workload.</li>
+
+        <li>Effective prioritisation.</li>
+
+        <li>Accurate information handling.</li>
+
+        <li>Clear communication.</li>
+
+        <li>Awareness of command.</li>
+
+        <li>Role discipline.</li>
+
+        <li>Effective use of other police resources.</li>
+
+        <li>Awareness of multiple subjects and locations.</li>
+
+        <li>Recognition of casualties.</li>
+
+        <li>Continuous reassessment.</li>
+
+        <li>Ability to adapt without becoming disorganised.</li>
+
+        <li>Clear operational handover.</li>
+
+        <li>Honest debrief and accountability.</li>
+
+    </ul>
+
+</section>
+
+<section class="card assessment">
+
+    <h2>Review Questions</h2>
+
+    <ol>
+
+        <li>What makes an armed incident complex?</li>
+
+        <li>How should you identify operational priorities?</li>
+
+        <li>Why is command awareness important?</li>
+
+        <li>How should officers manage information overload?</li>
+
+        <li>Why should officers avoid trying to solve every problem personally?</li>
+
+        <li>What can NPAS contribute?</li>
+
+        <li>What can K9 contribute?</li>
+
+        <li>How can a casualty change operational priorities?</li>
+
+        <li>Why must officers continue accounting for outstanding subjects?</li>
+
+        <li>When should specialist capabilities be requested?</li>
+
+        <li>What should happen when the operational picture changes?</li>
+
+        <li>What information should be included within the final handover?</li>
+
+    </ol>
+
+</section>
+
+<section class="card assessment">
+
+    <h2>Expected Answers</h2>
+
+    <ol>
+
+        <li>
+            Multiple subjects, locations, resources, threats, casualties,
+            conflicting intelligence or competing priorities.
+        </li>
+
+        <li>
+            Consider the immediate threat, who is at greatest risk, the wider
+            objective and the officer's assigned responsibility.
+        </li>
+
+        <li>
+            Because individual actions must support the wider operation and
+            significant changes may require command decisions.
+        </li>
+
+        <li>
+            Focus on information relevant to the threat, assigned task,
+            safety and operational plan.
+        </li>
+
+        <li>
+            Other resources may already be better placed to manage different
+            problems, and abandoning an important task may create additional risk.
+        </li>
+
+        <li>
+            Observation, tracking, vehicle tracking, search support and wider
+            situational awareness.
+        </li>
+
+        <li>
+            Search, tracking and other authorised specialist support.
+        </li>
+
+        <li>
+            Medical care may become an additional priority while the wider threat
+            still requires management.
+        </li>
+
+        <li>
+            Controlling one subject does not automatically resolve the wider incident.
+        </li>
+
+        <li>
+            When they address a specific operational problem and are appropriate
+            to the objective.
+        </li>
+
+        <li>
+            Reassess, communicate and alter tasks or plans as required.
+        </li>
+
+        <li>
+            Subjects, weapons, vehicles, locations, casualties, outstanding
+            risks, deployed resources and further action.
+        </li>
+
+    </ol>
+
+</section>
+
+<section class="card assessment">
+
+    <h2>Immediate Stop Criteria</h2>
+
+    <p>Stop or reset the scenario if a student:</p>
+
+    <ul>
+
+        <li>Ignores trainer safety instructions.</li>
+
+        <li>Becomes completely confused and continues regardless.</li>
+
+        <li>Acts outside the scenario boundary.</li>
+
+        <li>Repeatedly abandons assigned responsibilities without communication.</li>
+
+        <li>Fails to communicate major threat changes.</li>
+
+        <li>Repeatedly loses awareness of other officers or civilians.</li>
+
+        <li>Uses specialist capabilities contrary to trainer direction.</li>
+
+        <li>Ignores a significant server issue.</li>
+
+        <li>Displays reckless firearms or vehicle behaviour.</li>
+
+        <li>Refuses trainer direction.</li>
+
+    </ul>
+
+</section>
+
+<section class="card assessment">
+
+    <h2>Module Outcomes</h2>
+
+    <h3>Pass</h3>
+
+    <p>
+        Student demonstrates satisfactory performance across complex integrated
+        scenarios and can combine previous Academy learning effectively.
+    </p>
+
+    <h3>Pass with Development Points</h3>
+
+    <p>
+        Student may progress but has specific areas to refine during Module 12.
+    </p>
+
+    <h3>Remedial</h3>
+
+    <p>
+        Student requires additional integrated scenarios before progression.
+    </p>
+
+    <h3>Incomplete</h3>
+
+    <p>
+        Required practical work or assessment remains outstanding.
+    </p>
+
+    <h3>Unsuccessful</h3>
+
+    <p>
+        Student has not demonstrated sufficient ability to combine previous
+        Academy learning after appropriate training and reassessment.
+    </p>
+
+</section>
+
+<section class="card warning">
+
+    <h2>Common Student Errors</h2>
+
+    <ul>
+
+        <li>Trying to personally solve every problem.</li>
+
+        <li>Abandoning their assigned task whenever new radio traffic appears.</li>
+
+        <li>Failing to prioritise.</li>
+
+        <li>Becoming overwhelmed by information.</li>
+
+        <li>Requesting every specialist resource available.</li>
+
+        <li>Forgetting outstanding subjects after an arrest.</li>
+
+        <li>Ignoring casualties.</li>
+
+        <li>Failing to update command.</li>
+
+        <li>Continuing with an outdated plan.</li>
+
+        <li>Providing excessive radio traffic.</li>
+
+        <li>Losing awareness of the wider incident.</li>
+
+    </ul>
+
+</section>
+
+<section class="card warning">
+
+    <h2>Common Trainer Errors</h2>
+
+    <ul>
+
+        <li>Making complexity equal chaos.</li>
+
+        <li>Introducing too many injects at once.</li>
+
+        <li>Creating complications with no learning purpose.</li>
+
+        <li>Failing to provide a clear initial objective.</li>
+
+        <li>Expecting students to command the entire incident.</li>
+
+        <li>Failing to integrate other units realistically.</li>
+
+        <li>Assessing drama instead of decision-making.</li>
+
+        <li>Not allowing students time to process significant information.</li>
+
+        <li>Failing to assess each student individually.</li>
+
+        <li>Skipping the handover or debrief.</li>
+
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Closing Script</h2>
+
+    <div class="example-box">
+
+        <strong>Suggested wording</strong>
+
+        <p>
+            “That concludes Module 11.
+        </p>
+
+        <p>
+            At this point in the Academy you already have most of the individual
+            skills we expect you to know.
+        </p>
+
+        <p>
+            The challenge is now whether you can combine them when the incident
+            becomes complicated.
+        </p>
+
+        <p>
+            You do not need to solve everything yourself. Stay controlled,
+            understand your task, communicate, use the resources around you and
+            reassess when circumstances change.
+        </p>
+
+        <p>
+            Module 12 will consolidate everything you have learned and prepare
+            you for final assessment.”
+        </p>
+
+    </div>
+
+</section>
+
+<section class="card">
+
+    <h2>Trainer Completion Checklist</h2>
+
+    <ul class="checklist">
+
+        <li>Students completed Module 11 pre-learning</li>
+
+        <li>Prioritisation reviewed</li>
+
+        <li>Competing-priorities exercise completed</li>
+
+        <li>Command awareness reviewed</li>
+
+        <li>Information management assessed</li>
+
+        <li>Information-overload exercise completed</li>
+
+        <li>Integrated resources reviewed</li>
+
+        <li>Resource-selection exercise completed</li>
+
+        <li>NPAS integration reviewed</li>
+
+        <li>K9 integration reviewed</li>
+
+        <li>Subject-leaves-containment scenario completed</li>
+
+        <li>Casualty management reviewed</li>
+
+        <li>Officer-casualty scenario completed</li>
+
+        <li>Multiple-subject management reviewed</li>
+
+        <li>Premature-resolution scenario completed</li>
+
+        <li>Multiple-location management reviewed</li>
+
+        <li>Second-location scenario completed</li>
+
+        <li>Specialist capabilities reviewed</li>
+
+        <li>Main complex scenario completed</li>
+
+        <li>Operational handover completed</li>
+
+        <li>Individual debriefs completed</li>
+
+        <li>Development points recorded</li>
+
+        <li>Module 11 outcome recorded</li>
+
+    </ul>
+
+    <div class="button-row">
+
+        <a class="button"
+           href="PASTE-TRAINER-MODULE-11-ASSESSMENT-FORM-LINK-HERE"
+           target="_blank">
+
+            Record Module 11 Outcome
+
+        </a>
+
+        <a class="button secondary"
+           href="trainers.html">
+
+            Return to Trainers Area
+
+        </a>
+
+    </div>
+
+</section>
+
+<footer class="footer">
+
+    Code44 Police Service • Armed Response Unit Academy<br>
+
+    Trainer Module 11 — Complex Armed Incidents & Integrated Operations • Cohort 001
+
+</footer>
+
+</div>
+
+</body>
+
+</html>
