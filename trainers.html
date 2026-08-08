@@ -190,6 +190,14 @@ h3{
     margin-bottom:5px;
 }
 
+.trainer-link.final{
+    border-left:5px solid #e3a629;
+}
+
+.trainer-link.final strong{
+    color:#f2c76f;
+}
+
 .pending{
     opacity:.55;
     cursor:default;
@@ -215,6 +223,10 @@ h3{
 
 .notice{
     border-left:5px solid #4d9dff;
+}
+
+.success{
+    border-left:5px solid #45b36b;
 }
 
 .button-row{
@@ -294,11 +306,12 @@ h3{
 <script>
 
 /*
-    This page checks whether the trainer logged in
-    through trainers-login.html during this browser session.
+    Trainer access check.
+    Access is granted through trainers-login.html
+    for the current browser session.
 */
 
-if (sessionStorage.getItem("trainerAccess") !== "granted") {
+if(sessionStorage.getItem("trainerAccess") !== "granted"){
 
     window.location.replace("trainers-login.html");
 
@@ -306,7 +319,9 @@ if (sessionStorage.getItem("trainerAccess") !== "granted") {
 
 </script>
 
+
 <div class="page-container">
+
 
 <nav class="navbar">
 
@@ -328,15 +343,17 @@ if (sessionStorage.getItem("trainerAccess") !== "granted") {
 
 </nav>
 
+
 <a class="back-link" href="academy.html">
     ← Return to ARU Academy
 </a>
+
 
 <header class="hero">
 
     <h1>ARU Trainers Area</h1>
 
-    <p>Instructor Resources and Cohort Management</p>
+    <p>Instructor Resources &amp; Cohort Management</p>
 
     <p>Code44 Armed Response Unit Academy</p>
 
@@ -346,17 +363,20 @@ if (sessionStorage.getItem("trainerAccess") !== "granted") {
 
 </header>
 
+
+<!-- TRAINER DASHBOARD -->
+
 <section class="card">
 
     <h2>Trainer Dashboard</h2>
 
     <p>
-        This area contains restricted lesson plans, assessment material,
+        This area contains restricted Academy lesson plans, assessment material,
         scenario information and recruit-management resources.
     </p>
 
     <p>
-        Trainer documents must not be shared with recruits unless specifically
+        Trainer documents must not be shared with students unless specifically
         authorised for release.
     </p>
 
@@ -372,7 +392,7 @@ if (sessionStorage.getItem("trainerAccess") !== "granted") {
 
         <div class="stat-box">
 
-            <strong>Active Recruits</strong>
+            <strong>Active Students</strong>
 
             2
 
@@ -382,7 +402,15 @@ if (sessionStorage.getItem("trainerAccess") !== "granted") {
 
             <strong>Lead Trainer</strong>
 
-            PC K. Maddox
+            PC K. MADDOX
+
+        </div>
+
+        <div class="stat-box">
+
+            <strong>Academy Modules</strong>
+
+            13
 
         </div>
 
@@ -404,15 +432,27 @@ if (sessionStorage.getItem("trainerAccess") !== "granted") {
 
 </section>
 
+
+<!-- LESSON PLANS -->
+
 <section class="card">
 
-    <h2>Lesson Plans</h2>
+    <h2>Lesson Plans &amp; Assessment Packs</h2>
 
     <p>
-        Trainer lesson plans should be delivered alongside the relevant student
-        module. Students should complete modules in the order directed by the
-        training team.
+        Trainer resources correspond directly with the 13 student Academy modules.
+        Trainers should use the relevant lesson plan to support learning, practical
+        exercises, knowledge checks and student development.
     </p>
+
+    <p>
+        Not every module requires a full classroom input. Trainers should use
+        professional judgement to determine whether the student requires discussion,
+        demonstration, practical training or scenario-based assessment.
+    </p>
+
+
+    <!-- PHASE ONE -->
 
     <h3 class="phase-title">
         Phase One — Foundation
@@ -422,66 +462,73 @@ if (sessionStorage.getItem("trainerAccess") !== "granted") {
 
         <a class="trainer-link" href="trainer-module1.html">
 
-            <strong>Module 1 Lesson Plan</strong>
+            <strong>Module 1 — Welcome to ARU</strong>
 
-            Welcome, induction, Academy structure and recruit expectations.
+            Induction, Academy structure, responsibilities,
+            expectations and initial knowledge check.
 
         </a>
 
         <a class="trainer-link" href="trainer-module2.html">
 
-            <strong>Module 2 Lesson Plan</strong>
+            <strong>Module 2 — Professional Standards</strong>
 
-            Professional standards, integrity, accountability, communication
-            and teamwork.
+            Integrity, accountability, professionalism,
+            communication, teamwork and student conduct.
 
         </a>
 
         <a class="trainer-link" href="trainer-module3.html">
 
-            <strong>Module 3 Lesson Plan</strong>
+            <strong>Module 3 — Legal &amp; Decision-Making</strong>
 
-            Legal principles, APSTRA, decision-making, reassessment
-            and accountability.
+            Legal awareness, APSTRA, proportionality,
+            continuous reassessment and accountable decision-making.
 
         </a>
 
     </div>
 
+
+    <!-- PHASE TWO -->
+
     <h3 class="phase-title">
-        Phase Two — Equipment and Firearms Development
+        Phase Two — Equipment &amp; Firearms Development
     </h3>
 
     <div class="trainer-grid">
 
         <a class="trainer-link" href="trainer-module4.html">
 
-            <strong>Module 4 Lesson Plan</strong>
+            <strong>Module 4 — Equipment, Vehicles &amp; PPE</strong>
 
-            Equipment, PPE, firearms roles, vehicle familiarisation
-            and accountability.
+            Equipment, PPE, firearms roles, ARV familiarisation,
+            specialist resources and equipment accountability.
 
         </a>
 
         <a class="trainer-link" href="trainer-module5.html">
 
-            <strong>Module 5 Lesson Plan</strong>
+            <strong>Module 5 — Firearms Safety &amp; Handling</strong>
 
-            Firearms safety, trainer commands, simulated handling
-            and safety assessment.
+            Firearms safety principles, trainer commands,
+            simulated handling and firearms accountability.
 
         </a>
 
         <a class="trainer-link" href="trainer-module6.html">
 
-            <strong>Module 6 Lesson Plan</strong>
+            <strong>Module 6 — Firearms Fundamentals &amp; Operational Readiness</strong>
 
             Operational readiness, crew communication, team awareness,
-            threat reassessment and supervised firearms development.
+            threat assessment and supervised firearms development.
 
         </a>
 
     </div>
+
+
+    <!-- PHASE THREE -->
 
     <h3 class="phase-title">
         Phase Three — Operational Deployment
@@ -491,78 +538,133 @@ if (sessionStorage.getItem("trainerAccess") !== "granted") {
 
         <a class="trainer-link" href="trainer-module7.html">
 
-            <strong>Module 7 Lesson Plan</strong>
+            <strong>Module 7 — ARV Deployment &amp; Armed Incident Response</strong>
 
-            ARV deployment information, crew responsibilities, arrival assessment,
-            scene control, APSTRA, support requests and incident handover.
+            ARV deployment, crew responsibilities, arrival assessment,
+            scene control, command updates and incident handover.
 
         </a>
 
-        <div class="trainer-link pending">
+        <a class="trainer-link" href="trainer-module8.html">
 
-            <strong>Module 8 Lesson Plan</strong>
+            <strong>Module 8 — Armed Vehicle Tactics</strong>
 
-            Armed vehicle tactics, coordinated vehicle incidents and Roads
-            Policing integration. Coming soon.
+            Armed vehicle incidents, TPAC awareness, hard stops,
+            smash-and-grab operations, Roads Policing integration
+            and tactical reassessment.
 
-        </div>
+        </a>
 
-        <div class="trainer-link pending">
+        <a class="trainer-link" href="trainer-module9.html">
 
-            <strong>Module 9 Lesson Plan</strong>
+            <strong>Module 9 — Armed Containment, Searches &amp; High-Risk Warrants</strong>
 
-            Armed containment, searches and high-risk warrants. Coming soon.
+            Armed containment, coordinated searches, high-risk warrants,
+            scene management, specialist resources and operational handover.
 
-        </div>
+        </a>
 
-        <div class="trainer-link pending">
+        <a class="trainer-link" href="trainer-module10.html">
 
-            <strong>Module 10 Lesson Plan</strong>
+            <strong>Module 10 — Building Operations &amp; CQB</strong>
 
-            Building operations, CQB principles and tactical movement. Coming soon.
+            Building operations, CQB principles, communication,
+            team coordination, tactical movement and specialist resources.
 
-        </div>
+        </a>
 
     </div>
 
+
+    <!-- PHASE FOUR -->
+
     <h3 class="phase-title">
-        Phase Four — Complex Operations and Assessment
+        Phase Four — Complex Operations &amp; Qualification
     </h3>
 
     <div class="trainer-grid">
 
-        <div class="trainer-link pending">
+        <a class="trainer-link" href="trainer-module11.html">
 
-            <strong>Module 11 Lesson Plan</strong>
+            <strong>Module 11 — Complex Armed Incidents &amp; Integrated Operations</strong>
 
-            Complex armed incidents and integrated operations. Coming soon.
+            Complex incidents, multi-unit operations, command awareness,
+            casualties, NPAS, K9 and specialist capability integration.
 
-        </div>
+        </a>
 
-        <div class="trainer-link pending">
+        <a class="trainer-link" href="trainer-module12.html">
 
-            <strong>Module 12 Lesson Plan</strong>
+            <strong>Module 12 — Consolidation &amp; Scenario Development</strong>
 
-            Consolidation, scenario development and final preparation. Coming soon.
+            Academy-wide consolidation, student development,
+            scenario exercises, remedial training and final preparation.
 
-        </div>
+        </a>
 
-        <div class="trainer-link pending">
+        <a class="trainer-link final" href="trainer-module13.html">
 
-            <strong>Module 13 Assessment Pack</strong>
+            <strong>Module 13 — Final Assessment &amp; Qualification</strong>
 
-            Final written assessment, practical scenarios and qualification
-            recommendation. Restricted until completed.
+            Final assessment framework, scenario bank, assessment injects,
+            competency evaluation and qualification decision.
 
-        </div>
+        </a>
 
     </div>
 
 </section>
 
+
+<!-- FINAL ASSESSMENT -->
+
+<section class="card success">
+
+    <h2>Final Assessment &amp; Qualification</h2>
+
+    <p>
+        Module 13 represents the final Academy assessment. Trainers should only
+        progress a student to final assessment once the required preceding learning
+        and development has been satisfactorily completed.
+    </p>
+
+    <div class="trainer-grid">
+
+        <a class="trainer-link final"
+           href="trainer-module13.html">
+
+            <strong>Module 13 Assessment Pack</strong>
+
+            Access the complete trainer scenario bank, assessment guidance,
+            scenario variations and final assessment structure.
+
+        </a>
+
+        <a class="trainer-link final"
+           href="trainer-final-assessment-record.html">
+
+            <strong>Final Assessment Record</strong>
+
+            Record competency performance, scenarios used, development points,
+            final qualification decision and generate the completed training record.
+
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- TRAINING MANAGEMENT -->
+
 <section class="card">
 
     <h2>Training Management</h2>
+
+    <p>
+        Academy management resources support consistent recording,
+        student development and training standards.
+    </p>
 
     <div class="trainer-grid">
 
@@ -570,24 +672,26 @@ if (sessionStorage.getItem("trainerAccess") !== "granted") {
 
             <strong>Recruit Tracker</strong>
 
-            Record student progression and module completion. Coming soon.
-
-        </div>
-
-        <div class="trainer-link pending">
-
-            <strong>Attendance Register</strong>
-
-            Record Academy attendance, availability and missed learning.
+            Record individual student progression and module completion.
             Coming soon.
 
         </div>
 
         <div class="trainer-link pending">
 
-            <strong>Assessment Documents</strong>
+            <strong>Training Records</strong>
 
-            Marking sheets, standards and feedback forms. Coming soon.
+            Review completed student module and assessment records.
+            Coming soon.
+
+        </div>
+
+        <div class="trainer-link pending">
+
+            <strong>Knowledge Check Records</strong>
+
+            Record knowledge-check results and identified development areas.
+            Coming soon.
 
         </div>
 
@@ -595,7 +699,8 @@ if (sessionStorage.getItem("trainerAccess") !== "granted") {
 
             <strong>Scenario Library</strong>
 
-            Trainer-only objectives, setup notes and scenario injects.
+            Additional trainer-only operational scenarios,
+            objectives and scenario injects.
             Coming soon.
 
         </div>
@@ -604,7 +709,8 @@ if (sessionStorage.getItem("trainerAccess") !== "granted") {
 
             <strong>Remedial Training</strong>
 
-            Improvement plans, additional coaching and reassessment records.
+            Record targeted development, additional coaching
+            and reassessment requirements.
             Coming soon.
 
         </div>
@@ -613,7 +719,8 @@ if (sessionStorage.getItem("trainerAccess") !== "granted") {
 
             <strong>Instructor Resources</strong>
 
-            Templates, delivery guidance and Academy quality standards.
+            Trainer templates, delivery guidance
+            and Academy quality standards.
             Coming soon.
 
         </div>
@@ -622,47 +729,95 @@ if (sessionStorage.getItem("trainerAccess") !== "granted") {
 
 </section>
 
+
+<!-- TRAINING DELIVERY -->
+
 <section class="card notice">
 
     <h2>Training Delivery</h2>
 
     <p>
-        Academy sessions are delivered when approved trainers, students and
-        suitable resources are available within the city.
+        Academy sessions are delivered when approved trainers, students
+        and appropriate resources are available within the city.
     </p>
 
     <p>
-        Modules do not require a fixed weekly timetable. Trainers should record
-        completed learning, outstanding requirements and the student's current
-        progression stage.
+        There is no requirement for modules to follow a fixed weekly timetable.
+        Trainers should instead ensure that learning is completed in the correct
+        order and that students have demonstrated the required understanding
+        before progressing.
+    </p>
+
+    <p>
+        Self-directed modules should be supported by knowledge checks where
+        appropriate. Practical modules should focus on applying Academy learning
+        through demonstrations, exercises and changing scenarios.
     </p>
 
 </section>
+
+
+<!-- TRAINER STANDARD -->
+
+<section class="card notice">
+
+    <h2>Trainer Standard</h2>
+
+    <p>
+        The purpose of the Academy is not simply to move students through
+        13 modules. Trainers are responsible for ensuring that students can
+        understand, explain and apply the principles contained within the course.
+    </p>
+
+    <p>
+        Where a student demonstrates a weakness, trainers should provide
+        development and reassessment rather than progressing them solely because
+        the module has been attended.
+    </p>
+
+    <p>
+        Final qualification should reflect the student's overall standard,
+        judgement, professionalism, teamwork and operational performance.
+    </p>
+
+</section>
+
+
+<!-- RESTRICTED INFORMATION -->
 
 <section class="card warning">
 
     <h2>Restricted Information</h2>
 
     <p>
-        Do not distribute lesson plans, expected answers, assessment criteria,
-        scenario injects or personal recruit records outside authorised trainer
-        channels.
+        Do not distribute trainer lesson plans, expected answers,
+        assessment criteria, scenario injects, scenario-bank information
+        or student records outside authorised ARU trainer channels.
     </p>
 
     <p>
-        This system uses basic browser-session access control. Do not store real
-        sensitive information or genuine personal data on GitHub Pages.
+        Students should only receive material specifically designated
+        as student learning or authorised for release by the training team.
+    </p>
+
+    <p>
+        This system uses basic browser-session access control. It should not
+        be treated as secure storage for real sensitive information,
+        passwords or genuine personal data.
     </p>
 
 </section>
+
+
+<!-- TRAINER SESSION -->
 
 <section class="card">
 
     <h2>Trainer Session</h2>
 
     <p>
-        Trainer access remains active until the browser or tab session is closed,
-        or until the trainer selects Logout below.
+        Trainer access remains active for the current browser session
+        until the trainer selects Logout below.
     </p>
 
     <div class="button-row">
@@ -685,19 +840,21 @@ if (sessionStorage.getItem("trainerAccess") !== "granted") {
 
 </section>
 
+
 <footer class="footer">
 
     Code44 Police Service • Armed Response Unit Academy<br>
 
-    Trainers Area • Restricted Access
+    Trainers Area • 13-Module Training &amp; Qualification Programme • Restricted Access
 
 </footer>
 
 </div>
 
+
 <script>
 
-function trainerLogout() {
+function trainerLogout(){
 
     sessionStorage.removeItem("trainerAccess");
 
