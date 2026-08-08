@@ -1,0 +1,2669 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Trainer Module 13 - Final Assessment & Qualification</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    background:#05080d;
+    color:white;
+    font-family:Segoe UI,Arial,sans-serif;
+    line-height:1.65;
+}
+
+.page-container{
+    width:92%;
+    max-width:1250px;
+    margin:0 auto;
+    padding:35px 0 60px;
+}
+
+.navbar{
+    background:#0b111b;
+    border:1px solid #16315c;
+    border-radius:8px;
+    padding:15px;
+    margin-bottom:20px;
+}
+
+.navbar a{
+    color:#4d9dff;
+    text-decoration:none;
+    font-weight:bold;
+    margin:0 5px;
+}
+
+.navbar a:hover,
+.back-link:hover{
+    color:white;
+}
+
+.back-link{
+    display:inline-block;
+    margin-bottom:20px;
+    color:#4d9dff;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.hero{
+    background:
+        linear-gradient(rgba(2,7,14,.80),rgba(2,7,14,.95)),
+        url('arv-photo.png');
+
+    background-size:cover;
+    background-position:center;
+
+    border:1px solid #16315c;
+    border-radius:12px;
+
+    padding:60px 30px;
+    text-align:center;
+}
+
+.hero h1{
+    margin:0 0 10px;
+    color:#4d9dff;
+    font-size:2.6rem;
+}
+
+.hero p{
+    margin:5px 0;
+    color:#d3dbea;
+}
+
+.badge{
+    display:inline-block;
+    margin-top:15px;
+    padding:7px 14px;
+
+    background:#3a2a0d;
+    border:1px solid #a8761e;
+    border-radius:20px;
+
+    color:#f2c76f;
+    font-weight:bold;
+}
+
+h1,
+h2,
+h3,
+h4{
+    color:#4d9dff;
+}
+
+.card{
+    background:#0b111b;
+    border:1px solid #16315c;
+    border-radius:9px;
+
+    padding:24px;
+    margin-top:20px;
+}
+
+.card:hover{
+    border-color:#4d9dff;
+}
+
+.instructor{
+    border-left:5px solid #9c6ade;
+}
+
+.assessment{
+    border-left:5px solid #4d9dff;
+}
+
+.scenario{
+    border-left:5px solid #4da86b;
+}
+
+.warning{
+    border-left:5px solid #e3a629;
+}
+
+.danger{
+    border-left:5px solid #d84d5f;
+}
+
+.success{
+    border-left:5px solid #45b36b;
+}
+
+.info-grid,
+.standard-grid,
+.scenario-grid,
+.outcome-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:14px;
+    margin-top:18px;
+}
+
+.info-box,
+.standard-box,
+.scenario-box,
+.outcome-box{
+    background:#08111d;
+    border:1px solid #16315c;
+    border-radius:8px;
+    padding:17px;
+}
+
+.info-box strong,
+.standard-box strong,
+.scenario-box strong,
+.outcome-box strong{
+    display:block;
+    color:#4d9dff;
+    margin-bottom:6px;
+}
+
+.scenario-box{
+    transition:.2s;
+}
+
+.scenario-box:hover{
+    border-color:#4d9dff;
+    transform:translateY(-2px);
+}
+
+.table-wrap{
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:15px;
+}
+
+th,
+td{
+    border:1px solid #16315c;
+    padding:12px;
+    text-align:left;
+    vertical-align:top;
+}
+
+th{
+    background:#10203a;
+    color:#8fc2ff;
+}
+
+.checklist{
+    list-style:none;
+    padding-left:0;
+}
+
+.checklist li{
+    background:#08111d;
+    border:1px solid #16315c;
+    border-radius:7px;
+
+    padding:12px;
+    margin-top:8px;
+}
+
+.checklist li::before{
+    content:"☐";
+    color:#4d9dff;
+    font-weight:bold;
+    margin-right:10px;
+}
+
+ul,
+ol{
+    padding-left:23px;
+}
+
+li{
+    margin-bottom:7px;
+}
+
+details{
+    background:#08111d;
+    border:1px solid #16315c;
+    border-radius:8px;
+
+    margin-top:12px;
+    overflow:hidden;
+}
+
+details[open]{
+    border-color:#2c65a8;
+}
+
+summary{
+    cursor:pointer;
+    padding:16px;
+    font-weight:bold;
+    color:#8fc2ff;
+    background:#0a1422;
+}
+
+summary:hover{
+    background:#10203a;
+}
+
+.details-content{
+    padding:5px 18px 18px;
+}
+
+.inject{
+    background:#101825;
+    border-left:4px solid #e3a629;
+    padding:12px 15px;
+    margin-top:10px;
+    border-radius:5px;
+}
+
+.expected{
+    background:#0c1b15;
+    border-left:4px solid #45b36b;
+    padding:12px 15px;
+    margin-top:10px;
+    border-radius:5px;
+}
+
+.concern{
+    background:#201013;
+    border-left:4px solid #d84d5f;
+    padding:12px 15px;
+    margin-top:10px;
+    border-radius:5px;
+}
+
+.trainer-note{
+    background:#171225;
+    border-left:4px solid #9c6ade;
+    padding:12px 15px;
+    margin-top:10px;
+    border-radius:5px;
+}
+
+.score{
+    display:inline-block;
+    padding:4px 9px;
+    margin:3px;
+
+    border:1px solid #24538b;
+    border-radius:15px;
+
+    background:#101b2c;
+    color:#8fc2ff;
+
+    font-size:.88rem;
+}
+
+.button-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:22px;
+}
+
+.button{
+    display:inline-block;
+    padding:12px 18px;
+
+    background:#4d9dff;
+    color:#05080d;
+
+    border-radius:6px;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.button.secondary{
+    background:#101b2c;
+    color:#4d9dff;
+    border:1px solid #24538b;
+}
+
+.footer{
+    margin-top:30px;
+    padding-top:20px;
+
+    border-top:1px solid #16315c;
+
+    color:#8f9bad;
+    text-align:center;
+    font-size:.9rem;
+}
+
+@media(max-width:700px){
+
+    .page-container{
+        width:94%;
+    }
+
+    .hero{
+        padding:42px 18px;
+    }
+
+    .hero h1{
+        font-size:2rem;
+    }
+
+    .navbar{
+        line-height:2;
+    }
+
+    .button{
+        width:100%;
+        text-align:center;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<script>
+
+if(sessionStorage.getItem("trainerAccess") !== "granted"){
+    window.location.replace("trainers-login.html");
+}
+
+</script>
+
+<div class="page-container">
+
+<nav class="navbar">
+
+<a href="aru-members.html">Internal Database</a> |
+
+<a href="academy.html">ARU Academy</a> |
+
+<a href="trainers.html">Trainers Area</a> |
+
+<a href="trainer-module12.html">Module 12</a> |
+
+<a href="trainer-module13.html" style="color:white;">Module 13</a>
+
+</nav>
+
+<a class="back-link" href="trainers.html">
+← Return to Trainers Area
+</a>
+
+<header class="hero">
+
+<h1>Trainer Module 13</h1>
+
+<p>Final Assessment & Qualification</p>
+
+<p>Code44 Armed Response Unit Academy</p>
+
+<span class="badge">
+RESTRICTED FINAL ASSESSMENT MATERIAL
+</span>
+
+</header>
+
+
+<!-- ====================================================== -->
+<!-- OVERVIEW -->
+<!-- ====================================================== -->
+
+<section class="card">
+
+<h2>Final Assessment Overview</h2>
+
+<p>
+Module 13 is the final assessment stage of the Code44 ARU Academy.
+Unlike Modules 1–12, this module is primarily an assessment rather
+than a teaching session.
+</p>
+
+<p>
+Students should be required to demonstrate that they can independently
+apply the standards developed throughout the Academy without excessive
+trainer intervention.
+</p>
+
+<p>
+The assessment should not use one permanent scenario. Trainers should
+select different exercises from the assessment bank so that students
+are assessed against the same standards while encountering different
+circumstances.
+</p>
+
+<div class="info-grid">
+
+<div class="info-box">
+<strong>Assessment Type</strong>
+Final ARU Qualification Assessment
+</div>
+
+<div class="info-box">
+<strong>Assessment Style</strong>
+Knowledge + practical + scenario + debrief
+</div>
+
+<div class="info-box">
+<strong>Scenario System</strong>
+Trainer-selected assessment bank
+</div>
+
+<div class="info-box">
+<strong>Coaching</strong>
+Minimal during assessed elements
+</div>
+
+<div class="info-box">
+<strong>Standard</strong>
+Consistent independent performance
+</div>
+
+<div class="info-box">
+<strong>Final Decision</strong>
+Qualification recommendation
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ====================================================== -->
+<!-- ASSESSMENT STRUCTURE -->
+<!-- ====================================================== -->
+
+<section class="card assessment">
+
+<h2>Required Final Assessment Structure</h2>
+
+<p>
+Each student should complete a balanced assessment containing several
+different elements.
+</p>
+
+<div class="table-wrap">
+
+<table>
+
+<tr>
+<th>Element</th>
+<th>Requirement</th>
+<th>Purpose</th>
+</tr>
+
+<tr>
+<td>Element A</td>
+<td>Knowledge Assessment</td>
+<td>Confirm understanding of Academy learning.</td>
+</tr>
+
+<tr>
+<td>Element B</td>
+<td>Equipment / Readiness Check</td>
+<td>Confirm understanding of ARU resources and accountability.</td>
+</tr>
+
+<tr>
+<td>Element C</td>
+<td>Decision-Making Exercise</td>
+<td>Test information handling, proportionality and reassessment.</td>
+</tr>
+
+<tr>
+<td>Element D</td>
+<td>Operational Scenario 1</td>
+<td>General ARV / armed incident assessment.</td>
+</tr>
+
+<tr>
+<td>Element E</td>
+<td>Operational Scenario 2</td>
+<td>Different operational environment.</td>
+</tr>
+
+<tr>
+<td>Element F</td>
+<td>Complex / Integrated Scenario</td>
+<td>Combine multiple Academy learning areas.</td>
+</tr>
+
+<tr>
+<td>Element G</td>
+<td>Post-Incident Handover</td>
+<td>Assess information retention and communication.</td>
+</tr>
+
+<tr>
+<td>Element H</td>
+<td>Final Debrief</td>
+<td>Assess accountability and reasoning.</td>
+</tr>
+
+</table>
+
+</div>
+
+</section>
+
+
+<!-- ====================================================== -->
+<!-- COVERAGE -->
+<!-- ====================================================== -->
+
+<section class="card">
+
+<h2>Academy Coverage Requirement</h2>
+
+<p>
+The final assessment should collectively test learning from across the
+entire Academy.
+</p>
+
+<div class="standard-grid">
+
+<div class="standard-box">
+<strong>Professional Standards</strong>
+Integrity, attitude, accountability and conduct.
+</div>
+
+<div class="standard-box">
+<strong>Decision-Making</strong>
+Information, threat, risk, proportionality and reassessment.
+</div>
+
+<div class="standard-box">
+<strong>Equipment</strong>
+PPE, vehicles, firearms availability and accountability.
+</div>
+
+<div class="standard-box">
+<strong>Firearms Safety</strong>
+Safe simulated handling and trainer-command compliance.
+</div>
+
+<div class="standard-box">
+<strong>Operational Readiness</strong>
+Preparation before and during ARV deployment.
+</div>
+
+<div class="standard-box">
+<strong>ARV Response</strong>
+Crew responsibilities and armed incident response.
+</div>
+
+<div class="standard-box">
+<strong>Vehicle Operations</strong>
+High-risk vehicle incidents and coordinated vehicle operations.
+</div>
+
+<div class="standard-box">
+<strong>Containment & Search</strong>
+Role awareness and coordinated search activity.
+</div>
+
+<div class="standard-box">
+<strong>Building Operations</strong>
+Communication, team discipline and scenario awareness.
+</div>
+
+<div class="standard-box">
+<strong>Integrated Operations</strong>
+NPAS, K9 and wider police-resource awareness.
+</div>
+
+<div class="standard-box">
+<strong>Complex Incidents</strong>
+Multiple information streams and changing priorities.
+</div>
+
+<div class="standard-box">
+<strong>Accountability</strong>
+Debrief, explanation and honest reflection.
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ====================================================== -->
+<!-- SCENARIO SELECTION -->
+<!-- ====================================================== -->
+
+<section class="card instructor">
+
+<h2>Scenario Selection System</h2>
+
+<p>
+Do not give every student the same final assessment.
+</p>
+
+<p>
+For each candidate, trainers should normally select:
+</p>
+
+<ul>
+
+<li>1 knowledge assessment.</li>
+<li>1 readiness/equipment test.</li>
+<li>1 short decision-making test.</li>
+<li>2 operational scenarios from different categories.</li>
+<li>1 complex integrated scenario.</li>
+<li>1 post-incident handover.</li>
+<li>1 final accountability debrief.</li>
+
+</ul>
+
+<p>
+Scenarios can also be modified using the inject bank later on this page.
+</p>
+
+<div class="trainer-note">
+
+<strong>Important:</strong>
+
+The objective is not to make one student's assessment harder than another.
+Different scenarios should still test comparable Academy standards.
+
+</div>
+
+</section>
+
+
+<!-- ====================================================== -->
+<!-- KNOWLEDGE TEST -->
+<!-- ====================================================== -->
+
+<section class="card assessment">
+
+<h2>Element A — Final Knowledge Assessment</h2>
+
+<p>
+Trainers may select questions from the following bank rather than asking
+every student the exact same questions.
+</p>
+
+<details>
+
+<summary>Knowledge Question Bank</summary>
+
+<div class="details-content">
+
+<ol>
+
+<li>What does integrity mean within ARU?</li>
+
+<li>Why is accountability particularly important for an armed officer?</li>
+
+<li>Explain the difference between reported and confirmed information.</li>
+
+<li>Why must an operational assessment remain continuous?</li>
+
+<li>What should happen if circumstances materially change?</li>
+
+<li>What factors should influence whether an action remains proportionate?</li>
+
+<li>What should an officer do after making a mistake?</li>
+
+<li>Why is communication important within an ARV crew?</li>
+
+<li>What responsibility does an officer have for issued equipment?</li>
+
+<li>Where should firearms normally be secured within an ARV when not carried?</li>
+
+<li>What firearm is normally carried as the ARU sidearm?</li>
+
+<li>What is the primary ARU rifle within Code44?</li>
+
+<li>What is the Remington shotgun used for within Code44 ARU?</li>
+
+<li>What PPE may be available to an ARU officer?</li>
+
+<li>Why should equipment selection be based on operational need?</li>
+
+<li>Why should information uncertainty be communicated?</li>
+
+<li>What should happen when an existing plan no longer fits the circumstances?</li>
+
+<li>Why should an ARU officer consider the wider incident rather than only the immediate subject?</li>
+
+<li>What is expected during an operational handover?</li>
+
+<li>What should an officer be capable of explaining following an incident?</li>
+
+<li>Why might NPAS be requested?</li>
+
+<li>Why might K9 support be requested?</li>
+
+<li>Why must specialist resources have a clear operational purpose?</li>
+
+<li>What should an officer do if a server mechanic does not work as expected during an exercise?</li>
+
+<li>Why does qualification not mean development has finished?</li>
+
+</ol>
+
+</div>
+
+</details>
+
+</section>
+
+
+<!-- ====================================================== -->
+<!-- EQUIPMENT -->
+<!-- ====================================================== -->
+
+<section class="card assessment">
+
+<h2>Element B — Equipment & Operational Readiness</h2>
+
+<p>
+The trainer should give the student a hypothetical deployment and ask
+them to identify appropriate Code44 equipment and considerations.
+</p>
+
+<details>
+
+<summary>Readiness Test A — Standard ARV Deployment</summary>
+
+<div class="details-content">
+
+<p>
+Student is told they are deploying as part of a double-crewed ARV.
+</p>
+
+<p>Ask them to explain:</p>
+
+<ul>
+
+<li>What equipment they would expect to have available.</li>
+
+<li>What PPE may be relevant.</li>
+
+<li>Where firearms not being carried should remain.</li>
+
+<li>What responsibility they have for equipment.</li>
+
+<li>How they would communicate with their crew.</li>
+
+<li>Which radio channel may be appropriate depending on the operation.</li>
+
+</ul>
+
+</div>
+
+</details>
+
+
+<details>
+
+<summary>Readiness Test B — Reduced Information Deployment</summary>
+
+<div class="details-content">
+
+<p>
+Provide only limited information about a reported armed subject.
+</p>
+
+<p>
+Assess whether the student distinguishes between what they know,
+what has merely been reported and what remains unknown.
+</p>
+
+</div>
+
+</details>
+
+
+<details>
+
+<summary>Readiness Test C — Specialist Equipment Questioning</summary>
+
+<div class="details-content">
+
+<p>
+Ask the student when additional equipment such as the ballistic shield,
+gas mask, NVG or specialist resources might be considered.
+</p>
+
+<p>
+The important assessment point is whether the student links equipment
+selection to the circumstances rather than automatically selecting everything.
+</p>
+
+</div>
+
+</details>
+
+</section>
+
+
+<!-- ====================================================== -->
+<!-- DECISION MAKING -->
+<!-- ====================================================== -->
+
+<section class="card assessment">
+
+<h2>Element C — Decision-Making Tests</h2>
+
+<details>
+
+<summary>Decision Test 1 — Conflicting Information</summary>
+
+<div class="details-content">
+
+<p>
+Control reports that a male may have a firearm.
+</p>
+
+<p>
+Another officer states over radio that they believe the object may
+instead be a mobile phone.
+</p>
+
+<p>Ask:</p>
+
+<ul>
+
+<li>What information is confirmed?</li>
+<li>What remains reported?</li>
+<li>What information would you seek?</li>
+<li>How does the uncertainty affect your thinking?</li>
+
+</ul>
+
+</div>
+
+</details>
+
+
+<details>
+
+<summary>Decision Test 2 — Changing Threat</summary>
+
+<div class="details-content">
+
+<p>
+The initial information suggests an armed and threatening subject.
+</p>
+
+<div class="inject">
+
+<strong>Inject:</strong>
+
+The subject subsequently becomes compliant and follows police instructions.
+
+</div>
+
+<p>
+Assess whether the student recognises that the circumstances have changed
+and reassesses their response.
+</p>
+
+</div>
+
+</details>
+
+
+<details>
+
+<summary>Decision Test 3 — Escalating Information</summary>
+
+<div class="details-content">
+
+<p>
+Initial deployment concerns a suspicious person.
+</p>
+
+<div class="inject">
+
+<strong>Inject:</strong>
+
+Control provides new information that a weapon has now been reported.
+
+</div>
+
+<p>
+Assess whether the student recognises the significance of the new information,
+communicates it and updates their assessment.
+</p>
+
+</div>
+
+</details>
+
+
+<details>
+
+<summary>Decision Test 4 — Incorrect Initial Information</summary>
+
+<div class="details-content">
+
+<p>
+The student receives information that a particular vehicle is believed
+to contain the subject.
+</p>
+
+<div class="inject">
+
+<strong>Inject:</strong>
+
+Control later confirms the registration was incorrectly reported.
+
+</div>
+
+<p>
+Assess whether the student stops relying on outdated information.
+</p>
+
+</div>
+
+</details>
+
+</section>
+
+
+<!-- ====================================================== -->
+<!-- SCENARIO BANK -->
+<!-- ====================================================== -->
+
+<section class="card scenario">
+
+<h2>Operational Scenario Bank</h2>
+
+<p>
+The following scenarios can be selected and modified for individual
+final assessments.
+</p>
+
+<p>
+Trainers should not reveal which scenarios will be used beforehand.
+</p>
+
+</section>
+
+
+<!-- SCENARIO 1 -->
+
+<section class="card scenario">
+
+<h2>Scenario 1 — Reported Armed Person</h2>
+
+<p>
+Response officers request ARU following reports of a person seen with
+what may be a firearm.
+</p>
+
+<h3>Starting Information</h3>
+
+<ul>
+
+<li>One reporting person.</li>
+
+<li>Weapon has been reported but not independently confirmed.</li>
+
+<li>Subject description available.</li>
+
+<li>Last known location available.</li>
+
+<li>Members of the public remain nearby.</li>
+
+</ul>
+
+<h3>Assessment Focus</h3>
+
+<p>
+<span class="score">Information Handling</span>
+<span class="score">Communication</span>
+<span class="score">Risk Awareness</span>
+<span class="score">Reassessment</span>
+<span class="score">Teamwork</span>
+</p>
+
+<div class="inject">
+
+<strong>Possible Inject A:</strong>
+
+A second caller reports the object may have been a phone.
+
+</div>
+
+<div class="inject">
+
+<strong>Possible Inject B:</strong>
+
+Another officer reports seeing an object but cannot identify it.
+
+</div>
+
+<div class="inject">
+
+<strong>Possible Inject C:</strong>
+
+The subject voluntarily approaches police.
+
+</div>
+
+<div class="expected">
+
+<strong>Expected Standard:</strong>
+
+Student distinguishes reports from confirmed facts, communicates uncertainty,
+works with their crew and adjusts their assessment as information changes.
+
+</div>
+
+</section>
+
+
+<!-- SCENARIO 2 -->
+
+<section class="card scenario">
+
+<h2>Scenario 2 — Armed Vehicle Report</h2>
+
+<p>
+A vehicle is reported to contain an individual believed to possess a weapon.
+</p>
+
+<h3>Starting Information</h3>
+
+<ul>
+
+<li>Vehicle description available.</li>
+
+<li>Registration partially confirmed.</li>
+
+<li>Number of occupants unknown.</li>
+
+<li>Weapon information remains reported.</li>
+
+</ul>
+
+<h3>Assessment Focus</h3>
+
+<p>
+<span class="score">Vehicle Awareness</span>
+<span class="score">Information</span>
+<span class="score">Communication</span>
+<span class="score">Team Coordination</span>
+</p>
+
+<div class="inject">
+
+<strong>Possible Inject A:</strong>
+
+A second similar vehicle appears.
+
+</div>
+
+<div class="inject">
+
+<strong>Possible Inject B:</strong>
+
+Control corrects part of the registration.
+
+</div>
+
+<div class="inject">
+
+<strong>Possible Inject C:</strong>
+
+The vehicle stops and an occupant becomes compliant.
+
+</div>
+
+<div class="expected">
+
+<strong>Expected Standard:</strong>
+
+Student avoids treating unconfirmed information as fact and maintains
+effective communication with the ARV crew and wider operation.
+
+</div>
+
+</section>
+
+
+<!-- SCENARIO 3 -->
+
+<section class="card scenario">
+
+<h2>Scenario 3 — High-Risk Stop Assessment</h2>
+
+<p>
+ARU is supporting an operation involving a vehicle believed to contain
+a potentially dangerous subject.
+</p>
+
+<p>
+This scenario assesses the Academy's simulated vehicle-operation principles
+and should be delivered using Code44 server mechanics and established training rules.
+</p>
+
+<h3>Assessment Focus</h3>
+
+<p>
+<span class="score">Role Discipline</span>
+<span class="score">Communication</span>
+<span class="score">Teamwork</span>
+<span class="score">Reassessment</span>
+</p>
+
+<div class="inject">
+
+<strong>Possible Inject:</strong>
+
+The original subject is discovered not to be inside the vehicle.
+
+</div>
+
+<div class="expected">
+
+<strong>Expected Standard:</strong>
+
+Student recognises that the operational picture has changed rather than
+continuing simply because an original plan existed.
+
+</div>
+
+</section>
+
+
+<!-- SCENARIO 4 -->
+
+<section class="card scenario">
+
+<h2>Scenario 4 — Failed Vehicle Containment</h2>
+
+<p>
+A vehicle operation is underway when the target vehicle unexpectedly
+moves away from the planned location.
+</p>
+
+<h3>Assessment Focus</h3>
+
+<p>
+<span class="score">Adaptability</span>
+<span class="score">Radio Communication</span>
+<span class="score">Awareness</span>
+<span class="score">Decision-Making</span>
+</p>
+
+<div class="inject">
+
+<strong>Possible Inject:</strong>
+
+A civilian vehicle becomes involved in the area.
+
+</div>
+
+<div class="expected">
+
+<strong>Expected Standard:</strong>
+
+Student communicates the material change and does not remain mentally
+fixed on the original plan.
+
+</div>
+
+</section>
+
+
+<!-- SCENARIO 5 -->
+
+<section class="card scenario">
+
+<h2>Scenario 5 — Armed Containment</h2>
+
+<p>
+A subject believed to be armed enters a location and ARU establishes
+a simulated containment.
+</p>
+
+<h3>Assessment Focus</h3>
+
+<p>
+<span class="score">Role Awareness</span>
+<span class="score">Containment</span>
+<span class="score">Communication</span>
+<span class="score">Patience</span>
+</p>
+
+<div class="inject">
+
+<strong>Possible Inject A:</strong>
+
+A civilian leaves the location.
+
+</div>
+
+<div class="inject">
+
+<strong>Possible Inject B:</strong>
+
+Information suggests there may be another exit.
+
+</div>
+
+<div class="inject">
+
+<strong>Possible Inject C:</strong>
+
+NPAS becomes available.
+
+</div>
+
+<div class="expected">
+
+<strong>Expected Standard:</strong>
+
+Student maintains their assigned role, communicates relevant changes and
+considers available supporting resources.
+
+</div>
+
+</section>
+
+
+<!-- SCENARIO 6 -->
+
+<section class="card scenario">
+
+<h2>Scenario 6 — Search Operation</h2>
+
+<p>
+ARU is tasked with supporting a simulated search for a potentially armed subject.
+</p>
+
+<h3>Assessment Focus</h3>
+
+<p>
+<span class="score">Briefing</span>
+<span class="score">Teamwork</span>
+<span class="score">Information</span>
+<span class="score">Resource Awareness</span>
+</p>
+
+<div class="inject">
+
+<strong>Possible Inject:</strong>
+
+K9 becomes available during the operation.
+
+</div>
+
+<div class="expected">
+
+<strong>Expected Standard:</strong>
+
+Student considers whether the resource contributes to the operational
+objective rather than requesting it automatically.
+
+</div>
+
+</section>
+
+
+<!-- SCENARIO 7 -->
+
+<section class="card scenario">
+
+<h2>Scenario 7 — High-Risk Warrant</h2>
+
+<p>
+ARU is supporting a simulated high-risk warrant involving a subject
+reported to have access to firearms.
+</p>
+
+<h3>Assessment Focus</h3>
+
+<p>
+<span class="score">Briefing</span>
+<span class="score">Information</span>
+<span class="score">Role Discipline</span>
+<span class="score">Team Communication</span>
+</p>
+
+<div class="inject">
+
+<strong>Possible Inject A:</strong>
+
+The target is not present.
+
+</div>
+
+<div class="inject">
+
+<strong>Possible Inject B:</strong>
+
+An unexpected person is present.
+
+</div>
+
+<div class="inject">
+
+<strong>Possible Inject C:</strong>
+
+New intelligence changes the original understanding of the incident.
+
+</div>
+
+<div class="expected">
+
+<strong>Expected Standard:</strong>
+
+Student responds to the scenario actually presented rather than attempting
+to force the original expectation.
+
+</div>
+
+</section>
+
+
+<!-- SCENARIO 8 -->
+
+<section class="card scenario">
+
+<h2>Scenario 8 — Building Incident</h2>
+
+<p>
+Officers respond to a simulated armed incident within a Code44 building environment.
+</p>
+
+<h3>Assessment Focus</h3>
+
+<p>
+<span class="score">Communication</span>
+<span class="score">Team Discipline</span>
+<span class="score">Awareness</span>
+<span class="score">Decision-Making</span>
+</p>
+
+<div class="inject">
+
+<strong>Possible Inject A:</strong>
+
+Information suggests the subject may have moved.
+
+</div>
+
+<div class="inject">
+
+<strong>Possible Inject B:</strong>
+
+A civilian is located.
+
+</div>
+
+<div class="inject">
+
+<strong>Possible Inject C:</strong>
+
+The reported subject description changes.
+
+</div>
+
+<div class="expected">
+
+<strong>Expected Standard:</strong>
+
+Student maintains communication and team awareness and responds appropriately
+to changing scenario information.
+
+</div>
+
+</section>
+
+
+<!-- SCENARIO 9 -->
+
+<section class="card scenario">
+
+<h2>Scenario 9 — Multiple Subjects</h2>
+
+<p>
+Initial information concerns one subject. During the exercise,
+information indicates a possible second person of interest.
+</p>
+
+<h3>Assessment Focus</h3>
+
+<p>
+<span class="score">Information Management</span>
+<span class="score">Tunnel Vision</span>
+<span class="score">Communication</span>
+<span class="score">Reassessment</span>
+</p>
+
+<div class="expected">
+
+<strong>Expected Standard:</strong>
+
+Student incorporates the new information into the wider operational picture
+rather than remaining focused solely on the original subject.
+
+</div>
+
+</section>
+
+
+<!-- SCENARIO 10 -->
+
+<section class="card scenario">
+
+<h2>Scenario 10 — Civilian Complication</h2>
+
+<p>
+A simulated armed operation is underway when a member of the public
+unexpectedly enters the scenario.
+</p>
+
+<h3>Assessment Focus</h3>
+
+<p>
+<span class="score">Public Safety</span>
+<span class="score">Awareness</span>
+<span class="score">Communication</span>
+<span class="score">Adaptability</span>
+</p>
+
+<div class="expected">
+
+<strong>Expected Standard:</strong>
+
+Student recognises the new risk and incorporates it into their decision-making.
+</div>
+
+</section>
+
+
+<!-- SCENARIO 11 -->
+
+<section class="card scenario">
+
+<h2>Scenario 11 — Casualty During Operation</h2>
+
+<p>
+During a wider simulated incident, a casualty is introduced.
+</p>
+
+<h3>Assessment Focus</h3>
+
+<p>
+<span class="score">Prioritisation</span>
+<span class="score">Communication</span>
+<span class="score">TacMed Awareness</span>
+<span class="score">Wider Incident Awareness</span>
+</p>
+
+<div class="inject">
+
+<strong>Possible Inject:</strong>
+
+The original operational threat has not yet been fully resolved.
+
+</div>
+
+<div class="expected">
+
+<strong>Expected Standard:</strong>
+
+Student recognises both the casualty requirement and the continuing wider
+incident rather than developing tunnel vision on only one problem.
+
+</div>
+
+</section>
+
+
+<!-- SCENARIO 12 -->
+
+<section class="card scenario">
+
+<h2>Scenario 12 — NPAS Integration</h2>
+
+<p>
+NPAS becomes available during a simulated search or containment operation.
+</p>
+
+<h3>Assessment Focus</h3>
+
+<p>
+<span class="score">Resource Integration</span>
+<span class="score">Communication</span>
+<span class="score">Operational Purpose</span>
+</p>
+
+<div class="inject">
+
+<strong>Possible Inject:</strong>
+
+NPAS reports information that conflicts with an earlier witness report.
+
+</div>
+
+<div class="expected">
+
+<strong>Expected Standard:</strong>
+
+Student considers the reliability and significance of new information and
+updates the operational picture appropriately.
+
+</div>
+
+</section>
+
+
+<!-- SCENARIO 13 -->
+
+<section class="card scenario">
+
+<h2>Scenario 13 — K9 Integration</h2>
+
+<p>
+A K9 resource becomes available during a simulated search operation.
+</p>
+
+<h3>Assessment Focus</h3>
+
+<p>
+<span class="score">Resource Awareness</span>
+<span class="score">Communication</span>
+<span class="score">Team Integration</span>
+</p>
+
+<div class="expected">
+
+<strong>Expected Standard:</strong>
+
+Student understands that specialist resources should support a defined
+operational objective rather than simply being used because available.
+
+</div>
+
+</section>
+
+
+<!-- SCENARIO 14 -->
+
+<section class="card scenario">
+
+<h2>Scenario 14 — Conflicting Witness Accounts</h2>
+
+<p>
+Two witnesses provide different descriptions of the same incident.
+</p>
+
+<h3>Assessment Focus</h3>
+
+<p>
+<span class="score">Information Handling</span>
+<span class="score">Uncertainty</span>
+<span class="score">Decision-Making</span>
+</p>
+
+<div class="expected">
+
+<strong>Expected Standard:</strong>
+
+Student does not arbitrarily select one account as fact and clearly communicates
+what remains uncertain.
+
+</div>
+
+</section>
+
+
+<!-- SCENARIO 15 -->
+
+<section class="card scenario">
+
+<h2>Scenario 15 — Wrong Subject</h2>
+
+<p>
+A person initially believed to match the suspect description is encountered.
+</p>
+
+<div class="inject">
+
+<strong>Inject:</strong>
+
+New information demonstrates that the individual is not the subject being sought.
+
+</div>
+
+<h3>Assessment Focus</h3>
+
+<p>
+<span class="score">Reassessment</span>
+<span class="score">Information</span>
+<span class="score">Professionalism</span>
+</p>
+
+<div class="expected">
+
+<strong>Expected Standard:</strong>
+
+Student responds to the corrected information and does not attempt to justify
+continuing an outdated assessment.
+
+</div>
+
+</section>
+
+
+<!-- SCENARIO 16 -->
+
+<section class="card scenario">
+
+<h2>Scenario 16 — Communication Failure</h2>
+
+<p>
+During an incident, another simulated unit misses an important radio update.
+</p>
+
+<h3>Assessment Focus</h3>
+
+<p>
+<span class="score">Communication</span>
+<span class="score">Team Awareness</span>
+<span class="score">Initiative</span>
+</p>
+
+<div class="expected">
+
+<strong>Expected Standard:</strong>
+
+Student recognises that another team may be operating with outdated information
+and takes reasonable steps to ensure relevant information is shared.
+
+</div>
+
+</section>
+
+
+<!-- SCENARIO 17 -->
+
+<section class="card scenario">
+
+<h2>Scenario 17 — Server Mechanic Failure</h2>
+
+<p>
+During an assessment scenario, a FiveM mechanic, animation, vehicle feature
+or scripted item does not function correctly.
+</p>
+
+<h3>Assessment Focus</h3>
+
+<p>
+<span class="score">Adaptability</span>
+<span class="score">Communication</span>
+<span class="score">Professionalism</span>
+</p>
+
+<div class="expected">
+
+<strong>Expected Standard:</strong>
+
+Student communicates the issue and continues through reasonable roleplay
+rather than allowing a technical problem to destroy the scenario.
+
+</div>
+
+</section>
+
+
+<!-- SCENARIO 18 -->
+
+<section class="card scenario">
+
+<h2>Scenario 18 — Command Update</h2>
+
+<p>
+The student has begun operating under an established plan.
+</p>
+
+<div class="inject">
+
+<strong>Inject:</strong>
+
+Command changes the operational objective following new information.
+
+</div>
+
+<h3>Assessment Focus</h3>
+
+<p>
+<span class="score">Adaptability</span>
+<span class="score">Communication</span>
+<span class="score">Role Discipline</span>
+</p>
+
+<div class="expected">
+
+<strong>Expected Standard:</strong>
+
+Student acknowledges and works toward the updated objective rather than
+continuing independently with the previous plan.
+
+</div>
+
+</section>
+
+
+<!-- SCENARIO 19 -->
+
+<section class="card scenario">
+
+<h2>Scenario 19 — Specialist Capability Decision</h2>
+
+<p>
+The trainer presents a complex operation and tells the student that several
+specialist Code44 capabilities are available.
+</p>
+
+<p>These may include:</p>
+
+<ul>
+
+<li>NPAS.</li>
+<li>K9.</li>
+<li>Ballistic shield.</li>
+<li>Specialist breaching capability.</li>
+<li>Maritime capability.</li>
+<li>Rope access.</li>
+<li>Fast-rope capability.</li>
+</ul>
+
+<h3>Assessment Focus</h3>
+
+<p>
+<span class="score">Resource Selection</span>
+<span class="score">Justification</span>
+<span class="score">Operational Purpose</span>
+</p>
+
+<div class="expected">
+
+<strong>Expected Standard:</strong>
+
+Student selects resources because they contribute to the scenario objective,
+not because they are available or appear impressive.
+
+</div>
+
+</section>
+
+
+<!-- SCENARIO 20 -->
+
+<section class="card scenario">
+
+<h2>Scenario 20 — Multi-Location Incident</h2>
+
+<p>
+Information begins arriving about potentially related activity at two locations.
+</p>
+
+<h3>Assessment Focus</h3>
+
+<p>
+<span class="score">Information Management</span>
+<span class="score">Prioritisation</span>
+<span class="score">Communication</span>
+<span class="score">Wider Awareness</span>
+</p>
+
+<div class="inject">
+
+<strong>Possible Inject:</strong>
+
+Information later suggests the incidents are unrelated.
+
+</div>
+
+<div class="expected">
+
+<strong>Expected Standard:</strong>
+
+Student manages uncertainty and does not create an unsupported connection
+between incidents.
+
+</div>
+
+</section>
+
+
+<!-- SCENARIO 21 -->
+
+<section class="card scenario">
+
+<h2>Scenario 21 — VIP Protection Complication</h2>
+
+<p>
+During a simulated protection task, an unrelated disturbance develops nearby.
+</p>
+
+<h3>Assessment Focus</h3>
+
+<p>
+<span class="score">Role Discipline</span>
+<span class="score">Prioritisation</span>
+<span class="score">Communication</span>
+</p>
+
+<div class="expected">
+
+<strong>Expected Standard:</strong>
+
+Student remembers the assigned operational responsibility and communicates
+appropriately rather than abandoning their role simply to become involved
+in another incident.
+
+</div>
+
+</section>
+
+
+<!-- SCENARIO 22 -->
+
+<section class="card scenario">
+
+<h2>Scenario 22 — Maritime Support Decision</h2>
+
+<p>
+A simulated incident develops near or around a maritime environment and
+specialist capability may become relevant.
+</p>
+
+<h3>Assessment Focus</h3>
+
+<p>
+<span class="score">Specialist Awareness</span>
+<span class="score">Resource Request</span>
+<span class="score">Decision-Making</span>
+</p>
+
+<div class="expected">
+
+<strong>Expected Standard:</strong>
+
+Student identifies when the incident is moving beyond ordinary ARV capability
+and appropriately considers specialist support.
+
+</div>
+
+</section>
+
+
+<!-- SCENARIO 23 -->
+
+<section class="card scenario">
+
+<h2>Scenario 23 — Counter-Terrorism Style Multi-Agency Incident</h2>
+
+<p>
+A simulated major incident produces multiple reports, several police resources
+and rapidly changing information.
+</p>
+
+<p>
+This scenario is intended to assess coordination and information management,
+not specialist CT tactics.
+</p>
+
+<h3>Assessment Focus</h3>
+
+<p>
+<span class="score">Major Incident Awareness</span>
+<span class="score">Information</span>
+<span class="score">Role Discipline</span>
+<span class="score">Communication</span>
+</p>
+
+<div class="inject">
+
+<strong>Possible Inject A:</strong>
+
+A second report is received from another location.
+
+</div>
+
+<div class="inject">
+
+<strong>Possible Inject B:</strong>
+
+One early report is later shown to be incorrect.
+
+</div>
+
+<div class="inject">
+
+<strong>Possible Inject C:</strong>
+
+Additional specialist resources become available.
+
+</div>
+
+<div class="expected">
+
+<strong>Expected Standard:</strong>
+
+Student remains within their assigned role, communicates clearly and does not
+attempt to independently control an incident beyond their role.
+
+</div>
+
+</section>
+
+
+<!-- SCENARIO 24 -->
+
+<section class="card scenario">
+
+<h2>Scenario 24 — Full Academy Integration</h2>
+
+<p>
+This is the highest-complexity scenario within the assessment bank.
+</p>
+
+<p>
+The trainer creates a FiveM incident combining several previous modules.
+</p>
+
+<h3>Possible Components</h3>
+
+<ul>
+
+<li>Initial incomplete deployment information.</li>
+
+<li>ARV response.</li>
+
+<li>Vehicle involvement.</li>
+
+<li>Reported weapon.</li>
+
+<li>Multiple persons.</li>
+
+<li>Containment.</li>
+
+<li>Building element.</li>
+
+<li>Civilian complication.</li>
+
+<li>Casualty.</li>
+
+<li>NPAS or K9 availability.</li>
+
+<li>Conflicting information.</li>
+
+<li>Command update.</li>
+
+<li>Final handover.</li>
+
+</ul>
+
+<div class="trainer-note">
+
+<strong>Trainer Rule:</strong>
+
+Do not use every possible inject.
+
+Select enough changes to assess the student while keeping the scenario
+understandable and fair.
+
+</div>
+
+</section>
+
+
+<!-- ====================================================== -->
+<!-- RANDOM INJECT BANK -->
+<!-- ====================================================== -->
+
+<section class="card instructor">
+
+<h2>Scenario Inject Bank</h2>
+
+<p>
+Any suitable operational scenario can be changed using one or more of the
+following injects.
+</p>
+
+<div class="scenario-grid">
+
+<div class="scenario-box">
+<strong>Information Change</strong>
+Previously reported information is corrected.
+</div>
+
+<div class="scenario-box">
+<strong>Weapon Confirmed</strong>
+Previously uncertain weapon information becomes confirmed within the scenario.
+</div>
+
+<div class="scenario-box">
+<strong>Weapon Disproved</strong>
+The reported weapon is shown not to be a weapon.
+</div>
+
+<div class="scenario-box">
+<strong>Subject Complies</strong>
+Subject behaviour changes significantly.
+</div>
+
+<div class="scenario-box">
+<strong>Subject Moves</strong>
+The last known location changes.
+</div>
+
+<div class="scenario-box">
+<strong>Second Subject</strong>
+Another person of interest is reported.
+</div>
+
+<div class="scenario-box">
+<strong>Civilian Appears</strong>
+Public-safety considerations change.
+</div>
+
+<div class="scenario-box">
+<strong>Casualty</strong>
+A simulated casualty is introduced.
+</div>
+
+<div class="scenario-box">
+<strong>NPAS Available</strong>
+Air support becomes available.
+</div>
+
+<div class="scenario-box">
+<strong>K9 Available</strong>
+Dog support becomes available.
+</div>
+
+<div class="scenario-box">
+<strong>Comms Problem</strong>
+Another unit misses an important update.
+</div>
+
+<div class="scenario-box">
+<strong>Vehicle Change</strong>
+Vehicle information changes.
+</div>
+
+<div class="scenario-box">
+<strong>Command Change</strong>
+Operational objective changes.
+</div>
+
+<div class="scenario-box">
+<strong>Conflicting Witness</strong>
+New information contradicts an earlier report.
+</div>
+
+<div class="scenario-box">
+<strong>Server Failure</strong>
+A scripted mechanic fails.
+</div>
+
+<div class="scenario-box">
+<strong>Resource Unavailable</strong>
+A requested specialist resource cannot attend.
+</div>
+
+<div class="scenario-box">
+<strong>False Connection</strong>
+Two apparently connected events are later shown to be unrelated.
+</div>
+
+<div class="scenario-box">
+<strong>New Priority</strong>
+Another operational issue requires consideration.
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ====================================================== -->
+<!-- HANDOVER -->
+<!-- ====================================================== -->
+
+<section class="card assessment">
+
+<h2>Element G — Post-Incident Handover</h2>
+
+<p>
+Following at least one practical scenario, require the student to provide
+a clear handover without being given the answers by the trainer.
+</p>
+
+<p>The handover should demonstrate awareness of:</p>
+
+<ul>
+
+<li>What the original incident was.</li>
+
+<li>What information was received.</li>
+
+<li>What was confirmed.</li>
+
+<li>What remained uncertain.</li>
+
+<li>Significant changes during the incident.</li>
+
+<li>Actions taken.</li>
+
+<li>Current subject status.</li>
+
+<li>Casualties where relevant.</li>
+
+<li>Outstanding risks.</li>
+
+<li>Outstanding actions.</li>
+
+</ul>
+
+<div class="expected">
+
+<strong>Expected Standard:</strong>
+
+The handover does not need to be word-perfect. It should allow another
+officer or commander to understand the current operational picture.
+
+</div>
+
+</section>
+
+
+<!-- ====================================================== -->
+<!-- DEBRIEF -->
+<!-- ====================================================== -->
+
+<section class="card assessment">
+
+<h2>Element H — Final Accountability Debrief</h2>
+
+<p>
+After the practical assessment, ask the student to explain their own decisions.
+</p>
+
+<ol>
+
+<li>What did you understand the incident to be when you were deployed?</li>
+
+<li>What information did you consider confirmed?</li>
+
+<li>What remained uncertain?</li>
+
+<li>What was your main concern?</li>
+
+<li>What options did you consider?</li>
+
+<li>Why did you choose the actions you took?</li>
+
+<li>What changed during the scenario?</li>
+
+<li>How did those changes affect your decisions?</li>
+
+<li>What do you think you did well?</li>
+
+<li>What would you change if completing the scenario again?</li>
+
+</ol>
+
+<div class="trainer-note">
+
+<strong>Trainer Guidance:</strong>
+
+Do not expect students to invent perfect retrospective answers.
+
+The purpose is to determine whether their reasoning is honest,
+coherent and consistent with the information available during the scenario.
+
+</div>
+
+</section>
+
+
+<!-- ====================================================== -->
+<!-- MARKING -->
+<!-- ====================================================== -->
+
+<section class="card assessment">
+
+<h2>Final Assessment Marking Framework</h2>
+
+<p>
+Each category should be considered across the whole assessment rather than
+based on one isolated moment.
+</p>
+
+<div class="table-wrap">
+
+<table>
+
+<tr>
+<th>Category</th>
+<th>Required Standard</th>
+</tr>
+
+<tr>
+<td>Professionalism</td>
+<td>Consistent professional behaviour throughout.</td>
+</tr>
+
+<tr>
+<td>Integrity</td>
+<td>Honest about actions, errors and uncertainty.</td>
+</tr>
+
+<tr>
+<td>Knowledge</td>
+<td>Demonstrates sufficient understanding of Academy learning.</td>
+</tr>
+
+<tr>
+<td>Information Handling</td>
+<td>Separates reported, confirmed and unknown information.</td>
+</tr>
+
+<tr>
+<td>Communication</td>
+<td>Passes important information clearly and appropriately.</td>
+</tr>
+
+<tr>
+<td>Teamwork</td>
+<td>Works effectively with crew members and other resources.</td>
+</tr>
+
+<tr>
+<td>Decision-Making</td>
+<td>Makes reasonable and explainable decisions.</td>
+</tr>
+
+<tr>
+<td>Reassessment</td>
+<td>Responds appropriately when circumstances change.</td>
+</tr>
+
+<tr>
+<td>Operational Awareness</td>
+<td>Maintains awareness of the wider incident.</td>
+</tr>
+
+<tr>
+<td>Safety</td>
+<td>Maintains expected Code44 simulated firearms/equipment standards.</td>
+</tr>
+
+<tr>
+<td>Resource Awareness</td>
+<td>Uses or requests resources for an operational purpose.</td>
+</tr>
+
+<tr>
+<td>Handover</td>
+<td>Provides a useful and accurate operational summary.</td>
+</tr>
+
+<tr>
+<td>Accountability</td>
+<td>Can explain decisions and reflect on performance.</td>
+</tr>
+
+</table>
+
+</div>
+
+</section>
+
+
+<!-- ====================================================== -->
+<!-- PERFORMANCE GRADES -->
+<!-- ====================================================== -->
+
+<section class="card">
+
+<h2>Performance Ratings</h2>
+
+<div class="outcome-grid">
+
+<div class="outcome-box">
+
+<strong>EXCEEDS STANDARD</strong>
+
+Performance is consistently above the level required of a newly qualified
+Code44 ARU officer.
+
+</div>
+
+<div class="outcome-box">
+
+<strong>MEETS STANDARD</strong>
+
+Performance demonstrates the required level for qualification.
+
+</div>
+
+<div class="outcome-box">
+
+<strong>DEVELOPMENT REQUIRED</strong>
+
+A weakness exists but may be suitable for targeted development or reassessment.
+
+</div>
+
+<div class="outcome-box">
+
+<strong>BELOW STANDARD</strong>
+
+Performance does not currently demonstrate the required level for qualification.
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ====================================================== -->
+<!-- CRITICAL CONCERNS -->
+<!-- ====================================================== -->
+
+<section class="card danger">
+
+<h2>Serious / Critical Assessment Concerns</h2>
+
+<p>
+Not every mistake should result in automatic failure.
+</p>
+
+<p>
+However, trainers should immediately record and review significant concerns such as:
+</p>
+
+<ul>
+
+<li>Repeated unsafe simulated firearms behaviour.</li>
+
+<li>Ignoring clear trainer safety commands.</li>
+
+<li>Dishonesty during assessment or debrief.</li>
+
+<li>Attempting to conceal a significant mistake.</li>
+
+<li>Repeated inability to distinguish reported information from confirmed fact.</li>
+
+<li>Repeated failure to communicate significant changes.</li>
+
+<li>Continuing with an obviously outdated plan despite clear new information.</li>
+
+<li>Serious professionalism or conduct concerns.</li>
+
+<li>Persistent inability to work within the ARV team.</li>
+
+<li>Performance showing that previous Academy learning has not been retained.</li>
+
+</ul>
+
+<p>
+The trainer should consider the whole assessment and the seriousness of the
+issue before determining the final outcome.
+</p>
+
+</section>
+
+
+<!-- ====================================================== -->
+<!-- FAIRNESS -->
+<!-- ====================================================== -->
+
+<section class="card warning">
+
+<h2>Assessment Fairness</h2>
+
+<p>Trainers must not:</p>
+
+<ul>
+
+<li>Deliberately create impossible scenarios.</li>
+
+<li>Change rules midway through an assessment.</li>
+
+<li>Expect students to know information they were never given.</li>
+
+<li>Penalise a student for FiveM/server problems outside their control.</li>
+
+<li>Require one exact answer where several reasonable responses exist.</li>
+
+<li>Give one student substantially easier standards than another.</li>
+
+<li>Provide excessive coaching during assessed elements.</li>
+
+<li>Fail a student merely because they did something differently from the trainer.</li>
+
+</ul>
+
+</section>
+
+
+<!-- ====================================================== -->
+<!-- FINAL OUTCOMES -->
+<!-- ====================================================== -->
+
+<section class="card assessment">
+
+<h2>Final Qualification Outcomes</h2>
+
+<h3>PASS — QUALIFIED</h3>
+
+<p>
+Student demonstrates the required standard across the final assessment
+and is recommended for qualification as a Code44 ARU officer.
+</p>
+
+<h3>PASS — DEVELOPMENT POINTS</h3>
+
+<p>
+Student meets the qualification standard but has limited development
+points that should continue to be monitored.
+</p>
+
+<h3>REASSESSMENT REQUIRED</h3>
+
+<p>
+A specific assessment area requires further testing before a qualification
+decision can be confirmed.
+</p>
+
+<h3>FURTHER TRAINING REQUIRED</h3>
+
+<p>
+Student requires targeted development before another final assessment attempt.
+</p>
+
+</section>
+
+
+<!-- ====================================================== -->
+<!-- FINAL TRAINER CHECKLIST -->
+<!-- ====================================================== -->
+
+<section class="card instructor">
+
+<h2>Final Trainer Checklist</h2>
+
+<ul class="checklist">
+
+<li>Student confirmed as having completed Modules 1–12</li>
+
+<li>Previous training record reviewed</li>
+
+<li>Outstanding development points reviewed</li>
+
+<li>Knowledge assessment completed</li>
+
+<li>Operational readiness assessment completed</li>
+
+<li>Decision-making test completed</li>
+
+<li>Operational Scenario 1 completed</li>
+
+<li>Operational Scenario 2 completed</li>
+
+<li>Complex integrated scenario completed</li>
+
+<li>Professionalism assessed</li>
+
+<li>Integrity assessed</li>
+
+<li>Information handling assessed</li>
+
+<li>Communication assessed</li>
+
+<li>Teamwork assessed</li>
+
+<li>Decision-making assessed</li>
+
+<li>Reassessment assessed</li>
+
+<li>Operational awareness assessed</li>
+
+<li>Equipment / simulated firearms safety assessed</li>
+
+<li>Specialist-resource awareness assessed</li>
+
+<li>Post-incident handover completed</li>
+
+<li>Final accountability debrief completed</li>
+
+<li>Any serious concerns documented</li>
+
+<li>Final qualification decision recorded</li>
+
+<li>Student informed of outcome</li>
+
+</ul>
+
+</section>
+
+
+<!-- ====================================================== -->
+<!-- QUALIFICATION RECORD -->
+<!-- ====================================================== -->
+
+<section class="card success">
+
+<h2>Qualification Recommendation</h2>
+
+<p>
+Where the student successfully completes the assessment, the trainer should
+complete the official ARU Academy training record.
+</p>
+
+<p>The record should include:</p>
+
+<ul>
+
+<li>Officer name.</li>
+
+<li>Call-sign / collar number.</li>
+
+<li>Date of final assessment.</li>
+
+<li>Assessing trainer.</li>
+
+<li>Assessment elements completed.</li>
+
+<li>Overall performance summary.</li>
+
+<li>Any remaining development points.</li>
+
+<li>Final assessment outcome.</li>
+
+<li>Qualification recommendation.</li>
+
+</ul>
+
+<div class="button-row">
+
+<a class="button"
+href="PASTE-FINAL-ASSESSMENT-FORM-HERE"
+target="_blank">
+
+Record Final Assessment
+
+</a>
+
+<a class="button secondary"
+href="trainers.html">
+
+Return to Trainers Area
+
+</a>
+
+</div>
+
+</section>
+
+
+<!-- ====================================================== -->
+<!-- FINAL NOTE -->
+<!-- ====================================================== -->
+
+<section class="card success">
+
+<h2>Academy Completion</h2>
+
+<p>
+Successful completion of Module 13 marks completion of the Code44
+Armed Response Unit Academy.
+</p>
+
+<p>
+The officer may then be recorded as having completed the core ARU
+qualification process, subject to the relevant Code44 authorisation.
+</p>
+
+<p>
+Qualification should represent the beginning of continued operational
+development rather than the end of training.
+</p>
+
+</section>
+
+
+<footer class="footer">
+
+Code44 Police Service • Armed Response Unit Academy<br>
+
+Trainer Module 13 — Final Assessment & Qualification • Restricted Material
+
+</footer>
+
+</div>
+
+</body>
+
+</html>
