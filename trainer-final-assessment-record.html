@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ARU Final Assessment Record</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    background:#05080d;
+    color:white;
+    font-family:Segoe UI,Arial,sans-serif;
+    line-height:1.6;
+}
+
+.page-container{
+    width:92%;
+    max-width:1200px;
+    margin:0 auto;
+    padding:35px 0 60px;
+}
+
+.navbar{
+    background:#0b111b;
+    border:1px solid #16315c;
+    border-radius:8px;
+    padding:15px;
+    margin-bottom:20px;
+}
+
+.navbar a{
+    color:#4d9dff;
+    text-decoration:none;
+    font-weight:bold;
+    margin:0 5px;
+}
+
+.navbar a:hover{
+    color:white;
+}
+
+.back-link{
+    display:inline-block;
+    margin-bottom:20px;
+    color:#4d9dff;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.hero{
+    background:
+        linear-gradient(rgba(2,7,14,.82),rgba(2,7,14,.95)),
+        url('arv-photo.png');
+
+    background-size:cover;
+    background-position:center;
+
+    border:1px solid #16315c;
+    border-radius:12px;
+
+    padding:55px 30px;
+    text-align:center;
+}
+
+.hero h1{
+    margin:0 0 10px;
+    color:#4d9dff;
+    font-size:2.5rem;
+}
+
+.hero p{
+    margin:5px 0;
+    color:#d3dbea;
+}
+
+.badge{
+    display:inline-block;
+    margin-top:15px;
+    padding:7px 14px;
+
+    background:#3a2a0d;
+    border:1px solid #a8761e;
+    border-radius:20px;
+
+    color:#f2c76f;
+    font-weight:bold;
+}
+
+.card{
+    background:#0b111b;
+    border:1px solid #16315c;
+    border-radius:9px;
+    padding:22px;
+    margin-top:20px;
+}
+
+.card:hover{
+    border-color:#4d9dff;
+}
+
+h1,
+h2,
+h3{
+    color:#4d9dff;
+}
+
+.form-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:15px;
+}
+
+label{
+    display:block;
+    margin-bottom:6px;
+    color:#dceaff;
+    font-weight:bold;
+}
+
+input,
+select,
+textarea{
+    width:100%;
+    padding:12px 13px;
+
+    background:#08111d;
+    color:white;
+
+    border:1px solid #244c80;
+    border-radius:7px;
+
+    font-family:inherit;
+    font-size:.96rem;
+}
+
+textarea{
+    min-height:110px;
+    resize:vertical;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+    outline:none;
+    border-color:#4d9dff;
+}
+
+.assessment-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:14px;
+    margin-top:18px;
+}
+
+.assessment-box{
+    background:#08111d;
+    border:1px solid #16315c;
+    border-radius:8px;
+    padding:16px;
+}
+
+.assessment-box strong{
+    display:block;
+    color:#4d9dff;
+    margin-bottom:10px;
+}
+
+.scenario-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:10px;
+    margin-top:15px;
+}
+
+.check-item{
+    background:#08111d;
+    border:1px solid #16315c;
+    border-radius:7px;
+    padding:11px;
+}
+
+.check-item input{
+    width:auto;
+    margin-right:8px;
+}
+
+.warning{
+    border-left:5px solid #e3a629;
+}
+
+.success{
+    border-left:5px solid #45b36b;
+}
+
+.danger{
+    border-left:5px solid #d84d5f;
+}
+
+.button-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:20px;
+}
+
+button,
+.button{
+    display:inline-block;
+    padding:12px 18px;
+
+    background:#4d9dff;
+    color:#05080d;
+
+    border:none;
+    border-radius:6px;
+
+    text-decoration:none;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+button:hover,
+.button:hover{
+    background:#77b5ff;
+}
+
+.button.secondary{
+    background:#101b2c;
+    color:#4d9dff;
+    border:1px solid #24538b;
+}
+
+.output{
+    white-space:pre-wrap;
+    background:#05080d;
+    border:1px solid #24538b;
+    border-radius:8px;
+    padding:18px;
+    min-height:200px;
+    margin-top:15px;
+    color:#e7eef8;
+}
+
+.hidden{
+    display:none;
+}
+
+.footer{
+    margin-top:30px;
+    padding-top:20px;
+    border-top:1px solid #16315c;
+    color:#8f9bad;
+    text-align:center;
+    font-size:.9rem;
+}
+
+@media(max-width:650px){
+
+    .page-container{
+        width:94%;
+    }
+
+    .hero{
+        padding:40px 18px;
+    }
+
+    .hero h1{
+        font-size:2rem;
+    }
+
+    button,
+    .button{
+        width:100%;
+        text-align:center;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<script>
+
+if(sessionStorage.getItem("trainerAccess") !== "granted"){
+    window.location.replace("trainers-login.html");
+}
+
+</script>
+
+<div class="page-container">
+
+<nav class="navbar">
+
+<a href="aru-members.html">Internal Database</a> |
+
+<a href="academy.html">ARU Academy</a> |
+
+<a href="trainers.html">Trainers Area</a> |
+
+<a href="trainer-module13.html">Module 13</a>
+
+</nav>
+
+<a class="back-link" href="trainer-module13.html">
+← Return to Module 13 Assessment Pack
+</a>
+
+<header class="hero">
+
+<h1>Final Assessment Record</h1>
+
+<p>ARU Academy — Module 13</p>
+
+<p>Qualification Assessment & Trainer Record</p>
+
+<span class="badge">
+Restricted Trainer Resource
+</span>
+
+</header>
+
+
+<section class="card">
+
+<h2>Officer Details</h2>
+
+<div class="form-grid">
+
+<div>
+
+<label for="officerName">
+Officer Name / Discord Mention
+</label>
+
+<input
+type="text"
+id="officerName"
+placeholder="<@123456789>"
+>
+
+</div>
+
+<div>
+
+<label for="callsign">
+Call-Sign / Collar Number
+</label>
+
+<input
+type="text"
+id="callsign"
+placeholder="TC-11"
+>
+
+</div>
+
+<div>
+
+<label for="assessmentDate">
+Assessment Date
+</label>
+
+<input
+type="date"
+id="assessmentDate"
+>
+
+</div>
+
+<div>
+
+<label for="trainer">
+Assessing Trainer
+</label>
+
+<input
+type="text"
+id="trainer"
+placeholder="<@608400075655348265>"
+>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="card">
+
+<h2>Assessment Elements Completed</h2>
+
+<div class="scenario-grid">
+
+<label class="check-item">
+<input type="checkbox" id="knowledgeCompleted">
+Final Knowledge Assessment
+</label>
+
+<label class="check-item">
+<input type="checkbox" id="readinessCompleted">
+Equipment / Readiness Check
+</label>
+
+<label class="check-item">
+<input type="checkbox" id="decisionCompleted">
+Decision-Making Exercise
+</label>
+
+<label class="check-item">
+<input type="checkbox" id="scenario1Completed">
+Operational Scenario 1
+</label>
+
+<label class="check-item">
+<input type="checkbox" id="scenario2Completed">
+Operational Scenario 2
+</label>
+
+<label class="check-item">
+<input type="checkbox" id="complexCompleted">
+Complex Integrated Scenario
+</label>
+
+<label class="check-item">
+<input type="checkbox" id="handoverCompleted">
+Post-Incident Handover
+</label>
+
+<label class="check-item">
+<input type="checkbox" id="debriefCompleted">
+Final Accountability Debrief
+</label>
+
+</div>
+
+</section>
+
+
+<section class="card">
+
+<h2>Scenarios Used</h2>
+
+<p>
+Record which Module 13 assessment-bank scenarios were used.
+</p>
+
+<div class="form-grid">
+
+<div>
+
+<label for="scenarioOne">
+Operational Scenario 1
+</label>
+
+<select id="scenarioOne">
+
+<option value="">Select Scenario</option>
+<option>Scenario 1 — Reported Armed Person</option>
+<option>Scenario 2 — Armed Vehicle Report</option>
+<option>Scenario 3 — High-Risk Stop Assessment</option>
+<option>Scenario 4 — Failed Vehicle Containment</option>
+<option>Scenario 5 — Armed Containment</option>
+<option>Scenario 6 — Search Operation</option>
+<option>Scenario 7 — High-Risk Warrant</option>
+<option>Scenario 8 — Building Incident</option>
+<option>Scenario 9 — Multiple Subjects</option>
+<option>Scenario 10 — Civilian Complication</option>
+<option>Scenario 11 — Casualty During Operation</option>
+<option>Scenario 12 — NPAS Integration</option>
+<option>Scenario 13 — K9 Integration</option>
+<option>Scenario 14 — Conflicting Witness Accounts</option>
+<option>Scenario 15 — Wrong Subject</option>
+<option>Scenario 16 — Communication Failure</option>
+<option>Scenario 17 — Server Mechanic Failure</option>
+<option>Scenario 18 — Command Update</option>
+<option>Scenario 19 — Specialist Capability Decision</option>
+<option>Scenario 20 — Multi-Location Incident</option>
+<option>Scenario 21 — VIP Protection Complication</option>
+<option>Scenario 22 — Maritime Support Decision</option>
+<option>Scenario 23 — Major Integrated Incident</option>
+<option>Scenario 24 — Full Academy Integration</option>
+
+</select>
+
+</div>
+
+<div>
+
+<label for="scenarioTwo">
+Operational Scenario 2
+</label>
+
+<select id="scenarioTwo">
+
+<option value="">Select Scenario</option>
+<option>Scenario 1 — Reported Armed Person</option>
+<option>Scenario 2 — Armed Vehicle Report</option>
+<option>Scenario 3 — High-Risk Stop Assessment</option>
+<option>Scenario 4 — Failed Vehicle Containment</option>
+<option>Scenario 5 — Armed Containment</option>
+<option>Scenario 6 — Search Operation</option>
+<option>Scenario 7 — High-Risk Warrant</option>
+<option>Scenario 8 — Building Incident</option>
+<option>Scenario 9 — Multiple Subjects</option>
+<option>Scenario 10 — Civilian Complication</option>
+<option>Scenario 11 — Casualty During Operation</option>
+<option>Scenario 12 — NPAS Integration</option>
+<option>Scenario 13 — K9 Integration</option>
+<option>Scenario 14 — Conflicting Witness Accounts</option>
+<option>Scenario 15 — Wrong Subject</option>
+<option>Scenario 16 — Communication Failure</option>
+<option>Scenario 17 — Server Mechanic Failure</option>
+<option>Scenario 18 — Command Update</option>
+<option>Scenario 19 — Specialist Capability Decision</option>
+<option>Scenario 20 — Multi-Location Incident</option>
+<option>Scenario 21 — VIP Protection Complication</option>
+<option>Scenario 22 — Maritime Support Decision</option>
+<option>Scenario 23 — Major Integrated Incident</option>
+<option>Scenario 24 — Full Academy Integration</option>
+
+</select>
+
+</div>
+
+<div>
+
+<label for="scenarioComplex">
+Complex Integrated Scenario
+</label>
+
+<select id="scenarioComplex">
+
+<option value="">Select Scenario</option>
+<option>Scenario 11 — Casualty During Operation</option>
+<option>Scenario 18 — Command Update</option>
+<option>Scenario 20 — Multi-Location Incident</option>
+<option>Scenario 23 — Major Integrated Incident</option>
+<option>Scenario 24 — Full Academy Integration</option>
+<option>Custom Trainer Scenario</option>
+
+</select>
+
+</div>
+
+</div>
+
+<div style="margin-top:15px;">
+
+<label for="injectsUsed">
+Scenario Injects Used
+</label>
+
+<textarea
+id="injectsUsed"
+placeholder="Example: Weapon disproved, civilian appears, NPAS becomes available, command changes objective..."
+></textarea>
+
+</div>
+
+</section>
+
+
+<section class="card assessment">
+
+<h2>Competency Assessment</h2>
+
+<p>
+Rate performance across the whole final assessment.
+</p>
+
+<div class="assessment-grid">
+
+<div class="assessment-box">
+
+<strong>Professionalism</strong>
+
+<select id="professionalism">
+<option>Meets Standard</option>
+<option>Exceeds Standard</option>
+<option>Development Required</option>
+<option>Below Standard</option>
+</select>
+
+</div>
+
+<div class="assessment-box">
+
+<strong>Integrity</strong>
+
+<select id="integrity">
+<option>Meets Standard</option>
+<option>Exceeds Standard</option>
+<option>Development Required</option>
+<option>Below Standard</option>
+</select>
+
+</div>
+
+<div class="assessment-box">
+
+<strong>Knowledge</strong>
+
+<select id="knowledge">
+<option>Meets Standard</option>
+<option>Exceeds Standard</option>
+<option>Development Required</option>
+<option>Below Standard</option>
+</select>
+
+</div>
+
+<div class="assessment-box">
+
+<strong>Information Handling</strong>
+
+<select id="informationHandling">
+<option>Meets Standard</option>
+<option>Exceeds Standard</option>
+<option>Development Required</option>
+<option>Below Standard</option>
+</select>
+
+</div>
+
+<div class="assessment-box">
+
+<strong>Communication</strong>
+
+<select id="communication">
+<option>Meets Standard</option>
+<option>Exceeds Standard</option>
+<option>Development Required</option>
+<option>Below Standard</option>
+</select>
+
+</div>
+
+<div class="assessment-box">
+
+<strong>Teamwork</strong>
+
+<select id="teamwork">
+<option>Meets Standard</option>
+<option>Exceeds Standard</option>
+<option>Development Required</option>
+<option>Below Standard</option>
+</select>
+
+</div>
+
+<div class="assessment-box">
+
+<strong>Decision-Making</strong>
+
+<select id="decisionMaking">
+<option>Meets Standard</option>
+<option>Exceeds Standard</option>
+<option>Development Required</option>
+<option>Below Standard</option>
+</select>
+
+</div>
+
+<div class="assessment-box">
+
+<strong>Reassessment</strong>
+
+<select id="reassessment">
+<option>Meets Standard</option>
+<option>Exceeds Standard</option>
+<option>Development Required</option>
+<option>Below Standard</option>
+</select>
+
+</div>
+
+<div class="assessment-box">
+
+<strong>Operational Awareness</strong>
+
+<select id="operationalAwareness">
+<option>Meets Standard</option>
+<option>Exceeds Standard</option>
+<option>Development Required</option>
+<option>Below Standard</option>
+</select>
+
+</div>
+
+<div class="assessment-box">
+
+<strong>Firearms / Equipment Discipline</strong>
+
+<select id="safety">
+<option>Meets Standard</option>
+<option>Exceeds Standard</option>
+<option>Development Required</option>
+<option>Below Standard</option>
+</select>
+
+</div>
+
+<div class="assessment-box">
+
+<strong>Resource Awareness</strong>
+
+<select id="resources">
+<option>Meets Standard</option>
+<option>Exceeds Standard</option>
+<option>Development Required</option>
+<option>Below Standard</option>
+</select>
+
+</div>
+
+<div class="assessment-box">
+
+<strong>Operational Handover</strong>
+
+<select id="handover">
+<option>Meets Standard</option>
+<option>Exceeds Standard</option>
+<option>Development Required</option>
+<option>Below Standard</option>
+</select>
+
+</div>
+
+<div class="assessment-box">
+
+<strong>Accountability / Debrief</strong>
+
+<select id="accountability">
+<option>Meets Standard</option>
+<option>Exceeds Standard</option>
+<option>Development Required</option>
+<option>Below Standard</option>
+</select>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="card">
+
+<h2>Trainer Notes</h2>
+
+<label for="strengths">
+Strengths Demonstrated
+</label>
+
+<textarea
+id="strengths"
+placeholder="Record the student's strongest areas and examples..."
+></textarea>
+
+<br><br>
+
+<label for="development">
+Development Points
+</label>
+
+<textarea
+id="development"
+placeholder="Record any remaining development points..."
+></textarea>
+
+<br><br>
+
+<label for="seriousConcerns">
+Serious / Critical Concerns
+</label>
+
+<textarea
+id="seriousConcerns"
+placeholder="Leave blank if none..."
+></textarea>
+
+</section>
+
+
+<section class="card">
+
+<h2>Final Outcome</h2>
+
+<div class="form-grid">
+
+<div>
+
+<label for="finalOutcome">
+Qualification Decision
+</label>
+
+<select id="finalOutcome">
+
+<option>PASS — QUALIFIED</option>
+<option>PASS — DEVELOPMENT POINTS</option>
+<option>REASSESSMENT REQUIRED</option>
+<option>FURTHER TRAINING REQUIRED</option>
+
+</select>
+
+</div>
+
+<div>
+
+<label for="recommendation">
+Qualification Recommendation
+</label>
+
+<select id="recommendation">
+
+<option>Recommended for ARU Qualification</option>
+<option>Recommended with Development Points</option>
+<option>Not Yet Recommended — Reassessment Required</option>
+<option>Not Yet Recommended — Further Training Required</option>
+
+</select>
+
+</div>
+
+</div>
+
+<br>
+
+<label for="overallSummary">
+Overall Assessment Summary
+</label>
+
+<textarea
+id="overallSummary"
+placeholder="Provide the overall trainer assessment..."
+></textarea>
+
+</section>
+
+
+<section class="card warning">
+
+<h2>Final Trainer Check</h2>
+
+<ul class="checklist">
+
+<li>All required assessment elements completed</li>
+
+<li>Student assessed across multiple Academy learning areas</li>
+
+<li>At least two different operational environments used</li>
+
+<li>Changing information included within assessment</li>
+
+<li>Individual performance assessed</li>
+
+<li>Post-incident handover completed</li>
+
+<li>Accountability debrief completed</li>
+
+<li>Development points recorded</li>
+
+<li>Any serious concerns documented</li>
+
+<li>Final decision based on overall performance rather than one minor mistake</li>
+
+</ul>
+
+</section>
+
+
+<section class="card success">
+
+<h2>Generate Training Record</h2>
+
+<p>
+Once the assessment is complete, select Generate Record.
+</p>
+
+<p>
+The system will create a Discord-ready Module 13 qualification record using
+the information entered above.
+</p>
+
+<div class="button-row">
+
+<button type="button" onclick="generateRecord()">
+Generate Final Record
+</button>
+
+<button type="button" onclick="copyRecord()">
+Copy Generated Record
+</button>
+
+<button type="button" onclick="clearForm()">
+Clear Form
+</button>
+
+<a class="button secondary" href="trainer-module13.html">
+Return to Module 13
+</a>
+
+</div>
+
+</section>
+
+
+<section class="card hidden" id="outputCard">
+
+<h2>Generated Qualification Record</h2>
+
+<div class="output" id="generatedRecord"></div>
+
+</section>
+
+
+<footer class="footer">
+
+Code44 Police Service • Armed Response Unit Academy<br>
+
+Final Assessment Record • Trainer-Only Resource
+
+</footer>
+
+</div>
+
+
+<script>
+
+function getValue(id){
+
+    return document.getElementById(id).value.trim();
+
+}
+
+
+function getCheck(id){
+
+    return document.getElementById(id).checked ? "Completed" : "Not Completed";
+
+}
+
+
+function getAssessmentLine(label,id){
+
+    return label + ": " + document.getElementById(id).value;
+
+}
+
+
+function generateRecord(){
+
+    const officerName = getValue("officerName") || "NOT ENTERED";
+    const callsign = getValue("callsign") || "NOT ENTERED";
+    const assessmentDate = getValue("assessmentDate") || "NOT ENTERED";
+    const trainer = getValue("trainer") || "NOT ENTERED";
+
+    const scenarioOne = getValue("scenarioOne") || "Not recorded";
+    const scenarioTwo = getValue("scenarioTwo") || "Not recorded";
+    const scenarioComplex = getValue("scenarioComplex") || "Not recorded";
+    const injects = getValue("injectsUsed") || "None recorded";
+
+    const strengths = getValue("strengths") || "No additional strengths recorded.";
+    const development = getValue("development") || "No outstanding development points recorded.";
+    const concerns = getValue("seriousConcerns") || "None recorded.";
+
+    const outcome = getValue("finalOutcome");
+    const recommendation = getValue("recommendation");
+
+    const summary = getValue("overallSummary") ||
+    "The student completed the required Module 13 assessment elements and was assessed against the standards expected of a Code44 ARU officer.";
+
+    const assessmentLines = [
+        getAssessmentLine("Professionalism","professionalism"),
+        getAssessmentLine("Integrity","integrity"),
+        getAssessmentLine("Knowledge","knowledge"),
+        getAssessmentLine("Information Handling","informationHandling"),
+        getAssessmentLine("Communication","communication"),
+        getAssessmentLine("Teamwork","teamwork"),
+        getAssessmentLine("Decision-Making","decisionMaking"),
+        getAssessmentLine("Reassessment","reassessment"),
+        getAssessmentLine("Operational Awareness","operationalAwareness"),
+        getAssessmentLine("Firearms / Equipment Discipline","safety"),
+        getAssessmentLine("Resource Awareness","resources"),
+        getAssessmentLine("Operational Handover","handover"),
+        getAssessmentLine("Accountability / Debrief","accountability")
+    ].join("\n");
+
+    const record =
+`Officer Name: ${officerName}
+Call-Sign/Collar Number: ${callsign}
+Training Element(s): ARU Academy — Module 13: Final Assessment & Qualification
+Date: ${assessmentDate}
+
+Assessment Elements:
+Final Knowledge Assessment: ${getCheck("knowledgeCompleted")}
+Equipment / Readiness Check: ${getCheck("readinessCompleted")}
+Decision-Making Exercise: ${getCheck("decisionCompleted")}
+Operational Scenario 1: ${getCheck("scenario1Completed")}
+Operational Scenario 2: ${getCheck("scenario2Completed")}
+Complex Integrated Scenario: ${getCheck("complexCompleted")}
+Post-Incident Handover: ${getCheck("handoverCompleted")}
+Final Accountability Debrief: ${getCheck("debriefCompleted")}
+
+Assessment Scenarios:
+Operational Scenario 1: ${scenarioOne}
+Operational Scenario 2: ${scenarioTwo}
+Complex Scenario: ${scenarioComplex}
+
+Scenario Injects / Changes:
+${injects}
+
+Competency Assessment:
+${assessmentLines}
+
+Description of Officer’s Performance:
+${summary}
+
+Strengths Demonstrated:
+${strengths}
+
+Development Points:
+${development}
+
+Serious / Critical Concerns:
+${concerns}
+
+Final Assessment Outcome:
+${outcome}
+
+Qualification Recommendation:
+${recommendation}
+
+Confirmation Officer has Passed above Elements:
+${outcome.includes("PASS") ? "PASSED — The officer has completed the ARU Academy final assessment to the required standard." : "NOT YET QUALIFIED — Further assessment or development is required before qualification can be confirmed."}
+
+${outcome === "PASS — QUALIFIED"
+? "The officer has successfully completed the Code44 ARU Academy and is recommended for qualification as an Armed Response Unit officer."
+: outcome === "PASS — DEVELOPMENT POINTS"
+? "The officer has successfully completed the Code44 ARU Academy and is recommended for qualification, with the recorded development points to continue being monitored."
+: outcome === "REASSESSMENT REQUIRED"
+? "The officer requires reassessment in the identified area(s) before a final qualification decision is confirmed."
+: "The officer requires further targeted development before another final assessment attempt."}
+
+Training Officer: ${trainer}
+Head of Officers Division: J.PATTISON
+Head of CoP: J.Ramsay
+Head of ARU: <@1209486087404388353>`;
+
+    document.getElementById("generatedRecord").textContent = record;
+    document.getElementById("outputCard").classList.remove("hidden");
+
+    document.getElementById("outputCard").scrollIntoView({
+        behavior:"smooth"
+    });
+
+}
+
+
+function copyRecord(){
+
+    const text =
+    document.getElementById("generatedRecord").textContent;
+
+    if(!text){
+
+        alert("Generate the final record first.");
+        return;
+
+    }
+
+    navigator.clipboard.writeText(text)
+    .then(function(){
+
+        alert("Final assessment record copied.");
+
+    })
+    .catch(function(){
+
+        alert("Unable to copy automatically. Select the generated record and copy it manually.");
+
+    });
+
+}
+
+
+function clearForm(){
+
+    const confirmed =
+    confirm("Clear the entire final assessment form?");
+
+    if(!confirmed){
+        return;
+    }
+
+    document.querySelectorAll("input").forEach(function(element){
+
+        if(element.type === "checkbox"){
+            element.checked = false;
+        }else{
+            element.value = "";
+        }
+
+    });
+
+    document.querySelectorAll("textarea").forEach(function(element){
+        element.value = "";
+    });
+
+    document.querySelectorAll("select").forEach(function(element){
+        element.selectedIndex = 0;
+    });
+
+    document.getElementById("generatedRecord").textContent = "";
+    document.getElementById("outputCard").classList.add("hidden");
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+</script>
+
+</body>
+
+</html>
