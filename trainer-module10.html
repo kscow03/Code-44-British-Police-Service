@@ -1,0 +1,2012 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Trainer Module 10 - Building Operations & CQB</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    background:#05080d;
+    color:white;
+    font-family:Segoe UI,Arial,sans-serif;
+    line-height:1.65;
+}
+
+.page-container{
+    width:90%;
+    max-width:1150px;
+    margin:0 auto;
+    padding:35px 0 60px;
+}
+
+.navbar{
+    background:#0b111b;
+    border:1px solid #16315c;
+    border-radius:8px;
+    padding:15px;
+    margin-bottom:20px;
+}
+
+.navbar a{
+    color:#4d9dff;
+    text-decoration:none;
+    font-weight:bold;
+    margin:0 5px;
+}
+
+.navbar a:hover,
+.back-link:hover{
+    color:white;
+}
+
+.back-link{
+    display:inline-block;
+    margin-bottom:20px;
+    color:#4d9dff;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.hero{
+    background:
+        linear-gradient(rgba(2,7,14,.80),rgba(2,7,14,.94)),
+        url('arv-photo.png');
+
+    background-size:cover;
+    background-position:center;
+
+    border:1px solid #16315c;
+    border-radius:12px;
+
+    padding:58px 30px;
+    text-align:center;
+}
+
+.hero h1{
+    margin:0 0 10px;
+    color:#4d9dff;
+    font-size:2.5rem;
+}
+
+.hero p{
+    margin:5px 0;
+    color:#d3dbea;
+}
+
+.badge{
+    display:inline-block;
+    margin-top:15px;
+    padding:7px 14px;
+
+    background:#3a2a0d;
+    border:1px solid #a8761e;
+    border-radius:20px;
+
+    color:#f2c76f;
+    font-weight:bold;
+}
+
+h1,
+h2,
+h3{
+    color:#4d9dff;
+}
+
+.card{
+    background:#0b111b;
+    border:1px solid #16315c;
+    border-radius:9px;
+
+    padding:22px;
+    margin-top:20px;
+
+    transition:.25s;
+}
+
+.card:hover{
+    border-color:#4d9dff;
+}
+
+.instructor{
+    border-left:5px solid #9c6ade;
+}
+
+.activity{
+    border-left:5px solid #4da86b;
+}
+
+.assessment{
+    border-left:5px solid #4d9dff;
+}
+
+.warning{
+    border-left:5px solid #e3a629;
+}
+
+.danger{
+    border-left:5px solid #d84d5f;
+}
+
+.success{
+    border-left:5px solid #4da86b;
+}
+
+.info-grid,
+.rating-grid,
+.role-grid,
+.principles-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:15px;
+    margin-top:18px;
+}
+
+.info-box,
+.rating-box,
+.role-box,
+.principle-box,
+.example-box{
+    background:#08111d;
+    border:1px solid #16315c;
+    border-radius:8px;
+    padding:17px;
+}
+
+.info-box strong,
+.rating-box strong,
+.role-box strong,
+.principle-box strong,
+.example-box strong{
+    display:block;
+    color:#4d9dff;
+    margin-bottom:6px;
+}
+
+.delivery-table,
+.assessment-table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:15px;
+}
+
+.delivery-table th,
+.delivery-table td,
+.assessment-table th,
+.assessment-table td{
+    border:1px solid #16315c;
+    padding:12px;
+    text-align:left;
+    vertical-align:top;
+}
+
+.delivery-table th,
+.assessment-table th{
+    background:#10203a;
+    color:#8fc2ff;
+}
+
+.checklist{
+    list-style:none;
+    padding-left:0;
+}
+
+.checklist li{
+    background:#08111d;
+    border:1px solid #16315c;
+    border-radius:7px;
+
+    padding:13px;
+    margin-top:9px;
+}
+
+.checklist li::before{
+    content:"☐";
+    color:#4d9dff;
+    font-weight:bold;
+    margin-right:10px;
+}
+
+ul,
+ol{
+    padding-left:22px;
+}
+
+li{
+    margin-bottom:7px;
+}
+
+.button-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:20px;
+}
+
+.button{
+    display:inline-block;
+
+    padding:12px 18px;
+
+    background:#4d9dff;
+    color:#05080d;
+
+    border:none;
+    border-radius:6px;
+
+    text-decoration:none;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.button:hover{
+    background:#77b5ff;
+}
+
+.button.secondary{
+    background:#101b2c;
+    color:#4d9dff;
+    border:1px solid #24538b;
+}
+
+.footer{
+    margin-top:30px;
+    padding-top:20px;
+
+    border-top:1px solid #16315c;
+
+    color:#8f9bad;
+    text-align:center;
+    font-size:.9rem;
+}
+
+@media(max-width:700px){
+
+    .page-container{
+        width:92%;
+    }
+
+    .hero{
+        padding:42px 18px;
+    }
+
+    .hero h1{
+        font-size:2rem;
+    }
+
+    .navbar{
+        line-height:2;
+    }
+
+    .button{
+        width:100%;
+        text-align:center;
+    }
+
+    .delivery-table,
+    .assessment-table{
+        font-size:.9rem;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<script>
+
+if (sessionStorage.getItem("trainerAccess") !== "granted") {
+
+    window.location.replace("trainers-login.html");
+
+}
+
+</script>
+
+<div class="page-container">
+
+<nav class="navbar">
+
+    <a href="aru-members.html">
+        Internal Database
+    </a>
+
+    |
+
+    <a href="academy.html">
+        ARU Academy
+    </a>
+
+    |
+
+    <a href="trainers.html">
+        Trainers Area
+    </a>
+
+    |
+
+    <a href="trainer-module9.html">
+        Module 9
+    </a>
+
+    |
+
+    <a href="trainer-module10.html" style="color:white;">
+        Module 10
+    </a>
+
+</nav>
+
+<a class="back-link" href="trainers.html">
+    ← Return to Trainers Area
+</a>
+
+<header class="hero">
+
+    <h1>Trainer Module 10 — Building Operations & CQB</h1>
+
+    <p>Instructor Lesson Plan</p>
+
+    <p>ARU Academy • Cohort 001</p>
+
+    <span class="badge">
+        Trainer-Only Resource
+    </span>
+
+</header>
+
+<section class="card">
+
+    <h2>Lesson Overview</h2>
+
+    <p>
+        Module 10 develops the containment and search principles introduced in
+        Module 9 and applies them to armed team operations within buildings and
+        confined Code44 environments.
+    </p>
+
+    <p>
+        Students should demonstrate controlled team behaviour, clear communication,
+        role discipline, situational awareness, information handling, threat
+        reassessment and appropriate use of specialist resources.
+    </p>
+
+    <p>
+        Practical delivery should use controlled FiveM scenarios and the current
+        Code44 server mechanics.
+    </p>
+
+    <div class="info-grid">
+
+        <div class="info-box">
+            <strong>Lesson</strong>
+            Module 10 — Building Operations & CQB
+        </div>
+
+        <div class="info-box">
+            <strong>Recommended Duration</strong>
+            120–180 minutes
+        </div>
+
+        <div class="info-box">
+            <strong>Delivery Style</strong>
+            Briefing, demonstrations, controlled building scenarios and debrief
+        </div>
+
+        <div class="info-box">
+            <strong>Assessment</strong>
+            Continuous practical observation and knowledge check
+        </div>
+
+        <div class="info-box">
+            <strong>Primary Focus</strong>
+            Team coordination, communication, awareness and reassessment
+        </div>
+
+        <div class="info-box">
+            <strong>Progression</strong>
+            Required before Module 11
+        </div>
+
+    </div>
+
+</section>
+
+<section class="card danger">
+
+    <h2>Mandatory Training Boundary</h2>
+
+    <p>
+        Module 10 is designed for Code44 FiveM roleplay and server-based training.
+    </p>
+
+    <p>
+        Trainers should focus on communication, team roles, awareness,
+        information handling, specialist-resource integration, reassessment
+        and controlled scenario performance.
+    </p>
+
+    <p>
+        This Academy material does not provide real-world room-clearing methods,
+        exact entry geometry, weapon manipulation instruction or physical CQB
+        procedures.
+    </p>
+
+    <p>
+        Practical demonstrations should use the current Code44 environment and
+        server mechanics only.
+    </p>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Trainer Preparation</h2>
+
+    <ul class="checklist">
+
+        <li>Confirm students completed Module 9</li>
+
+        <li>Confirm students have read Module 10</li>
+
+        <li>Prepare a suitable Code44 building or training location</li>
+
+        <li>Prepare at least one simple building scenario</li>
+
+        <li>Prepare a more complex multi-room scenario</li>
+
+        <li>Prepare roleplayers where available</li>
+
+        <li>Prepare civilian or unknown-person injects</li>
+
+        <li>Prepare changing weapon information</li>
+
+        <li>Prepare ballistic shield familiarisation where appropriate</li>
+
+        <li>Prepare breaching-capability discussion or demonstration</li>
+
+        <li>Prepare K9 or NPAS integration where available</li>
+
+        <li>Prepare a casualty scenario</li>
+
+        <li>Prepare a change-of-objective scenario</li>
+
+        <li>Prepare a communication-failure scenario</li>
+
+        <li>Prepare the Module 10 knowledge check</li>
+
+        <li>Prepare observation and assessment notes</li>
+
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Learning Outcomes</h2>
+
+    <p>By the end of Module 10, students should be able to:</p>
+
+    <ul>
+
+        <li>Explain the purpose of controlled building operations.</li>
+
+        <li>Understand the operational objective before beginning a scenario.</li>
+
+        <li>Identify relevant intelligence and important unknowns.</li>
+
+        <li>Understand their assigned team role.</li>
+
+        <li>Communicate relevant changes clearly.</li>
+
+        <li>Maintain awareness of other team members.</li>
+
+        <li>Recognise civilians and persons of unknown involvement.</li>
+
+        <li>Understand the broad purpose of the ballistic shield.</li>
+
+        <li>Understand the Remington as a specialist breaching capability.</li>
+
+        <li>Recognise when specialist resources may assist.</li>
+
+        <li>Recognise when the original plan is no longer appropriate.</li>
+
+        <li>Respond appropriately to changing threat information.</li>
+
+        <li>Complete a clear post-operation handover.</li>
+
+        <li>Explain decisions during debrief.</li>
+
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Suggested Lesson Structure</h2>
+
+    <table class="delivery-table">
+
+        <tr>
+            <th>Stage</th>
+            <th>Time</th>
+            <th>Trainer Action</th>
+        </tr>
+
+        <tr>
+            <td>Introduction</td>
+            <td>10 minutes</td>
+            <td>
+                Explain objectives, boundaries and how Module 10 builds upon Module 9.
+            </td>
+        </tr>
+
+        <tr>
+            <td>Building Operation Principles</td>
+            <td>15 minutes</td>
+            <td>
+                Discuss information, objectives, uncertainty and team coordination.
+            </td>
+        </tr>
+
+        <tr>
+            <td>Team Roles & Communication</td>
+            <td>15 minutes</td>
+            <td>
+                Review role discipline and relevant information sharing.
+            </td>
+        </tr>
+
+        <tr>
+            <td>Basic Building Exercise</td>
+            <td>20 minutes</td>
+            <td>
+                Run a simple controlled scenario focused on teamwork and communication.
+            </td>
+        </tr>
+
+        <tr>
+            <td>Civilians & Unknown Persons</td>
+            <td>15 minutes</td>
+            <td>
+                Introduce mixed roleplayers and assess information handling.
+            </td>
+        </tr>
+
+        <tr>
+            <td>Specialist Resources</td>
+            <td>15 minutes</td>
+            <td>
+                Review shield, breaching, K9, NPAS and medical integration.
+            </td>
+        </tr>
+
+        <tr>
+            <td>Complex Building Scenario</td>
+            <td>30–45 minutes</td>
+            <td>
+                Run a larger scenario with changing information and objectives.
+            </td>
+        </tr>
+
+        <tr>
+            <td>Handover & Debrief</td>
+            <td>15 minutes</td>
+            <td>
+                Assess accountability, strengths and development points.
+            </td>
+        </tr>
+
+    </table>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Opening Script</h2>
+
+    <div class="example-box">
+
+        <strong>Suggested wording</strong>
+
+        <p>
+            “Module 10 moves us into building operations and CQB-based scenarios.
+        </p>
+
+        <p>
+            The focus is not who can move through the building fastest.
+            The focus is whether the team understands the objective, communicates,
+            remains aware of each other and adapts when new information appears.
+        </p>
+
+        <p>
+            You will be assessed on control, teamwork, awareness, decision-making
+            and how well you understand your role within the wider operation.”
+        </p>
+
+    </div>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 1 — Building Operation Principles</h2>
+
+    <p>
+        Explain that confined environments add complexity because students may
+        have incomplete information regarding subjects, civilians and location.
+    </p>
+
+    <p>Before beginning, students should identify:</p>
+
+    <ul>
+
+        <li>The operational objective.</li>
+
+        <li>Who is believed to be involved.</li>
+
+        <li>Weapon information.</li>
+
+        <li>Known civilians or occupants.</li>
+
+        <li>Important unknowns.</li>
+
+        <li>Available supporting resources.</li>
+
+        <li>The immediate reason for entering or searching.</li>
+
+        <li>What circumstances may cause the plan to change.</li>
+
+    </ul>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Exercise One — Pre-Operation Brief</h2>
+
+    <div class="example-box">
+
+        <strong>Scenario</strong>
+
+        ARU is tasked with searching a commercial building following reports
+        that an armed suspect entered the location. Several employees may still
+        be inside. The firearm has been reported but not personally confirmed
+        by attending officers.
+    </div>
+
+    <p>Ask students:</p>
+
+    <ul>
+
+        <li>What is the operational objective?</li>
+
+        <li>What information is confirmed?</li>
+
+        <li>What remains reported?</li>
+
+        <li>What remains unknown?</li>
+
+        <li>Who may be at risk?</li>
+
+        <li>What resources might assist?</li>
+
+    </ul>
+
+    <h3>Expected learning points</h3>
+
+    <ul>
+
+        <li>The firearm report remains relevant but may not be confirmed.</li>
+
+        <li>Employees or civilians may still be inside.</li>
+
+        <li>The subject's exact location may be unknown.</li>
+
+        <li>Students should not invent missing information.</li>
+
+        <li>The operation should remain flexible.</li>
+
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 2 — Team Roles</h2>
+
+    <p>
+        Explain that the exact structure depends on the Code44 scenario,
+        available officers and trainer direction.
+    </p>
+
+    <div class="role-grid">
+
+        <div class="role-box">
+
+            <strong>Team Lead</strong>
+
+            Supports coordination and ensures the immediate objective is understood.
+
+        </div>
+
+        <div class="role-box">
+
+            <strong>Team Members</strong>
+
+            Carry out assigned tasks while maintaining awareness and communication.
+
+        </div>
+
+        <div class="role-box">
+
+            <strong>Shield Capability</strong>
+
+            May be incorporated where appropriate to the scenario.
+
+        </div>
+
+        <div class="role-box">
+
+            <strong>Breaching Capability</strong>
+
+            May support authorised access where the scenario requires it.
+
+        </div>
+
+        <div class="role-box">
+
+            <strong>Containment</strong>
+
+            Maintains wider scene control and supports the building operation.
+
+        </div>
+
+        <div class="role-box">
+
+            <strong>Command</strong>
+
+            Provides wider tactical oversight where required.
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Exercise Two — Role Allocation</h2>
+
+    <p>
+        Give students a simple operation and assign different responsibilities.
+    </p>
+
+    <p>Ask each student to explain:</p>
+
+    <ul>
+
+        <li>Their assigned responsibility.</li>
+
+        <li>What information they need.</li>
+
+        <li>Who they need to communicate with.</li>
+
+        <li>What may cause their role to change.</li>
+
+    </ul>
+
+    <p>
+        Correct students who attempt to perform every responsibility themselves.
+    </p>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 3 — Communication</h2>
+
+    <p>
+        Useful communication within a building scenario may include:
+    </p>
+
+    <ul>
+
+        <li>Subject sightings.</li>
+
+        <li>Civilians located.</li>
+
+        <li>Weapon information.</li>
+
+        <li>Changes in subject behaviour.</li>
+
+        <li>Significant movement.</li>
+
+        <li>Loss of communication.</li>
+
+        <li>Medical emergencies.</li>
+
+        <li>Changes in the operational objective.</li>
+
+        <li>Technical or server problems.</li>
+
+    </ul>
+
+    <div class="example-box">
+
+        <strong>Trainer Point</strong>
+
+        Communication should support the team. Constant unnecessary radio or
+        voice traffic may reduce awareness rather than improve it.
+
+    </div>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Exercise Three — Information Relay</h2>
+
+    <p>
+        Give each student different pieces of information during a controlled
+        building scenario.
+    </p>
+
+    <p>Assess whether:</p>
+
+    <ul>
+
+        <li>Important information is passed.</li>
+
+        <li>Students listen to each other.</li>
+
+        <li>Reports are separated from direct observations.</li>
+
+        <li>Conflicting information is recognised.</li>
+
+        <li>The team updates its understanding.</li>
+
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 4 — Controlled Team Movement</h2>
+
+    <p>
+        Reinforce that students should remain coordinated rather than treating
+        the building as an individual race.
+    </p>
+
+    <p>Assess:</p>
+
+    <ul>
+
+        <li>Shared understanding.</li>
+
+        <li>Team awareness.</li>
+
+        <li>Communication.</li>
+
+        <li>Compliance with trainer direction.</li>
+
+        <li>Recognition of confusion.</li>
+
+        <li>Controlled progress through the scenario.</li>
+
+    </ul>
+
+    <div class="example-box">
+
+        <strong>Key Teaching Point</strong>
+
+        “Controlled” does not simply mean moving slowly.
+        It means the team's actions remain coordinated and understood.
+
+    </div>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Exercise Four — Basic Building Scenario</h2>
+
+    <p>
+        Use a relatively simple Code44 building.
+    </p>
+
+    <p>
+        Include:
+    </p>
+
+    <ul>
+
+        <li>One known subject.</li>
+
+        <li>A simple operational objective.</li>
+
+        <li>Limited changing information.</li>
+
+        <li>At least one non-threat roleplayer.</li>
+
+    </ul>
+
+    <p>Assess:</p>
+
+    <ul>
+
+        <li>Team communication.</li>
+
+        <li>Role awareness.</li>
+
+        <li>Recognition of non-threat persons.</li>
+
+        <li>Reassessment.</li>
+
+        <li>Professional control.</li>
+
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 5 — Civilians & Unknown Persons</h2>
+
+    <p>
+        Explain that not every person encountered inside the location is
+        automatically the armed subject.
+    </p>
+
+    <p>Possible persons include:</p>
+
+    <ul>
+
+        <li>Employees.</li>
+
+        <li>Residents.</li>
+
+        <li>Victims.</li>
+
+        <li>Witnesses.</li>
+
+        <li>Hostages.</li>
+
+        <li>Additional suspects.</li>
+
+        <li>Persons whose involvement is unclear.</li>
+
+    </ul>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Scenario One — Unknown Person Located</h2>
+
+    <p>
+        Students encounter a person who was not included within the original
+        briefing.
+    </p>
+
+    <p>Ask:</p>
+
+    <ul>
+
+        <li>What do you actually know about this person?</li>
+
+        <li>Are they automatically the suspect?</li>
+
+        <li>What information may help establish their role?</li>
+
+        <li>What should be communicated to the team?</li>
+
+    </ul>
+
+    <h3>Expected learning points</h3>
+
+    <ul>
+
+        <li>The person's involvement is initially unknown.</li>
+
+        <li>Students should not create assumptions.</li>
+
+        <li>Behaviour and available information should be assessed.</li>
+
+        <li>The wider team should receive relevant information.</li>
+
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 6 — Ballistic Shield Capability</h2>
+
+    <p>
+        Explain that the shield is a specialist resource that may support selected
+        Code44 operations.
+    </p>
+
+    <p>Students should understand:</p>
+
+    <ul>
+
+        <li>The shield should support the operational objective.</li>
+
+        <li>The team should understand how it is being incorporated.</li>
+
+        <li>Communication remains essential.</li>
+
+        <li>The shield does not automatically solve the wider tactical problem.</li>
+
+        <li>Current Code44 mechanics should be demonstrated by the trainer.</li>
+
+    </ul>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Exercise Five — Shield Familiarisation</h2>
+
+    <p>
+        Use the current Code44 shield mechanic in a controlled environment.
+    </p>
+
+    <p>Assess:</p>
+
+    <ul>
+
+        <li>Understanding of the purpose.</li>
+
+        <li>Communication with the wider team.</li>
+
+        <li>Awareness of other officers.</li>
+
+        <li>Ability to follow trainer direction.</li>
+
+        <li>Recognition of limitations within the server mechanic.</li>
+
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 7 — Breaching Capability</h2>
+
+    <p>
+        Remind students that the Remington is used within Code44 as a specialist
+        breaching platform.
+    </p>
+
+    <p>
+        It is not the routine operational shotgun for general firearms deployments.
+    </p>
+
+    <p>Students should understand:</p>
+
+    <ul>
+
+        <li>Why access is required.</li>
+
+        <li>That breaching should form part of the agreed operation.</li>
+
+        <li>That the team needs to understand when access will occur.</li>
+
+        <li>That server-specific breaching mechanics are trainer-led.</li>
+
+        <li>That Module 10 does not independently qualify a breaching specialist.</li>
+
+    </ul>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Exercise Six — Breaching Discussion</h2>
+
+    <p>
+        Give students a scenario where the primary access point cannot be used
+        within the game environment.
+    </p>
+
+    <p>Ask:</p>
+
+    <ul>
+
+        <li>What is the operational problem?</li>
+
+        <li>What capability may solve it?</li>
+
+        <li>Who needs to know that breaching is being considered?</li>
+
+        <li>What should happen before the operation continues?</li>
+
+    </ul>
+
+    <h3>Expected learning points</h3>
+
+    <ul>
+
+        <li>The access problem should be understood.</li>
+
+        <li>Breaching may provide an authorised solution.</li>
+
+        <li>The wider team should understand the change.</li>
+
+        <li>The operational plan may require reassessment.</li>
+
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 8 — Specialist Resource Integration</h2>
+
+    <div class="role-grid">
+
+        <div class="role-box">
+
+            <strong>K9</strong>
+
+            May support searching or tracking within appropriate Code44 scenarios.
+
+        </div>
+
+        <div class="role-box">
+
+            <strong>NPAS</strong>
+
+            May provide external observation and wider situational awareness.
+
+        </div>
+
+        <div class="role-box">
+
+            <strong>Ballistic Shield</strong>
+
+            Provides an additional specialist capability.
+
+        </div>
+
+        <div class="role-box">
+
+            <strong>Breaching</strong>
+
+            Supports authorised access requirements.
+
+        </div>
+
+        <div class="role-box">
+
+            <strong>Medical</strong>
+
+            Supports casualty management.
+
+        </div>
+
+        <div class="role-box">
+
+            <strong>Response</strong>
+
+            May support containment, evacuations and wider scene management.
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="card warning">
+
+    <h2>Resource Selection</h2>
+
+    <p>
+        Students should not request specialist resources merely because they
+        are available.
+    </p>
+
+    <p>
+        Ask them:
+    </p>
+
+    <div class="example-box">
+
+        <strong>“What operational problem does this resource solve?”</strong>
+
+    </div>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 9 — Immediate Threat vs Planned Search</h2>
+
+    <p>
+        Explain that not every building incident has the same urgency.
+    </p>
+
+    <p>Students should distinguish between:</p>
+
+    <ul>
+
+        <li>Immediate ongoing threats.</li>
+
+        <li>Controlled armed searches.</li>
+
+        <li>Planned warrant operations.</li>
+
+        <li>Post-incident searches.</li>
+
+    </ul>
+
+    <p>
+        The response should reflect the scenario rather than applying one
+        automatic CQB approach.
+    </p>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Scenario Two — Threat Reduces</h2>
+
+    <p>
+        The operation begins following reports of an armed subject.
+        During the scenario, reliable information indicates the suspected
+        weapon is not present and the subject begins complying.
+    </p>
+
+    <p>Ask:</p>
+
+    <ul>
+
+        <li>What has changed?</li>
+
+        <li>Does the current threat assessment change?</li>
+
+        <li>Does the plan remain appropriate?</li>
+
+        <li>What should be communicated?</li>
+
+    </ul>
+
+    <h3>Expected learning points</h3>
+
+    <ul>
+
+        <li>The threat information has changed materially.</li>
+
+        <li>The response should be reassessed.</li>
+
+        <li>The team should not simply continue the original plan automatically.</li>
+
+        <li>Significant changes should be communicated.</li>
+
+    </ul>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Scenario Three — Threat Increases</h2>
+
+    <p>
+        During the building operation, a previously unknown subject appears
+        and credible new information confirms a firearm.
+    </p>
+
+    <p>Ask:</p>
+
+    <ul>
+
+        <li>What has changed?</li>
+
+        <li>What information is now important?</li>
+
+        <li>Who needs to know?</li>
+
+        <li>Does the current plan remain suitable?</li>
+
+        <li>What additional support may now be required?</li>
+
+    </ul>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Scenario Four — Communication Failure</h2>
+
+    <p>
+        A student loses contact with part of the team or a radio/server issue
+        affects communication.
+    </p>
+
+    <p>Ask:</p>
+
+    <ul>
+
+        <li>Should the student simply carry on?</li>
+
+        <li>What has changed?</li>
+
+        <li>Who needs to be informed?</li>
+
+        <li>Does the operation need to pause or reset?</li>
+
+    </ul>
+
+    <h3>Expected learning points</h3>
+
+    <ul>
+
+        <li>The communication problem should be recognised.</li>
+
+        <li>The wider team may no longer share the same understanding.</li>
+
+        <li>The issue should be communicated where possible.</li>
+
+        <li>The trainer or coordinating officer may need to pause or reset the exercise.</li>
+
+    </ul>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Scenario Five — Casualty</h2>
+
+    <p>
+        A roleplayer becomes a casualty during the scenario.
+    </p>
+
+    <p>Ask students:</p>
+
+    <ul>
+
+        <li>What has changed?</li>
+
+        <li>Does an immediate threat remain?</li>
+
+        <li>What medical support is available?</li>
+
+        <li>Who needs updating?</li>
+
+        <li>What happens to the current operational objective?</li>
+
+    </ul>
+
+    <p>
+        Assess whether students recognise that casualty care and threat management
+        may need to occur alongside wider incident control.
+    </p>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 10 — Complex Building Scenario</h2>
+
+    <p>
+        Once students demonstrate satisfactory performance in the earlier exercises,
+        run a larger scenario combining several elements.
+    </p>
+
+    <p>Possible elements include:</p>
+
+    <ul>
+
+        <li>Several rooms or building areas.</li>
+
+        <li>Multiple roleplayers.</li>
+
+        <li>At least one civilian.</li>
+
+        <li>Conflicting intelligence.</li>
+
+        <li>A changing subject location.</li>
+
+        <li>Specialist-resource availability.</li>
+
+        <li>A change in weapon information.</li>
+
+        <li>A casualty.</li>
+
+        <li>A change in the operational objective.</li>
+
+    </ul>
+
+    <p>
+        Avoid introducing every possible complication at once.
+        The scenario should assess students rather than overwhelm them.
+    </p>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 11 — Resolution & Handover</h2>
+
+    <p>Once the immediate scenario is resolved, students should consider:</p>
+
+    <ul>
+
+        <li>Subject status.</li>
+
+        <li>Outstanding subjects.</li>
+
+        <li>Civilians or vulnerable persons.</li>
+
+        <li>Weapons or relevant items.</li>
+
+        <li>Medical requirements.</li>
+
+        <li>Force Control or command updates.</li>
+
+        <li>Scene management.</li>
+
+        <li>Witnesses.</li>
+
+        <li>ARU equipment accountability.</li>
+
+    </ul>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Exercise Seven — Operational Handover</h2>
+
+    <p>
+        Require each student to provide a concise handover.
+    </p>
+
+    <p>The handover should include:</p>
+
+    <ul>
+
+        <li>The original task.</li>
+
+        <li>What the student personally observed.</li>
+
+        <li>Subject status.</li>
+
+        <li>Weapon information.</li>
+
+        <li>Civilians or other occupants.</li>
+
+        <li>Any force used within the scenario.</li>
+
+        <li>Medical issues.</li>
+
+        <li>Outstanding risks.</li>
+
+        <li>Further action required.</li>
+
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 12 — Debrief</h2>
+
+    <p>Ask each student:</p>
+
+    <ul>
+
+        <li>What information did you have?</li>
+
+        <li>What remained unknown?</li>
+
+        <li>What was your role?</li>
+
+        <li>What did you communicate?</li>
+
+        <li>What changed during the operation?</li>
+
+        <li>How did your decisions change?</li>
+
+        <li>What went well?</li>
+
+        <li>What would you do differently?</li>
+
+        <li>What feedback will you apply next time?</li>
+
+    </ul>
+
+</section>
+
+<section class="card assessment">
+
+    <h2>Practical Assessment Standard</h2>
+
+    <p>A satisfactory performance should demonstrate:</p>
+
+    <ul>
+
+        <li>Understanding of the operational objective.</li>
+
+        <li>Accurate information handling.</li>
+
+        <li>Recognition of important unknowns.</li>
+
+        <li>Clear role understanding.</li>
+
+        <li>Effective team communication.</li>
+
+        <li>Awareness of other officers.</li>
+
+        <li>Recognition of civilians and unknown persons.</li>
+
+        <li>Controlled team behaviour.</li>
+
+        <li>Appropriate specialist-resource awareness.</li>
+
+        <li>Recognition of changing circumstances.</li>
+
+        <li>Ability to reassess and adapt.</li>
+
+        <li>Appropriate response to communication or server problems.</li>
+
+        <li>Clear post-operation handover.</li>
+
+        <li>Honest debrief and accountability.</li>
+
+    </ul>
+
+</section>
+
+<section class="card assessment">
+
+    <h2>Review Questions</h2>
+
+    <ol>
+
+        <li>What is the main purpose of a building operation?</li>
+
+        <li>What information should be understood before the operation begins?</li>
+
+        <li>Why is role allocation important?</li>
+
+        <li>What information should be communicated during the operation?</li>
+
+        <li>Why is team awareness important?</li>
+
+        <li>How should officers treat persons whose involvement is unknown?</li>
+
+        <li>What is the purpose of the ballistic shield capability?</li>
+
+        <li>What role does the Remington have within Code44?</li>
+
+        <li>When should specialist resources be used?</li>
+
+        <li>What is the difference between an immediate threat and a planned search?</li>
+
+        <li>What should happen when the situation materially changes?</li>
+
+        <li>What should happen if communications fail?</li>
+
+        <li>What should an officer be able to explain afterwards?</li>
+
+    </ol>
+
+</section>
+
+<section class="card assessment">
+
+    <h2>Expected Answers</h2>
+
+    <ol>
+
+        <li>
+            To manage the identified threat while maintaining team control,
+            communication and awareness.
+        </li>
+
+        <li>
+            Objective, subjects, weapon information, occupants, location,
+            relevant intelligence, resources and important unknowns.
+        </li>
+
+        <li>
+            So each officer understands their responsibility and contributes
+            to one coordinated operation.
+        </li>
+
+        <li>
+            Subject sightings, civilians, weapon information, significant movement,
+            medical emergencies, communication failures and changes to the plan.
+        </li>
+
+        <li>
+            Because officers must understand where colleagues and other persons
+            are and avoid becoming focused solely on the suspected threat.
+        </li>
+
+        <li>
+            As unknown until further information or behaviour allows a better assessment.
+        </li>
+
+        <li>
+            To provide an additional specialist protective capability where it
+            supports the operational objective.
+        </li>
+
+        <li>
+            It is the specialist breaching platform within Code44 ARU.
+        </li>
+
+        <li>
+            When they address a specific operational need or support the agreed objective.
+        </li>
+
+        <li>
+            An immediate threat may require urgent action, while planned searches
+            may allow more time, information and preparation.
+        </li>
+
+        <li>
+            Reassess, communicate and modify, pause or abandon the existing plan
+            where necessary.
+        </li>
+
+        <li>
+            Recognise and communicate the issue and follow trainer or coordinating
+            officer direction regarding whether the exercise continues.
+        </li>
+
+        <li>
+            Available information, perceived threat, assigned role, observations,
+            communications, decisions and how changing circumstances affected them.
+        </li>
+
+    </ol>
+
+</section>
+
+<section class="card assessment">
+
+    <h2>Instructor Observation Criteria</h2>
+
+    <div class="rating-grid">
+
+        <div class="rating-box">
+            <strong>Objective Understanding</strong>
+            Understands what the operation is intended to achieve.
+        </div>
+
+        <div class="rating-box">
+            <strong>Information Handling</strong>
+            Separates confirmed, reported and unknown information.
+        </div>
+
+        <div class="rating-box">
+            <strong>Role Discipline</strong>
+            Understands and performs the assigned responsibility.
+        </div>
+
+        <div class="rating-box">
+            <strong>Communication</strong>
+            Shares relevant information clearly.
+        </div>
+
+        <div class="rating-box">
+            <strong>Team Awareness</strong>
+            Remains aware of colleagues and wider operations.
+        </div>
+
+        <div class="rating-box">
+            <strong>Person Assessment</strong>
+            Avoids automatically treating unknown persons as threats.
+        </div>
+
+        <div class="rating-box">
+            <strong>Resource Awareness</strong>
+            Understands the purpose of specialist capabilities.
+        </div>
+
+        <div class="rating-box">
+            <strong>Reassessment</strong>
+            Recognises when circumstances change.
+        </div>
+
+        <div class="rating-box">
+            <strong>Adaptability</strong>
+            Changes the response when the existing plan becomes unsuitable.
+        </div>
+
+        <div class="rating-box">
+            <strong>Accountability</strong>
+            Explains decisions clearly during debrief.
+        </div>
+
+    </div>
+
+</section>
+
+<section class="card assessment">
+
+    <h2>Immediate Stop Criteria</h2>
+
+    <p>Stop or reset the exercise if a student:</p>
+
+    <ul>
+
+        <li>Ignores a trainer safety command.</li>
+
+        <li>Continues despite being confused about the scenario or role.</li>
+
+        <li>Acts outside the agreed Code44 training boundary.</li>
+
+        <li>Repeatedly separates from the team without communication.</li>
+
+        <li>Fails to communicate significant changes.</li>
+
+        <li>Repeatedly ignores civilians or other officers.</li>
+
+        <li>Uses specialist resources contrary to trainer direction.</li>
+
+        <li>Continues despite a serious server or communication failure.</li>
+
+        <li>Displays repeated poor firearms discipline.</li>
+
+        <li>Refuses trainer direction.</li>
+
+    </ul>
+
+</section>
+
+<section class="card assessment">
+
+    <h2>Module Outcomes</h2>
+
+    <h3>Pass</h3>
+
+    <p>
+        The student demonstrates satisfactory building-operation awareness,
+        teamwork, communication, role discipline, reassessment and accountability.
+    </p>
+
+    <h3>Pass with Development Points</h3>
+
+    <p>
+        The student may progress but has limited development areas to continue
+        working on during later complex scenarios.
+    </p>
+
+    <h3>Remedial</h3>
+
+    <p>
+        Additional trainer input or controlled building scenarios are required
+        before progression.
+    </p>
+
+    <h3>Incomplete</h3>
+
+    <p>
+        Required pre-learning, practical work or assessment remains outstanding.
+    </p>
+
+    <h3>Unsuccessful</h3>
+
+    <p>
+        The student has not demonstrated the required standard after appropriate
+        instruction, feedback and reassessment.
+    </p>
+
+</section>
+
+<section class="card warning">
+
+    <h2>Common Student Errors</h2>
+
+    <ul>
+
+        <li>Rushing to appear confident.</li>
+
+        <li>Failing to understand the objective.</li>
+
+        <li>Ignoring important unknowns.</li>
+
+        <li>Separating unnecessarily from the team.</li>
+
+        <li>Talking constantly instead of communicating relevant information.</li>
+
+        <li>Assuming every unknown person is the suspect.</li>
+
+        <li>Losing awareness of other officers.</li>
+
+        <li>Requesting specialist resources without a clear reason.</li>
+
+        <li>Continuing the original plan after circumstances change.</li>
+
+        <li>Failing to communicate a server or radio problem.</li>
+
+        <li>Providing a poor handover.</li>
+
+    </ul>
+
+</section>
+
+<section class="card warning">
+
+    <h2>Common Trainer Errors</h2>
+
+    <ul>
+
+        <li>Making the first scenario unnecessarily complex.</li>
+
+        <li>Failing to give students a clear objective.</li>
+
+        <li>Assessing speed rather than coordination.</li>
+
+        <li>Allowing one student to dominate the team.</li>
+
+        <li>Providing every piece of information without requiring students to think.</li>
+
+        <li>Failing to introduce civilians or unknown persons.</li>
+
+        <li>Using specialist equipment without explaining why.</li>
+
+        <li>Failing to change information during scenarios.</li>
+
+        <li>Not assessing students individually.</li>
+
+        <li>Giving away the preferred answer before the debrief.</li>
+
+        <li>Failing to record development points.</li>
+
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Closing Script</h2>
+
+    <div class="example-box">
+
+        <strong>Suggested wording</strong>
+
+        <p>
+            “That concludes Module 10.
+        </p>
+
+        <p>
+            Building operations are not about racing through rooms or memorising
+            one fixed solution.
+        </p>
+
+        <p>
+            They rely on communication, awareness, role discipline and understanding
+            what the team is trying to achieve.
+        </p>
+
+        <p>
+            The strongest performance is controlled, adaptable and accountable.
+        </p>
+
+        <p>
+            Module 11 will bring these skills together during complex armed
+            incidents involving multiple units and specialist capabilities.”
+        </p>
+
+    </div>
+
+</section>
+
+<section class="card">
+
+    <h2>Trainer Completion Checklist</h2>
+
+    <ul class="checklist">
+
+        <li>Students completed Module 10 pre-learning</li>
+
+        <li>Building-operation principles reviewed</li>
+
+        <li>Pre-operation briefing exercise completed</li>
+
+        <li>Team roles explained</li>
+
+        <li>Role-allocation exercise completed</li>
+
+        <li>Communication standards reviewed</li>
+
+        <li>Information-relay exercise completed</li>
+
+        <li>Controlled team behaviour assessed</li>
+
+        <li>Basic building scenario completed</li>
+
+        <li>Civilians and unknown persons covered</li>
+
+        <li>Unknown-person scenario completed</li>
+
+        <li>Ballistic shield capability reviewed</li>
+
+        <li>Shield familiarisation completed where available</li>
+
+        <li>Breaching capability reviewed</li>
+
+        <li>Specialist resources reviewed</li>
+
+        <li>Immediate threat vs planned search discussed</li>
+
+        <li>Threat-reduction scenario completed</li>
+
+        <li>Threat-increase scenario completed</li>
+
+        <li>Communication-failure scenario completed</li>
+
+        <li>Casualty scenario completed</li>
+
+        <li>Complex building scenario completed</li>
+
+        <li>Operational handover completed</li>
+
+        <li>Both students participated in debrief</li>
+
+        <li>Individual development points recorded</li>
+
+        <li>Module 10 knowledge check completed</li>
+
+        <li>Module outcome recorded</li>
+
+    </ul>
+
+    <div class="button-row">
+
+        <a class="button"
+           href="PASTE-TRAINER-MODULE-10-ASSESSMENT-FORM-LINK-HERE"
+           target="_blank">
+
+            Record Module 10 Outcome
+
+        </a>
+
+        <a class="button secondary"
+           href="trainers.html">
+
+            Return to Trainers Area
+
+        </a>
+
+    </div>
+
+</section>
+
+<footer class="footer">
+
+    Code44 Police Service • Armed Response Unit Academy<br>
+
+    Trainer Module 10 — Building Operations & CQB • Cohort 001
+
+</footer>
+
+</div>
+
+</body>
+
+</html>
