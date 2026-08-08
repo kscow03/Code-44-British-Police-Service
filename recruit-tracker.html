@@ -1,0 +1,1399 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ARU Recruit Tracker</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    background:#05080d;
+    color:white;
+    font-family:Segoe UI,Arial,sans-serif;
+    line-height:1.6;
+}
+
+.page-container{
+    width:92%;
+    max-width:1250px;
+    margin:0 auto;
+    padding:35px 0 60px;
+}
+
+.navbar{
+    background:#0b111b;
+    border:1px solid #16315c;
+    border-radius:8px;
+    padding:15px;
+    margin-bottom:20px;
+}
+
+.navbar a{
+    color:#4d9dff;
+    text-decoration:none;
+    font-weight:bold;
+    margin:0 5px;
+}
+
+.navbar a:hover{
+    color:white;
+}
+
+.back-link{
+    display:inline-block;
+    margin-bottom:20px;
+    color:#4d9dff;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.hero{
+    background:
+        linear-gradient(rgba(2,7,14,.82),rgba(2,7,14,.95)),
+        url('arv-photo.png');
+
+    background-size:cover;
+    background-position:center;
+
+    border:1px solid #16315c;
+    border-radius:12px;
+
+    padding:55px 30px;
+    text-align:center;
+}
+
+.hero h1{
+    margin:0 0 10px;
+    color:#4d9dff;
+    font-size:2.5rem;
+}
+
+.hero p{
+    margin:5px 0;
+    color:#d3dbea;
+}
+
+.badge{
+    display:inline-block;
+
+    margin-top:15px;
+    padding:7px 14px;
+
+    background:#3a2a0d;
+    border:1px solid #a8761e;
+    border-radius:20px;
+
+    color:#f2c76f;
+    font-weight:bold;
+}
+
+h1,
+h2,
+h3{
+    color:#4d9dff;
+}
+
+.card{
+    background:#0b111b;
+    border:1px solid #16315c;
+    border-radius:9px;
+
+    padding:22px;
+    margin-top:20px;
+}
+
+.card:hover{
+    border-color:#4d9dff;
+}
+
+.dashboard-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:15px;
+    margin-top:18px;
+}
+
+.stat-box{
+    background:#08111d;
+    border:1px solid #16315c;
+    border-radius:8px;
+    padding:18px;
+    text-align:center;
+}
+
+.stat-box strong{
+    display:block;
+    color:#4d9dff;
+    font-size:1.25rem;
+    margin-bottom:5px;
+}
+
+.form-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:15px;
+}
+
+label{
+    display:block;
+    margin-bottom:6px;
+    color:#dceaff;
+    font-weight:bold;
+}
+
+input,
+select,
+textarea{
+    width:100%;
+
+    padding:12px 13px;
+
+    background:#08111d;
+    color:white;
+
+    border:1px solid #244c80;
+    border-radius:7px;
+
+    font-family:inherit;
+    font-size:.95rem;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+    outline:none;
+    border-color:#4d9dff;
+}
+
+textarea{
+    min-height:100px;
+    resize:vertical;
+}
+
+.button-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:18px;
+}
+
+button,
+.button{
+    display:inline-block;
+
+    padding:11px 16px;
+
+    background:#4d9dff;
+    color:#05080d;
+
+    border:none;
+    border-radius:6px;
+
+    text-decoration:none;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+button:hover,
+.button:hover{
+    background:#77b5ff;
+}
+
+.button.secondary,
+button.secondary{
+    background:#101b2c;
+    color:#4d9dff;
+    border:1px solid #24538b;
+}
+
+button.danger{
+    background:#3b151a;
+    color:#ffb8c0;
+    border:1px solid #853442;
+}
+
+button.danger:hover{
+    background:#552027;
+}
+
+.recruit-list{
+    display:grid;
+    gap:18px;
+    margin-top:20px;
+}
+
+.recruit-card{
+    background:#08111d;
+    border:1px solid #16315c;
+    border-radius:10px;
+    overflow:hidden;
+}
+
+.recruit-header{
+    padding:18px;
+    background:#0a1422;
+    border-bottom:1px solid #16315c;
+}
+
+.recruit-header h3{
+    margin:0 0 5px;
+}
+
+.recruit-header p{
+    margin:0;
+    color:#aab8ca;
+}
+
+.recruit-body{
+    padding:18px;
+}
+
+.progress{
+    width:100%;
+    height:20px;
+
+    background:#18212c;
+    border-radius:20px;
+
+    overflow:hidden;
+    margin:10px 0;
+}
+
+.progress-bar{
+    height:100%;
+    background:#4d9dff;
+    transition:.3s;
+}
+
+.progress-text{
+    color:#8f9bad;
+    font-size:.9rem;
+}
+
+.status{
+    display:inline-block;
+    padding:5px 10px;
+    border-radius:20px;
+    font-size:.85rem;
+    font-weight:bold;
+    margin-top:7px;
+}
+
+.status-active{
+    background:#10203a;
+    border:1px solid #2c65a8;
+    color:#8fc2ff;
+}
+
+.status-development{
+    background:#3a2a0d;
+    border:1px solid #a8761e;
+    color:#f2c76f;
+}
+
+.status-ready{
+    background:#0e2a1a;
+    border:1px solid #368b54;
+    color:#8de3a7;
+}
+
+.status-qualified{
+    background:#123224;
+    border:1px solid #45b36b;
+    color:#9bf0b8;
+}
+
+.status-hold{
+    background:#301318;
+    border:1px solid #853442;
+    color:#ffb8c0;
+}
+
+.module-list{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:8px;
+    margin-top:15px;
+}
+
+.module-item{
+    background:#0b111b;
+    border:1px solid #16315c;
+    border-radius:6px;
+    padding:10px;
+    font-size:.88rem;
+}
+
+.module-complete{
+    border-color:#368b54;
+    background:#0c1b15;
+}
+
+.module-current{
+    border-color:#4d9dff;
+    background:#10203a;
+}
+
+.module-future{
+    opacity:.55;
+}
+
+.notes{
+    margin-top:15px;
+    padding:14px;
+    background:#0b111b;
+    border:1px solid #16315c;
+    border-radius:7px;
+    color:#c9d4e3;
+    white-space:pre-wrap;
+}
+
+.notice{
+    border-left:5px solid #4d9dff;
+}
+
+.warning{
+    border-left:5px solid #e3a629;
+}
+
+.success{
+    border-left:5px solid #45b36b;
+}
+
+.empty{
+    text-align:center;
+    color:#8f9bad;
+    padding:35px 10px;
+}
+
+.footer{
+    margin-top:30px;
+    padding-top:20px;
+
+    border-top:1px solid #16315c;
+
+    color:#8f9bad;
+    text-align:center;
+    font-size:.9rem;
+}
+
+@media(max-width:650px){
+
+    .page-container{
+        width:94%;
+    }
+
+    .hero{
+        padding:40px 18px;
+    }
+
+    .hero h1{
+        font-size:2rem;
+    }
+
+    .navbar{
+        line-height:2;
+    }
+
+    button,
+    .button{
+        width:100%;
+        text-align:center;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<script>
+
+if(sessionStorage.getItem("trainerAccess") !== "granted"){
+    window.location.replace("trainers-login.html");
+}
+
+</script>
+
+<div class="page-container">
+
+<nav class="navbar">
+
+<a href="aru-members.html">
+Internal Database
+</a>
+
+|
+
+<a href="academy.html">
+ARU Academy
+</a>
+
+|
+
+<a href="trainers.html">
+Trainers Area
+</a>
+
+|
+
+<a href="recruit-tracker.html" style="color:white;">
+Recruit Tracker
+</a>
+
+</nav>
+
+<a class="back-link" href="trainers.html">
+← Return to Trainers Area
+</a>
+
+
+<header class="hero">
+
+<h1>ARU Recruit Tracker</h1>
+
+<p>Cohort Management &amp; Student Progression</p>
+
+<p>Code44 Armed Response Unit Academy</p>
+
+<span class="badge">
+Trainer-Only Resource
+</span>
+
+</header>
+
+
+<section class="card">
+
+<h2>Cohort Dashboard</h2>
+
+<p>
+Use this page to monitor student progression across the full
+13-module ARU Academy.
+</p>
+
+<div class="dashboard-grid">
+
+<div class="stat-box">
+
+<strong id="totalStudents">
+0
+</strong>
+
+Active Records
+
+</div>
+
+<div class="stat-box">
+
+<strong id="qualifiedStudents">
+0
+</strong>
+
+Qualified
+
+</div>
+
+<div class="stat-box">
+
+<strong id="assessmentStudents">
+0
+</strong>
+
+Final Assessment Stage
+
+</div>
+
+<div class="stat-box">
+
+<strong id="developmentStudents">
+0
+</strong>
+
+Development Required
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="card">
+
+<h2>Add New Student</h2>
+
+<div class="form-grid">
+
+<div>
+
+<label for="newName">
+Officer Name
+</label>
+
+<input
+type="text"
+id="newName"
+placeholder="MASSARELLI"
+>
+
+</div>
+
+<div>
+
+<label for="newDiscord">
+Discord Mention / ID
+</label>
+
+<input
+type="text"
+id="newDiscord"
+placeholder="<@123456789>"
+>
+
+</div>
+
+<div>
+
+<label for="newCallsign">
+Call-Sign / Collar Number
+</label>
+
+<input
+type="text"
+id="newCallsign"
+placeholder="TC-11"
+>
+
+</div>
+
+<div>
+
+<label for="newStart">
+Academy Start Date
+</label>
+
+<input
+type="date"
+id="newStart"
+>
+
+</div>
+
+</div>
+
+<div class="button-row">
+
+<button onclick="addRecruit()">
+Add Student
+</button>
+
+</div>
+
+</section>
+
+
+<section class="card">
+
+<h2>Current Recruits</h2>
+
+<p>
+Each recruit record shows their current Academy stage,
+overall module progression and trainer notes.
+</p>
+
+<div id="recruitList" class="recruit-list"></div>
+
+</section>
+
+
+<section class="card notice">
+
+<h2>How Progress Works</h2>
+
+<p>
+The module number recorded against a student represents the stage they are
+currently working on.
+</p>
+
+<p>
+For example, a student recorded as being on Module 4 will show Modules 1–3
+as complete, Module 4 as current and Modules 5–13 as outstanding.
+</p>
+
+<p>
+Once Module 13 has been passed, change the student's status to
+<strong>Qualified</strong>.
+</p>
+
+</section>
+
+
+<section class="card warning">
+
+<h2>Data Storage Notice</h2>
+
+<p>
+This tracker uses browser local storage so that it works on a static
+GitHub Pages website.
+</p>
+
+<p>
+The information is stored only in the browser being used. It is not automatically
+shared between trainers, computers or devices.
+</p>
+
+<p>
+Do not use this page for genuine sensitive police information or real personal data.
+It is intended for Code44 Academy management only.
+</p>
+
+</section>
+
+
+<footer class="footer">
+
+Code44 Police Service • Armed Response Unit Academy<br>
+
+Recruit Tracker • Trainer-Only Resource
+
+</footer>
+
+</div>
+
+
+<script>
+
+const MODULE_COUNT = 13;
+
+const MODULE_NAMES = [
+    "Welcome to ARU",
+    "Professional Standards",
+    "Legal & Decision-Making",
+    "Equipment, Vehicles & PPE",
+    "Firearms Safety & Handling",
+    "Firearms Fundamentals & Operational Readiness",
+    "ARV Deployment & Armed Incident Response",
+    "Armed Vehicle Tactics",
+    "Armed Containment, Searches & Warrants",
+    "Building Operations & CQB",
+    "Complex Armed Incidents & Integrated Operations",
+    "Consolidation & Scenario Development",
+    "Final Assessment & Qualification"
+];
+
+
+function createDefaultData(){
+
+    return [
+
+        {
+            id: Date.now() + 1,
+            name: "MASSARELLI",
+            discord: "",
+            callsign: "",
+            startDate: "",
+            module: 2,
+            status: "Active",
+            notes: "Module 1 completed. Currently progressing to Module 2."
+        },
+
+        {
+            id: Date.now() + 2,
+            name: "ROWLEY",
+            discord: "",
+            callsign: "",
+            startDate: "",
+            module: 1,
+            status: "Active",
+            notes: "Pending Module 1."
+        }
+
+    ];
+
+}
+
+
+function loadRecruits(){
+
+    const stored =
+    localStorage.getItem("aruAcademyRecruits");
+
+    if(!stored){
+
+        const defaultData = createDefaultData();
+
+        localStorage.setItem(
+            "aruAcademyRecruits",
+            JSON.stringify(defaultData)
+        );
+
+        return defaultData;
+
+    }
+
+    try{
+
+        return JSON.parse(stored);
+
+    }catch(error){
+
+        return [];
+
+    }
+
+}
+
+
+let recruits = loadRecruits();
+
+
+function saveRecruits(){
+
+    localStorage.setItem(
+        "aruAcademyRecruits",
+        JSON.stringify(recruits)
+    );
+
+}
+
+
+function addRecruit(){
+
+    const name =
+    document.getElementById("newName").value.trim();
+
+    const discord =
+    document.getElementById("newDiscord").value.trim();
+
+    const callsign =
+    document.getElementById("newCallsign").value.trim();
+
+    const startDate =
+    document.getElementById("newStart").value;
+
+    if(!name){
+
+        alert("Enter the officer's name first.");
+        return;
+
+    }
+
+    const recruit = {
+
+        id: Date.now(),
+
+        name:name,
+
+        discord:discord,
+
+        callsign:callsign,
+
+        startDate:startDate,
+
+        module:1,
+
+        status:"Active",
+
+        notes:"Pending Module 1."
+
+    };
+
+    recruits.push(recruit);
+
+    saveRecruits();
+
+    document.getElementById("newName").value = "";
+    document.getElementById("newDiscord").value = "";
+    document.getElementById("newCallsign").value = "";
+    document.getElementById("newStart").value = "";
+
+    render();
+
+}
+
+
+function updateRecruit(id,field,value){
+
+    const recruit =
+    recruits.find(function(item){
+
+        return item.id === id;
+
+    });
+
+    if(!recruit){
+        return;
+    }
+
+    if(field === "module"){
+
+        value = parseInt(value);
+
+    }
+
+    recruit[field] = value;
+
+    saveRecruits();
+
+    render();
+
+}
+
+
+function removeRecruit(id){
+
+    const recruit =
+    recruits.find(function(item){
+
+        return item.id === id;
+
+    });
+
+    if(!recruit){
+        return;
+    }
+
+    const confirmed =
+    confirm(
+        "Delete the Academy record for " +
+        recruit.name +
+        "?"
+    );
+
+    if(!confirmed){
+        return;
+    }
+
+    recruits =
+    recruits.filter(function(item){
+
+        return item.id !== id;
+
+    });
+
+    saveRecruits();
+
+    render();
+
+}
+
+
+function statusClass(status){
+
+    if(status === "Qualified"){
+        return "status-qualified";
+    }
+
+    if(status === "Ready for Final Assessment"){
+        return "status-ready";
+    }
+
+    if(status === "Development Required"){
+        return "status-development";
+    }
+
+    if(status === "On Hold"){
+        return "status-hold";
+    }
+
+    return "status-active";
+
+}
+
+
+function moduleProgress(recruit){
+
+    if(recruit.status === "Qualified"){
+        return 100;
+    }
+
+    const completed =
+    Math.max(0,recruit.module - 1);
+
+    return Math.round(
+        (completed / MODULE_COUNT) * 100
+    );
+
+}
+
+
+function createModuleDisplay(recruit){
+
+    let html = "";
+
+    for(let i = 1; i <= MODULE_COUNT; i++){
+
+        let className =
+        "module-item module-future";
+
+        let marker =
+        "Outstanding";
+
+        if(recruit.status === "Qualified"){
+
+            className =
+            "module-item module-complete";
+
+            marker =
+            "Completed";
+
+        }
+
+        else if(i < recruit.module){
+
+            className =
+            "module-item module-complete";
+
+            marker =
+            "Completed";
+
+        }
+
+        else if(i === recruit.module){
+
+            className =
+            "module-item module-current";
+
+            marker =
+            "Current";
+
+        }
+
+        html += `
+
+        <div class="${className}">
+
+            <strong>
+            Module ${i}
+            </strong>
+
+            <br>
+
+            ${MODULE_NAMES[i - 1]}
+
+            <br>
+
+            <small>
+            ${marker}
+            </small>
+
+        </div>
+
+        `;
+
+    }
+
+    return html;
+
+}
+
+
+function renderRecruit(recruit){
+
+    const progress =
+    moduleProgress(recruit);
+
+    let moduleOptions = "";
+
+    for(let i = 1; i <= MODULE_COUNT; i++){
+
+        moduleOptions += `
+
+        <option value="${i}"
+        ${recruit.module === i ? "selected" : ""}>
+
+        Module ${i} — ${MODULE_NAMES[i - 1]}
+
+        </option>
+
+        `;
+
+    }
+
+    return `
+
+    <div class="recruit-card">
+
+        <div class="recruit-header">
+
+            <h3>
+                ${escapeHTML(recruit.name)}
+            </h3>
+
+            <p>
+
+                ${
+                    recruit.callsign
+                    ? escapeHTML(recruit.callsign)
+                    : "No call-sign recorded"
+                }
+
+                ${
+                    recruit.discord
+                    ? " • " + escapeHTML(recruit.discord)
+                    : ""
+                }
+
+            </p>
+
+            <span class="status ${statusClass(recruit.status)}">
+
+                ${escapeHTML(recruit.status)}
+
+            </span>
+
+        </div>
+
+
+        <div class="recruit-body">
+
+            <div class="progress">
+
+                <div
+                class="progress-bar"
+                style="width:${progress}%;">
+                </div>
+
+            </div>
+
+            <div class="progress-text">
+
+                Academy Progress:
+                ${progress}%
+
+            </div>
+
+
+            <div class="form-grid"
+            style="margin-top:18px;">
+
+
+                <div>
+
+                    <label>
+                    Current Module
+                    </label>
+
+                    <select
+                    onchange="updateRecruit(
+                    ${recruit.id},
+                    'module',
+                    this.value
+                    )">
+
+                    ${moduleOptions}
+
+                    </select>
+
+                </div>
+
+
+                <div>
+
+                    <label>
+                    Current Status
+                    </label>
+
+                    <select
+                    onchange="updateRecruit(
+                    ${recruit.id},
+                    'status',
+                    this.value
+                    )">
+
+                        <option
+                        ${recruit.status === "Active" ? "selected" : ""}>
+                        Active
+                        </option>
+
+                        <option
+                        ${recruit.status === "Development Required" ? "selected" : ""}>
+                        Development Required
+                        </option>
+
+                        <option
+                        ${recruit.status === "Ready for Final Assessment" ? "selected" : ""}>
+                        Ready for Final Assessment
+                        </option>
+
+                        <option
+                        ${recruit.status === "Qualified" ? "selected" : ""}>
+                        Qualified
+                        </option>
+
+                        <option
+                        ${recruit.status === "On Hold" ? "selected" : ""}>
+                        On Hold
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div>
+
+                    <label>
+                    Call-Sign / Collar
+                    </label>
+
+                    <input
+                    value="${escapeAttribute(recruit.callsign || "")}"
+                    onchange="updateRecruit(
+                    ${recruit.id},
+                    'callsign',
+                    this.value
+                    )">
+
+                </div>
+
+
+                <div>
+
+                    <label>
+                    Discord Mention
+                    </label>
+
+                    <input
+                    value="${escapeAttribute(recruit.discord || "")}"
+                    onchange="updateRecruit(
+                    ${recruit.id},
+                    'discord',
+                    this.value
+                    )">
+
+                </div>
+
+            </div>
+
+
+            <div style="margin-top:15px;">
+
+                <label>
+                Trainer Notes
+                </label>
+
+                <textarea
+                onchange="updateRecruit(
+                ${recruit.id},
+                'notes',
+                this.value
+                )">${escapeHTML(recruit.notes || "")}</textarea>
+
+            </div>
+
+
+            <h3>
+            Module Progress
+            </h3>
+
+            <div class="module-list">
+
+                ${createModuleDisplay(recruit)}
+
+            </div>
+
+
+            <div class="button-row">
+
+                <button
+                class="secondary"
+                onclick="copyRecruitSummary(${recruit.id})">
+
+                    Copy Progress Summary
+
+                </button>
+
+                <button
+                class="danger"
+                onclick="removeRecruit(${recruit.id})">
+
+                    Delete Recruit
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    `;
+
+}
+
+
+function render(){
+
+    const list =
+    document.getElementById("recruitList");
+
+    if(recruits.length === 0){
+
+        list.innerHTML = `
+
+        <div class="empty">
+
+        No recruit records currently exist.
+
+        </div>
+
+        `;
+
+    }
+
+    else{
+
+        list.innerHTML =
+        recruits.map(renderRecruit).join("");
+
+    }
+
+    updateDashboard();
+
+}
+
+
+function updateDashboard(){
+
+    document.getElementById("totalStudents")
+    .textContent =
+    recruits.length;
+
+    document.getElementById("qualifiedStudents")
+    .textContent =
+    recruits.filter(function(r){
+
+        return r.status === "Qualified";
+
+    }).length;
+
+    document.getElementById("assessmentStudents")
+    .textContent =
+    recruits.filter(function(r){
+
+        return r.status ===
+        "Ready for Final Assessment";
+
+    }).length;
+
+    document.getElementById("developmentStudents")
+    .textContent =
+    recruits.filter(function(r){
+
+        return r.status ===
+        "Development Required";
+
+    }).length;
+
+}
+
+
+function copyRecruitSummary(id){
+
+    const recruit =
+    recruits.find(function(item){
+
+        return item.id === id;
+
+    });
+
+    if(!recruit){
+        return;
+    }
+
+    const completed =
+    recruit.status === "Qualified"
+    ? 13
+    : Math.max(0,recruit.module - 1);
+
+    const currentModule =
+    recruit.status === "Qualified"
+    ? "Academy Complete"
+    : "Module " +
+      recruit.module +
+      " — " +
+      MODULE_NAMES[recruit.module - 1];
+
+    const text =
+`ARU Academy — Student Progress
+
+Officer: ${recruit.name}
+Call-Sign/Collar: ${recruit.callsign || "Not recorded"}
+Discord: ${recruit.discord || "Not recorded"}
+
+Current Status: ${recruit.status}
+Current Stage: ${currentModule}
+
+Modules Completed: ${completed}/13
+Overall Progress: ${moduleProgress(recruit)}%
+
+Trainer Notes:
+${recruit.notes || "No trainer notes recorded."}`;
+
+    navigator.clipboard.writeText(text)
+
+    .then(function(){
+
+        alert("Recruit progress summary copied.");
+
+    })
+
+    .catch(function(){
+
+        alert(
+        "Unable to copy automatically."
+        );
+
+    });
+
+}
+
+
+function escapeHTML(value){
+
+    return String(value)
+
+    .replaceAll("&","&amp;")
+
+    .replaceAll("<","&lt;")
+
+    .replaceAll(">","&gt;")
+
+    .replaceAll('"',"&quot;")
+
+    .replaceAll("'","&#039;");
+
+}
+
+
+function escapeAttribute(value){
+
+    return escapeHTML(value);
+
+}
+
+
+render();
+
+</script>
+
+</body>
+
+</html>
