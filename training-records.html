@@ -1,0 +1,1592 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ARU Training Records</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    background:#05080d;
+    color:white;
+    font-family:Segoe UI,Arial,sans-serif;
+    line-height:1.6;
+}
+
+.page-container{
+    width:92%;
+    max-width:1250px;
+    margin:0 auto;
+    padding:35px 0 60px;
+}
+
+.navbar{
+    background:#0b111b;
+    border:1px solid #16315c;
+    border-radius:8px;
+    padding:15px;
+    margin-bottom:20px;
+}
+
+.navbar a{
+    color:#4d9dff;
+    text-decoration:none;
+    font-weight:bold;
+    margin:0 5px;
+}
+
+.navbar a:hover{
+    color:white;
+}
+
+.back-link{
+    display:inline-block;
+    margin-bottom:20px;
+    color:#4d9dff;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.hero{
+    background:
+        linear-gradient(rgba(2,7,14,.82),rgba(2,7,14,.95)),
+        url('arv-photo.png');
+
+    background-size:cover;
+    background-position:center;
+
+    border:1px solid #16315c;
+    border-radius:12px;
+
+    padding:55px 30px;
+    text-align:center;
+}
+
+.hero h1{
+    margin:0 0 10px;
+    color:#4d9dff;
+    font-size:2.5rem;
+}
+
+.hero p{
+    margin:5px 0;
+    color:#d3dbea;
+}
+
+.badge{
+    display:inline-block;
+    margin-top:15px;
+    padding:7px 14px;
+
+    background:#3a2a0d;
+    border:1px solid #a8761e;
+    border-radius:20px;
+
+    color:#f2c76f;
+    font-weight:bold;
+}
+
+h1,
+h2,
+h3{
+    color:#4d9dff;
+}
+
+.card{
+    background:#0b111b;
+    border:1px solid #16315c;
+    border-radius:9px;
+
+    padding:22px;
+    margin-top:20px;
+}
+
+.card:hover{
+    border-color:#4d9dff;
+}
+
+.dashboard-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:15px;
+    margin-top:18px;
+}
+
+.stat-box{
+    background:#08111d;
+    border:1px solid #16315c;
+    border-radius:8px;
+    padding:18px;
+    text-align:center;
+}
+
+.stat-box strong{
+    display:block;
+    color:#4d9dff;
+    font-size:1.25rem;
+    margin-bottom:5px;
+}
+
+.form-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:15px;
+}
+
+label{
+    display:block;
+    margin-bottom:6px;
+    color:#dceaff;
+    font-weight:bold;
+}
+
+input,
+select,
+textarea{
+    width:100%;
+
+    padding:12px 13px;
+
+    background:#08111d;
+    color:white;
+
+    border:1px solid #244c80;
+    border-radius:7px;
+
+    font-family:inherit;
+    font-size:.95rem;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+    outline:none;
+    border-color:#4d9dff;
+}
+
+textarea{
+    min-height:115px;
+    resize:vertical;
+}
+
+.button-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:18px;
+}
+
+button,
+.button{
+    display:inline-block;
+
+    padding:11px 16px;
+
+    background:#4d9dff;
+    color:#05080d;
+
+    border:none;
+    border-radius:6px;
+
+    text-decoration:none;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+button:hover,
+.button:hover{
+    background:#77b5ff;
+}
+
+.button.secondary,
+button.secondary{
+    background:#101b2c;
+    color:#4d9dff;
+    border:1px solid #24538b;
+}
+
+button.danger{
+    background:#3b151a;
+    color:#ffb8c0;
+    border:1px solid #853442;
+}
+
+button.danger:hover{
+    background:#552027;
+}
+
+.notice{
+    border-left:5px solid #4d9dff;
+}
+
+.warning{
+    border-left:5px solid #e3a629;
+}
+
+.success{
+    border-left:5px solid #45b36b;
+}
+
+.record-list{
+    display:grid;
+    gap:16px;
+    margin-top:20px;
+}
+
+.record-card{
+    background:#08111d;
+    border:1px solid #16315c;
+    border-radius:9px;
+    overflow:hidden;
+}
+
+.record-header{
+    padding:16px 18px;
+    background:#0a1422;
+    border-bottom:1px solid #16315c;
+}
+
+.record-header h3{
+    margin:0 0 4px;
+}
+
+.record-header p{
+    margin:0;
+    color:#aab8ca;
+}
+
+.record-body{
+    padding:18px;
+}
+
+.record-body p{
+    margin:7px 0;
+}
+
+.status{
+    display:inline-block;
+    padding:5px 10px;
+    border-radius:20px;
+    font-size:.84rem;
+    font-weight:bold;
+    margin-top:8px;
+}
+
+.status-pass{
+    background:#0e2a1a;
+    border:1px solid #368b54;
+    color:#8de3a7;
+}
+
+.status-development{
+    background:#3a2a0d;
+    border:1px solid #a8761e;
+    color:#f2c76f;
+}
+
+.status-reassess{
+    background:#301318;
+    border:1px solid #853442;
+    color:#ffb8c0;
+}
+
+.output{
+    white-space:pre-wrap;
+    background:#05080d;
+    border:1px solid #24538b;
+    border-radius:8px;
+    padding:18px;
+    min-height:220px;
+    margin-top:15px;
+    color:#e7eef8;
+}
+
+.hidden{
+    display:none;
+}
+
+.empty{
+    text-align:center;
+    color:#8f9bad;
+    padding:35px 10px;
+}
+
+.footer{
+    margin-top:30px;
+    padding-top:20px;
+
+    border-top:1px solid #16315c;
+
+    color:#8f9bad;
+    text-align:center;
+    font-size:.9rem;
+}
+
+@media(max-width:650px){
+
+    .page-container{
+        width:94%;
+    }
+
+    .hero{
+        padding:40px 18px;
+    }
+
+    .hero h1{
+        font-size:2rem;
+    }
+
+    button,
+    .button{
+        width:100%;
+        text-align:center;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<script>
+
+if(sessionStorage.getItem("trainerAccess") !== "granted"){
+    window.location.replace("trainers-login.html");
+}
+
+</script>
+
+<div class="page-container">
+
+<nav class="navbar">
+
+<a href="aru-members.html">
+Internal Database
+</a>
+
+|
+
+<a href="academy.html">
+ARU Academy
+</a>
+
+|
+
+<a href="trainers.html">
+Trainers Area
+</a>
+
+|
+
+<a href="recruit-tracker.html">
+Recruit Tracker
+</a>
+
+|
+
+<a href="training-records.html" style="color:white;">
+Training Records
+</a>
+
+</nav>
+
+<a class="back-link" href="trainers.html">
+← Return to Trainers Area
+</a>
+
+
+<header class="hero">
+
+<h1>ARU Training Records</h1>
+
+<p>Module Completion, Assessment &amp; Trainer Feedback</p>
+
+<p>Code44 Armed Response Unit Academy</p>
+
+<span class="badge">
+Trainer-Only Resource
+</span>
+
+</header>
+
+
+<section class="card">
+
+<h2>Training Record Dashboard</h2>
+
+<p>
+Use this page to record completed Academy modules, practical elements,
+assessment outcomes and trainer feedback.
+</p>
+
+<div class="dashboard-grid">
+
+<div class="stat-box">
+
+<strong id="totalRecords">
+0
+</strong>
+
+Training Records
+
+</div>
+
+<div class="stat-box">
+
+<strong id="passedRecords">
+0
+</strong>
+
+Passed
+
+</div>
+
+<div class="stat-box">
+
+<strong id="developmentRecords">
+0
+</strong>
+
+Development Points
+
+</div>
+
+<div class="stat-box">
+
+<strong id="reassessmentRecords">
+0
+</strong>
+
+Reassessment Required
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="card">
+
+<h2>Create Training Record</h2>
+
+<div class="form-grid">
+
+<div>
+
+<label for="studentSelect">
+Student
+</label>
+
+<select id="studentSelect">
+<option value="">Select Student</option>
+</select>
+
+</div>
+
+<div>
+
+<label for="moduleSelect">
+Training Element
+</label>
+
+<select id="moduleSelect">
+
+<option value="">Select Module</option>
+
+<option value="1">Module 1 — Welcome to ARU</option>
+<option value="2">Module 2 — Professional Standards</option>
+<option value="3">Module 3 — Legal & Decision-Making</option>
+<option value="4">Module 4 — Equipment, Vehicles & PPE</option>
+<option value="5">Module 5 — Firearms Safety & Handling</option>
+<option value="6">Module 6 — Firearms Fundamentals & Operational Readiness</option>
+<option value="7">Module 7 — ARV Deployment & Armed Incident Response</option>
+<option value="8">Module 8 — Armed Vehicle Tactics</option>
+<option value="9">Module 9 — Armed Containment, Searches & High-Risk Warrants</option>
+<option value="10">Module 10 — Building Operations & CQB</option>
+<option value="11">Module 11 — Complex Armed Incidents & Integrated Operations</option>
+<option value="12">Module 12 — Consolidation & Scenario Development</option>
+<option value="13">Module 13 — Final Assessment & Qualification</option>
+
+</select>
+
+</div>
+
+<div>
+
+<label for="recordDate">
+Date
+</label>
+
+<input type="date" id="recordDate">
+
+</div>
+
+<div>
+
+<label for="recordStart">
+Start Time
+</label>
+
+<input type="time" id="recordStart">
+
+</div>
+
+<div>
+
+<label for="recordEnd">
+End Time
+</label>
+
+<input type="time" id="recordEnd">
+
+</div>
+
+<div>
+
+<label for="trainerName">
+Training Officer
+</label>
+
+<input
+type="text"
+id="trainerName"
+value="<@608400075655348265>"
+>
+
+</div>
+
+</div>
+
+<br>
+
+<div class="form-grid">
+
+<div>
+
+<label for="recordOutcome">
+Outcome
+</label>
+
+<select id="recordOutcome">
+
+<option>PASS</option>
+<option>PASS — DEVELOPMENT POINTS</option>
+<option>REASSESSMENT REQUIRED</option>
+<option>INCOMPLETE</option>
+<option>UNSUCCESSFUL</option>
+
+</select>
+
+</div>
+
+<div>
+
+<label for="knowledgeResult">
+Knowledge Check
+</label>
+
+<select id="knowledgeResult">
+
+<option>Not Required</option>
+<option>Passed</option>
+<option>Passed with Development Points</option>
+<option>Reassessment Required</option>
+<option>Not Completed</option>
+
+</select>
+
+</div>
+
+</div>
+
+<br>
+
+<label for="performance">
+Description of Officer's Performance
+</label>
+
+<textarea
+id="performance"
+placeholder="Describe engagement, understanding, practical performance, communication, decision-making and any other relevant points..."
+></textarea>
+
+<br>
+
+<label for="developmentPoints">
+Development Points
+</label>
+
+<textarea
+id="developmentPoints"
+placeholder="Record development points here. If none, write 'None identified.'"
+></textarea>
+
+<br>
+
+<label for="nextStage">
+Progression / Next Stage
+</label>
+
+<textarea
+id="nextStage"
+placeholder="Example: Officer is now cleared to progress to ARU Academy Module 4."
+></textarea>
+
+<div class="button-row">
+
+<button type="button" onclick="generateRecord()">
+Generate Record
+</button>
+
+<button type="button" onclick="saveRecord()">
+Save Training Record
+</button>
+
+<button class="secondary" type="button" onclick="copyGeneratedRecord()">
+Copy Generated Record
+</button>
+
+<button class="secondary" type="button" onclick="clearForm()">
+Clear Form
+</button>
+
+</div>
+
+</section>
+
+
+<section class="card hidden" id="generatedCard">
+
+<h2>Generated Discord Training Record</h2>
+
+<div class="output" id="generatedOutput"></div>
+
+</section>
+
+
+<section class="card">
+
+<h2>Saved Training Records</h2>
+
+<p>
+Saved records are stored in this browser and can be reviewed or copied later.
+</p>
+
+<div class="form-grid">
+
+<div>
+
+<label for="filterStudent">
+Filter by Student
+</label>
+
+<select id="filterStudent" onchange="renderRecords()">
+
+<option value="">
+All Students
+</option>
+
+</select>
+
+</div>
+
+<div>
+
+<label for="filterModule">
+Filter by Module
+</label>
+
+<select id="filterModule" onchange="renderRecords()">
+
+<option value="">
+All Modules
+</option>
+
+<option value="1">Module 1</option>
+<option value="2">Module 2</option>
+<option value="3">Module 3</option>
+<option value="4">Module 4</option>
+<option value="5">Module 5</option>
+<option value="6">Module 6</option>
+<option value="7">Module 7</option>
+<option value="8">Module 8</option>
+<option value="9">Module 9</option>
+<option value="10">Module 10</option>
+<option value="11">Module 11</option>
+<option value="12">Module 12</option>
+<option value="13">Module 13</option>
+
+</select>
+
+</div>
+
+</div>
+
+<div id="recordList" class="record-list"></div>
+
+</section>
+
+
+<section class="card notice">
+
+<h2>Automatic Recruit Tracker Update</h2>
+
+<p>
+When you save a record with a <strong>PASS</strong> outcome, this page will also
+attempt to update the student's Recruit Tracker progression.
+</p>
+
+<p>
+For example, passing Module 3 will move the recruit to Module 4 automatically.
+Passing Module 12 will mark them as ready for final assessment.
+Passing Module 13 will mark them as qualified.
+</p>
+
+</section>
+
+
+<section class="card warning">
+
+<h2>Storage Notice</h2>
+
+<p>
+Training records are stored in browser local storage because the website is hosted
+as static GitHub Pages content.
+</p>
+
+<p>
+Records are therefore available only on the browser/device where they were entered
+unless you later move the Academy to a shared database.
+</p>
+
+<p>
+Do not store real sensitive police information or genuine personal data here.
+</p>
+
+</section>
+
+
+<footer class="footer">
+
+Code44 Police Service • Armed Response Unit Academy<br>
+
+Training Records • Trainer-Only Resource
+
+</footer>
+
+</div>
+
+
+<script>
+
+const MODULE_NAMES = {
+
+1:"Welcome to ARU",
+2:"Professional Standards",
+3:"Legal & Decision-Making",
+4:"Equipment, Vehicles & PPE",
+5:"Firearms Safety & Handling",
+6:"Firearms Fundamentals & Operational Readiness",
+7:"ARV Deployment & Armed Incident Response",
+8:"Armed Vehicle Tactics",
+9:"Armed Containment, Searches & High-Risk Warrants",
+10:"Building Operations & CQB",
+11:"Complex Armed Incidents & Integrated Operations",
+12:"Consolidation & Scenario Development",
+13:"Final Assessment & Qualification"
+
+};
+
+
+function loadRecruits(){
+
+    const stored =
+    localStorage.getItem("aruAcademyRecruits");
+
+    if(!stored){
+        return [];
+    }
+
+    try{
+
+        return JSON.parse(stored);
+
+    }catch(error){
+
+        return [];
+
+    }
+
+}
+
+
+function loadRecords(){
+
+    const stored =
+    localStorage.getItem("aruAcademyTrainingRecords");
+
+    if(!stored){
+        return [];
+    }
+
+    try{
+
+        return JSON.parse(stored);
+
+    }catch(error){
+
+        return [];
+
+    }
+
+}
+
+
+let recruits = loadRecruits();
+let records = loadRecords();
+
+
+function saveRecords(){
+
+    localStorage.setItem(
+        "aruAcademyTrainingRecords",
+        JSON.stringify(records)
+    );
+
+}
+
+
+function saveRecruits(){
+
+    localStorage.setItem(
+        "aruAcademyRecruits",
+        JSON.stringify(recruits)
+    );
+
+}
+
+
+function populateStudents(){
+
+    const studentSelect =
+    document.getElementById("studentSelect");
+
+    const filterStudent =
+    document.getElementById("filterStudent");
+
+    studentSelect.innerHTML =
+    `<option value="">Select Student</option>`;
+
+    filterStudent.innerHTML =
+    `<option value="">All Students</option>`;
+
+    recruits.forEach(function(recruit){
+
+        const option =
+        document.createElement("option");
+
+        option.value =
+        recruit.id;
+
+        option.textContent =
+        recruit.name +
+        (
+            recruit.callsign
+            ? " — " + recruit.callsign
+            : ""
+        );
+
+        studentSelect.appendChild(
+            option.cloneNode(true)
+        );
+
+        filterStudent.appendChild(
+            option.cloneNode(true)
+        );
+
+    });
+
+}
+
+
+function getSelectedRecruit(){
+
+    const id =
+    parseInt(
+        document.getElementById("studentSelect").value
+    );
+
+    return recruits.find(function(recruit){
+
+        return recruit.id === id;
+
+    });
+
+}
+
+
+function formatDate(date){
+
+    if(!date){
+        return "NOT ENTERED";
+    }
+
+    const parts =
+    date.split("-");
+
+    if(parts.length !== 3){
+        return date;
+    }
+
+    return `${parts[2]}/${parts[1]}/${parts[0]}`;
+
+}
+
+
+function buildTimeRange(){
+
+    const start =
+    document.getElementById("recordStart").value;
+
+    const end =
+    document.getElementById("recordEnd").value;
+
+    if(start && end){
+        return `${start} - ${end}`;
+    }
+
+    if(start){
+        return start;
+    }
+
+    return "Time not recorded";
+
+}
+
+
+function outcomePassText(outcome){
+
+    if(outcome === "PASS"){
+
+        return "PASSED — The officer has successfully completed the required Module learning and assessment elements to the required standard.";
+
+    }
+
+    if(outcome === "PASS — DEVELOPMENT POINTS"){
+
+        return "PASSED — The officer has successfully completed the required Module learning and assessment elements, with development points recorded for continued improvement.";
+
+    }
+
+    if(outcome === "REASSESSMENT REQUIRED"){
+
+        return "REASSESSMENT REQUIRED — The officer requires further development and reassessment before progression can be confirmed.";
+
+    }
+
+    if(outcome === "INCOMPLETE"){
+
+        return "INCOMPLETE — Required learning or assessment elements remain outstanding.";
+
+    }
+
+    return "UNSUCCESSFUL — The officer has not yet demonstrated the required standard and further development is required.";
+
+}
+
+
+function generateRecord(){
+
+    const recruit =
+    getSelectedRecruit();
+
+    if(!recruit){
+
+        alert("Select a student first.");
+        return;
+
+    }
+
+    const moduleNumber =
+    parseInt(
+        document.getElementById("moduleSelect").value
+    );
+
+    if(!moduleNumber){
+
+        alert("Select a module first.");
+        return;
+
+    }
+
+    const date =
+    document.getElementById("recordDate").value;
+
+    const trainer =
+    document.getElementById("trainerName").value.trim()
+    || "NOT ENTERED";
+
+    const outcome =
+    document.getElementById("recordOutcome").value;
+
+    const knowledge =
+    document.getElementById("knowledgeResult").value;
+
+    const performance =
+    document.getElementById("performance").value.trim()
+    || "No performance summary entered.";
+
+    const development =
+    document.getElementById("developmentPoints").value.trim()
+    || "None identified.";
+
+    const nextStage =
+    document.getElementById("nextStage").value.trim()
+    || "Progression to be confirmed by the ARU Training Team.";
+
+    const output =
+`Officer Name: ${recruit.discord || recruit.name}
+Call-Sign/Collar Number: ${recruit.callsign || "Not recorded"}
+Training Element(s): ARU Academy — Module ${moduleNumber}: ${MODULE_NAMES[moduleNumber]}
+Date/Time: ${formatDate(date)} ${buildTimeRange()}
+
+Description of Officer’s Performance:
+${performance}
+
+Knowledge Check:
+${knowledge}
+
+Development Points:
+${development}
+
+Confirmation Officer has Passed above Elements:
+${outcomePassText(outcome)}
+
+Progression:
+${nextStage}
+
+Training Officer: ${trainer}
+Head of Officers Division: J.PATTISON
+Head of CoP: J.Ramsay
+Head of ARU: <@1209486087404388353>`;
+
+    document.getElementById("generatedOutput")
+    .textContent = output;
+
+    document.getElementById("generatedCard")
+    .classList.remove("hidden");
+
+    document.getElementById("generatedCard")
+    .scrollIntoView({
+        behavior:"smooth"
+    });
+
+}
+
+
+function saveRecord(){
+
+    const recruit =
+    getSelectedRecruit();
+
+    if(!recruit){
+
+        alert("Select a student first.");
+        return;
+
+    }
+
+    const moduleNumber =
+    parseInt(
+        document.getElementById("moduleSelect").value
+    );
+
+    if(!moduleNumber){
+
+        alert("Select a module first.");
+        return;
+
+    }
+
+    generateRecord();
+
+    const record = {
+
+        id:Date.now(),
+
+        recruitId:recruit.id,
+
+        recruitName:recruit.name,
+
+        recruitDiscord:recruit.discord || "",
+
+        callsign:recruit.callsign || "",
+
+        module:moduleNumber,
+
+        moduleName:MODULE_NAMES[moduleNumber],
+
+        date:
+        document.getElementById("recordDate").value,
+
+        startTime:
+        document.getElementById("recordStart").value,
+
+        endTime:
+        document.getElementById("recordEnd").value,
+
+        trainer:
+        document.getElementById("trainerName").value.trim(),
+
+        outcome:
+        document.getElementById("recordOutcome").value,
+
+        knowledge:
+        document.getElementById("knowledgeResult").value,
+
+        performance:
+        document.getElementById("performance").value.trim(),
+
+        development:
+        document.getElementById("developmentPoints").value.trim(),
+
+        nextStage:
+        document.getElementById("nextStage").value.trim(),
+
+        generatedText:
+        document.getElementById("generatedOutput").textContent
+
+    };
+
+    records.unshift(record);
+
+    saveRecords();
+
+    updateRecruitProgress(record);
+
+    updateDashboard();
+
+    renderRecords();
+
+    alert("Training record saved.");
+
+}
+
+
+function updateRecruitProgress(record){
+
+    const recruit =
+    recruits.find(function(item){
+
+        return item.id === record.recruitId;
+
+    });
+
+    if(!recruit){
+        return;
+    }
+
+    const passed =
+    record.outcome === "PASS"
+    ||
+    record.outcome === "PASS — DEVELOPMENT POINTS";
+
+    if(!passed){
+        return;
+    }
+
+    if(record.module === 13){
+
+        recruit.module = 13;
+        recruit.status = "Qualified";
+
+    }
+
+    else if(record.module === 12){
+
+        recruit.module = 13;
+        recruit.status = "Ready for Final Assessment";
+
+    }
+
+    else{
+
+        const nextModule =
+        record.module + 1;
+
+        if(recruit.module <= record.module){
+
+            recruit.module =
+            nextModule;
+
+        }
+
+        if(
+            recruit.status !== "Qualified"
+            &&
+            recruit.status !== "Ready for Final Assessment"
+        ){
+
+            recruit.status =
+            record.outcome === "PASS — DEVELOPMENT POINTS"
+            ? "Development Required"
+            : "Active";
+
+        }
+
+    }
+
+    recruit.notes =
+    `Module ${record.module} ${record.outcome}. ` +
+    (
+        record.nextStage
+        ||
+        `Progressing to Module ${Math.min(record.module + 1,13)}.`
+    );
+
+    saveRecruits();
+
+}
+
+
+function statusClass(outcome){
+
+    if(
+        outcome === "PASS"
+        ||
+        outcome === "PASS — DEVELOPMENT POINTS"
+    ){
+
+        return outcome === "PASS"
+        ? "status-pass"
+        : "status-development";
+
+    }
+
+    return "status-reassess";
+
+}
+
+
+function renderRecords(){
+
+    const list =
+    document.getElementById("recordList");
+
+    const studentFilter =
+    document.getElementById("filterStudent").value;
+
+    const moduleFilter =
+    document.getElementById("filterModule").value;
+
+    let filtered =
+    records.filter(function(record){
+
+        const studentMatch =
+        !studentFilter
+        ||
+        String(record.recruitId) === studentFilter;
+
+        const moduleMatch =
+        !moduleFilter
+        ||
+        String(record.module) === moduleFilter;
+
+        return studentMatch && moduleMatch;
+
+    });
+
+    if(filtered.length === 0){
+
+        list.innerHTML =
+        `<div class="empty">
+        No training records match the selected filters.
+        </div>`;
+
+        return;
+
+    }
+
+    list.innerHTML =
+    filtered.map(function(record){
+
+        return `
+
+        <div class="record-card">
+
+            <div class="record-header">
+
+                <h3>
+                    ${escapeHTML(record.recruitName)}
+                    — Module ${record.module}
+                </h3>
+
+                <p>
+                    ${escapeHTML(record.moduleName)}
+                    •
+                    ${escapeHTML(formatDate(record.date))}
+                </p>
+
+                <span class="status ${statusClass(record.outcome)}">
+
+                    ${escapeHTML(record.outcome)}
+
+                </span>
+
+            </div>
+
+            <div class="record-body">
+
+                <p>
+                    <strong>Call-Sign/Collar:</strong>
+                    ${escapeHTML(record.callsign || "Not recorded")}
+                </p>
+
+                <p>
+                    <strong>Knowledge Check:</strong>
+                    ${escapeHTML(record.knowledge)}
+                </p>
+
+                <p>
+                    <strong>Training Officer:</strong>
+                    ${escapeHTML(record.trainer || "Not recorded")}
+                </p>
+
+                <p>
+                    <strong>Performance:</strong><br>
+                    ${escapeHTML(record.performance || "No summary recorded.")}
+                </p>
+
+                <p>
+                    <strong>Development Points:</strong><br>
+                    ${escapeHTML(record.development || "None recorded.")}
+                </p>
+
+                <div class="button-row">
+
+                    <button
+                    class="secondary"
+                    onclick="copySavedRecord(${record.id})">
+
+                        Copy Discord Record
+
+                    </button>
+
+                    <button
+                    class="danger"
+                    onclick="deleteRecord(${record.id})">
+
+                        Delete Record
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        `;
+
+    }).join("");
+
+}
+
+
+function copySavedRecord(id){
+
+    const record =
+    records.find(function(item){
+
+        return item.id === id;
+
+    });
+
+    if(!record){
+        return;
+    }
+
+    navigator.clipboard
+    .writeText(record.generatedText)
+
+    .then(function(){
+
+        alert("Training record copied.");
+
+    })
+
+    .catch(function(){
+
+        alert("Unable to copy automatically.");
+
+    });
+
+}
+
+
+function copyGeneratedRecord(){
+
+    const text =
+    document.getElementById("generatedOutput").textContent;
+
+    if(!text){
+
+        alert("Generate a record first.");
+        return;
+
+    }
+
+    navigator.clipboard
+    .writeText(text)
+
+    .then(function(){
+
+        alert("Generated training record copied.");
+
+    })
+
+    .catch(function(){
+
+        alert("Unable to copy automatically.");
+
+    });
+
+}
+
+
+function deleteRecord(id){
+
+    const record =
+    records.find(function(item){
+
+        return item.id === id;
+
+    });
+
+    if(!record){
+        return;
+    }
+
+    const confirmed =
+    confirm(
+        "Delete this Module " +
+        record.module +
+        " training record for " +
+        record.recruitName +
+        "?"
+    );
+
+    if(!confirmed){
+        return;
+    }
+
+    records =
+    records.filter(function(item){
+
+        return item.id !== id;
+
+    });
+
+    saveRecords();
+
+    updateDashboard();
+
+    renderRecords();
+
+}
+
+
+function updateDashboard(){
+
+    document.getElementById("totalRecords")
+    .textContent =
+    records.length;
+
+    document.getElementById("passedRecords")
+    .textContent =
+    records.filter(function(record){
+
+        return record.outcome === "PASS";
+
+    }).length;
+
+    document.getElementById("developmentRecords")
+    .textContent =
+    records.filter(function(record){
+
+        return record.outcome ===
+        "PASS — DEVELOPMENT POINTS";
+
+    }).length;
+
+    document.getElementById("reassessmentRecords")
+    .textContent =
+    records.filter(function(record){
+
+        return record.outcome ===
+        "REASSESSMENT REQUIRED";
+
+    }).length;
+
+}
+
+
+function clearForm(){
+
+    document.getElementById("studentSelect").value = "";
+    document.getElementById("moduleSelect").value = "";
+    document.getElementById("recordDate").value = "";
+    document.getElementById("recordStart").value = "";
+    document.getElementById("recordEnd").value = "";
+    document.getElementById("recordOutcome").selectedIndex = 0;
+    document.getElementById("knowledgeResult").selectedIndex = 0;
+    document.getElementById("performance").value = "";
+    document.getElementById("developmentPoints").value = "";
+    document.getElementById("nextStage").value = "";
+
+    document.getElementById("generatedOutput").textContent = "";
+
+    document.getElementById("generatedCard")
+    .classList.add("hidden");
+
+}
+
+
+function escapeHTML(value){
+
+    return String(value)
+
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+
+}
+
+
+populateStudents();
+updateDashboard();
+renderRecords();
+
+</script>
+
+</body>
+
+</html>
