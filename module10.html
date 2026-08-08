@@ -1,0 +1,1410 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Module 10 - Building Operations & CQB | ARU Academy</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    background:#05080d;
+    color:white;
+    font-family:Segoe UI,Arial,sans-serif;
+    line-height:1.7;
+}
+
+.page-container{
+    width:90%;
+    max-width:1100px;
+    margin:0 auto;
+    padding:35px 0 60px;
+}
+
+.navbar{
+    background:#0b111b;
+    border:1px solid #16315c;
+    border-radius:8px;
+    padding:15px;
+    margin-bottom:20px;
+}
+
+.navbar a{
+    color:#4d9dff;
+    text-decoration:none;
+    font-weight:bold;
+    margin:0 5px;
+}
+
+.navbar a:hover{
+    color:white;
+}
+
+.back-link{
+    display:inline-block;
+    margin-bottom:20px;
+    color:#4d9dff;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.hero{
+    background:
+        linear-gradient(rgba(2,7,14,.80),rgba(2,7,14,.95)),
+        url('arv-photo.png');
+
+    background-size:cover;
+    background-position:center;
+
+    border:1px solid #16315c;
+    border-radius:12px;
+
+    padding:55px 30px;
+    text-align:center;
+}
+
+.hero h1{
+    margin:0 0 10px;
+    color:#4d9dff;
+    font-size:2.5rem;
+}
+
+.hero p{
+    margin:5px 0;
+    color:#d3dbea;
+}
+
+.badge{
+    display:inline-block;
+    margin-top:15px;
+    padding:7px 14px;
+
+    background:#10203a;
+    border:1px solid #2c65a8;
+    border-radius:20px;
+
+    color:#8fc2ff;
+    font-weight:bold;
+}
+
+h1,
+h2,
+h3{
+    color:#4d9dff;
+}
+
+.card{
+    background:#0b111b;
+    border:1px solid #16315c;
+    border-radius:9px;
+
+    padding:24px;
+    margin-top:20px;
+
+    transition:.25s;
+}
+
+.card:hover{
+    border-color:#4d9dff;
+}
+
+.objective-grid,
+.role-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:14px;
+    margin-top:18px;
+}
+
+.objective,
+.role-box{
+    background:#08111d;
+    border:1px solid #16315c;
+    border-radius:8px;
+    padding:16px;
+}
+
+.objective strong,
+.role-box strong{
+    display:block;
+    color:#4d9dff;
+    margin-bottom:5px;
+}
+
+.contents-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:12px;
+    margin-top:15px;
+}
+
+.contents-link{
+    display:block;
+    background:#08111d;
+    border:1px solid #16315c;
+    border-radius:7px;
+    padding:14px;
+    color:white;
+    text-decoration:none;
+    transition:.25s;
+}
+
+.contents-link:hover{
+    border-color:#4d9dff;
+    background:#0d1828;
+}
+
+.contents-link strong{
+    color:#4d9dff;
+}
+
+.info-box{
+    background:#08111d;
+    border-left:5px solid #4d9dff;
+    padding:18px;
+    margin-top:18px;
+    border-radius:6px;
+}
+
+.warning{
+    border-left:5px solid #e3a629;
+}
+
+.success{
+    border-left:5px solid #45b36b;
+}
+
+.danger{
+    border-left:5px solid #d84d5f;
+}
+
+ul,
+ol{
+    padding-left:24px;
+}
+
+li{
+    margin-bottom:8px;
+}
+
+strong{
+    color:#dceaff;
+}
+
+.button-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:25px;
+}
+
+.button{
+    display:inline-block;
+    padding:12px 18px;
+
+    background:#4d9dff;
+    color:#05080d;
+
+    border-radius:6px;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.button:hover{
+    background:#77b5ff;
+}
+
+.button.secondary{
+    background:#101b2c;
+    color:#4d9dff;
+    border:1px solid #24538b;
+}
+
+.footer{
+    margin-top:30px;
+    padding-top:20px;
+    border-top:1px solid #16315c;
+    color:#8f9bad;
+    text-align:center;
+    font-size:.9rem;
+}
+
+@media(max-width:650px){
+
+    .page-container{
+        width:92%;
+    }
+
+    .hero{
+        padding:40px 18px;
+    }
+
+    .hero h1{
+        font-size:2rem;
+    }
+
+    .navbar{
+        line-height:2;
+    }
+
+    .button{
+        width:100%;
+        text-align:center;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="page-container">
+
+<nav class="navbar">
+
+    <a href="aru-members.html">
+        Internal Database
+    </a>
+
+    |
+
+    <a href="academy.html">
+        ARU Academy
+    </a>
+
+    |
+
+    <a href="student-handbook.html">
+        Student Handbook
+    </a>
+
+    |
+
+    <a href="module9.html">
+        Module 9
+    </a>
+
+    |
+
+    <a href="module10.html" style="color:white;">
+        Module 10
+    </a>
+
+</nav>
+
+<a class="back-link" href="academy.html">
+    ← Return to ARU Academy
+</a>
+
+<header class="hero">
+
+    <h1>Module 10</h1>
+
+    <p>Building Operations & CQB</p>
+
+    <p>ARU Academy — Student Learning & Reference</p>
+
+    <span class="badge">
+        Tactical Operations
+    </span>
+
+</header>
+
+<section class="card">
+
+    <h2>Module Overview</h2>
+
+    <p>
+        Module 10 introduces students to the principles of operating as part of
+        an armed team within buildings and other confined environments.
+    </p>
+
+    <p>
+        The focus of this module is communication, team awareness, role discipline,
+        controlled movement, information handling, threat reassessment and safe
+        integration with specialist resources.
+    </p>
+
+    <p>
+        This page is designed as pre-learning and as a reference officers can return
+        to later.
+    </p>
+
+    <p>
+        Exact entry techniques, room-clearing patterns, weapon manipulation,
+        physical positioning and real-world CQB methods are taught only through
+        approved Code44 practical training.
+    </p>
+
+</section>
+
+<section class="card">
+
+    <h2>Contents</h2>
+
+    <div class="contents-grid">
+
+        <a class="contents-link" href="#objectives">
+            <strong>1.</strong> Learning Objectives
+        </a>
+
+        <a class="contents-link" href="#building">
+            <strong>2.</strong> Building Operations
+        </a>
+
+        <a class="contents-link" href="#cqb">
+            <strong>3.</strong> CQB Principles
+        </a>
+
+        <a class="contents-link" href="#information">
+            <strong>4.</strong> Information Before Entry
+        </a>
+
+        <a class="contents-link" href="#roles">
+            <strong>5.</strong> Team Roles
+        </a>
+
+        <a class="contents-link" href="#communication">
+            <strong>6.</strong> Communication
+        </a>
+
+        <a class="contents-link" href="#movement">
+            <strong>7.</strong> Team Movement
+        </a>
+
+        <a class="contents-link" href="#awareness">
+            <strong>8.</strong> Awareness & Cross-Team Safety
+        </a>
+
+        <a class="contents-link" href="#civilians">
+            <strong>9.</strong> Civilians & Unknown Persons
+        </a>
+
+        <a class="contents-link" href="#shield">
+            <strong>10.</strong> Ballistic Shield
+        </a>
+
+        <a class="contents-link" href="#breaching">
+            <strong>11.</strong> Breaching Capability
+        </a>
+
+        <a class="contents-link" href="#specialist">
+            <strong>12.</strong> Specialist Integration
+        </a>
+
+        <a class="contents-link" href="#changes">
+            <strong>13.</strong> Changing Circumstances
+        </a>
+
+        <a class="contents-link" href="#resolution">
+            <strong>14.</strong> Resolution & Handover
+        </a>
+
+        <a class="contents-link" href="#practical">
+            <strong>15.</strong> Practical Training
+        </a>
+
+        <a class="contents-link" href="#revision">
+            <strong>16.</strong> Revision
+        </a>
+
+    </div>
+
+</section>
+
+<section class="card" id="objectives">
+
+    <h2>1. Learning Objectives</h2>
+
+    <div class="objective-grid">
+
+        <div class="objective">
+
+            <strong>Team Operations</strong>
+
+            Understand that building operations depend on coordinated team activity.
+
+        </div>
+
+        <div class="objective">
+
+            <strong>Communication</strong>
+
+            Understand the importance of clear information sharing within confined environments.
+
+        </div>
+
+        <div class="objective">
+
+            <strong>Awareness</strong>
+
+            Maintain awareness of team members, civilians, subjects and changing risks.
+
+        </div>
+
+        <div class="objective">
+
+            <strong>Role Discipline</strong>
+
+            Understand and perform the responsibility assigned within the team.
+
+        </div>
+
+        <div class="objective">
+
+            <strong>Reassessment</strong>
+
+            Recognise that information and threat can change as the operation develops.
+
+        </div>
+
+        <div class="objective">
+
+            <strong>Accountability</strong>
+
+            Explain decisions and actions taken during a building operation.
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="card" id="building">
+
+    <h2>2. Building Operations</h2>
+
+    <p>
+        Buildings create additional complexity during armed incidents.
+    </p>
+
+    <p>
+        Officers may have limited information regarding who is inside, where
+        subjects are located and whether members of the public remain within
+        the location.
+    </p>
+
+    <p>
+        Building operations may involve:
+    </p>
+
+    <ul>
+
+        <li>Searching for an armed subject.</li>
+
+        <li>Locating vulnerable persons.</li>
+
+        <li>Supporting a high-risk warrant.</li>
+
+        <li>Responding to an immediate threat.</li>
+
+        <li>Clearing a location after an incident.</li>
+
+        <li>Supporting specialist operations.</li>
+
+    </ul>
+
+    <div class="info-box">
+
+        <strong>Key Principle</strong>
+
+        A building operation is not simply about getting inside.
+        The objective is to manage the threat while maintaining control,
+        communication and team awareness.
+
+    </div>
+
+</section>
+
+<section class="card" id="cqb">
+
+    <h2>3. CQB Principles</h2>
+
+    <p>
+        Close-quarters operations involve officers working within confined
+        environments where situations can develop quickly.
+    </p>
+
+    <p>
+        Students should understand the following core principles:
+    </p>
+
+    <ul>
+
+        <li>Work as a team rather than as individuals.</li>
+
+        <li>Understand the operational objective.</li>
+
+        <li>Know your assigned responsibility.</li>
+
+        <li>Maintain awareness of other officers.</li>
+
+        <li>Communicate relevant changes.</li>
+
+        <li>Do not rush simply to appear confident.</li>
+
+        <li>Continually reassess the threat.</li>
+
+        <li>Recognise civilians and uninvolved persons.</li>
+
+        <li>Follow trainer or command direction.</li>
+
+    </ul>
+
+    <div class="info-box warning">
+
+        <strong>Important</strong>
+
+        This module explains Code44 principles only. Practical CQB procedure,
+        exact positioning and entry technique must be learned from an approved trainer.
+
+    </div>
+
+</section>
+
+<section class="card" id="information">
+
+    <h2>4. Information Before Entry</h2>
+
+    <p>
+        Before entering or searching a building, students should understand as
+        much relevant information as possible.
+    </p>
+
+    <p>This may include:</p>
+
+    <ul>
+
+        <li>The operational objective.</li>
+
+        <li>Subject identity and description.</li>
+
+        <li>Known or suspected weapons.</li>
+
+        <li>Number of subjects.</li>
+
+        <li>Known civilians or occupants.</li>
+
+        <li>Vulnerable persons or hostages.</li>
+
+        <li>Known location information.</li>
+
+        <li>Information regarding entrances or access.</li>
+
+        <li>Relevant intelligence.</li>
+
+        <li>Available specialist resources.</li>
+
+        <li>Medical considerations.</li>
+
+        <li>Important unknowns.</li>
+
+    </ul>
+
+    <p>
+        Students must distinguish between information that is
+        <strong>confirmed</strong>, <strong>reported</strong> or
+        <strong>unknown</strong>.
+    </p>
+
+</section>
+
+<section class="card warning">
+
+    <h2>Never Create Certainty Where It Does Not Exist</h2>
+
+    <p>
+        If officers do not know how many subjects are inside, they should not
+        behave as though the number is confirmed.
+    </p>
+
+    <p>
+        If a firearm has only been reported, officers should understand the
+        difference between the report and personal confirmation.
+    </p>
+
+    <p>
+        Unknown information should remain part of the risk assessment.
+    </p>
+
+</section>
+
+<section class="card" id="roles">
+
+    <h2>5. Team Roles</h2>
+
+    <p>
+        Exact team structures may change depending on the scenario, number of
+        available officers and operational objective.
+    </p>
+
+    <div class="role-grid">
+
+        <div class="role-box">
+
+            <strong>Team Lead</strong>
+
+            Supports coordination and ensures the team understands the immediate objective.
+
+        </div>
+
+        <div class="role-box">
+
+            <strong>Team Member</strong>
+
+            Performs the assigned task while maintaining awareness and communication.
+
+        </div>
+
+        <div class="role-box">
+
+            <strong>Shield Capability</strong>
+
+            May provide additional protection where authorised and suitable.
+
+        </div>
+
+        <div class="role-box">
+
+            <strong>Breaching Capability</strong>
+
+            May assist with authorised access where the operational plan requires it.
+
+        </div>
+
+        <div class="role-box">
+
+            <strong>Containment</strong>
+
+            May remain outside or around the location to support wider control.
+
+        </div>
+
+        <div class="role-box">
+
+            <strong>Firearms Command</strong>
+
+            Provides tactical oversight and operational direction where required.
+
+        </div>
+
+    </div>
+
+    <p>
+        Students should understand their own responsibility while remaining aware
+        of the wider team.
+    </p>
+
+</section>
+
+<section class="card" id="communication">
+
+    <h2>6. Communication</h2>
+
+    <p>
+        Communication inside buildings should be relevant, controlled and timely.
+    </p>
+
+    <p>Useful information may include:</p>
+
+    <ul>
+
+        <li>Subject sightings.</li>
+
+        <li>Civilians located.</li>
+
+        <li>New weapon information.</li>
+
+        <li>Changes in subject behaviour.</li>
+
+        <li>Team member movement.</li>
+
+        <li>Changes to the operational objective.</li>
+
+        <li>Medical emergencies.</li>
+
+        <li>Loss of communication or technical issues.</li>
+
+        <li>Areas requiring further attention.</li>
+
+        <li>Information requiring command awareness.</li>
+
+    </ul>
+
+    <p>
+        Officers should avoid unnecessary communication that prevents important
+        information from being heard.
+    </p>
+
+</section>
+
+<section class="card" id="movement">
+
+    <h2>7. Team Movement</h2>
+
+    <p>
+        Movement during building operations should be controlled and coordinated.
+    </p>
+
+    <p>
+        Students should understand that:
+    </p>
+
+    <ul>
+
+        <li>The team should maintain a shared understanding of the immediate objective.</li>
+
+        <li>Officers should remain aware of where other team members are.</li>
+
+        <li>Individuals should not unnecessarily separate from the team.</li>
+
+        <li>Significant movement or changes should be communicated.</li>
+
+        <li>Officers should avoid rushing ahead of the rest of the team.</li>
+
+        <li>Confusion should be communicated rather than hidden.</li>
+
+        <li>Trainer safety commands must be followed immediately.</li>
+
+    </ul>
+
+    <div class="info-box">
+
+        <strong>Controlled Does Not Mean Slow</strong>
+
+        The aim is coordinated and deliberate performance rather than unnecessary speed.
+
+    </div>
+
+</section>
+
+<section class="card" id="awareness">
+
+    <h2>8. Awareness & Cross-Team Safety</h2>
+
+    <p>
+        Students must maintain awareness of more than the suspected threat.
+    </p>
+
+    <p>Consider:</p>
+
+    <ul>
+
+        <li>Where are other ARU officers?</li>
+
+        <li>Are response officers or other units nearby?</li>
+
+        <li>Have civilians entered the area?</li>
+
+        <li>Has the subject moved?</li>
+
+        <li>Has the team's role changed?</li>
+
+        <li>Has another team entered the location?</li>
+
+        <li>Has radio information changed?</li>
+
+        <li>Is the current plan still appropriate?</li>
+
+    </ul>
+
+    <p>
+        Tunnel vision is a major development point trainers will assess during
+        practical CQB scenarios.
+    </p>
+
+</section>
+
+<section class="card" id="civilians">
+
+    <h2>9. Civilians & Unknown Persons</h2>
+
+    <p>
+        Not every person located inside a building should automatically be treated
+        as the armed subject.
+    </p>
+
+    <p>
+        Officers may encounter:
+    </p>
+
+    <ul>
+
+        <li>Members of the public.</li>
+
+        <li>Employees.</li>
+
+        <li>Residents.</li>
+
+        <li>Victims.</li>
+
+        <li>Witnesses.</li>
+
+        <li>Hostages.</li>
+
+        <li>Additional suspects.</li>
+
+        <li>Persons whose involvement is initially unknown.</li>
+
+    </ul>
+
+    <p>
+        Students should assess behaviour and available information rather than
+        applying assumptions automatically.
+    </p>
+
+</section>
+
+<section class="card" id="shield">
+
+    <h2>10. Ballistic Shield</h2>
+
+    <p>
+        ARU has access to a ballistic shield capability.
+    </p>
+
+    <p>
+        The shield may be incorporated into selected Code44 scenarios where its
+        use supports the operational objective.
+    </p>
+
+    <p>
+        Students should understand that:
+    </p>
+
+    <ul>
+
+        <li>The shield is a specialist resource.</li>
+
+        <li>Its use should support the operational objective.</li>
+
+        <li>The presence of a shield does not remove the need for communication.</li>
+
+        <li>The wider team must understand how the shield is being incorporated.</li>
+
+        <li>Students should follow trainer direction during shield exercises.</li>
+
+    </ul>
+
+    <p>
+        Detailed shield positioning and movement are taught practically.
+    </p>
+
+</section>
+
+<section class="card" id="breaching">
+
+    <h2>11. Breaching Capability</h2>
+
+    <p>
+        Code44 ARU has access to the Remington shotgun as a specialist
+        breaching capability.
+    </p>
+
+    <p>
+        It is not used as the standard operational shotgun for routine armed incidents.
+    </p>
+
+    <p>
+        During building operations, breaching may be considered where authorised
+        access is required and the operational plan supports the capability.
+    </p>
+
+    <p>
+        Students should understand:
+    </p>
+
+    <ul>
+
+        <li>Breaching is a specialist responsibility.</li>
+
+        <li>The need for access should be established before use.</li>
+
+        <li>The team should understand when breaching is part of the plan.</li>
+
+        <li>Communication is required before the operation progresses.</li>
+
+        <li>Server-specific breaching mechanics are taught practically.</li>
+
+    </ul>
+
+    <div class="info-box warning">
+
+        <strong>Specialist Capability</strong>
+
+        Module 10 does not independently qualify a student as a breaching specialist.
+
+    </div>
+
+</section>
+
+<section class="card" id="specialist">
+
+    <h2>12. Specialist Integration</h2>
+
+    <p>
+        Building operations may involve additional specialist capabilities.
+    </p>
+
+    <div class="role-grid">
+
+        <div class="role-box">
+
+            <strong>K9</strong>
+
+            May support searches, tracking or other authorised tasks.
+
+        </div>
+
+        <div class="role-box">
+
+            <strong>NPAS</strong>
+
+            May provide external observation and situational awareness.
+
+        </div>
+
+        <div class="role-box">
+
+            <strong>Ballistic Shield</strong>
+
+            May provide additional protection within selected operations.
+
+        </div>
+
+        <div class="role-box">
+
+            <strong>Breaching</strong>
+
+            May provide authorised access capability.
+
+        </div>
+
+        <div class="role-box">
+
+            <strong>Medical Capability</strong>
+
+            Supports immediate casualty management where required.
+
+        </div>
+
+        <div class="role-box">
+
+            <strong>Response Officers</strong>
+
+            May support cordons, evacuation, witnesses and wider scene management.
+
+        </div>
+
+    </div>
+
+    <div class="info-box">
+
+        <strong>Resource Selection</strong>
+
+        Specialist resources should be requested because they solve an operational
+        problem, not simply because they are available.
+
+    </div>
+
+</section>
+
+<section class="card" id="changes">
+
+    <h2>13. Changing Circumstances</h2>
+
+    <p>
+        Building operations require continuous reassessment.
+    </p>
+
+    <p>The plan may need to change if:</p>
+
+    <ul>
+
+        <li>The subject moves location.</li>
+
+        <li>An additional subject is identified.</li>
+
+        <li>A civilian or hostage is located.</li>
+
+        <li>A weapon is confirmed or disproved.</li>
+
+        <li>The subject begins complying.</li>
+
+        <li>The subject becomes more threatening.</li>
+
+        <li>A team member loses communication.</li>
+
+        <li>A server mechanic fails.</li>
+
+        <li>A casualty occurs.</li>
+
+        <li>Command changes the objective.</li>
+
+        <li>Information indicates the current plan is no longer suitable.</li>
+
+    </ul>
+
+    <div class="info-box danger">
+
+        <strong>Key Principle</strong>
+
+        Do not continue a plan simply because the team has already started it.
+        New information should result in new assessment.
+
+    </div>
+
+</section>
+
+<section class="card">
+
+    <h2>Immediate Threat vs Planned Search</h2>
+
+    <p>
+        Not every building operation has the same urgency.
+    </p>
+
+    <p>
+        A scenario involving an immediate ongoing threat may require a very different
+        response from a controlled search where containment has already been established.
+    </p>
+
+    <p>
+        Students should understand the difference between:
+    </p>
+
+    <ul>
+
+        <li>An immediate threat requiring urgent action within the scenario.</li>
+
+        <li>A controlled search where time is available.</li>
+
+        <li>A planned warrant operation.</li>
+
+        <li>A post-incident building search.</li>
+
+    </ul>
+
+    <p>
+        The operational response should reflect the actual circumstances rather
+        than applying one fixed CQB response to everything.
+    </p>
+
+</section>
+
+<section class="card" id="resolution">
+
+    <h2>14. Resolution & Handover</h2>
+
+    <p>
+        Once the immediate threat is controlled, officers should transition into
+        the next stage of the incident.
+    </p>
+
+    <p>This may include:</p>
+
+    <ul>
+
+        <li>Confirming subject status.</li>
+
+        <li>Confirming whether all subjects are accounted for.</li>
+
+        <li>Locating civilians or vulnerable persons.</li>
+
+        <li>Identifying medical requirements.</li>
+
+        <li>Updating firearms command and Force Control.</li>
+
+        <li>Protecting the scene.</li>
+
+        <li>Identifying witnesses.</li>
+
+        <li>Handing over to investigators or response officers.</li>
+
+        <li>Accounting for ARU equipment.</li>
+
+    </ul>
+
+</section>
+
+<section class="card">
+
+    <h2>Post-Operation Accountability</h2>
+
+    <p>
+        Students should be able to explain:
+    </p>
+
+    <ul>
+
+        <li>What information was available.</li>
+
+        <li>What remained uncertain.</li>
+
+        <li>What threat they believed existed.</li>
+
+        <li>What their assigned role was.</li>
+
+        <li>What they personally observed.</li>
+
+        <li>What they communicated.</li>
+
+        <li>Why they made particular decisions.</li>
+
+        <li>What changed during the operation.</li>
+
+        <li>How their response changed.</li>
+
+    </ul>
+
+    <p>
+        Honest reflection is an important part of ARU development.
+    </p>
+
+</section>
+
+<section class="card success" id="practical">
+
+    <h2>15. Practical Training</h2>
+
+    <p>
+        Module 10 is primarily a practical training module.
+    </p>
+
+    <p>
+        Students will apply the principles within controlled Code44 scenarios.
+    </p>
+
+    <p>Practical training may include:</p>
+
+    <ul>
+
+        <li>Team briefing exercises.</li>
+
+        <li>Building familiarisation.</li>
+
+        <li>Team communication exercises.</li>
+
+        <li>Controlled search scenarios.</li>
+
+        <li>Multiple-room environments.</li>
+
+        <li>Civilians within the location.</li>
+
+        <li>Multiple subjects.</li>
+
+        <li>Changing weapon information.</li>
+
+        <li>Ballistic shield familiarisation.</li>
+
+        <li>Breaching-capability familiarisation.</li>
+
+        <li>K9 integration.</li>
+
+        <li>Casualty scenarios.</li>
+
+        <li>Changing operational objectives.</li>
+
+        <li>Post-operation handover.</li>
+
+    </ul>
+
+    <p>
+        Scenarios will vary. Students should not attempt to memorise a single
+        “correct” solution.
+    </p>
+
+</section>
+
+<section class="card warning">
+
+    <h2>What Trainers Will Assess</h2>
+
+    <p>Students should demonstrate:</p>
+
+    <ul>
+
+        <li>Professional preparation.</li>
+
+        <li>Understanding of the operational objective.</li>
+
+        <li>Controlled team behaviour.</li>
+
+        <li>Communication.</li>
+
+        <li>Awareness of other officers.</li>
+
+        <li>Recognition of civilians and unknown persons.</li>
+
+        <li>Information handling.</li>
+
+        <li>Threat reassessment.</li>
+
+        <li>Ability to follow direction.</li>
+
+        <li>Appropriate use of specialist resources.</li>
+
+        <li>Ability to recognise when the plan should change.</li>
+
+        <li>Accountability during debrief.</li>
+
+    </ul>
+
+</section>
+
+<section class="card" id="revision">
+
+    <h2>16. Module 10 Key Revision Points</h2>
+
+    <ul>
+
+        <li>Building operations are team operations.</li>
+
+        <li>The operational objective should be understood before action begins.</li>
+
+        <li>Students must distinguish confirmed information from assumptions.</li>
+
+        <li>Each officer should understand their assigned responsibility.</li>
+
+        <li>Communication should remain clear and relevant.</li>
+
+        <li>Controlled movement is more important than unnecessary speed.</li>
+
+        <li>Maintain awareness of other officers and units.</li>
+
+        <li>Not every person inside a building is automatically a suspect.</li>
+
+        <li>The ballistic shield is a specialist capability.</li>
+
+        <li>The Remington is used as a specialist breaching platform.</li>
+
+        <li>Specialist resources should support the operational objective.</li>
+
+        <li>Immediate threats and planned searches are not the same.</li>
+
+        <li>The plan must change when circumstances materially change.</li>
+
+        <li>Resolution includes medical care, scene management and handover.</li>
+
+        <li>Officers must be capable of explaining their decisions afterwards.</li>
+
+    </ul>
+
+</section>
+
+<section class="card warning">
+
+    <h2>Student Reminder</h2>
+
+    <p>
+        This student module is intended to support Code44 roleplay training and
+        provide a reference after qualification.
+    </p>
+
+    <p>
+        It does not independently qualify a student to conduct or instruct
+        practical CQB, breaching or specialist building-entry procedures.
+    </p>
+
+    <p>
+        Practical techniques must be demonstrated, practised and assessed by an
+        approved ARU trainer using the current Code44 server mechanics.
+    </p>
+
+</section>
+
+<section class="card">
+
+    <h2>Module Completion</h2>
+
+    <p>
+        Before progressing from Module 10, students may be required to complete:
+    </p>
+
+    <ul>
+
+        <li>Module 10 pre-learning.</li>
+
+        <li>Trainer questioning.</li>
+
+        <li>A short knowledge check.</li>
+
+        <li>Team communication exercises.</li>
+
+        <li>Building-operation practical training.</li>
+
+        <li>CQB scenario training.</li>
+
+        <li>Specialist-resource familiarisation.</li>
+
+        <li>Post-operation handover.</li>
+
+        <li>Trainer debrief and sign-off.</li>
+
+    </ul>
+
+    <div class="button-row">
+
+        <a class="button"
+           href="PASTE-MODULE-10-KNOWLEDGE-CHECK-LINK-HERE"
+           target="_blank">
+
+            Complete Module 10 Knowledge Check
+
+        </a>
+
+        <a class="button secondary"
+           href="academy.html">
+
+            Return to Academy
+
+        </a>
+
+    </div>
+
+</section>
+
+<section class="card success">
+
+    <h2>Looking Ahead — Module 11</h2>
+
+    <p>
+        Module 11 will move into:
+    </p>
+
+    <h3>Complex Armed Incidents & Integrated Operations</h3>
+
+    <p>
+        Students will combine the knowledge developed throughout the Academy
+        during larger incidents involving multiple resources, changing threats
+        and specialist ARU capabilities.
+    </p>
+
+</section>
+
+<footer class="footer">
+
+    Code44 Police Service • Armed Response Unit Academy<br>
+
+    Module 10 — Building Operations & CQB
+
+</footer>
+
+</div>
+
+</body>
+
+</html>
