@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Module 13 - Final Assessment & Qualification | ARU Academy</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    background:#05080d;
+    color:white;
+    font-family:Segoe UI,Arial,sans-serif;
+    line-height:1.7;
+}
+
+.page-container{
+    width:90%;
+    max-width:1100px;
+    margin:0 auto;
+    padding:35px 0 60px;
+}
+
+.navbar{
+    background:#0b111b;
+    border:1px solid #16315c;
+    border-radius:8px;
+    padding:15px;
+    margin-bottom:20px;
+}
+
+.navbar a{
+    color:#4d9dff;
+    text-decoration:none;
+    font-weight:bold;
+    margin:0 5px;
+}
+
+.navbar a:hover{
+    color:white;
+}
+
+.back-link{
+    display:inline-block;
+    margin-bottom:20px;
+    color:#4d9dff;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.hero{
+    background:
+        linear-gradient(rgba(2,7,14,.80),rgba(2,7,14,.95)),
+        url('arv-photo.png');
+
+    background-size:cover;
+    background-position:center;
+
+    border:1px solid #16315c;
+    border-radius:12px;
+
+    padding:55px 30px;
+    text-align:center;
+}
+
+.hero h1{
+    margin:0 0 10px;
+    color:#4d9dff;
+    font-size:2.5rem;
+}
+
+.hero p{
+    margin:5px 0;
+    color:#d3dbea;
+}
+
+.badge{
+    display:inline-block;
+    margin-top:15px;
+    padding:7px 14px;
+
+    background:#10203a;
+    border:1px solid #2c65a8;
+    border-radius:20px;
+
+    color:#8fc2ff;
+    font-weight:bold;
+}
+
+h1,
+h2,
+h3{
+    color:#4d9dff;
+}
+
+.card{
+    background:#0b111b;
+    border:1px solid #16315c;
+    border-radius:9px;
+
+    padding:24px;
+    margin-top:20px;
+
+    transition:.25s;
+}
+
+.card:hover{
+    border-color:#4d9dff;
+}
+
+.standard-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:14px;
+    margin-top:18px;
+}
+
+.standard-box{
+    background:#08111d;
+    border:1px solid #16315c;
+    border-radius:8px;
+    padding:16px;
+}
+
+.standard-box strong{
+    display:block;
+    color:#4d9dff;
+    margin-bottom:5px;
+}
+
+.info-box{
+    background:#08111d;
+    border-left:5px solid #4d9dff;
+    padding:18px;
+    margin-top:18px;
+    border-radius:6px;
+}
+
+.warning{
+    border-left:5px solid #e3a629;
+}
+
+.success{
+    border-left:5px solid #45b36b;
+}
+
+.danger{
+    border-left:5px solid #d84d5f;
+}
+
+ul,
+ol{
+    padding-left:24px;
+}
+
+li{
+    margin-bottom:8px;
+}
+
+strong{
+    color:#dceaff;
+}
+
+.button-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:25px;
+}
+
+.button{
+    display:inline-block;
+    padding:12px 18px;
+
+    background:#4d9dff;
+    color:#05080d;
+
+    border-radius:6px;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.button:hover{
+    background:#77b5ff;
+}
+
+.button.secondary{
+    background:#101b2c;
+    color:#4d9dff;
+    border:1px solid #24538b;
+}
+
+.footer{
+    margin-top:30px;
+    padding-top:20px;
+    border-top:1px solid #16315c;
+    color:#8f9bad;
+    text-align:center;
+    font-size:.9rem;
+}
+
+@media(max-width:650px){
+
+    .page-container{
+        width:92%;
+    }
+
+    .hero{
+        padding:40px 18px;
+    }
+
+    .hero h1{
+        font-size:2rem;
+    }
+
+    .navbar{
+        line-height:2;
+    }
+
+    .button{
+        width:100%;
+        text-align:center;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="page-container">
+
+<nav class="navbar">
+
+    <a href="aru-members.html">
+        Internal Database
+    </a>
+
+    |
+
+    <a href="academy.html">
+        ARU Academy
+    </a>
+
+    |
+
+    <a href="student-handbook.html">
+        Student Handbook
+    </a>
+
+    |
+
+    <a href="module12.html">
+        Module 12
+    </a>
+
+    |
+
+    <a href="module13.html" style="color:white;">
+        Module 13
+    </a>
+
+</nav>
+
+<a class="back-link" href="academy.html">
+    ← Return to ARU Academy
+</a>
+
+<header class="hero">
+
+    <h1>Module 13</h1>
+
+    <p>Final Assessment & Qualification</p>
+
+    <p>ARU Academy — Final Stage</p>
+
+    <span class="badge">
+        Final Assessment
+    </span>
+
+</header>
+
+<section class="card">
+
+    <h2>Module Overview</h2>
+
+    <p>
+        Module 13 is the final stage of the ARU Academy.
+    </p>
+
+    <p>
+        Students progressing to this stage have completed the required development
+        modules and have been recommended as ready for final assessment.
+    </p>
+
+    <p>
+        The purpose of Module 13 is to determine whether the student can independently
+        and consistently demonstrate the standards expected of a qualified Code44
+        Armed Response Unit officer.
+    </p>
+
+</section>
+
+<section class="card success">
+
+    <h2>Final Assessment Principle</h2>
+
+    <p>
+        The final assessment is not designed to catch students out.
+    </p>
+
+    <p>
+        It is designed to confirm that the knowledge, professional standards,
+        communication, decision-making and practical abilities developed throughout
+        the Academy can be applied consistently without excessive trainer assistance.
+    </p>
+
+</section>
+
+<section class="card">
+
+    <h2>Assessment Areas</h2>
+
+    <div class="standard-grid">
+
+        <div class="standard-box">
+
+            <strong>Professionalism</strong>
+
+            Professional behaviour, attitude and conduct throughout the assessment.
+
+        </div>
+
+        <div class="standard-box">
+
+            <strong>Integrity</strong>
+
+            Honest communication, accountability and willingness to acknowledge mistakes.
+
+        </div>
+
+        <div class="standard-box">
+
+            <strong>Knowledge</strong>
+
+            Understanding of the core learning developed throughout the Academy.
+
+        </div>
+
+        <div class="standard-box">
+
+            <strong>Firearms Safety</strong>
+
+            Safe and controlled handling within Code44 training and operational scenarios.
+
+        </div>
+
+        <div class="standard-box">
+
+            <strong>Communication</strong>
+
+            Clear, relevant and timely communication.
+
+        </div>
+
+        <div class="standard-box">
+
+            <strong>Teamwork</strong>
+
+            Effective contribution to ARV crew and wider team performance.
+
+        </div>
+
+        <div class="standard-box">
+
+            <strong>Decision-Making</strong>
+
+            Reasonable and explainable decisions based on the information available.
+
+        </div>
+
+        <div class="standard-box">
+
+            <strong>Reassessment</strong>
+
+            Recognition and response to changing circumstances.
+
+        </div>
+
+        <div class="standard-box">
+
+            <strong>Operational Awareness</strong>
+
+            Awareness of subjects, colleagues, civilians, resources and the wider incident.
+
+        </div>
+
+        <div class="standard-box">
+
+            <strong>Accountability</strong>
+
+            Ability to explain decisions and actions during post-assessment debrief.
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="card">
+
+    <h2>Assessment Format</h2>
+
+    <p>
+        The exact assessment format is determined by the ARU training team.
+    </p>
+
+    <p>
+        Students may be assessed through a combination of:
+    </p>
+
+    <ul>
+
+        <li>Knowledge questioning.</li>
+
+        <li>A written or online knowledge assessment.</li>
+
+        <li>Practical ARU scenarios.</li>
+
+        <li>ARV deployment scenarios.</li>
+
+        <li>Vehicle-related incidents.</li>
+
+        <li>Containment or search scenarios.</li>
+
+        <li>Building-operation scenarios.</li>
+
+        <li>Integrated multi-unit incidents.</li>
+
+        <li>Post-incident handovers.</li>
+
+        <li>Trainer-led debrief questioning.</li>
+
+    </ul>
+
+    <p>
+        Not every student will necessarily receive the exact same scenario.
+    </p>
+
+</section>
+
+<section class="card warning">
+
+    <h2>Assessment Scenarios</h2>
+
+    <p>
+        Final assessment scenarios are restricted.
+    </p>
+
+    <p>
+        Students will not be provided with scenario details, trainer injects,
+        expected responses or marking guidance in advance.
+    </p>
+
+    <p>
+        This ensures that the assessment measures understanding and decision-making
+        rather than the ability to memorise a particular scenario.
+    </p>
+
+</section>
+
+<section class="card">
+
+    <h2>What Students Should Revise</h2>
+
+    <p>
+        Before attending the final assessment, students should revisit any Academy
+        area they are uncertain about.
+    </p>
+
+    <p>
+        Revision should include:
+    </p>
+
+    <ul>
+
+        <li>ARU professional standards.</li>
+
+        <li>Integrity and accountability.</li>
+
+        <li>Decision-making and continuous reassessment.</li>
+
+        <li>Reported versus confirmed information.</li>
+
+        <li>ARU equipment, PPE and vehicle responsibilities.</li>
+
+        <li>Firearms safety and accountability.</li>
+
+        <li>ARV crew responsibilities.</li>
+
+        <li>Armed incident deployment principles.</li>
+
+        <li>Vehicle-incident principles.</li>
+
+        <li>Containment and search principles.</li>
+
+        <li>High-risk warrant awareness.</li>
+
+        <li>Building-operation and CQB principles.</li>
+
+        <li>Multi-unit and specialist-resource integration.</li>
+
+        <li>Casualty awareness.</li>
+
+        <li>Operational handovers and debrief accountability.</li>
+
+    </ul>
+
+</section>
+
+<section class="card">
+
+    <h2>Independent Performance</h2>
+
+    <p>
+        Earlier Academy modules are developmental and trainers may provide coaching
+        throughout practical exercises.
+    </p>
+
+    <p>
+        During final assessment, students should expect less trainer assistance.
+    </p>
+
+    <p>
+        Students are expected to:
+    </p>
+
+    <ul>
+
+        <li>Ask appropriate questions where information is unclear.</li>
+
+        <li>Recognise important information independently.</li>
+
+        <li>Communicate without constant prompting.</li>
+
+        <li>Work effectively with their crew.</li>
+
+        <li>Recognise when circumstances change.</li>
+
+        <li>Adapt decisions appropriately.</li>
+
+        <li>Acknowledge uncertainty where it exists.</li>
+
+        <li>Explain their actions afterwards.</li>
+
+    </ul>
+
+</section>
+
+<section class="card success">
+
+    <h2>Mistakes During Assessment</h2>
+
+    <p>
+        A single mistake does not automatically mean assessment failure.
+    </p>
+
+    <p>
+        Trainers will consider the seriousness of the issue, the circumstances,
+        whether the student recognised it and how they responded afterwards.
+    </p>
+
+    <p>
+        Students should not attempt to hide mistakes or continue with an unsuitable
+        decision simply because the assessment is underway.
+    </p>
+
+    <p>
+        Honest reassessment and correction may itself demonstrate good judgement.
+    </p>
+
+</section>
+
+<section class="card">
+
+    <h2>Assessment Conduct</h2>
+
+    <p>
+        Students must maintain the same professional standards expected throughout
+        the Academy.
+    </p>
+
+    <p>
+        This includes:
+    </p>
+
+    <ul>
+
+        <li>Following trainer instructions.</li>
+
+        <li>Maintaining professional conduct.</li>
+
+        <li>Respecting other students and roleplayers.</li>
+
+        <li>Operating within Code44 server rules.</li>
+
+        <li>Maintaining firearms and equipment discipline.</li>
+
+        <li>Being honest during debrief.</li>
+
+        <li>Not attempting to obtain restricted assessment material.</li>
+
+    </ul>
+
+</section>
+
+<section class="card danger">
+
+    <h2>Restricted Assessment Material</h2>
+
+    <p>
+        The following information is restricted to authorised ARU trainers:
+    </p>
+
+    <ul>
+
+        <li>Final scenario details.</li>
+
+        <li>Scenario objectives and injects.</li>
+
+        <li>Expected answers.</li>
+
+        <li>Assessment scoring guidance.</li>
+
+        <li>Trainer marking sheets.</li>
+
+        <li>Critical assessment criteria.</li>
+
+        <li>Qualification recommendation guidance.</li>
+
+    </ul>
+
+    <p>
+        Students must not attempt to access or obtain restricted final-assessment
+        material.
+    </p>
+
+</section>
+
+<section class="card">
+
+    <h2>Possible Assessment Outcomes</h2>
+
+    <h3>PASS — Qualified</h3>
+
+    <p>
+        The student has demonstrated the required standard and is recommended
+        for qualification as a Code44 ARU officer.
+    </p>
+
+    <h3>PASS WITH DEVELOPMENT POINTS</h3>
+
+    <p>
+        The required overall standard has been met, but limited development points
+        remain and should continue to be monitored after qualification.
+    </p>
+
+    <h3>REASSESSMENT REQUIRED</h3>
+
+    <p>
+        One or more areas require further development before the qualification
+        decision can be confirmed.
+    </p>
+
+    <h3>FURTHER TRAINING REQUIRED</h3>
+
+    <p>
+        The student has not yet demonstrated sufficient consistency and will
+        complete additional targeted development before another assessment attempt.
+    </p>
+
+</section>
+
+<section class="card">
+
+    <h2>After a Successful Assessment</h2>
+
+    <p>
+        Successful completion of Module 13 confirms completion of the ARU Academy.
+    </p>
+
+    <p>
+        Qualification does not mean development ends.
+    </p>
+
+    <p>
+        Qualified officers are expected to:
+    </p>
+
+    <ul>
+
+        <li>Continue maintaining ARU professional standards.</li>
+
+        <li>Attend refresher and development training.</li>
+
+        <li>Maintain knowledge of Code44 procedures.</li>
+
+        <li>Accept and apply operational feedback.</li>
+
+        <li>Maintain firearms and equipment discipline.</li>
+
+        <li>Support other ARU officers.</li>
+
+        <li>Continue developing specialist skills where authorised.</li>
+
+    </ul>
+
+</section>
+
+<section class="card warning">
+
+    <h2>Qualification Does Not Grant Every Specialist Capability</h2>
+
+    <p>
+        Completion of the core ARU Academy qualifies the officer within the
+        standard Code44 ARU role.
+    </p>
+
+    <p>
+        Additional specialist capabilities may require separate training,
+        authorisation or approval.
+    </p>
+
+    <p>
+        These may include specialist precision capability, breaching roles,
+        Counter Terrorism, VIP protection, rope access, fast-rope or other
+        specialist functions.
+    </p>
+
+</section>
+
+<section class="card success">
+
+    <h2>Final Student Reminder</h2>
+
+    <p>
+        You have already completed the development required to reach this stage.
+    </p>
+
+    <p>
+        Final assessment is your opportunity to demonstrate that you can apply
+        those standards consistently.
+    </p>
+
+    <p>
+        Do not attempt to guess what scenario is coming.
+    </p>
+
+    <p>
+        Focus on the information you actually have, communicate with your team,
+        continually reassess the situation and be prepared to explain your decisions.
+    </p>
+
+</section>
+
+<section class="card">
+
+    <h2>Module 13 Completion</h2>
+
+    <p>
+        Module 13 is complete once:
+    </p>
+
+    <ul>
+
+        <li>The required final knowledge element has been completed.</li>
+
+        <li>Required practical assessment scenarios have been completed.</li>
+
+        <li>The student's individual performance has been reviewed.</li>
+
+        <li>The final debrief has been completed.</li>
+
+        <li>The qualification decision has been recorded.</li>
+
+    </ul>
+
+    <div class="button-row">
+
+        <a class="button secondary"
+           href="academy.html">
+
+            Return to Academy
+
+        </a>
+
+    </div>
+
+</section>
+
+<footer class="footer">
+
+    Code44 Police Service • Armed Response Unit Academy<br>
+
+    Module 13 — Final Assessment & Qualification
+
+</footer>
+
+</div>
+
+</body>
+
+</html>
