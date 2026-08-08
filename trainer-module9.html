@@ -1,0 +1,1884 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Trainer Module 9 - Armed Containment, Searches & High-Risk Warrants</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    background:#05080d;
+    color:white;
+    font-family:Segoe UI,Arial,sans-serif;
+    line-height:1.65;
+}
+
+.page-container{
+    width:90%;
+    max-width:1150px;
+    margin:0 auto;
+    padding:35px 0 60px;
+}
+
+.navbar{
+    background:#0b111b;
+    border:1px solid #16315c;
+    border-radius:8px;
+    padding:15px;
+    margin-bottom:20px;
+}
+
+.navbar a{
+    color:#4d9dff;
+    text-decoration:none;
+    font-weight:bold;
+    margin:0 5px;
+}
+
+.navbar a:hover,
+.back-link:hover{
+    color:white;
+}
+
+.back-link{
+    display:inline-block;
+    margin-bottom:20px;
+    color:#4d9dff;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.hero{
+    background:
+        linear-gradient(rgba(2,7,14,.80),rgba(2,7,14,.94)),
+        url('arv-photo.png');
+
+    background-size:cover;
+    background-position:center;
+
+    border:1px solid #16315c;
+    border-radius:12px;
+
+    padding:58px 30px;
+    text-align:center;
+}
+
+.hero h1{
+    margin:0 0 10px;
+    color:#4d9dff;
+    font-size:2.5rem;
+}
+
+.hero p{
+    margin:5px 0;
+    color:#d3dbea;
+}
+
+.badge{
+    display:inline-block;
+    margin-top:15px;
+    padding:7px 14px;
+
+    background:#3a2a0d;
+    border:1px solid #a8761e;
+    border-radius:20px;
+
+    color:#f2c76f;
+    font-weight:bold;
+}
+
+h1,
+h2,
+h3{
+    color:#4d9dff;
+}
+
+.card{
+    background:#0b111b;
+    border:1px solid #16315c;
+    border-radius:9px;
+
+    padding:22px;
+    margin-top:20px;
+
+    transition:.25s;
+}
+
+.card:hover{
+    border-color:#4d9dff;
+}
+
+.instructor{
+    border-left:5px solid #9c6ade;
+}
+
+.activity{
+    border-left:5px solid #4da86b;
+}
+
+.assessment{
+    border-left:5px solid #4d9dff;
+}
+
+.warning{
+    border-left:5px solid #e3a629;
+}
+
+.danger{
+    border-left:5px solid #d84d5f;
+}
+
+.success{
+    border-left:5px solid #4da86b;
+}
+
+.info-grid,
+.rating-grid,
+.role-grid,
+.principles-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:15px;
+    margin-top:18px;
+}
+
+.info-box,
+.rating-box,
+.role-box,
+.principle-box,
+.example-box{
+    background:#08111d;
+    border:1px solid #16315c;
+    border-radius:8px;
+    padding:17px;
+}
+
+.info-box strong,
+.rating-box strong,
+.role-box strong,
+.principle-box strong,
+.example-box strong{
+    display:block;
+    color:#4d9dff;
+    margin-bottom:6px;
+}
+
+.delivery-table,
+.assessment-table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:15px;
+}
+
+.delivery-table th,
+.delivery-table td,
+.assessment-table th,
+.assessment-table td{
+    border:1px solid #16315c;
+    padding:12px;
+    text-align:left;
+    vertical-align:top;
+}
+
+.delivery-table th,
+.assessment-table th{
+    background:#10203a;
+    color:#8fc2ff;
+}
+
+.checklist{
+    list-style:none;
+    padding-left:0;
+}
+
+.checklist li{
+    background:#08111d;
+    border:1px solid #16315c;
+    border-radius:7px;
+
+    padding:13px;
+    margin-top:9px;
+}
+
+.checklist li::before{
+    content:"☐";
+    color:#4d9dff;
+    font-weight:bold;
+    margin-right:10px;
+}
+
+ul,
+ol{
+    padding-left:22px;
+}
+
+li{
+    margin-bottom:7px;
+}
+
+.button-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:20px;
+}
+
+.button{
+    display:inline-block;
+
+    padding:12px 18px;
+
+    background:#4d9dff;
+    color:#05080d;
+
+    border:none;
+    border-radius:6px;
+
+    text-decoration:none;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.button:hover{
+    background:#77b5ff;
+}
+
+.button.secondary{
+    background:#101b2c;
+    color:#4d9dff;
+    border:1px solid #24538b;
+}
+
+.footer{
+    margin-top:30px;
+    padding-top:20px;
+
+    border-top:1px solid #16315c;
+
+    color:#8f9bad;
+    text-align:center;
+    font-size:.9rem;
+}
+
+@media(max-width:700px){
+
+    .page-container{
+        width:92%;
+    }
+
+    .hero{
+        padding:42px 18px;
+    }
+
+    .hero h1{
+        font-size:2rem;
+    }
+
+    .navbar{
+        line-height:2;
+    }
+
+    .button{
+        width:100%;
+        text-align:center;
+    }
+
+    .delivery-table,
+    .assessment-table{
+        font-size:.9rem;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<script>
+
+if (sessionStorage.getItem("trainerAccess") !== "granted") {
+
+    window.location.replace("trainers-login.html");
+
+}
+
+</script>
+
+<div class="page-container">
+
+<nav class="navbar">
+
+    <a href="aru-members.html">
+        Internal Database
+    </a>
+
+    |
+
+    <a href="academy.html">
+        ARU Academy
+    </a>
+
+    |
+
+    <a href="trainers.html">
+        Trainers Area
+    </a>
+
+    |
+
+    <a href="trainer-module8.html">
+        Module 8
+    </a>
+
+    |
+
+    <a href="trainer-module9.html" style="color:white;">
+        Module 9
+    </a>
+
+</nav>
+
+<a class="back-link" href="trainers.html">
+    ← Return to Trainers Area
+</a>
+
+<header class="hero">
+
+    <h1>Trainer Module 9 — Armed Containment, Searches & High-Risk Warrants</h1>
+
+    <p>Instructor Lesson Plan</p>
+
+    <p>ARU Academy • Cohort 001</p>
+
+    <span class="badge">
+        Trainer-Only Resource
+    </span>
+
+</header>
+
+<section class="card">
+
+    <h2>Lesson Overview</h2>
+
+    <p>
+        Module 9 introduces students to the principles of armed containment,
+        coordinated searching and high-risk warrant operations within Code44.
+    </p>
+
+    <p>
+        Students should demonstrate that they can work within a wider operational
+        plan, understand their assigned role, communicate relevant information,
+        reassess changing circumstances and transition appropriately once the
+        immediate threat has been controlled.
+    </p>
+
+    <p>
+        This module should be delivered primarily through briefing exercises,
+        practical containment work and controlled FiveM scenarios.
+    </p>
+
+    <div class="info-grid">
+
+        <div class="info-box">
+            <strong>Lesson</strong>
+            Module 9 — Armed Containment, Searches & High-Risk Warrants
+        </div>
+
+        <div class="info-box">
+            <strong>Recommended Duration</strong>
+            120–180 minutes
+        </div>
+
+        <div class="info-box">
+            <strong>Delivery Style</strong>
+            Briefing, containment exercises, searches and scenarios
+        </div>
+
+        <div class="info-box">
+            <strong>Assessment</strong>
+            Continuous practical observation and knowledge check
+        </div>
+
+        <div class="info-box">
+            <strong>Primary Focus</strong>
+            Coordination, information, communication and reassessment
+        </div>
+
+        <div class="info-box">
+            <strong>Progression</strong>
+            Required before Module 10
+        </div>
+
+    </div>
+
+</section>
+
+<section class="card danger">
+
+    <h2>Mandatory Training Boundary</h2>
+
+    <p>
+        Module 9 is designed for Code44 FiveM roleplay and server-based training.
+    </p>
+
+    <p>
+        Trainers should focus on containment principles, briefing, information
+        handling, communication, role allocation, search discipline,
+        reassessment and post-incident accountability.
+    </p>
+
+    <p>
+        Exact real-world entry techniques, room-clearing procedures, breaching
+        mechanics and physical intervention methods are outside the scope of
+        this Academy material.
+    </p>
+
+    <p>
+        Building-entry and CQB-specific training is developed further within Module 10.
+    </p>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Trainer Preparation</h2>
+
+    <ul class="checklist">
+
+        <li>Confirm students completed Module 8</li>
+
+        <li>Confirm students have read Module 9</li>
+
+        <li>Prepare a suitable containment location</li>
+
+        <li>Prepare a separate search or warrant location</li>
+
+        <li>Prepare supporting roleplayers where available</li>
+
+        <li>Prepare ARV resources</li>
+
+        <li>Prepare NPAS or K9 integration where available</li>
+
+        <li>Prepare ballistic shield familiarisation where appropriate</li>
+
+        <li>Prepare main and ARU radio channels</li>
+
+        <li>Prepare deployment intelligence</li>
+
+        <li>Prepare containment scenario injects</li>
+
+        <li>Prepare changing-threat information</li>
+
+        <li>Prepare a high-risk warrant briefing</li>
+
+        <li>Prepare a search scenario</li>
+
+        <li>Prepare a containment-failure scenario</li>
+
+        <li>Prepare a post-operation handover exercise</li>
+
+        <li>Prepare Module 9 knowledge check</li>
+
+        <li>Prepare observation and assessment notes</li>
+
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Learning Outcomes</h2>
+
+    <p>By the end of Module 9, students should be able to:</p>
+
+    <ul>
+
+        <li>Explain the purpose of armed containment.</li>
+
+        <li>Explain how containment can reduce and control operational risk.</li>
+
+        <li>Identify relevant information before a containment, search or warrant.</li>
+
+        <li>Recognise information gaps and uncertainty.</li>
+
+        <li>Understand their own role within a wider operation.</li>
+
+        <li>Communicate significant observations clearly.</li>
+
+        <li>Explain the principles of a coordinated armed search.</li>
+
+        <li>Understand why high-risk warrants require additional planning.</li>
+
+        <li>Identify when specialist resources may assist.</li>
+
+        <li>Recognise when the agreed plan is no longer suitable.</li>
+
+        <li>Respond appropriately to containment failure or subject movement.</li>
+
+        <li>Complete an accurate post-operation handover.</li>
+
+        <li>Explain their decisions during debrief.</li>
+
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Suggested Lesson Structure</h2>
+
+    <table class="delivery-table">
+
+        <tr>
+            <th>Stage</th>
+            <th>Time</th>
+            <th>Trainer Action</th>
+        </tr>
+
+        <tr>
+            <td>Introduction</td>
+            <td>10 minutes</td>
+            <td>
+                Explain Module 9 objectives and the difference between containment,
+                search and warrant operations.
+            </td>
+        </tr>
+
+        <tr>
+            <td>Containment Principles</td>
+            <td>15 minutes</td>
+            <td>
+                Explain purpose, control of risk and wider scene management.
+            </td>
+        </tr>
+
+        <tr>
+            <td>Information & Roles</td>
+            <td>15 minutes</td>
+            <td>
+                Review threat information, unknowns, responsibilities and command.
+            </td>
+        </tr>
+
+        <tr>
+            <td>Containment Practical</td>
+            <td>20 minutes</td>
+            <td>
+                Run a controlled containment exercise with changing information.
+            </td>
+        </tr>
+
+        <tr>
+            <td>Armed Search Principles</td>
+            <td>15 minutes</td>
+            <td>
+                Explain search objective, coordination and information flow.
+            </td>
+        </tr>
+
+        <tr>
+            <td>Search Scenario</td>
+            <td>25 minutes</td>
+            <td>
+                Run a controlled Code44 search exercise.
+            </td>
+        </tr>
+
+        <tr>
+            <td>High-Risk Warrants</td>
+            <td>15 minutes</td>
+            <td>
+                Deliver a warrant briefing and discuss operational planning.
+            </td>
+        </tr>
+
+        <tr>
+            <td>Warrant Scenario</td>
+            <td>25 minutes</td>
+            <td>
+                Run a scenario incorporating changing information and resources.
+            </td>
+        </tr>
+
+        <tr>
+            <td>Handover & Debrief</td>
+            <td>15 minutes</td>
+            <td>
+                Assess accountability, learning and development points.
+            </td>
+        </tr>
+
+    </table>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Opening Script</h2>
+
+    <div class="example-box">
+
+        <strong>Suggested wording</strong>
+
+        <p>
+            “Module 9 is about controlling risk before rushing to resolve it.
+        </p>
+
+        <p>
+            Containment, searches and high-risk warrants all require officers
+            to understand the wider plan rather than focusing only on their own
+            immediate task.
+        </p>
+
+        <p>
+            Today I will be looking at your information handling, communication,
+            awareness, role discipline and ability to adapt when circumstances change.”
+        </p>
+
+    </div>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 1 — Purpose of Armed Containment</h2>
+
+    <p>
+        Explain that containment can provide time and space to manage a developing
+        armed incident.
+    </p>
+
+    <p>Containment may support:</p>
+
+    <ul>
+
+        <li>Limiting subject movement.</li>
+
+        <li>Reducing risk to members of the public.</li>
+
+        <li>Maintaining observation where possible.</li>
+
+        <li>Gathering additional information.</li>
+
+        <li>Allowing firearms command to develop a plan.</li>
+
+        <li>Allowing specialist resources to arrive.</li>
+
+        <li>Supporting communication or negotiation.</li>
+
+        <li>Preventing unnecessary officers entering the threat area.</li>
+
+    </ul>
+
+    <div class="example-box">
+
+        <strong>Trainer Prompt</strong>
+
+        Why might containment be more appropriate than immediately entering a location?
+
+    </div>
+
+    <h3>Expected learning points</h3>
+
+    <ul>
+
+        <li>It may reduce immediate risk.</li>
+
+        <li>It may allow more information to be gathered.</li>
+
+        <li>It may allow resources and command to organise.</li>
+
+        <li>It preserves operational options.</li>
+
+        <li>Immediate intervention is not always necessary.</li>
+
+    </ul>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Exercise One — Initial Containment</h2>
+
+    <div class="example-box">
+
+        <strong>Scenario</strong>
+
+        ARU receives information that a subject linked to a firearms incident
+        has entered a commercial building. No shots are currently being reported.
+        Several civilians may still be inside.
+    </div>
+
+    <p>Ask students:</p>
+
+    <ul>
+
+        <li>What information do we currently have?</li>
+
+        <li>What remains unknown?</li>
+
+        <li>Who may be at risk?</li>
+
+        <li>What could containment achieve?</li>
+
+        <li>What additional resources may be useful?</li>
+
+        <li>What information would you communicate immediately?</li>
+
+    </ul>
+
+    <h3>Expected learning points</h3>
+
+    <ul>
+
+        <li>The subject's presence may still need confirming.</li>
+
+        <li>Civilians may be at risk.</li>
+
+        <li>Containment may limit further movement.</li>
+
+        <li>Information and resources should be developed before unnecessary escalation.</li>
+
+        <li>The situation must be continually reassessed.</li>
+
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 2 — Information & Threat Assessment</h2>
+
+    <p>Students should identify:</p>
+
+    <div class="principles-grid">
+
+        <div class="principle-box">
+
+            <strong>Subject</strong>
+
+            Identity, description, location and relevant history.
+
+        </div>
+
+        <div class="principle-box">
+
+            <strong>Weapon</strong>
+
+            Reported, suspected or confirmed weapon information.
+
+        </div>
+
+        <div class="principle-box">
+
+            <strong>Occupants</strong>
+
+            Other suspects, civilians, vulnerable persons or hostages.
+
+        </div>
+
+        <div class="principle-box">
+
+            <strong>Environment</strong>
+
+            Location, public presence and relevant environmental information.
+
+        </div>
+
+        <div class="principle-box">
+
+            <strong>Resources</strong>
+
+            ARV, response, NPAS, K9, medical and command resources.
+
+        </div>
+
+        <div class="principle-box">
+
+            <strong>Unknowns</strong>
+
+            Important information that remains unclear.
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Exercise Two — Information Classification</h2>
+
+    <p>
+        Provide students with a mixture of confirmed and unconfirmed intelligence.
+    </p>
+
+    <p>Require them to identify:</p>
+
+    <ul>
+
+        <li>What has been reported.</li>
+
+        <li>What is known.</li>
+
+        <li>What they personally observe.</li>
+
+        <li>What remains suspected.</li>
+
+        <li>What information may now be outdated.</li>
+
+    </ul>
+
+    <p>
+        Challenge unsupported assumptions immediately.
+    </p>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 3 — Roles & Responsibilities</h2>
+
+    <div class="role-grid">
+
+        <div class="role-box">
+
+            <strong>Firearms Command</strong>
+
+            Provides operational oversight and tactical direction where required.
+
+        </div>
+
+        <div class="role-box">
+
+            <strong>ARV Officers</strong>
+
+            Carry out assigned armed responsibilities within the wider plan.
+
+        </div>
+
+        <div class="role-box">
+
+            <strong>Containment Officers</strong>
+
+            Maintain assigned observation or control responsibility.
+
+        </div>
+
+        <div class="role-box">
+
+            <strong>Search Team</strong>
+
+            Carries out the authorised search when directed.
+
+        </div>
+
+        <div class="role-box">
+
+            <strong>Response</strong>
+
+            May manage cordons, civilians, witnesses and wider scene requirements.
+
+        </div>
+
+        <div class="role-box">
+
+            <strong>Specialist Resources</strong>
+
+            May include NPAS, K9, medical capability and other authorised support.
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Exercise Three — Role Allocation</h2>
+
+    <p>
+        Provide students with a fictional operational briefing and ask them to
+        explain what each available resource could contribute.
+    </p>
+
+    <p>Assess whether they:</p>
+
+    <ul>
+
+        <li>Understand their own role.</li>
+
+        <li>Recognise what other officers are responsible for.</li>
+
+        <li>Avoid attempting to do every task themselves.</li>
+
+        <li>Understand the overall operational objective.</li>
+
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 4 — Communication During Containment</h2>
+
+    <p>Relevant updates may include:</p>
+
+    <ul>
+
+        <li>Subject sightings.</li>
+
+        <li>Movement.</li>
+
+        <li>New weapon information.</li>
+
+        <li>Loss of observation.</li>
+
+        <li>Civilians entering or leaving the area.</li>
+
+        <li>Changes in officer positions.</li>
+
+        <li>Medical emergencies.</li>
+
+        <li>Changes to the operational plan.</li>
+
+    </ul>
+
+    <div class="example-box">
+
+        <strong>Key teaching point</strong>
+
+        Significant information should be passed promptly, but not every minor
+        observation needs to flood the radio channel.
+
+    </div>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Scenario One — Containment Lost</h2>
+
+    <p>
+        During the exercise, the subject is no longer visible and may have moved
+        from the believed location.
+    </p>
+
+    <p>Ask:</p>
+
+    <ul>
+
+        <li>What has changed?</li>
+
+        <li>What assumptions are now unsafe?</li>
+
+        <li>Who needs to know?</li>
+
+        <li>What should happen to the current plan?</li>
+
+        <li>What additional resources may assist?</li>
+
+    </ul>
+
+    <h3>Expected learning points</h3>
+
+    <ul>
+
+        <li>The subject's location is now uncertain.</li>
+
+        <li>The existing containment assessment may no longer be valid.</li>
+
+        <li>Command and other officers require an update.</li>
+
+        <li>The plan should be reassessed.</li>
+
+        <li>NPAS or K9 may assist depending on circumstances.</li>
+
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 5 — Armed Search Principles</h2>
+
+    <p>
+        Explain that searches should be purposeful and coordinated.
+    </p>
+
+    <p>Before the search begins, students should understand:</p>
+
+    <ul>
+
+        <li>What they are searching for.</li>
+
+        <li>Why armed officers are required.</li>
+
+        <li>The believed threat.</li>
+
+        <li>The assigned search area.</li>
+
+        <li>The officers involved.</li>
+
+        <li>Supporting resources.</li>
+
+        <li>Communication arrangements.</li>
+
+        <li>What may cause the search to stop or change.</li>
+
+    </ul>
+
+    <div class="example-box">
+
+        <strong>Key teaching point</strong>
+
+        A search is not a race. Students should remain coordinated and communicate
+        relevant changes.
+    </div>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Exercise Four — Controlled Search Scenario</h2>
+
+    <p>
+        Use a simple Code44 location and provide a clear search objective.
+    </p>
+
+    <p>Assess:</p>
+
+    <ul>
+
+        <li>Shared understanding before the search.</li>
+
+        <li>Communication.</li>
+
+        <li>Team awareness.</li>
+
+        <li>Recognition of civilians or uninvolved persons.</li>
+
+        <li>Response to changing information.</li>
+
+        <li>Compliance with trainer direction.</li>
+
+        <li>Ability to pause when uncertain.</li>
+
+    </ul>
+
+    <p>
+        Do not turn this into the full Module 10 CQB lesson.
+    </p>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 6 — High-Risk Warrants</h2>
+
+    <p>
+        Explain that high-risk warrants require additional planning because the
+        available information suggests an increased level of operational risk.
+    </p>
+
+    <p>Possible considerations include:</p>
+
+    <ul>
+
+        <li>Known or suspected firearms.</li>
+
+        <li>Violent subjects.</li>
+
+        <li>Previous threats to police.</li>
+
+        <li>Relevant intelligence.</li>
+
+        <li>Other occupants.</li>
+
+        <li>Public risk.</li>
+
+        <li>Medical requirements.</li>
+
+        <li>Specialist resources.</li>
+
+        <li>Communication arrangements.</li>
+
+    </ul>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Exercise Five — High-Risk Warrant Briefing</h2>
+
+    <p>
+        Provide students with a fictional warrant package.
+    </p>
+
+    <p>
+        Require them to identify:
+    </p>
+
+    <ul>
+
+        <li>The operational objective.</li>
+
+        <li>The subject.</li>
+
+        <li>Weapon information.</li>
+
+        <li>Other known occupants.</li>
+
+        <li>Relevant risks.</li>
+
+        <li>Important unknowns.</li>
+
+        <li>Available resources.</li>
+
+        <li>What could cause the plan to change.</li>
+
+    </ul>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Scenario Two — Additional Occupant</h2>
+
+    <p>
+        During the operation, new information confirms that an additional person
+        is inside who was not included in the original briefing.
+    </p>
+
+    <p>Ask:</p>
+
+    <ul>
+
+        <li>Does this matter?</li>
+
+        <li>What new risks may exist?</li>
+
+        <li>Who should be updated?</li>
+
+        <li>Does the current plan remain suitable?</li>
+
+    </ul>
+
+    <h3>Expected learning points</h3>
+
+    <ul>
+
+        <li>The new occupant matters.</li>
+
+        <li>Their identity and involvement may be unknown.</li>
+
+        <li>Command and participating officers should be informed.</li>
+
+        <li>The plan may require reassessment.</li>
+
+    </ul>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Scenario Three — Weapon Information Changes</h2>
+
+    <p>
+        The operation was planned around a reported firearm. New reliable
+        information indicates the weapon is no longer believed to be present.
+    </p>
+
+    <p>Ask:</p>
+
+    <ul>
+
+        <li>What has changed?</li>
+
+        <li>Does the threat assessment change?</li>
+
+        <li>Does ARU automatically withdraw?</li>
+
+        <li>What should happen to the existing plan?</li>
+
+    </ul>
+
+    <h3>Expected learning points</h3>
+
+    <ul>
+
+        <li>The weapon assessment has materially changed.</li>
+
+        <li>The wider threat must still be considered.</li>
+
+        <li>No automatic response applies.</li>
+
+        <li>The operational plan should be reassessed.</li>
+
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 7 — Specialist Resource Integration</h2>
+
+    <div class="role-grid">
+
+        <div class="role-box">
+
+            <strong>NPAS</strong>
+
+            Observation, tracking and wider situational awareness.
+
+        </div>
+
+        <div class="role-box">
+
+            <strong>K9</strong>
+
+            Search, tracking and authorised specialist support.
+
+        </div>
+
+        <div class="role-box">
+
+            <strong>Ballistic Shield</strong>
+
+            Additional protective capability where appropriate within Code44.
+
+        </div>
+
+        <div class="role-box">
+
+            <strong>Medical Capability</strong>
+
+            Immediate casualty management where required.
+
+        </div>
+
+        <div class="role-box">
+
+            <strong>Response</strong>
+
+            Outer scene control, evacuations, witnesses and wider policing.
+
+        </div>
+
+        <div class="role-box">
+
+            <strong>Firearms Command</strong>
+
+            Tactical oversight and coordination.
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="card warning">
+
+    <h2>Resource Selection</h2>
+
+    <p>
+        Correct students who treat specialist resources as automatic additions
+        to every operation.
+    </p>
+
+    <p>
+        Students should be able to explain what problem a requested resource
+        is intended to solve.
+    </p>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Scenario Four — Public Enters the Containment</h2>
+
+    <p>
+        During an established containment, an uninvolved person enters the wider
+        operational area.
+    </p>
+
+    <p>Ask:</p>
+
+    <ul>
+
+        <li>What risk has changed?</li>
+
+        <li>Who may be best placed to manage the person?</li>
+
+        <li>Does every ARU officer need to abandon their assigned role?</li>
+
+        <li>What should be communicated?</li>
+
+    </ul>
+
+    <h3>Expected learning points</h3>
+
+    <ul>
+
+        <li>Public risk has changed.</li>
+
+        <li>Response or another appropriate resource may manage the issue.</li>
+
+        <li>Officers should not unnecessarily abandon critical responsibilities.</li>
+
+        <li>Relevant information should be communicated.</li>
+
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 8 — Resolution & Handover</h2>
+
+    <p>Once the immediate threat has been controlled, students should consider:</p>
+
+    <ul>
+
+        <li>Subject status.</li>
+
+        <li>Outstanding subjects.</li>
+
+        <li>Weapons or relevant items.</li>
+
+        <li>Medical requirements.</li>
+
+        <li>Witnesses.</li>
+
+        <li>Scene protection.</li>
+
+        <li>Command updates.</li>
+
+        <li>Investigator or response handover.</li>
+
+        <li>ARU equipment accountability.</li>
+
+    </ul>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Exercise Six — Operational Handover</h2>
+
+    <p>
+        Require each student to provide a concise post-operation handover.
+    </p>
+
+    <p>The handover should include:</p>
+
+    <ul>
+
+        <li>Original information.</li>
+
+        <li>What the student personally observed.</li>
+
+        <li>Subject status.</li>
+
+        <li>Weapons information.</li>
+
+        <li>Other occupants.</li>
+
+        <li>Force used if relevant.</li>
+
+        <li>Medical concerns.</li>
+
+        <li>Outstanding risks.</li>
+
+        <li>Further action required.</li>
+
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Stage 9 — Debrief</h2>
+
+    <p>Ask each student:</p>
+
+    <ul>
+
+        <li>What information influenced your decisions?</li>
+
+        <li>What remained uncertain?</li>
+
+        <li>What was your assigned role?</li>
+
+        <li>What did you communicate?</li>
+
+        <li>What changed?</li>
+
+        <li>How did your plan change?</li>
+
+        <li>What went well?</li>
+
+        <li>What would you improve?</li>
+
+    </ul>
+
+</section>
+
+<section class="card assessment">
+
+    <h2>Practical Assessment Standard</h2>
+
+    <p>A satisfactory performance should demonstrate:</p>
+
+    <ul>
+
+        <li>Understanding of containment objectives.</li>
+
+        <li>Accurate information handling.</li>
+
+        <li>Recognition of unknowns.</li>
+
+        <li>Clear understanding of assigned role.</li>
+
+        <li>Effective communication.</li>
+
+        <li>Team awareness.</li>
+
+        <li>Controlled search behaviour.</li>
+
+        <li>Recognition of public risk.</li>
+
+        <li>Appropriate use of specialist resources.</li>
+
+        <li>Continuous reassessment.</li>
+
+        <li>Ability to change an unsuitable plan.</li>
+
+        <li>Clear handover.</li>
+
+        <li>Honest debrief and accountability.</li>
+
+    </ul>
+
+</section>
+
+<section class="card assessment">
+
+    <h2>Review Questions</h2>
+
+    <ol>
+
+        <li>What is the purpose of armed containment?</li>
+
+        <li>What advantages can containment provide?</li>
+
+        <li>What information should be considered before a search or warrant?</li>
+
+        <li>Why is role allocation important?</li>
+
+        <li>What information should be communicated during containment?</li>
+
+        <li>Why should an armed search not become a race?</li>
+
+        <li>Why might a high-risk warrant require ARU support?</li>
+
+        <li>When should specialist resources be requested?</li>
+
+        <li>What should happen when circumstances materially change?</li>
+
+        <li>What responsibilities remain once the immediate threat is controlled?</li>
+
+        <li>What should an officer be able to explain during debrief?</li>
+
+    </ol>
+
+</section>
+
+<section class="card assessment">
+
+    <h2>Expected Answers</h2>
+
+    <ol>
+
+        <li>
+            To control risk, limit subject movement and preserve operational options.
+        </li>
+
+        <li>
+            Time, information gathering, resource coordination, safer public
+            management and more controlled decision-making.
+        </li>
+
+        <li>
+            Subject, weapon, occupant, location, risk, intelligence, resources,
+            medical considerations and important unknowns.
+        </li>
+
+        <li>
+            So officers understand their responsibilities and work toward one
+            coordinated objective.
+        </li>
+
+        <li>
+            Subject movement, weapon information, public entry, officer movement,
+            loss of observation, medical issues and significant changes.
+        </li>
+
+        <li>
+            Because coordination, awareness and information handling are more
+            important than speed.
+        </li>
+
+        <li>
+            Because firearms, violence, intelligence or other risks may require
+            specialist armed capability.
+        </li>
+
+        <li>
+            When the resource solves a specific operational problem or supports
+            the tactical objective.
+        </li>
+
+        <li>
+            Reassess, communicate and alter, pause or abandon the plan where appropriate.
+        </li>
+
+        <li>
+            Medical care, subject accountability, scene management, command updates,
+            evidence or witness considerations, handover and equipment accountability.
+        </li>
+
+        <li>
+            Information available, perceived threat, assigned role, observations,
+            decisions, communications and how changing circumstances affected actions.
+        </li>
+
+    </ol>
+
+</section>
+
+<section class="card assessment">
+
+    <h2>Instructor Observation Criteria</h2>
+
+    <div class="rating-grid">
+
+        <div class="rating-box">
+            <strong>Containment Understanding</strong>
+            Understands the purpose of controlling risk and preserving options.
+        </div>
+
+        <div class="rating-box">
+            <strong>Information Handling</strong>
+            Separates confirmed, reported and unknown information.
+        </div>
+
+        <div class="rating-box">
+            <strong>Role Discipline</strong>
+            Understands and performs their assigned responsibility.
+        </div>
+
+        <div class="rating-box">
+            <strong>Communication</strong>
+            Communicates relevant changes clearly.
+        </div>
+
+        <div class="rating-box">
+            <strong>Team Awareness</strong>
+            Maintains awareness of other officers and wider operations.
+        </div>
+
+        <div class="rating-box">
+            <strong>Search Discipline</strong>
+            Remains controlled and coordinated.
+        </div>
+
+        <div class="rating-box">
+            <strong>Public Safety</strong>
+            Recognises changing risks to uninvolved persons.
+        </div>
+
+        <div class="rating-box">
+            <strong>Resource Selection</strong>
+            Can explain why specialist support is required.
+        </div>
+
+        <div class="rating-box">
+            <strong>Reassessment</strong>
+            Recognises when information or threat changes.
+        </div>
+
+        <div class="rating-box">
+            <strong>Accountability</strong>
+            Explains decisions honestly and coherently.
+        </div>
+
+    </div>
+
+</section>
+
+<section class="card assessment">
+
+    <h2>Immediate Stop Criteria</h2>
+
+    <p>Stop or reset the exercise if a student:</p>
+
+    <ul>
+
+        <li>Ignores a trainer safety instruction.</li>
+
+        <li>Continues despite losing understanding of their role.</li>
+
+        <li>Acts outside the agreed scenario boundary.</li>
+
+        <li>Abandons an important assigned responsibility without communication.</li>
+
+        <li>Repeatedly fails to communicate significant changes.</li>
+
+        <li>Ignores public or officer risk.</li>
+
+        <li>Uses specialist resources contrary to trainer direction.</li>
+
+        <li>Rushes a search despite clear uncertainty.</li>
+
+        <li>Ignores a serious server or equipment issue.</li>
+
+        <li>Refuses trainer direction.</li>
+
+    </ul>
+
+</section>
+
+<section class="card assessment">
+
+    <h2>Module Outcomes</h2>
+
+    <h3>Pass</h3>
+
+    <p>
+        The student demonstrates satisfactory containment awareness,
+        communication, search discipline, role understanding, reassessment
+        and accountability.
+    </p>
+
+    <h3>Pass with Development Points</h3>
+
+    <p>
+        The student may progress but has limited development areas to continue
+        working on during later Academy scenarios.
+    </p>
+
+    <h3>Remedial</h3>
+
+    <p>
+        The student requires additional coaching or controlled scenarios before
+        progressing.
+    </p>
+
+    <h3>Incomplete</h3>
+
+    <p>
+        Required pre-learning, practical work or assessment remains outstanding.
+    </p>
+
+    <h3>Unsuccessful</h3>
+
+    <p>
+        The student has not met the required standard after appropriate instruction,
+        feedback and reassessment.
+    </p>
+
+</section>
+
+<section class="card warning">
+
+    <h2>Common Student Errors</h2>
+
+    <ul>
+
+        <li>Thinking containment means simply waiting.</li>
+
+        <li>Ignoring important information gaps.</li>
+
+        <li>Leaving an assigned responsibility unnecessarily.</li>
+
+        <li>Overloading the radio with minor information.</li>
+
+        <li>Failing to report significant movement.</li>
+
+        <li>Rushing an armed search.</li>
+
+        <li>Treating every high-risk warrant the same.</li>
+
+        <li>Requesting specialist resources without explaining why.</li>
+
+        <li>Failing to adapt when circumstances change.</li>
+
+        <li>Focusing on the suspect while ignoring civilians or other officers.</li>
+
+        <li>Giving poor or incomplete handovers.</li>
+
+    </ul>
+
+</section>
+
+<section class="card warning">
+
+    <h2>Common Trainer Errors</h2>
+
+    <ul>
+
+        <li>Making the first containment scenario too complicated.</li>
+
+        <li>Failing to give students a clear operational objective.</li>
+
+        <li>Teaching Module 10 CQB content prematurely.</li>
+
+        <li>Allowing students to rush searches without correction.</li>
+
+        <li>Failing to introduce changing information.</li>
+
+        <li>Giving every role to ARU rather than integrating other units.</li>
+
+        <li>Failing to explain why a specialist resource is being used.</li>
+
+        <li>Not assessing each student individually.</li>
+
+        <li>Providing the preferred answer before the debrief.</li>
+
+        <li>Failing to record development points.</li>
+
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Closing Script</h2>
+
+    <div class="example-box">
+
+        <strong>Suggested wording</strong>
+
+        <p>
+            “That concludes Module 9.
+        </p>
+
+        <p>
+            Containment, searches and high-risk warrants rely on patience,
+            coordination and good information.
+        </p>
+
+        <p>
+            Being an armed officer does not mean rushing to resolve every incident.
+            Sometimes the best tactical decision is to control the situation,
+            develop the information and preserve safer options.
+        </p>
+
+        <p>
+            Module 10 will build on this by moving into building operations,
+            CQB principles and tactical team movement.”
+        </p>
+
+    </div>
+
+</section>
+
+<section class="card">
+
+    <h2>Trainer Completion Checklist</h2>
+
+    <ul class="checklist">
+
+        <li>Students completed Module 9 pre-learning</li>
+
+        <li>Purpose of containment reviewed</li>
+
+        <li>Initial containment exercise completed</li>
+
+        <li>Information classification assessed</li>
+
+        <li>Roles and responsibilities explained</li>
+
+        <li>Role-allocation exercise completed</li>
+
+        <li>Communication standards reviewed</li>
+
+        <li>Containment-loss scenario completed</li>
+
+        <li>Armed-search principles reviewed</li>
+
+        <li>Controlled search scenario completed</li>
+
+        <li>High-risk warrant principles reviewed</li>
+
+        <li>Warrant briefing exercise completed</li>
+
+        <li>Additional-occupant scenario completed</li>
+
+        <li>Weapon-information change scenario completed</li>
+
+        <li>Specialist resources reviewed</li>
+
+        <li>Public-entry scenario completed</li>
+
+        <li>Post-operation handover completed</li>
+
+        <li>Both students participated in debrief</li>
+
+        <li>Individual development points recorded</li>
+
+        <li>Module 9 knowledge check completed</li>
+
+        <li>Module outcome recorded</li>
+
+    </ul>
+
+    <div class="button-row">
+
+        <a class="button"
+           href="PASTE-TRAINER-MODULE-9-ASSESSMENT-FORM-LINK-HERE"
+           target="_blank">
+
+            Record Module 9 Outcome
+
+        </a>
+
+        <a class="button secondary"
+           href="trainers.html">
+
+            Return to Trainers Area
+
+        </a>
+
+    </div>
+
+</section>
+
+<footer class="footer">
+
+    Code44 Police Service • Armed Response Unit Academy<br>
+
+    Trainer Module 9 — Armed Containment, Searches & High-Risk Warrants • Cohort 001
+
+</footer>
+
+</div>
+
+</body>
+
+</html>
