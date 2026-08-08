@@ -92,7 +92,6 @@ body{
 
 .badge{
     display:inline-block;
-
     margin-top:14px;
     padding:7px 13px;
 
@@ -196,6 +195,14 @@ h3{
 
 .trainer-link.final strong{
     color:#f2c76f;
+}
+
+.trainer-link.management{
+    border-left:5px solid #4da86b;
+}
+
+.trainer-link.management strong{
+    color:#8de3a7;
 }
 
 .pending{
@@ -305,12 +312,6 @@ h3{
 
 <script>
 
-/*
-    Trainer access check.
-    Access is granted through trainers-login.html
-    for the current browser session.
-*/
-
 if(sessionStorage.getItem("trainerAccess") !== "granted"){
 
     window.location.replace("trainers-login.html");
@@ -333,6 +334,12 @@ if(sessionStorage.getItem("trainerAccess") !== "granted"){
 
     <a href="academy.html">
         ARU Academy
+    </a>
+
+    |
+
+    <a href="recruit-tracker.html">
+        Recruit Tracker
     </a>
 
     |
@@ -363,8 +370,6 @@ if(sessionStorage.getItem("trainerAccess") !== "granted"){
 
 </header>
 
-
-<!-- TRAINER DASHBOARD -->
 
 <section class="card">
 
@@ -433,8 +438,6 @@ if(sessionStorage.getItem("trainerAccess") !== "granted"){
 </section>
 
 
-<!-- LESSON PLANS -->
-
 <section class="card">
 
     <h2>Lesson Plans &amp; Assessment Packs</h2>
@@ -451,8 +454,6 @@ if(sessionStorage.getItem("trainerAccess") !== "granted"){
         demonstration, practical training or scenario-based assessment.
     </p>
 
-
-    <!-- PHASE ONE -->
 
     <h3 class="phase-title">
         Phase One — Foundation
@@ -490,8 +491,6 @@ if(sessionStorage.getItem("trainerAccess") !== "granted"){
     </div>
 
 
-    <!-- PHASE TWO -->
-
     <h3 class="phase-title">
         Phase Two — Equipment &amp; Firearms Development
     </h3>
@@ -527,8 +526,6 @@ if(sessionStorage.getItem("trainerAccess") !== "granted"){
 
     </div>
 
-
-    <!-- PHASE THREE -->
 
     <h3 class="phase-title">
         Phase Three — Operational Deployment
@@ -576,8 +573,6 @@ if(sessionStorage.getItem("trainerAccess") !== "granted"){
     </div>
 
 
-    <!-- PHASE FOUR -->
-
     <h3 class="phase-title">
         Phase Four — Complex Operations &amp; Qualification
     </h3>
@@ -616,8 +611,6 @@ if(sessionStorage.getItem("trainerAccess") !== "granted"){
 </section>
 
 
-<!-- FINAL ASSESSMENT -->
-
 <section class="card success">
 
     <h2>Final Assessment &amp; Qualification</h2>
@@ -655,33 +648,33 @@ if(sessionStorage.getItem("trainerAccess") !== "granted"){
 </section>
 
 
-<!-- TRAINING MANAGEMENT -->
-
 <section class="card">
 
     <h2>Training Management</h2>
 
     <p>
         Academy management resources support consistent recording,
-        student development and training standards.
+        student progression and training standards.
     </p>
 
     <div class="trainer-grid">
 
-        <div class="trainer-link pending">
+        <a class="trainer-link management"
+           href="recruit-tracker.html">
 
             <strong>Recruit Tracker</strong>
 
-            Record individual student progression and module completion.
-            Coming soon.
+            Monitor progression across all 13 Academy modules,
+            current student status, trainer notes and qualification progress.
 
-        </div>
+        </a>
 
         <div class="trainer-link pending">
 
             <strong>Training Records</strong>
 
-            Review completed student module and assessment records.
+            Record and review completed module training,
+            assessment outcomes and trainer feedback.
             Coming soon.
 
         </div>
@@ -690,7 +683,8 @@ if(sessionStorage.getItem("trainerAccess") !== "granted"){
 
             <strong>Knowledge Check Records</strong>
 
-            Record knowledge-check results and identified development areas.
+            Record knowledge-check results,
+            marks and identified development areas.
             Coming soon.
 
         </div>
@@ -709,8 +703,8 @@ if(sessionStorage.getItem("trainerAccess") !== "granted"){
 
             <strong>Remedial Training</strong>
 
-            Record targeted development, additional coaching
-            and reassessment requirements.
+            Record targeted development,
+            additional coaching and reassessment requirements.
             Coming soon.
 
         </div>
@@ -719,8 +713,8 @@ if(sessionStorage.getItem("trainerAccess") !== "granted"){
 
             <strong>Instructor Resources</strong>
 
-            Trainer templates, delivery guidance
-            and Academy quality standards.
+            Trainer templates, delivery guidance,
+            record formats and Academy quality standards.
             Coming soon.
 
         </div>
@@ -729,8 +723,6 @@ if(sessionStorage.getItem("trainerAccess") !== "granted"){
 
 </section>
 
-
-<!-- TRAINING DELIVERY -->
 
 <section class="card notice">
 
@@ -757,8 +749,6 @@ if(sessionStorage.getItem("trainerAccess") !== "granted"){
 </section>
 
 
-<!-- TRAINER STANDARD -->
-
 <section class="card notice">
 
     <h2>Trainer Standard</h2>
@@ -782,8 +772,6 @@ if(sessionStorage.getItem("trainerAccess") !== "granted"){
 
 </section>
 
-
-<!-- RESTRICTED INFORMATION -->
 
 <section class="card warning">
 
@@ -809,8 +797,6 @@ if(sessionStorage.getItem("trainerAccess") !== "granted"){
 </section>
 
 
-<!-- TRAINER SESSION -->
-
 <section class="card">
 
     <h2>Trainer Session</h2>
@@ -825,6 +811,12 @@ if(sessionStorage.getItem("trainerAccess") !== "granted"){
         <a class="button secondary" href="academy.html">
 
             Return to Academy
+
+        </a>
+
+        <a class="button secondary" href="recruit-tracker.html">
+
+            Open Recruit Tracker
 
         </a>
 
