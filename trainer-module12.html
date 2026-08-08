@@ -1,0 +1,1542 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Trainer Module 12 - Consolidation & Scenario Development</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    background:#05080d;
+    color:white;
+    font-family:Segoe UI,Arial,sans-serif;
+    line-height:1.65;
+}
+
+.page-container{
+    width:90%;
+    max-width:1150px;
+    margin:0 auto;
+    padding:35px 0 60px;
+}
+
+.navbar{
+    background:#0b111b;
+    border:1px solid #16315c;
+    border-radius:8px;
+    padding:15px;
+    margin-bottom:20px;
+}
+
+.navbar a{
+    color:#4d9dff;
+    text-decoration:none;
+    font-weight:bold;
+    margin:0 5px;
+}
+
+.navbar a:hover,
+.back-link:hover{
+    color:white;
+}
+
+.back-link{
+    display:inline-block;
+    margin-bottom:20px;
+    color:#4d9dff;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.hero{
+    background:
+        linear-gradient(rgba(2,7,14,.80),rgba(2,7,14,.94)),
+        url('arv-photo.png');
+
+    background-size:cover;
+    background-position:center;
+
+    border:1px solid #16315c;
+    border-radius:12px;
+
+    padding:58px 30px;
+    text-align:center;
+}
+
+.hero h1{
+    margin:0 0 10px;
+    color:#4d9dff;
+    font-size:2.5rem;
+}
+
+.hero p{
+    margin:5px 0;
+    color:#d3dbea;
+}
+
+.badge{
+    display:inline-block;
+    margin-top:15px;
+    padding:7px 14px;
+
+    background:#3a2a0d;
+    border:1px solid #a8761e;
+    border-radius:20px;
+
+    color:#f2c76f;
+    font-weight:bold;
+}
+
+h1,
+h2,
+h3{
+    color:#4d9dff;
+}
+
+.card{
+    background:#0b111b;
+    border:1px solid #16315c;
+    border-radius:9px;
+
+    padding:22px;
+    margin-top:20px;
+
+    transition:.25s;
+}
+
+.card:hover{
+    border-color:#4d9dff;
+}
+
+.instructor{
+    border-left:5px solid #9c6ade;
+}
+
+.activity{
+    border-left:5px solid #4da86b;
+}
+
+.assessment{
+    border-left:5px solid #4d9dff;
+}
+
+.warning{
+    border-left:5px solid #e3a629;
+}
+
+.danger{
+    border-left:5px solid #d84d5f;
+}
+
+.success{
+    border-left:5px solid #4da86b;
+}
+
+.info-grid,
+.rating-grid,
+.review-grid,
+.readiness-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:15px;
+    margin-top:18px;
+}
+
+.info-box,
+.rating-box,
+.review-box,
+.readiness-box,
+.example-box{
+    background:#08111d;
+    border:1px solid #16315c;
+    border-radius:8px;
+    padding:17px;
+}
+
+.info-box strong,
+.rating-box strong,
+.review-box strong,
+.readiness-box strong,
+.example-box strong{
+    display:block;
+    color:#4d9dff;
+    margin-bottom:6px;
+}
+
+.delivery-table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:15px;
+}
+
+.delivery-table th,
+.delivery-table td{
+    border:1px solid #16315c;
+    padding:12px;
+    text-align:left;
+    vertical-align:top;
+}
+
+.delivery-table th{
+    background:#10203a;
+    color:#8fc2ff;
+}
+
+.checklist{
+    list-style:none;
+    padding-left:0;
+}
+
+.checklist li{
+    background:#08111d;
+    border:1px solid #16315c;
+    border-radius:7px;
+
+    padding:13px;
+    margin-top:9px;
+}
+
+.checklist li::before{
+    content:"☐";
+    color:#4d9dff;
+    font-weight:bold;
+    margin-right:10px;
+}
+
+ul,
+ol{
+    padding-left:22px;
+}
+
+li{
+    margin-bottom:7px;
+}
+
+.button-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:20px;
+}
+
+.button{
+    display:inline-block;
+
+    padding:12px 18px;
+
+    background:#4d9dff;
+    color:#05080d;
+
+    border:none;
+    border-radius:6px;
+
+    text-decoration:none;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.button:hover{
+    background:#77b5ff;
+}
+
+.button.secondary{
+    background:#101b2c;
+    color:#4d9dff;
+    border:1px solid #24538b;
+}
+
+.footer{
+    margin-top:30px;
+    padding-top:20px;
+
+    border-top:1px solid #16315c;
+
+    color:#8f9bad;
+    text-align:center;
+    font-size:.9rem;
+}
+
+@media(max-width:700px){
+
+    .page-container{
+        width:92%;
+    }
+
+    .hero{
+        padding:42px 18px;
+    }
+
+    .hero h1{
+        font-size:2rem;
+    }
+
+    .navbar{
+        line-height:2;
+    }
+
+    .button{
+        width:100%;
+        text-align:center;
+    }
+
+    .delivery-table{
+        font-size:.9rem;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<script>
+
+if (sessionStorage.getItem("trainerAccess") !== "granted") {
+
+    window.location.replace("trainers-login.html");
+
+}
+
+</script>
+
+<div class="page-container">
+
+<nav class="navbar">
+
+    <a href="aru-members.html">
+        Internal Database
+    </a>
+
+    |
+
+    <a href="academy.html">
+        ARU Academy
+    </a>
+
+    |
+
+    <a href="trainers.html">
+        Trainers Area
+    </a>
+
+    |
+
+    <a href="trainer-module11.html">
+        Module 11
+    </a>
+
+    |
+
+    <a href="trainer-module12.html" style="color:white;">
+        Module 12
+    </a>
+
+</nav>
+
+<a class="back-link" href="trainers.html">
+    ← Return to Trainers Area
+</a>
+
+<header class="hero">
+
+    <h1>Trainer Module 12 — Consolidation & Scenario Development</h1>
+
+    <p>Instructor Development & Final Preparation Pack</p>
+
+    <p>ARU Academy • Cohort 001</p>
+
+    <span class="badge">
+        Trainer-Only Resource
+    </span>
+
+</header>
+
+<section class="card">
+
+    <h2>Module Overview</h2>
+
+    <p>
+        Module 12 is the final development stage before the ARU Academy Final Assessment.
+    </p>
+
+    <p>
+        The purpose of this module is not to introduce significant new learning.
+        Trainers should instead consolidate the standards developed throughout
+        Modules 1–11, identify any remaining weaknesses and provide students with
+        a final opportunity to apply feedback before formal assessment.
+    </p>
+
+    <p>
+        Module 12 should therefore be highly individualised. Two students may
+        require completely different exercises depending on their previous performance.
+    </p>
+
+    <div class="info-grid">
+
+        <div class="info-box">
+            <strong>Lesson</strong>
+            Module 12 — Consolidation & Scenario Development
+        </div>
+
+        <div class="info-box">
+            <strong>Recommended Duration</strong>
+            Flexible — based on student development needs
+        </div>
+
+        <div class="info-box">
+            <strong>Delivery Style</strong>
+            Scenario training, coaching, remedial work and debrief
+        </div>
+
+        <div class="info-box">
+            <strong>Assessment</strong>
+            Developmental readiness assessment
+        </div>
+
+        <div class="info-box">
+            <strong>Primary Focus</strong>
+            Consistency and final development
+        </div>
+
+        <div class="info-box">
+            <strong>Progression</strong>
+            Recommendation for Module 13
+        </div>
+
+    </div>
+
+</section>
+
+<section class="card success">
+
+    <h2>Module 12 Philosophy</h2>
+
+    <p>
+        Module 12 should not be treated as a hidden final assessment.
+    </p>
+
+    <p>
+        The objective is to identify weaknesses while trainers can still coach,
+        explain and allow the student to demonstrate improvement.
+    </p>
+
+    <p>
+        A student who makes a mistake, understands the feedback and corrects it
+        during a later scenario may demonstrate stronger development than a student
+        who simply completes an easy scenario without challenge.
+    </p>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Trainer Preparation</h2>
+
+    <ul class="checklist">
+
+        <li>Review the student's Module 1–11 training records</li>
+
+        <li>Review previous knowledge-check results</li>
+
+        <li>Review recorded development points</li>
+
+        <li>Identify any repeated development issues</li>
+
+        <li>Identify areas of strong performance</li>
+
+        <li>Prepare at least one general consolidation scenario</li>
+
+        <li>Prepare one student-specific development scenario</li>
+
+        <li>Prepare an information-handling challenge</li>
+
+        <li>Prepare a communication challenge</li>
+
+        <li>Prepare a reassessment challenge</li>
+
+        <li>Prepare a teamwork or role-discipline exercise</li>
+
+        <li>Prepare changing information or threat injects</li>
+
+        <li>Prepare an operational handover exercise</li>
+
+        <li>Prepare final readiness notes</li>
+
+        <li>Confirm Module 13 requirements are understood</li>
+
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Review Previous Performance</h2>
+
+    <p>
+        Before training begins, trainers should review the student's Academy history.
+    </p>
+
+    <p>Consider:</p>
+
+    <div class="review-grid">
+
+        <div class="review-box">
+            <strong>Professionalism</strong>
+            Has conduct remained consistently professional?
+        </div>
+
+        <div class="review-box">
+            <strong>Knowledge</strong>
+            Have previous knowledge checks identified recurring weaknesses?
+        </div>
+
+        <div class="review-box">
+            <strong>Communication</strong>
+            Is communication clear, relevant and timely?
+        </div>
+
+        <div class="review-box">
+            <strong>Teamwork</strong>
+            Does the student support the team or attempt to dominate?
+        </div>
+
+        <div class="review-box">
+            <strong>Decision-Making</strong>
+            Are decisions reasonable and explainable?
+        </div>
+
+        <div class="review-box">
+            <strong>Reassessment</strong>
+            Does the student recognise when circumstances change?
+        </div>
+
+        <div class="review-box">
+            <strong>Safety</strong>
+            Are firearms, vehicle and equipment standards reliable?
+        </div>
+
+        <div class="review-box">
+            <strong>Feedback</strong>
+            Has previous trainer feedback actually been applied?
+        </div>
+
+    </div>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Suggested Delivery Structure</h2>
+
+    <table class="delivery-table">
+
+        <tr>
+            <th>Stage</th>
+            <th>Trainer Action</th>
+        </tr>
+
+        <tr>
+            <td>Student Review</td>
+            <td>
+                Review previous strengths, development points and current training needs.
+            </td>
+        </tr>
+
+        <tr>
+            <td>Student Self-Assessment</td>
+            <td>
+                Ask the student what they believe their strongest and weakest areas are.
+            </td>
+        </tr>
+
+        <tr>
+            <td>Consolidation Scenario</td>
+            <td>
+                Run a scenario requiring several previously learned skills.
+            </td>
+        </tr>
+
+        <tr>
+            <td>Debrief</td>
+            <td>
+                Identify strengths and specific development points.
+            </td>
+        </tr>
+
+        <tr>
+            <td>Targeted Development</td>
+            <td>
+                Provide coaching or a smaller exercise addressing the identified weakness.
+            </td>
+        </tr>
+
+        <tr>
+            <td>Reassessment Scenario</td>
+            <td>
+                Test whether the student applies the feedback without excessive prompting.
+            </td>
+        </tr>
+
+        <tr>
+            <td>Final Review</td>
+            <td>
+                Decide whether the student is ready for Module 13 or requires further development.
+            </td>
+        </tr>
+
+    </table>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Opening Script</h2>
+
+    <div class="example-box">
+
+        <strong>Suggested wording</strong>
+
+        <p>
+            “Module 12 is your final development module before assessment.
+        </p>
+
+        <p>
+            This is not another classroom lesson and it is not designed to catch
+            you out.
+        </p>
+
+        <p>
+            We are going to look at what you have learned throughout the Academy,
+            identify anything that still needs work and give you an opportunity
+            to improve it before Module 13.
+        </p>
+
+        <p>
+            Be honest about what you are confident with and what you think you
+            still need to work on.”
+        </p>
+
+    </div>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Exercise One — Student Self-Assessment</h2>
+
+    <p>Ask the student:</p>
+
+    <ul>
+
+        <li>What do you think your strongest area is?</li>
+
+        <li>What do you think your weakest area is?</li>
+
+        <li>Which module did you find most difficult?</li>
+
+        <li>Which practical element do you feel least confident with?</li>
+
+        <li>What feedback have trainers repeatedly given you?</li>
+
+        <li>What have you done differently because of that feedback?</li>
+
+        <li>What would you like another opportunity to practise?</li>
+
+    </ul>
+
+    <p>
+        Compare their self-assessment with previous trainer records.
+    </p>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Academy-Wide Standards</h2>
+
+    <p>
+        By Module 12, trainers should expect students to demonstrate the following
+        without constant prompting:
+    </p>
+
+    <div class="readiness-grid">
+
+        <div class="readiness-box">
+            <strong>Professionalism</strong>
+            Professional and accountable conduct.
+        </div>
+
+        <div class="readiness-box">
+            <strong>Integrity</strong>
+            Honest reporting of mistakes and uncertainty.
+        </div>
+
+        <div class="readiness-box">
+            <strong>Information Handling</strong>
+            Separates confirmed, reported and unknown information.
+        </div>
+
+        <div class="readiness-box">
+            <strong>Communication</strong>
+            Passes relevant information clearly.
+        </div>
+
+        <div class="readiness-box">
+            <strong>Teamwork</strong>
+            Contributes effectively without unnecessarily dominating.
+        </div>
+
+        <div class="readiness-box">
+            <strong>Decision-Making</strong>
+            Makes reasonable decisions based on current circumstances.
+        </div>
+
+        <div class="readiness-box">
+            <strong>Reassessment</strong>
+            Recognises when the plan needs to change.
+        </div>
+
+        <div class="readiness-box">
+            <strong>Safety</strong>
+            Maintains reliable firearms, equipment and vehicle standards.
+        </div>
+
+        <div class="readiness-box">
+            <strong>Awareness</strong>
+            Remains aware of colleagues, subjects and civilians.
+        </div>
+
+        <div class="readiness-box">
+            <strong>Accountability</strong>
+            Can explain decisions after an exercise.
+        </div>
+
+    </div>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Exercise Two — General Consolidation Scenario</h2>
+
+    <p>
+        Run a scenario that incorporates several previous Academy learning areas.
+    </p>
+
+    <p>Possible components include:</p>
+
+    <ul>
+
+        <li>Initial ARV deployment information.</li>
+
+        <li>A reported firearm.</li>
+
+        <li>A vehicle element.</li>
+
+        <li>Containment or searching.</li>
+
+        <li>A building element.</li>
+
+        <li>Multiple persons.</li>
+
+        <li>A civilian.</li>
+
+        <li>A casualty.</li>
+
+        <li>A supporting resource.</li>
+
+        <li>A material change in information.</li>
+
+    </ul>
+
+    <p>
+        Keep the scenario realistic enough that the student can demonstrate
+        judgement rather than simply react to endless trainer injects.
+    </p>
+
+</section>
+
+<section class="card assessment">
+
+    <h2>Consolidation Scenario Assessment</h2>
+
+    <div class="rating-grid">
+
+        <div class="rating-box">
+            <strong>Preparation</strong>
+            Understands the initial briefing and asks relevant questions.
+        </div>
+
+        <div class="rating-box">
+            <strong>Information</strong>
+            Handles confirmed, reported and unknown information correctly.
+        </div>
+
+        <div class="rating-box">
+            <strong>Communication</strong>
+            Communicates significant information appropriately.
+        </div>
+
+        <div class="rating-box">
+            <strong>Teamwork</strong>
+            Works effectively with their crew and wider resources.
+        </div>
+
+        <div class="rating-box">
+            <strong>Decision-Making</strong>
+            Makes reasonable and proportionate decisions.
+        </div>
+
+        <div class="rating-box">
+            <strong>Reassessment</strong>
+            Adjusts when relevant circumstances change.
+        </div>
+
+        <div class="rating-box">
+            <strong>Safety</strong>
+            Maintains previous safety standards.
+        </div>
+
+        <div class="rating-box">
+            <strong>Awareness</strong>
+            Avoids tunnel vision and considers the wider incident.
+        </div>
+
+        <div class="rating-box">
+            <strong>Handover</strong>
+            Provides a clear and accurate summary afterwards.
+        </div>
+
+        <div class="rating-box">
+            <strong>Accountability</strong>
+            Can explain why actions were taken.
+        </div>
+
+    </div>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Identifying Development Points</h2>
+
+    <p>
+        Trainers should identify specific behaviours rather than vague criticism.
+    </p>
+
+    <div class="example-box">
+
+        <strong>Weak Feedback</strong>
+
+        “Your comms weren't very good.”
+
+    </div>
+
+    <div class="example-box">
+
+        <strong>Better Feedback</strong>
+
+        “You identified that the subject had moved but did not communicate it,
+        which meant the other crew continued operating on outdated information.”
+    </div>
+
+    <p>
+        Development points should explain:
+    </p>
+
+    <ul>
+
+        <li>What happened.</li>
+
+        <li>Why it mattered.</li>
+
+        <li>What standard was expected.</li>
+
+        <li>What the student should do differently next time.</li>
+
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Targeted Development Training</h2>
+
+    <p>
+        Do not rerun an entire complex scenario if the student only needs development
+        in one small area.
+    </p>
+
+    <p>Examples:</p>
+
+    <div class="review-grid">
+
+        <div class="review-box">
+
+            <strong>Weak Radio Communication</strong>
+
+            Run short information-relay and APSTRA-style communication exercises.
+
+        </div>
+
+        <div class="review-box">
+
+            <strong>Poor Reassessment</strong>
+
+            Run short scenarios where one important fact changes.
+
+        </div>
+
+        <div class="review-box">
+
+            <strong>Tunnel Vision</strong>
+
+            Introduce civilians, additional officers or changing priorities.
+
+        </div>
+
+        <div class="review-box">
+
+            <strong>Poor Teamwork</strong>
+
+            Run an exercise where both students require information held by the other.
+
+        </div>
+
+        <div class="review-box">
+
+            <strong>Information Assumptions</strong>
+
+            Give deliberately incomplete or conflicting intelligence.
+
+        </div>
+
+        <div class="review-box">
+
+            <strong>Poor Handover</strong>
+
+            Repeat short handover exercises until the structure improves.
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Exercise Three — Reassessment Challenge</h2>
+
+    <p>
+        Give the student a simple scenario with an obvious initial plan.
+    </p>
+
+    <p>
+        Then change one significant fact.
+    </p>
+
+    <p>Possible changes:</p>
+
+    <ul>
+
+        <li>The reported firearm is disproved.</li>
+
+        <li>A firearm is newly confirmed.</li>
+
+        <li>The subject becomes compliant.</li>
+
+        <li>The subject moves location.</li>
+
+        <li>A civilian enters the scenario.</li>
+
+        <li>A casualty occurs.</li>
+
+        <li>A second subject is identified.</li>
+
+        <li>The target vehicle is no longer confirmed.</li>
+
+    </ul>
+
+    <p>Assess whether the student:</p>
+
+    <ul>
+
+        <li>Notices the change.</li>
+
+        <li>Communicates it.</li>
+
+        <li>Updates their assessment.</li>
+
+        <li>Changes the plan where necessary.</li>
+
+    </ul>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Exercise Four — Information Handling Challenge</h2>
+
+    <p>
+        Provide a briefing containing:
+    </p>
+
+    <ul>
+
+        <li>Confirmed information.</li>
+
+        <li>Reported information.</li>
+
+        <li>Outdated information.</li>
+
+        <li>One assumption made by another officer.</li>
+
+        <li>Important missing information.</li>
+
+    </ul>
+
+    <p>
+        Ask the student to explain what they currently understand about the incident.
+    </p>
+
+    <p>
+        Assess whether they create certainty where none exists.
+    </p>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Exercise Five — Communication Challenge</h2>
+
+    <p>
+        During a scenario, introduce several changes.
+    </p>
+
+    <p>
+        Some should require communication and some should not.
+    </p>
+
+    <p>
+        Assess whether the student can distinguish between:
+    </p>
+
+    <ul>
+
+        <li>Information the crew needs immediately.</li>
+
+        <li>Information command needs.</li>
+
+        <li>Information that can wait.</li>
+
+        <li>Information that is not operationally relevant.</li>
+
+    </ul>
+
+</section>
+
+<section class="card activity">
+
+    <h2>Exercise Six — Teamwork Challenge</h2>
+
+    <p>
+        Give each student different but complementary information.
+    </p>
+
+    <p>
+        Neither student should have enough information to fully understand the
+        scenario without communicating with the other.
+    </p>
+
+    <p>Assess:</p>
+
+    <ul>
+
+        <li>Information sharing.</li>
+
+        <li>Listening.</li>
+
+        <li>Respectful challenge.</li>
+
+        <li>Shared decision-making.</li>
+
+        <li>Whether one student unnecessarily dominates.</li>
+
+    </ul>
+
+</section>
+
+<section class="card warning">
+
+    <h2>Do Not Create Artificial Failure</h2>
+
+    <p>
+        Module 12 scenarios should be challenging but fair.
+    </p>
+
+    <p>
+        Avoid:
+    </p>
+
+    <ul>
+
+        <li>Providing impossible amounts of information.</li>
+
+        <li>Changing every fact simultaneously.</li>
+
+        <li>Creating hidden rules the student could not reasonably know.</li>
+
+        <li>Penalising students for server problems.</li>
+
+        <li>Expecting one specific solution where several reasonable options exist.</li>
+
+        <li>Using scenarios purely to embarrass or catch students out.</li>
+
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Trainer Debrief Structure</h2>
+
+    <p>
+        Allow the student to speak before giving the trainer assessment.
+    </p>
+
+    <p>Ask:</p>
+
+    <ol>
+
+        <li>What did you understand the incident to be?</li>
+
+        <li>What was your immediate priority?</li>
+
+        <li>What went well?</li>
+
+        <li>What did you find difficult?</li>
+
+        <li>What information influenced your decisions?</li>
+
+        <li>What changed during the scenario?</li>
+
+        <li>Did your plan change?</li>
+
+        <li>What would you do differently?</li>
+
+    </ol>
+
+    <p>
+        Then provide trainer feedback.
+    </p>
+
+</section>
+
+<section class="card success">
+
+    <h2>Applying Feedback</h2>
+
+    <p>
+        Where practical, students should be given another opportunity to demonstrate
+        improvement after feedback.
+    </p>
+
+    <p>
+        The reassessment does not need to repeat the exact same scenario.
+    </p>
+
+    <p>
+        In fact, changing the circumstances slightly is useful because it tests whether
+        the student understood the underlying principle rather than memorised the answer.
+    </p>
+
+</section>
+
+<section class="card assessment">
+
+    <h2>Final Readiness Criteria</h2>
+
+    <p>
+        Before recommending a student for Module 13, trainers should be satisfied
+        that the student demonstrates reliable performance in:
+    </p>
+
+    <div class="readiness-grid">
+
+        <div class="readiness-box">
+            <strong>Professionalism</strong>
+            Consistent professional behaviour.
+        </div>
+
+        <div class="readiness-box">
+            <strong>Integrity</strong>
+            Honest acknowledgement of errors and uncertainty.
+        </div>
+
+        <div class="readiness-box">
+            <strong>Knowledge</strong>
+            Sufficient understanding of Academy learning.
+        </div>
+
+        <div class="readiness-box">
+            <strong>Safety</strong>
+            Reliable firearms, vehicle and equipment discipline.
+        </div>
+
+        <div class="readiness-box">
+            <strong>Communication</strong>
+            Clear, relevant information sharing.
+        </div>
+
+        <div class="readiness-box">
+            <strong>Teamwork</strong>
+            Effective contribution to crew and team performance.
+        </div>
+
+        <div class="readiness-box">
+            <strong>Decision-Making</strong>
+            Reasonable and explainable decisions.
+        </div>
+
+        <div class="readiness-box">
+            <strong>Reassessment</strong>
+            Recognises and adapts to meaningful changes.
+        </div>
+
+        <div class="readiness-box">
+            <strong>Awareness</strong>
+            Maintains awareness of the wider incident.
+        </div>
+
+        <div class="readiness-box">
+            <strong>Accountability</strong>
+            Can explain actions clearly afterwards.
+        </div>
+
+    </div>
+
+</section>
+
+<section class="card danger">
+
+    <h2>When NOT to Recommend Final Assessment</h2>
+
+    <p>
+        A student should normally receive further development before Module 13
+        where a significant unresolved concern remains.
+    </p>
+
+    <p>Examples may include:</p>
+
+    <ul>
+
+        <li>Repeated safety concerns.</li>
+
+        <li>Repeated failure to communicate significant information.</li>
+
+        <li>Persistent inability to reassess changing circumstances.</li>
+
+        <li>Repeated poor team behaviour.</li>
+
+        <li>Significant professionalism concerns.</li>
+
+        <li>Persistent confusion between reports and confirmed information.</li>
+
+        <li>Failure to apply repeated trainer feedback.</li>
+
+        <li>Inability to explain important decisions.</li>
+
+    </ul>
+
+    <p>
+        Additional development should be specific to the identified concern.
+    </p>
+
+</section>
+
+<section class="card assessment">
+
+    <h2>Module 12 Outcomes</h2>
+
+    <h3>Ready for Final Assessment</h3>
+
+    <p>
+        Student demonstrates sufficiently consistent performance and is recommended
+        for Module 13.
+    </p>
+
+    <h3>Ready with Development Points</h3>
+
+    <p>
+        Student may progress, but identified development points should be recorded
+        and considered during final assessment.
+    </p>
+
+    <h3>Further Development Required</h3>
+
+    <p>
+        Student is not yet recommended for Module 13 and requires targeted training.
+    </p>
+
+    <h3>Incomplete</h3>
+
+    <p>
+        Required Module 12 development work remains outstanding.
+    </p>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Final Readiness Discussion</h2>
+
+    <p>
+        Before completing Module 12, speak to the student directly.
+    </p>
+
+    <div class="example-box">
+
+        <strong>Suggested wording — Ready</strong>
+
+        <p>
+            “You have now completed the development phase of the ARU Academy.
+        </p>
+
+        <p>
+            Across Module 12 you have demonstrated that you can apply previous
+            learning consistently, respond to changing circumstances and apply
+            feedback.
+        </p>
+
+        <p>
+            You are being recommended to progress to Module 13 — Final Assessment.”
+        </p>
+
+    </div>
+
+    <div class="example-box">
+
+        <strong>Suggested wording — Further Development</strong>
+
+        <p>
+            “You have completed the majority of the development work required,
+            but there is one area I want to strengthen before final assessment.
+        </p>
+
+        <p>
+            This is not a failure. The purpose of Module 12 is to identify these
+            issues before the final assessment.
+        </p>
+
+        <p>
+            We will complete targeted development in this area and review your
+            readiness again afterwards.”
+        </p>
+
+    </div>
+
+</section>
+
+<section class="card warning">
+
+    <h2>Common Student Errors</h2>
+
+    <ul>
+
+        <li>Trying to impress rather than performing consistently.</li>
+
+        <li>Rushing because final assessment is approaching.</li>
+
+        <li>Becoming defensive when older development points are revisited.</li>
+
+        <li>Memorising scenarios instead of applying principles.</li>
+
+        <li>Failing to communicate uncertainty.</li>
+
+        <li>Repeating a previously identified error.</li>
+
+        <li>Ignoring the wider team.</li>
+
+        <li>Continuing with an outdated plan.</li>
+
+        <li>Failing to reflect honestly during debrief.</li>
+
+    </ul>
+
+</section>
+
+<section class="card warning">
+
+    <h2>Common Trainer Errors</h2>
+
+    <ul>
+
+        <li>Treating Module 12 as the final assessment.</li>
+
+        <li>Introducing lots of new theory.</li>
+
+        <li>Making scenarios difficult simply for the sake of difficulty.</li>
+
+        <li>Failing to review previous training records.</li>
+
+        <li>Giving vague development feedback.</li>
+
+        <li>Failing to provide an opportunity to apply feedback.</li>
+
+        <li>Using the same development scenario repeatedly.</li>
+
+        <li>Recommending progression despite an unresolved significant concern.</li>
+
+        <li>Holding a student back for minor imperfections that do not affect overall competence.</li>
+
+        <li>Failing to record the reasons for the readiness decision.</li>
+
+    </ul>
+
+</section>
+
+<section class="card instructor">
+
+    <h2>Closing Script</h2>
+
+    <div class="example-box">
+
+        <strong>Suggested wording</strong>
+
+        <p>
+            “Module 12 concludes the training and development phase of the Academy.
+        </p>
+
+        <p>
+            You have now been taught the standards, given opportunities to practise
+            them and received feedback across the course.
+        </p>
+
+        <p>
+            Module 13 is different. It is the point where you demonstrate that
+            you can apply those standards independently and consistently.
+        </p>
+
+        <p>
+            Use the Academy pages to revise any areas you are unsure about before
+            final assessment.”
+        </p>
+
+    </div>
+
+</section>
+
+<section class="card">
+
+    <h2>Trainer Completion Checklist</h2>
+
+    <ul class="checklist">
+
+        <li>Modules 1–11 training records reviewed</li>
+
+        <li>Previous development points reviewed</li>
+
+        <li>Student self-assessment completed</li>
+
+        <li>General consolidation scenario completed</li>
+
+        <li>Scenario debrief completed</li>
+
+        <li>Development points identified</li>
+
+        <li>Targeted development delivered where required</li>
+
+        <li>Reassessment scenario completed where required</li>
+
+        <li>Information handling reviewed</li>
+
+        <li>Communication reviewed</li>
+
+        <li>Teamwork reviewed</li>
+
+        <li>Decision-making reviewed</li>
+
+        <li>Reassessment reviewed</li>
+
+        <li>Safety standards reviewed</li>
+
+        <li>Post-incident handover reviewed</li>
+
+        <li>Feedback application demonstrated</li>
+
+        <li>Outstanding concerns documented</li>
+
+        <li>Final readiness decision made</li>
+
+        <li>Student informed of the decision</li>
+
+        <li>Module 12 outcome recorded</li>
+
+    </ul>
+
+    <div class="button-row">
+
+        <a class="button"
+           href="PASTE-TRAINER-MODULE-12-ASSESSMENT-FORM-LINK-HERE"
+           target="_blank">
+
+            Record Module 12 Outcome
+
+        </a>
+
+        <a class="button secondary"
+           href="trainers.html">
+
+            Return to Trainers Area
+
+        </a>
+
+    </div>
+
+</section>
+
+<section class="card success">
+
+    <h2>Next — Module 13</h2>
+
+    <h3>Final Assessment & Qualification</h3>
+
+    <p>
+        Students recommended for progression will now enter the final Academy stage.
+    </p>
+
+    <p>
+        Module 13 should assess knowledge, professionalism, communication,
+        decision-making, teamwork, practical performance and accountability
+        without providing the level of coaching used during earlier modules.
+    </p>
+
+</section>
+
+<footer class="footer">
+
+    Code44 Police Service • Armed Response Unit Academy<br>
+
+    Trainer Module 12 — Consolidation & Scenario Development • Cohort 001
+
+</footer>
+
+</div>
+
+</body>
+
+</html>
