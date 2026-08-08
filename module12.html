@@ -1,0 +1,1348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Module 12 - Consolidation & Scenario Development | ARU Academy</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    background:#05080d;
+    color:white;
+    font-family:Segoe UI,Arial,sans-serif;
+    line-height:1.7;
+}
+
+.page-container{
+    width:90%;
+    max-width:1100px;
+    margin:0 auto;
+    padding:35px 0 60px;
+}
+
+.navbar{
+    background:#0b111b;
+    border:1px solid #16315c;
+    border-radius:8px;
+    padding:15px;
+    margin-bottom:20px;
+}
+
+.navbar a{
+    color:#4d9dff;
+    text-decoration:none;
+    font-weight:bold;
+    margin:0 5px;
+}
+
+.navbar a:hover{
+    color:white;
+}
+
+.back-link{
+    display:inline-block;
+    margin-bottom:20px;
+    color:#4d9dff;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.hero{
+    background:
+        linear-gradient(rgba(2,7,14,.80),rgba(2,7,14,.95)),
+        url('arv-photo.png');
+
+    background-size:cover;
+    background-position:center;
+
+    border:1px solid #16315c;
+    border-radius:12px;
+
+    padding:55px 30px;
+    text-align:center;
+}
+
+.hero h1{
+    margin:0 0 10px;
+    color:#4d9dff;
+    font-size:2.5rem;
+}
+
+.hero p{
+    margin:5px 0;
+    color:#d3dbea;
+}
+
+.badge{
+    display:inline-block;
+    margin-top:15px;
+    padding:7px 14px;
+
+    background:#10203a;
+    border:1px solid #2c65a8;
+    border-radius:20px;
+
+    color:#8fc2ff;
+    font-weight:bold;
+}
+
+h1,
+h2,
+h3{
+    color:#4d9dff;
+}
+
+.card{
+    background:#0b111b;
+    border:1px solid #16315c;
+    border-radius:9px;
+
+    padding:24px;
+    margin-top:20px;
+
+    transition:.25s;
+}
+
+.card:hover{
+    border-color:#4d9dff;
+}
+
+.objective-grid,
+.review-grid,
+.standard-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:14px;
+    margin-top:18px;
+}
+
+.objective,
+.review-box,
+.standard-box{
+    background:#08111d;
+    border:1px solid #16315c;
+    border-radius:8px;
+    padding:16px;
+}
+
+.objective strong,
+.review-box strong,
+.standard-box strong{
+    display:block;
+    color:#4d9dff;
+    margin-bottom:5px;
+}
+
+.contents-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:12px;
+    margin-top:15px;
+}
+
+.contents-link{
+    display:block;
+    background:#08111d;
+    border:1px solid #16315c;
+    border-radius:7px;
+    padding:14px;
+    color:white;
+    text-decoration:none;
+    transition:.25s;
+}
+
+.contents-link:hover{
+    border-color:#4d9dff;
+    background:#0d1828;
+}
+
+.contents-link strong{
+    color:#4d9dff;
+}
+
+.info-box{
+    background:#08111d;
+    border-left:5px solid #4d9dff;
+    padding:18px;
+    margin-top:18px;
+    border-radius:6px;
+}
+
+.warning{
+    border-left:5px solid #e3a629;
+}
+
+.success{
+    border-left:5px solid #45b36b;
+}
+
+.danger{
+    border-left:5px solid #d84d5f;
+}
+
+ul,
+ol{
+    padding-left:24px;
+}
+
+li{
+    margin-bottom:8px;
+}
+
+strong{
+    color:#dceaff;
+}
+
+.button-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:25px;
+}
+
+.button{
+    display:inline-block;
+    padding:12px 18px;
+
+    background:#4d9dff;
+    color:#05080d;
+
+    border-radius:6px;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.button:hover{
+    background:#77b5ff;
+}
+
+.button.secondary{
+    background:#101b2c;
+    color:#4d9dff;
+    border:1px solid #24538b;
+}
+
+.footer{
+    margin-top:30px;
+    padding-top:20px;
+    border-top:1px solid #16315c;
+    color:#8f9bad;
+    text-align:center;
+    font-size:.9rem;
+}
+
+@media(max-width:650px){
+
+    .page-container{
+        width:92%;
+    }
+
+    .hero{
+        padding:40px 18px;
+    }
+
+    .hero h1{
+        font-size:2rem;
+    }
+
+    .navbar{
+        line-height:2;
+    }
+
+    .button{
+        width:100%;
+        text-align:center;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="page-container">
+
+<nav class="navbar">
+
+    <a href="aru-members.html">
+        Internal Database
+    </a>
+
+    |
+
+    <a href="academy.html">
+        ARU Academy
+    </a>
+
+    |
+
+    <a href="student-handbook.html">
+        Student Handbook
+    </a>
+
+    |
+
+    <a href="module11.html">
+        Module 11
+    </a>
+
+    |
+
+    <a href="module12.html" style="color:white;">
+        Module 12
+    </a>
+
+</nav>
+
+<a class="back-link" href="academy.html">
+    ← Return to ARU Academy
+</a>
+
+<header class="hero">
+
+    <h1>Module 12</h1>
+
+    <p>Consolidation & Scenario Development</p>
+
+    <p>ARU Academy — Student Learning & Final Preparation</p>
+
+    <span class="badge">
+        Final Development Module
+    </span>
+
+</header>
+
+<section class="card">
+
+    <h2>Module Overview</h2>
+
+    <p>
+        Module 12 is the final development stage of the ARU Academy before the
+        Final Assessment.
+    </p>
+
+    <p>
+        Very little new theory is introduced within this module.
+    </p>
+
+    <p>
+        Instead, students will consolidate the knowledge, professional standards,
+        communication skills, decision-making and practical abilities developed
+        throughout Modules 1–11.
+    </p>
+
+    <p>
+        Training will focus heavily on scenarios, trainer feedback and identifying
+        any remaining development areas before the student progresses to final assessment.
+    </p>
+
+</section>
+
+<section class="card success">
+
+    <h2>The Purpose of Module 12</h2>
+
+    <p>
+        Module 12 is not designed to catch students out.
+    </p>
+
+    <p>
+        It exists to identify weaknesses while there is still time to correct them.
+    </p>
+
+    <p>
+        Students should use this stage to demonstrate consistent performance,
+        ask questions, seek clarification and apply feedback before entering the
+        final assessment stage.
+    </p>
+
+</section>
+
+<section class="card">
+
+    <h2>Contents</h2>
+
+    <div class="contents-grid">
+
+        <a class="contents-link" href="#objectives">
+            <strong>1.</strong> Learning Objectives
+        </a>
+
+        <a class="contents-link" href="#standards">
+            <strong>2.</strong> Academy Standards
+        </a>
+
+        <a class="contents-link" href="#review">
+            <strong>3.</strong> Modules 1–11 Review
+        </a>
+
+        <a class="contents-link" href="#decision">
+            <strong>4.</strong> Decision-Making
+        </a>
+
+        <a class="contents-link" href="#communication">
+            <strong>5.</strong> Communication
+        </a>
+
+        <a class="contents-link" href="#teamwork">
+            <strong>6.</strong> Teamwork
+        </a>
+
+        <a class="contents-link" href="#information">
+            <strong>7.</strong> Information Handling
+        </a>
+
+        <a class="contents-link" href="#adaptability">
+            <strong>8.</strong> Adaptability
+        </a>
+
+        <a class="contents-link" href="#scenarios">
+            <strong>9.</strong> Scenario Development
+        </a>
+
+        <a class="contents-link" href="#feedback">
+            <strong>10.</strong> Feedback & Development
+        </a>
+
+        <a class="contents-link" href="#weakness">
+            <strong>11.</strong> Development Areas
+        </a>
+
+        <a class="contents-link" href="#assessment">
+            <strong>12.</strong> Assessment Readiness
+        </a>
+
+        <a class="contents-link" href="#revision">
+            <strong>13.</strong> Final Revision
+        </a>
+
+    </div>
+
+</section>
+
+<section class="card" id="objectives">
+
+    <h2>1. Learning Objectives</h2>
+
+    <div class="objective-grid">
+
+        <div class="objective">
+
+            <strong>Consistency</strong>
+
+            Demonstrate Academy standards consistently rather than only during
+            individual exercises.
+
+        </div>
+
+        <div class="objective">
+
+            <strong>Integration</strong>
+
+            Combine knowledge from all previous modules during realistic scenarios.
+
+        </div>
+
+        <div class="objective">
+
+            <strong>Decision-Making</strong>
+
+            Make proportionate and explainable decisions as circumstances change.
+
+        </div>
+
+        <div class="objective">
+
+            <strong>Communication</strong>
+
+            Communicate effectively with crew members, other units and command.
+
+        </div>
+
+        <div class="objective">
+
+            <strong>Adaptability</strong>
+
+            Recognise when a plan is no longer suitable and adjust appropriately.
+
+        </div>
+
+        <div class="objective">
+
+            <strong>Self-Development</strong>
+
+            Identify personal strengths and development areas before final assessment.
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="card" id="standards">
+
+    <h2>2. Academy Standards</h2>
+
+    <p>
+        At this stage of the Academy, trainers will expect students to demonstrate
+        the standards taught throughout the entire course without requiring constant reminders.
+    </p>
+
+    <div class="standard-grid">
+
+        <div class="standard-box">
+
+            <strong>Professionalism</strong>
+
+            Remain professional, respectful and accountable throughout training.
+
+        </div>
+
+        <div class="standard-box">
+
+            <strong>Integrity</strong>
+
+            Be honest about mistakes, uncertainty and performance.
+
+        </div>
+
+        <div class="standard-box">
+
+            <strong>Communication</strong>
+
+            Pass relevant information clearly and listen to others.
+
+        </div>
+
+        <div class="standard-box">
+
+            <strong>Teamwork</strong>
+
+            Work as part of the wider ARU team rather than operating independently.
+
+        </div>
+
+        <div class="standard-box">
+
+            <strong>Decision-Making</strong>
+
+            Base decisions on the information and circumstances available at the time.
+
+        </div>
+
+        <div class="standard-box">
+
+            <strong>Reassessment</strong>
+
+            Recognise when changing circumstances require the response to change.
+
+        </div>
+
+        <div class="standard-box">
+
+            <strong>Safety</strong>
+
+            Maintain firearms, vehicle and equipment discipline.
+
+        </div>
+
+        <div class="standard-box">
+
+            <strong>Accountability</strong>
+
+            Be capable of explaining actions and decisions afterwards.
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="card" id="review">
+
+    <h2>3. Modules 1–11 Review</h2>
+
+    <p>
+        Students should now be comfortable with the key principles covered
+        throughout the Academy.
+    </p>
+
+    <div class="review-grid">
+
+        <div class="review-box">
+
+            <strong>Module 1</strong>
+
+            Academy structure, expectations and responsibilities.
+
+        </div>
+
+        <div class="review-box">
+
+            <strong>Module 2</strong>
+
+            Professional standards, integrity and accountability.
+
+        </div>
+
+        <div class="review-box">
+
+            <strong>Module 3</strong>
+
+            Legal and accountable decision-making, proportionality and reassessment.
+
+        </div>
+
+        <div class="review-box">
+
+            <strong>Module 4</strong>
+
+            Equipment, vehicles, PPE and equipment accountability.
+
+        </div>
+
+        <div class="review-box">
+
+            <strong>Module 5</strong>
+
+            Firearms safety and simulated handling.
+
+        </div>
+
+        <div class="review-box">
+
+            <strong>Module 6</strong>
+
+            Firearms fundamentals and operational readiness.
+
+        </div>
+
+        <div class="review-box">
+
+            <strong>Module 7</strong>
+
+            ARV deployment and armed incident response.
+
+        </div>
+
+        <div class="review-box">
+
+            <strong>Module 8</strong>
+
+            Armed vehicle incidents and coordinated vehicle operations.
+
+        </div>
+
+        <div class="review-box">
+
+            <strong>Module 9</strong>
+
+            Armed containment, searches and high-risk warrants.
+
+        </div>
+
+        <div class="review-box">
+
+            <strong>Module 10</strong>
+
+            Building operations and CQB principles.
+
+        </div>
+
+        <div class="review-box">
+
+            <strong>Module 11</strong>
+
+            Complex armed incidents and integrated operations.
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="card warning">
+
+    <h2>Do Not Memorise Scenarios</h2>
+
+    <p>
+        Students should not attempt to memorise previous exercises and repeat the
+        same response whenever a similar scenario appears.
+    </p>
+
+    <p>
+        Different information, behaviour, locations and risks may require different decisions.
+    </p>
+
+    <p>
+        Trainers will deliberately vary scenarios to assess understanding rather
+        than memorisation.
+    </p>
+
+</section>
+
+<section class="card" id="decision">
+
+    <h2>4. Decision-Making</h2>
+
+    <p>
+        Throughout Module 12, students should demonstrate structured and
+        proportionate decision-making.
+    </p>
+
+    <p>Students should continually consider:</p>
+
+    <ul>
+
+        <li>What information do I currently have?</li>
+
+        <li>What remains uncertain?</li>
+
+        <li>What threat currently exists?</li>
+
+        <li>Who is at risk?</li>
+
+        <li>What am I trying to achieve?</li>
+
+        <li>What options are available?</li>
+
+        <li>Does my current plan remain appropriate?</li>
+
+        <li>What has changed since my previous assessment?</li>
+
+    </ul>
+
+    <div class="info-box">
+
+        <strong>Final Preparation Principle</strong>
+
+        Trainers are not looking for perfect hindsight.
+
+        They are looking for reasonable and explainable decisions based on what
+        you knew at the time.
+
+    </div>
+
+</section>
+
+<section class="card" id="communication">
+
+    <h2>5. Communication</h2>
+
+    <p>
+        By Module 12, students should communicate without trainers constantly
+        prompting them.
+    </p>
+
+    <p>
+        Relevant information should be communicated when:
+    </p>
+
+    <ul>
+
+        <li>The threat changes.</li>
+
+        <li>A subject is located or moves.</li>
+
+        <li>Weapon information changes.</li>
+
+        <li>A casualty occurs.</li>
+
+        <li>A vehicle becomes involved.</li>
+
+        <li>A containment changes or fails.</li>
+
+        <li>A significant civilian risk appears.</li>
+
+        <li>A task cannot be completed.</li>
+
+        <li>A specialist resource is required.</li>
+
+        <li>The existing plan is no longer suitable.</li>
+
+    </ul>
+
+    <p>
+        Students should balance passing important information with maintaining
+        disciplined radio traffic.
+    </p>
+
+</section>
+
+<section class="card" id="teamwork">
+
+    <h2>6. Teamwork</h2>
+
+    <p>
+        ARU operations require officers to work effectively as part of a team.
+    </p>
+
+    <p>Students should demonstrate:</p>
+
+    <ul>
+
+        <li>Listening to crew members.</li>
+
+        <li>Sharing information.</li>
+
+        <li>Supporting the assigned plan.</li>
+
+        <li>Understanding their role.</li>
+
+        <li>Speaking up when important information is identified.</li>
+
+        <li>Requesting help where required.</li>
+
+        <li>Accepting direction.</li>
+
+        <li>Not attempting to dominate every scenario.</li>
+
+    </ul>
+
+    <div class="info-box">
+
+        <strong>Strong Team Performance</strong>
+
+        A good ARU officer makes the team more effective, not just themselves.
+
+    </div>
+
+</section>
+
+<section class="card" id="information">
+
+    <h2>7. Information Handling</h2>
+
+    <p>
+        Students should consistently distinguish between:
+    </p>
+
+    <ul>
+
+        <li>Reported information.</li>
+
+        <li>Confirmed information.</li>
+
+        <li>Personal observations.</li>
+
+        <li>Assumptions.</li>
+
+        <li>Important unknowns.</li>
+
+    </ul>
+
+    <p>
+        Students should not create certainty where it does not exist.
+    </p>
+
+    <p>
+        Complex incidents may contain conflicting information and trainers will
+        expect students to recognise this.
+    </p>
+
+</section>
+
+<section class="card" id="adaptability">
+
+    <h2>8. Adaptability</h2>
+
+    <p>
+        Students should demonstrate that they can change their response when
+        circumstances materially change.
+    </p>
+
+    <p>Examples include:</p>
+
+    <ul>
+
+        <li>A weapon being confirmed.</li>
+
+        <li>A reported weapon being disproved.</li>
+
+        <li>A subject becoming compliant.</li>
+
+        <li>A subject becoming more threatening.</li>
+
+        <li>An additional subject being identified.</li>
+
+        <li>A civilian or hostage appearing.</li>
+
+        <li>A vehicle becoming involved.</li>
+
+        <li>A casualty occurring.</li>
+
+        <li>A specialist resource becoming available.</li>
+
+        <li>A server mechanic failing.</li>
+
+        <li>Command changing the operational objective.</li>
+
+    </ul>
+
+    <div class="info-box danger">
+
+        <strong>Do Not Force an Outdated Plan</strong>
+
+        A plan should be changed, paused or abandoned when it no longer matches
+        the circumstances.
+
+    </div>
+
+</section>
+
+<section class="card" id="scenarios">
+
+    <h2>9. Scenario Development</h2>
+
+    <p>
+        Module 12 practical exercises may draw from any previous Academy module.
+    </p>
+
+    <p>
+        Students may encounter scenarios involving:
+    </p>
+
+    <ul>
+
+        <li>Initial ARV deployment.</li>
+
+        <li>Vehicle incidents.</li>
+
+        <li>Containment.</li>
+
+        <li>Search operations.</li>
+
+        <li>High-risk warrants.</li>
+
+        <li>Building operations.</li>
+
+        <li>Multiple subjects.</li>
+
+        <li>Multiple locations.</li>
+
+        <li>NPAS integration.</li>
+
+        <li>K9 integration.</li>
+
+        <li>Casualties.</li>
+
+        <li>Conflicting intelligence.</li>
+
+        <li>Specialist resources.</li>
+
+        <li>Changing operational priorities.</li>
+
+    </ul>
+
+    <p>
+        Trainers may combine several elements into one scenario.
+    </p>
+
+</section>
+
+<section class="card success">
+
+    <h2>Scenario Difficulty</h2>
+
+    <p>
+        Students are not expected to perform every scenario perfectly.
+    </p>
+
+    <p>
+        Trainers may deliberately introduce uncertainty or unexpected changes to
+        assess whether students remain controlled and adaptable.
+    </p>
+
+    <p>
+        Making an error does not automatically mean failure.
+    </p>
+
+    <p>
+        Failing to recognise, communicate or learn from repeated errors is more significant.
+    </p>
+
+</section>
+
+<section class="card" id="feedback">
+
+    <h2>10. Feedback & Development</h2>
+
+    <p>
+        Feedback is particularly important during Module 12.
+    </p>
+
+    <p>
+        Students should:
+    </p>
+
+    <ul>
+
+        <li>Listen to trainer feedback.</li>
+
+        <li>Ask questions if feedback is unclear.</li>
+
+        <li>Understand why a development point has been identified.</li>
+
+        <li>Apply feedback during later exercises.</li>
+
+        <li>Be honest about areas they found difficult.</li>
+
+        <li>Avoid becoming defensive when mistakes are discussed.</li>
+
+    </ul>
+
+    <div class="info-box">
+
+        <strong>Trainer Feedback Is Preparation</strong>
+
+        Module 12 is the opportunity to fix issues before they appear during
+        final assessment.
+
+    </div>
+
+</section>
+
+<section class="card" id="weakness">
+
+    <h2>11. Identifying Development Areas</h2>
+
+    <p>
+        Students should reflect on their own performance.
+    </p>
+
+    <p>Possible development areas may include:</p>
+
+    <ul>
+
+        <li>Radio communication.</li>
+
+        <li>Confidence.</li>
+
+        <li>Overconfidence.</li>
+
+        <li>Information handling.</li>
+
+        <li>Team awareness.</li>
+
+        <li>Decision-making.</li>
+
+        <li>Reassessment.</li>
+
+        <li>Vehicle coordination.</li>
+
+        <li>Building-operation awareness.</li>
+
+        <li>Role discipline.</li>
+
+        <li>Specialist-resource awareness.</li>
+
+        <li>Post-incident handovers.</li>
+
+    </ul>
+
+    <p>
+        Identifying a weakness is not a failure.
+    </p>
+
+    <p>
+        The purpose is to improve it before qualification.
+    </p>
+
+</section>
+
+<section class="card warning">
+
+    <h2>Repeated Development Points</h2>
+
+    <p>
+        Trainers may require additional training if the same issue repeatedly
+        appears despite previous feedback.
+    </p>
+
+    <p>
+        Students should demonstrate that they are capable of taking feedback and
+        applying it during later exercises.
+    </p>
+
+</section>
+
+<section class="card" id="assessment">
+
+    <h2>12. Final Assessment Readiness</h2>
+
+    <p>
+        Before progression to Module 13, students should demonstrate satisfactory
+        performance across the core Academy standards.
+    </p>
+
+    <div class="standard-grid">
+
+        <div class="standard-box">
+
+            <strong>Professionalism</strong>
+
+            Consistent professional conduct.
+
+        </div>
+
+        <div class="standard-box">
+
+            <strong>Knowledge</strong>
+
+            Satisfactory understanding of Academy learning.
+
+        </div>
+
+        <div class="standard-box">
+
+            <strong>Safety</strong>
+
+            Reliable firearms, vehicle and equipment discipline.
+
+        </div>
+
+        <div class="standard-box">
+
+            <strong>Communication</strong>
+
+            Clear and relevant communication.
+
+        </div>
+
+        <div class="standard-box">
+
+            <strong>Teamwork</strong>
+
+            Effective contribution to ARU team performance.
+
+        </div>
+
+        <div class="standard-box">
+
+            <strong>Decision-Making</strong>
+
+            Proportionate and explainable decisions.
+
+        </div>
+
+        <div class="standard-box">
+
+            <strong>Reassessment</strong>
+
+            Recognition and response to changing circumstances.
+
+        </div>
+
+        <div class="standard-box">
+
+            <strong>Accountability</strong>
+
+            Ability to explain actions honestly after an incident.
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="card danger">
+
+    <h2>Progression to Final Assessment</h2>
+
+    <p>
+        Completion of Module 12 does not automatically guarantee immediate
+        progression to Module 13.
+    </p>
+
+    <p>
+        Trainers may recommend additional development where a student has an
+        outstanding issue that should be addressed before final assessment.
+    </p>
+
+    <p>
+        This is intended to give the student the best opportunity to demonstrate
+        the required standard when formally assessed.
+    </p>
+
+</section>
+
+<section class="card" id="revision">
+
+    <h2>13. Final Revision</h2>
+
+    <p>
+        Before final assessment, students should revisit any Academy module they
+        are unsure about.
+    </p>
+
+    <p>Students should be comfortable explaining:</p>
+
+    <ul>
+
+        <li>The professional standards expected within ARU.</li>
+
+        <li>How accountability applies to armed policing.</li>
+
+        <li>The importance of continuous reassessment.</li>
+
+        <li>The difference between reported and confirmed information.</li>
+
+        <li>ARU equipment, firearms and PPE.</li>
+
+        <li>Firearms safety principles.</li>
+
+        <li>ARV crew responsibilities.</li>
+
+        <li>Armed vehicle incident principles.</li>
+
+        <li>Containment and search principles.</li>
+
+        <li>Building-operation principles.</li>
+
+        <li>How ARU works with Response, Roads Policing, NPAS and K9.</li>
+
+        <li>How casualties may affect an operation.</li>
+
+        <li>Why specialist capabilities should only be used for a clear purpose.</li>
+
+        <li>How changing circumstances should affect operational decisions.</li>
+
+        <li>What information should be included within a post-incident handover.</li>
+
+    </ul>
+
+</section>
+
+<section class="card success">
+
+    <h2>What Good Looks Like</h2>
+
+    <p>
+        A student ready for final assessment does not need to know everything
+        instantly.
+    </p>
+
+    <p>
+        They should be able to:
+    </p>
+
+    <ul>
+
+        <li>Remain calm.</li>
+
+        <li>Think.</li>
+
+        <li>Communicate.</li>
+
+        <li>Work with others.</li>
+
+        <li>Ask for information.</li>
+
+        <li>Recognise risk.</li>
+
+        <li>Make a decision.</li>
+
+        <li>Change that decision when necessary.</li>
+
+        <li>Accept feedback.</li>
+
+        <li>Explain what they did afterwards.</li>
+
+    </ul>
+
+</section>
+
+<section class="card">
+
+    <h2>Module 12 Completion</h2>
+
+    <p>
+        Module 12 is complete when the student has:
+    </p>
+
+    <ul>
+
+        <li>Reviewed required Academy learning.</li>
+
+        <li>Completed consolidation scenarios.</li>
+
+        <li>Demonstrated consistent professional standards.</li>
+
+        <li>Demonstrated satisfactory communication.</li>
+
+        <li>Demonstrated effective teamwork.</li>
+
+        <li>Demonstrated accountable decision-making.</li>
+
+        <li>Demonstrated continuous reassessment.</li>
+
+        <li>Completed identified remedial training where required.</li>
+
+        <li>Received and applied trainer feedback.</li>
+
+        <li>Been recommended as ready for final assessment.</li>
+
+    </ul>
+
+    <div class="button-row">
+
+        <a class="button secondary"
+           href="academy.html">
+
+            Return to Academy
+
+        </a>
+
+    </div>
+
+</section>
+
+<section class="card success">
+
+    <h2>Next — Module 13</h2>
+
+    <h3>Final Assessment & Qualification</h3>
+
+    <p>
+        Module 13 is the final stage of the ARU Academy.
+    </p>
+
+    <p>
+        Students will be assessed across knowledge, professionalism, practical
+        performance, communication, decision-making, teamwork and accountability.
+    </p>
+
+    <p>
+        The assessment is designed to determine whether the student can perform
+        consistently at the standard expected of a qualified Code44 ARU officer.
+    </p>
+
+</section>
+
+<footer class="footer">
+
+    Code44 Police Service • Armed Response Unit Academy<br>
+
+    Module 12 — Consolidation & Scenario Development
+
+</footer>
+
+</div>
+
+</body>
+
+</html>
