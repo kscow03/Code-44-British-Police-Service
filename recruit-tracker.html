@@ -2,12 +2,12 @@
 <html lang="en">
 
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>ARU Recruit Tracker</title>
 
+<!-- Supabase -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
@@ -159,10 +159,13 @@ select,
 textarea{
     width:100%;
     padding:12px 13px;
+
     background:#08111d;
     color:white;
+
     border:1px solid #244c80;
     border-radius:7px;
+
     font-family:inherit;
     font-size:.95rem;
 }
@@ -189,11 +192,15 @@ textarea{
 button,
 .button{
     display:inline-block;
+
     padding:11px 16px;
+
     background:#4d9dff;
     color:#05080d;
+
     border:none;
     border-radius:6px;
+
     text-decoration:none;
     font-weight:bold;
     cursor:pointer;
@@ -221,15 +228,16 @@ button.danger:hover{
     background:#552027;
 }
 
+
+/* =========================
+   RECRUIT LIST
+========================= */
+
 .recruit-list{
     display:grid;
     gap:12px;
     margin-top:20px;
 }
-
-/* =====================================================
-   COLLAPSED RECRUIT HEADER
-===================================================== */
 
 .recruit-card{
     background:#08111d;
@@ -238,73 +246,72 @@ button.danger:hover{
     overflow:hidden;
 }
 
-.recruit-summary{
+
+/* =========================
+   COLLAPSED RECRUIT HEADER
+========================= */
+
+.recruit-header{
+    padding:18px;
+    background:#0a1422;
+    cursor:pointer;
     display:flex;
     align-items:center;
-    gap:18px;
-    padding:18px;
-    cursor:pointer;
-    background:#0a1422;
-    transition:.2s;
+    justify-content:space-between;
+    gap:15px;
 }
 
-.recruit-summary:hover{
+.recruit-header:hover{
     background:#0d1929;
 }
 
-.recruit-arrow{
-    width:24px;
-    min-width:24px;
-    height:24px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    border:1px solid #24538b;
-    border-radius:5px;
-    color:#4d9dff;
-    font-weight:bold;
-    transition:.2s;
-}
-
-.recruit-card.open .recruit-arrow{
-    transform:rotate(90deg);
-}
-
-.recruit-summary-main{
-    flex:1;
+.recruit-header-left{
     min-width:0;
 }
 
-.recruit-summary-main h3{
-    margin:0;
-    color:#4d9dff;
-}
-
-.recruit-summary-main p{
-    margin:2px 0 0;
-    color:#8f9bad;
-    font-size:.9rem;
-}
-
-.recruit-summary-progress{
-    width:240px;
-    max-width:25%;
-}
-
-.recruit-summary-progress .progress{
+.recruit-header h3{
     margin:0 0 4px;
 }
 
-.recruit-summary-percent{
-    color:#8f9bad;
-    font-size:.82rem;
-    text-align:right;
+.recruit-header p{
+    margin:0;
+    color:#aab8ca;
+    font-size:.9rem;
 }
 
-.recruit-summary-status{
-    min-width:160px;
-    text-align:right;
+.recruit-header-right{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    flex-shrink:0;
 }
+
+.expand-icon{
+    width:30px;
+    height:30px;
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:#101b2c;
+    border:1px solid #24538b;
+
+    color:#4d9dff;
+    font-weight:bold;
+
+    transition:.2s;
+}
+
+.recruit-card.expanded .expand-icon{
+    transform:rotate(180deg);
+}
+
+
+/* =========================
+   RECRUIT BODY
+========================= */
 
 .recruit-body{
     display:none;
@@ -312,15 +319,22 @@ button.danger:hover{
     border-top:1px solid #16315c;
 }
 
-.recruit-card.open .recruit-body{
+.recruit-card.expanded .recruit-body{
     display:block;
 }
 
+
+/* =========================
+   PROGRESS
+========================= */
+
 .progress{
     width:100%;
-    height:20px;
+    height:22px;
+
     background:#18212c;
     border-radius:20px;
+
     overflow:hidden;
     margin:10px 0;
 }
@@ -328,7 +342,11 @@ button.danger:hover{
 .progress-bar{
     height:100%;
     background:#4d9dff;
-    transition:.3s;
+    transition:width .3s ease;
+}
+
+.progress-bar.complete{
+    background:#45b36b;
 }
 
 .progress-text{
@@ -336,14 +354,16 @@ button.danger:hover{
     font-size:.9rem;
 }
 
-/* =====================================================
+
+/* =========================
    STATUS
-===================================================== */
+========================= */
 
 .status{
     display:inline-block;
     padding:5px 10px;
     border-radius:20px;
+
     font-size:.85rem;
     font-weight:bold;
 }
@@ -378,24 +398,42 @@ button.danger:hover{
     color:#ffb8c0;
 }
 
-/* =====================================================
+
+/* =========================
    MODULE CHECKLIST
-===================================================== */
+========================= */
+
+.module-section{
+    margin-top:25px;
+}
+
+.module-section h3{
+    margin-bottom:5px;
+}
+
+.module-help{
+    color:#8f9bad;
+    font-size:.9rem;
+    margin-top:0;
+}
 
 .module-list{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-    gap:9px;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:10px;
     margin-top:15px;
 }
 
 .module-item{
-    position:relative;
     background:#0b111b;
     border:1px solid #16315c;
-    border-radius:7px;
-    padding:12px;
-    font-size:.88rem;
+    border-radius:8px;
+    padding:13px;
+
+    display:flex;
+    align-items:center;
+    gap:12px;
+
     cursor:pointer;
     transition:.2s;
 }
@@ -414,60 +452,43 @@ button.danger:hover{
     background:#10203a;
 }
 
-.module-item.outstanding{
-    opacity:.65;
-}
+.module-checkbox{
+    width:20px;
+    height:20px;
+    flex-shrink:0;
 
-.module-check{
-    display:flex;
-    align-items:flex-start;
-    gap:10px;
-}
-
-.module-check input{
-    width:19px;
-    height:19px;
-    min-width:19px;
-    margin:3px 0 0;
     accent-color:#45b36b;
+
     cursor:pointer;
 }
 
-.module-info{
+.module-content{
     flex:1;
 }
 
-.module-title{
+.module-number{
     font-weight:bold;
-    color:#dceaff;
+    color:#4d9dff;
 }
 
 .module-name{
-    color:#aab8ca;
-    margin-top:2px;
+    font-size:.9rem;
+    color:#d3dbea;
 }
 
-.module-state{
-    margin-top:4px;
+.module-status{
     font-size:.78rem;
-    font-weight:bold;
-}
-
-.module-complete-text{
-    color:#8de3a7;
-}
-
-.module-current-text{
-    color:#8fc2ff;
-}
-
-.module-future-text{
     color:#8f9bad;
 }
 
-/* =====================================================
-   OTHER
-===================================================== */
+.module-item.completed .module-status{
+    color:#8de3a7;
+}
+
+
+/* =========================
+   INFO BOXES
+========================= */
 
 .notes{
     margin-top:15px;
@@ -491,18 +512,20 @@ button.danger:hover{
     border-left:5px solid #45b36b;
 }
 
-.empty{
-    text-align:center;
-    color:#8f9bad;
-    padding:35px 10px;
-}
+
+/* =========================
+   SYNC STATUS
+========================= */
 
 .sync-status{
     margin-top:15px;
     padding:10px 14px;
+
     border-radius:7px;
+
     background:#08111d;
     border:1px solid #16315c;
+
     color:#8f9bad;
     font-size:.9rem;
 }
@@ -517,32 +540,37 @@ button.danger:hover{
     color:#ffb8c0;
 }
 
+
+/* =========================
+   EMPTY
+========================= */
+
+.empty{
+    text-align:center;
+    color:#8f9bad;
+    padding:35px 10px;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
 .footer{
     margin-top:30px;
     padding-top:20px;
+
     border-top:1px solid #16315c;
+
     color:#8f9bad;
     text-align:center;
     font-size:.9rem;
 }
 
-@media(max-width:800px){
 
-    .recruit-summary{
-        flex-wrap:wrap;
-    }
-
-    .recruit-summary-progress{
-        width:100%;
-        max-width:none;
-        order:4;
-    }
-
-    .recruit-summary-status{
-        min-width:auto;
-    }
-
-}
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:650px){
 
@@ -568,8 +596,13 @@ button.danger:hover{
         text-align:center;
     }
 
-    .recruit-summary{
-        gap:10px;
+    .recruit-header{
+        align-items:flex-start;
+    }
+
+    .recruit-header-right{
+        flex-direction:column;
+        align-items:flex-end;
     }
 
 }
@@ -578,9 +611,15 @@ button.danger:hover{
 
 </head>
 
+
 <body>
 
+
 <script>
+
+/* ==========================================
+   TRAINER ACCESS
+========================================== */
 
 if(sessionStorage.getItem("trainerAccess") !== "granted"){
     window.location.replace("trainers-login.html");
@@ -588,7 +627,9 @@ if(sessionStorage.getItem("trainerAccess") !== "granted"){
 
 </script>
 
+
 <div class="page-container">
+
 
 <nav class="navbar">
 
@@ -616,9 +657,11 @@ Recruit Tracker
 
 </nav>
 
+
 <a class="back-link" href="trainers.html">
 ← Return to Trainers Area
 </a>
+
 
 <header class="hero">
 
@@ -634,6 +677,11 @@ Trainer-Only Resource
 
 </header>
 
+
+<!-- ================================
+     DASHBOARD
+================================ -->
+
 <section class="card">
 
 <h2>Cohort Dashboard</h2>
@@ -642,7 +690,9 @@ Trainer-Only Resource
 Monitor student progression across the full 13-module ARU Academy.
 </p>
 
+
 <div class="dashboard-grid">
+
 
 <div class="stat-box">
 
@@ -654,6 +704,7 @@ Active Records
 
 </div>
 
+
 <div class="stat-box">
 
 <strong id="qualifiedStudents">
@@ -663,6 +714,7 @@ Active Records
 Qualified
 
 </div>
+
 
 <div class="stat-box">
 
@@ -674,6 +726,7 @@ Final Assessment Stage
 
 </div>
 
+
 <div class="stat-box">
 
 <strong id="developmentStudents">
@@ -684,19 +737,30 @@ Development Required
 
 </div>
 
+
 </div>
 
+
 <div id="syncStatus" class="sync-status">
+
 Connecting to Academy database...
+
 </div>
 
 </section>
+
+
+<!-- ================================
+     ADD STUDENT
+================================ -->
 
 <section class="card">
 
 <h2>Add New Student</h2>
 
+
 <div class="form-grid">
+
 
 <div>
 
@@ -712,6 +776,7 @@ placeholder="MASSARELLI"
 
 </div>
 
+
 <div>
 
 <label for="newDiscord">
@@ -725,6 +790,7 @@ placeholder="<@123456789>"
 >
 
 </div>
+
 
 <div>
 
@@ -740,6 +806,7 @@ placeholder="TC-11"
 
 </div>
 
+
 <div>
 
 <label for="newStart">
@@ -753,7 +820,9 @@ id="newStart"
 
 </div>
 
+
 </div>
+
 
 <div class="button-row">
 
@@ -765,59 +834,70 @@ Add Student
 
 </section>
 
+
+<!-- ================================
+     RECRUITS
+================================ -->
+
 <section class="card">
 
 <h2>Current Recruits</h2>
 
 <p>
-Click a recruit to expand their record. Module completions and other changes
-are saved to the shared Academy database.
+Click a recruit to expand their full training record.
 </p>
 
 <div id="recruitList" class="recruit-list"></div>
 
 </section>
 
+
+<!-- ================================
+     HOW PROGRESS WORKS
+================================ -->
+
 <section class="card notice">
 
 <h2>How Progress Works</h2>
 
 <p>
-Each module can now be marked individually as complete.
+Each module is tracked individually.
+Ticking a module marks it as completed and automatically updates
+the student's overall progress.
 </p>
 
 <p>
-The progress bar automatically calculates the percentage from the number
-of completed modules out of 13.
+The progress bar is calculated from the number of completed modules
+out of 13.
 </p>
 
 <p>
-The next incomplete module is automatically highlighted as the current
-module.
-</p>
-
-<p>
-Once all 13 modules are completed, the student's status can automatically
-move to <strong>Ready for Final Assessment</strong>.
+Once all 13 modules have been completed, the student can be marked
+<strong>Qualified</strong>.
 </p>
 
 </section>
+
+
+<!-- ================================
+     DATABASE
+================================ -->
 
 <section class="card success">
 
 <h2>Shared Academy Database</h2>
 
 <p>
-Recruit progression is stored centrally in Supabase rather than in browser
-storage.
+All recruit information is stored in the central Academy database.
 </p>
 
 <p>
-When a trainer updates a recruit, other trainers can see the updated record
-from the shared database.
+When one trainer updates a student's progress, the change is saved
+to Supabase and can appear on other trainer computers.
 </p>
 
 </section>
+
 
 <section class="card warning">
 
@@ -828,11 +908,13 @@ This tracker is connected to the Code44 Academy Supabase database.
 </p>
 
 <p>
-Do not enter genuine sensitive police information, passwords, real-world
-personal information or operationally sensitive material.
+Do not enter genuine sensitive police information, passwords,
+real-world personal information or operationally sensitive material.
+This system is intended for Code44 Academy management.
 </p>
 
 </section>
+
 
 <footer class="footer">
 
@@ -842,19 +924,22 @@ Recruit Tracker • Shared Trainer Database
 
 </footer>
 
+
 </div>
+
 
 <script>
 
-/* =====================================================
-   SUPABASE CONFIG
-===================================================== */
+/* =========================================================
+   SUPABASE CONFIGURATION
+========================================================= */
 
 const SUPABASE_URL =
 "https://hawklowwjrilrrpdbmeb.supabase.co";
 
 const SUPABASE_KEY =
 "sb_publishable_Zau-vuGABRzxvl8a7AOmBA_AKI1uuh6";
+
 
 const supabaseClient =
 window.supabase.createClient(
@@ -863,11 +948,12 @@ window.supabase.createClient(
 );
 
 
-/* =====================================================
-   ACADEMY DATA
-===================================================== */
+/* =========================================================
+   ACADEMY SETTINGS
+========================================================= */
 
 const MODULE_COUNT = 13;
+
 
 const MODULE_NAMES = [
 
@@ -899,14 +985,23 @@ const MODULE_NAMES = [
 
 ];
 
+
 let recruits = [];
 
-let openRecruitIds = new Set();
+
+/*
+    Keeps track of which recruit cards are currently expanded.
+
+    This is deliberately local to the browser.
+    It does NOT affect the shared database.
+*/
+
+const expandedRecruitIds = new Set();
 
 
-/* =====================================================
+/* =========================================================
    SYNC STATUS
-===================================================== */
+========================================================= */
 
 function setSyncStatus(message,type=""){
 
@@ -921,61 +1016,29 @@ function setSyncStatus(message,type=""){
 }
 
 
-/* =====================================================
+/* =========================================================
    NORMALISE DATABASE RECORD
-===================================================== */
+========================================================= */
 
 function normaliseRecruit(item){
 
-    let completedModules = [];
+    let completedModules =
+    Array.isArray(item.completed_modules)
+    ? item.completed_modules
+    : [];
 
-    /*
-       New database format:
-       completed_modules = [1,2,3]
 
-       Older records may not have the field.
-    */
+    completedModules =
+    completedModules
+    .map(Number)
+    .filter(function(module){
 
-    if(Array.isArray(item.completed_modules)){
+        return Number.isInteger(module)
+        && module >= 1
+        && module <= MODULE_COUNT;
 
-        completedModules =
-        item.completed_modules
-        .map(Number)
-        .filter(function(module){
+    });
 
-            return module >= 1 &&
-                   module <= MODULE_COUNT;
-
-        });
-
-    }
-
-    /*
-       If there are no completed modules but the old
-       current_module value exists, preserve sensible
-       backwards compatibility.
-
-       Example:
-       current_module = 4
-       means modules 1,2,3 were previously complete.
-    */
-
-    if(
-        completedModules.length === 0 &&
-        item.current_module > 1
-    ){
-
-        for(
-            let i = 1;
-            i < Number(item.current_module);
-            i++
-        ){
-
-            completedModules.push(i);
-
-        }
-
-    }
 
     completedModules =
     [...new Set(completedModules)]
@@ -985,10 +1048,57 @@ function normaliseRecruit(item){
 
     });
 
-    let currentModule =
-    getCurrentModuleFromCompleted(
-        completedModules
-    );
+
+    /*
+        Backwards compatibility:
+
+        If an older record has a current module but no
+        completed_modules array, infer the modules before it.
+    */
+
+    if(
+        completedModules.length === 0 &&
+        Number(item.current_module) > 1
+    ){
+
+        const inferred = [];
+
+        for(
+            let i = 1;
+            i < Number(item.current_module);
+            i++
+        ){
+
+            inferred.push(i);
+
+        }
+
+        completedModules = inferred;
+
+    }
+
+
+    /*
+        If the student is already Qualified,
+        make sure all 13 modules appear completed.
+    */
+
+    if(item.status === "Qualified"){
+
+        completedModules = [];
+
+        for(
+            let i = 1;
+            i <= MODULE_COUNT;
+            i++
+        ){
+
+            completedModules.push(i);
+
+        }
+
+    }
+
 
     return {
 
@@ -1000,9 +1110,11 @@ function normaliseRecruit(item){
 
         callsign:item.callsign || "",
 
+        cohort:item.cohort || "",
+
         startDate:item.start_date || "",
 
-        module:currentModule,
+        module:Number(item.current_module) || 1,
 
         status:item.status || "Active",
 
@@ -1015,34 +1127,9 @@ function normaliseRecruit(item){
 }
 
 
-/* =====================================================
-   CURRENT MODULE
-===================================================== */
-
-function getCurrentModuleFromCompleted(completedModules){
-
-    for(
-        let i = 1;
-        i <= MODULE_COUNT;
-        i++
-    ){
-
-        if(!completedModules.includes(i)){
-
-            return i;
-
-        }
-
-    }
-
-    return MODULE_COUNT;
-
-}
-
-
-/* =====================================================
+/* =========================================================
    LOAD RECRUITS
-===================================================== */
+========================================================= */
 
 async function loadRecruits(){
 
@@ -1050,23 +1137,26 @@ async function loadRecruits(){
         "Loading Academy database..."
     );
 
+
     const {data,error} =
+
     await supabaseClient
 
         .from("aru_recruits")
 
         .select("*")
 
-        .order(
-            "created_at",
-            {
-                ascending:true
-            }
-        );
+        .order("created_at",{
+            ascending:true
+        });
+
 
     if(error){
 
-        console.error(error);
+        console.error(
+            "Supabase load error:",
+            error
+        );
 
         setSyncStatus(
             "Database connection error: " +
@@ -1078,10 +1168,13 @@ async function loadRecruits(){
 
     }
 
+
     recruits =
-    data.map(normaliseRecruit);
+    (data || []).map(normaliseRecruit);
+
 
     render();
+
 
     setSyncStatus(
         "✓ Connected — Academy database synchronised",
@@ -1091,34 +1184,38 @@ async function loadRecruits(){
 }
 
 
-/* =====================================================
+/* =========================================================
    ADD RECRUIT
-===================================================== */
+========================================================= */
 
 async function addRecruit(){
 
     const name =
     document
-        .getElementById("newName")
-        .value
-        .trim();
+    .getElementById("newName")
+    .value
+    .trim();
+
 
     const discord =
     document
-        .getElementById("newDiscord")
-        .value
-        .trim();
+    .getElementById("newDiscord")
+    .value
+    .trim();
+
 
     const callsign =
     document
-        .getElementById("newCallsign")
-        .value
-        .trim();
+    .getElementById("newCallsign")
+    .value
+    .trim();
+
 
     const startDate =
     document
-        .getElementById("newStart")
-        .value;
+    .getElementById("newStart")
+    .value;
+
 
     if(!name){
 
@@ -1130,7 +1227,9 @@ async function addRecruit(){
 
     }
 
+
     const {data,error} =
+
     await supabaseClient
 
         .from("aru_recruits")
@@ -1139,19 +1238,17 @@ async function addRecruit(){
 
             name:name,
 
-            discord:discord,
+            discord:discord || null,
 
-            callsign:callsign,
+            callsign:callsign || null,
 
-            start_date:
-                startDate || null,
+            start_date:startDate || null,
 
             current_module:1,
 
             status:"Active",
 
-            notes:
-                "Pending Module 1.",
+            notes:"Pending Module 1.",
 
             completed_modules:[]
 
@@ -1161,9 +1258,13 @@ async function addRecruit(){
 
         .single();
 
+
     if(error){
 
-        console.error(error);
+        console.error(
+            "Supabase insert error:",
+            error
+        );
 
         alert(
             "Unable to add recruit:\n\n" +
@@ -1174,27 +1275,34 @@ async function addRecruit(){
 
     }
 
+
     recruits.push(
         normaliseRecruit(data)
     );
 
-    document
-        .getElementById("newName")
-        .value="";
 
     document
-        .getElementById("newDiscord")
-        .value="";
+    .getElementById("newName")
+    .value="";
+
 
     document
-        .getElementById("newCallsign")
-        .value="";
+    .getElementById("newDiscord")
+    .value="";
+
 
     document
-        .getElementById("newStart")
-        .value="";
+    .getElementById("newCallsign")
+    .value="";
+
+
+    document
+    .getElementById("newStart")
+    .value="";
+
 
     render();
+
 
     setSyncStatus(
         "✓ Student added and saved to Academy database",
@@ -1204,79 +1312,164 @@ async function addRecruit(){
 }
 
 
-/* =====================================================
-   UPDATE BASIC RECRUIT FIELD
-===================================================== */
+/* =========================================================
+   SAVE RECRUIT
+========================================================= */
 
-async function updateRecruit(
-    id,
-    field,
-    value
-){
+async function saveRecruit(id,updateData){
 
-    const recruit =
-    recruits.find(function(item){
+    const {data,error} =
 
-        return String(item.id) ===
-               String(id);
-
-    });
-
-    if(!recruit){
-        return;
-    }
-
-    let databaseField =
-        field;
-
-    if(field === "module"){
-
-        value =
-            parseInt(value);
-
-        databaseField =
-            "current_module";
-
-    }
-
-    if(field === "startDate"){
-
-        databaseField =
-            "start_date";
-
-    }
-
-    const updateData = {};
-
-    updateData[databaseField] =
-        value || null;
-
-    const {error} =
     await supabaseClient
 
         .from("aru_recruits")
 
         .update(updateData)
 
-        .eq("id",id);
+        .eq("id",id)
+
+        .select()
+
+        .single();
+
 
     if(error){
 
-        console.error(error);
+        console.error(
+            "Supabase update error:",
+            error
+        );
+
+        setSyncStatus(
+            "Unable to save change: " +
+            error.message,
+            "error"
+        );
 
         alert(
             "Unable to save this change:\n\n" +
             error.message
         );
 
-        return;
+        return false;
 
     }
 
-    recruit[field] =
-        value;
+
+    const index =
+    recruits.findIndex(function(item){
+
+        return item.id === id;
+
+    });
+
+
+    if(index !== -1){
+
+        recruits[index] =
+        normaliseRecruit(data);
+
+    }
+
+
+    return true;
+
+}
+
+
+/* =========================================================
+   UPDATE BASIC RECRUIT FIELD
+========================================================= */
+
+async function updateRecruit(id,field,value){
+
+    const recruit =
+    recruits.find(function(item){
+
+        return item.id === id;
+
+    });
+
+
+    if(!recruit){
+        return;
+    }
+
+
+    let databaseField = field;
+
+
+    if(field === "module"){
+
+        value =
+        parseInt(value,10);
+
+        databaseField =
+        "current_module";
+
+    }
+
+
+    if(field === "startDate"){
+
+        databaseField =
+        "start_date";
+
+    }
+
+
+    const updateData = {};
+
+
+    updateData[databaseField] =
+    value || null;
+
+
+    /*
+        If status becomes Qualified,
+        automatically complete all modules.
+    */
+
+    if(
+        field === "status" &&
+        value === "Qualified"
+    ){
+
+        const allModules = [];
+
+        for(
+            let i = 1;
+            i <= MODULE_COUNT;
+            i++
+        ){
+
+            allModules.push(i);
+
+        }
+
+        updateData.completed_modules =
+        allModules;
+
+        updateData.current_module =
+        MODULE_COUNT;
+
+    }
+
+
+    const success =
+    await saveRecruit(
+        id,
+        updateData
+    );
+
+
+    if(!success){
+        return;
+    }
+
 
     render();
+
 
     setSyncStatus(
         "✓ Changes saved to Academy database",
@@ -1286,9 +1479,9 @@ async function updateRecruit(
 }
 
 
-/* =====================================================
-   MODULE TOGGLE
-===================================================== */
+/* =========================================================
+   TOGGLE MODULE
+========================================================= */
 
 async function toggleModule(
     id,
@@ -1299,28 +1492,27 @@ async function toggleModule(
     const recruit =
     recruits.find(function(item){
 
-        return String(item.id) ===
-               String(id);
+        return item.id === id;
 
     });
+
 
     if(!recruit){
         return;
     }
 
-    let completed =
-        [...recruit.completedModules];
 
-    moduleNumber =
-        Number(moduleNumber);
+    let completed =
+    [...recruit.completedModules];
+
 
     if(checked){
 
-        if(!completed.includes(moduleNumber)){
+        if(
+            !completed.includes(moduleNumber)
+        ){
 
-            completed.push(
-                moduleNumber
-            );
+            completed.push(moduleNumber);
 
         }
 
@@ -1336,6 +1528,7 @@ async function toggleModule(
 
     }
 
+
     completed =
     [...new Set(completed)]
     .sort(function(a,b){
@@ -1344,84 +1537,97 @@ async function toggleModule(
 
     });
 
-    /*
-       Calculate next current module.
-    */
-
-    const nextModule =
-        getCurrentModuleFromCompleted(
-            completed
-        );
 
     /*
-       Automatically move status to ready
-       when all modules are complete.
+        Automatically determine the next module.
+
+        If all modules are complete, current module becomes 13.
+
+        Otherwise current module is the first incomplete module.
     */
 
-    let newStatus =
-        recruit.status;
+    let currentModule = 1;
 
-    if(completed.length === MODULE_COUNT){
 
-        if(
-            recruit.status === "Active" ||
-            recruit.status === "Ready for Final Assessment"
-        ){
+    for(
+        let i = 1;
+        i <= MODULE_COUNT;
+        i++
+    ){
 
-            newStatus =
-                "Ready for Final Assessment";
+        if(!completed.includes(i)){
+
+            currentModule = i;
+
+            break;
+
+        }
+
+        if(i === MODULE_COUNT){
+
+            currentModule = MODULE_COUNT;
 
         }
 
     }
 
+
+    let newStatus =
+    recruit.status;
+
+
+    /*
+        If everything is complete, automatically mark
+        the recruit as ready for final assessment rather
+        than immediately overwriting their status to Qualified.
+    */
+
+    if(completed.length === MODULE_COUNT){
+
+        if(
+            newStatus !== "Qualified"
+        ){
+
+            newStatus =
+            "Ready for Final Assessment";
+
+        }
+
+    }
     else if(
-        recruit.status === "Qualified"
+        newStatus === "Qualified"
     ){
 
         newStatus =
-            "Active";
+        "Active";
 
     }
 
+
     const updateData = {
 
-        completed_modules:
-            completed,
+        completed_modules:completed,
 
-        current_module:
-            nextModule,
+        current_module:currentModule,
 
-        status:
-            newStatus
+        status:newStatus
 
     };
 
-    setSyncStatus(
-        "Saving module completion..."
+
+    const success =
+    await saveRecruit(
+        id,
+        updateData
     );
 
-    const {error} =
-    await supabaseClient
 
-        .from("aru_recruits")
-
-        .update(updateData)
-
-        .eq("id",id);
-
-    if(error){
-
-        console.error(error);
-
-        alert(
-            "Unable to save module progress:\n\n" +
-            error.message
-        );
+    if(!success){
 
         /*
-           Reload from database so the
-           screen cannot show false data.
+            Reload the database if saving failed,
+            preventing the interface from being
+            left in a false state.
         */
 
         await loadRecruits();
@@ -1430,42 +1636,45 @@ async function toggleModule(
 
     }
 
-    recruit.completedModules =
-        completed;
-
-    recruit.module =
-        nextModule;
-
-    recruit.status =
-        newStatus;
 
     render();
 
+
+    /*
+        Re-open the card after rendering.
+    */
+
+    expandedRecruitIds.add(id);
+
+    render();
+
+
     setSyncStatus(
-        "✓ Module progress saved to Academy database",
+        "✓ Module progress saved",
         "online"
     );
 
 }
 
 
-/* =====================================================
+/* =========================================================
    DELETE RECRUIT
-===================================================== */
+========================================================= */
 
 async function removeRecruit(id){
 
     const recruit =
     recruits.find(function(item){
 
-        return String(item.id) ===
-               String(id);
+        return item.id === id;
 
     });
+
 
     if(!recruit){
         return;
     }
+
 
     const confirmed =
     confirm(
@@ -1474,11 +1683,14 @@ async function removeRecruit(id){
         "?"
     );
 
+
     if(!confirmed){
         return;
     }
 
+
     const {error} =
+
     await supabaseClient
 
         .from("aru_recruits")
@@ -1487,9 +1699,13 @@ async function removeRecruit(id){
 
         .eq("id",id);
 
+
     if(error){
 
-        console.error(error);
+        console.error(
+            "Supabase delete error:",
+            error
+        );
 
         alert(
             "Unable to delete recruit:\n\n" +
@@ -1500,19 +1716,20 @@ async function removeRecruit(id){
 
     }
 
+
     recruits =
     recruits.filter(function(item){
 
-        return String(item.id) !==
-               String(id);
+        return item.id !== id;
 
     });
 
-    openRecruitIds.delete(
-        String(id)
-    );
+
+    expandedRecruitIds.delete(id);
+
 
     render();
+
 
     setSyncStatus(
         "✓ Recruit record deleted",
@@ -1522,15 +1739,41 @@ async function removeRecruit(id){
 }
 
 
-/* =====================================================
+/* =========================================================
+   EXPAND / COLLAPSE
+========================================================= */
+
+function toggleRecruit(id){
+
+    if(
+        expandedRecruitIds.has(id)
+    ){
+
+        expandedRecruitIds.delete(id);
+
+    }
+    else{
+
+        expandedRecruitIds.add(id);
+
+    }
+
+
+    render();
+
+}
+
+
+/* =========================================================
    STATUS CLASS
-===================================================== */
+========================================================= */
 
 function statusClass(status){
 
     if(status === "Qualified"){
         return "status-qualified";
     }
+
 
     if(
         status ===
@@ -1541,6 +1784,7 @@ function statusClass(status){
 
     }
 
+
     if(
         status ===
         "Development Required"
@@ -1550,78 +1794,51 @@ function statusClass(status){
 
     }
 
+
     if(status === "On Hold"){
         return "status-hold";
     }
+
 
     return "status-active";
 
 }
 
 
-/* =====================================================
+/* =========================================================
    PROGRESS
-===================================================== */
+========================================================= */
 
 function moduleProgress(recruit){
 
     if(
-        recruit.completedModules.length >=
-        MODULE_COUNT
+        recruit.status === "Qualified"
     ){
 
         return 100;
 
     }
 
+
+    const completed =
+    recruit.completedModules.length;
+
+
     return Math.round(
-
-        (
-            recruit.completedModules.length /
-            MODULE_COUNT
-        ) * 100
-
+        (completed / MODULE_COUNT) * 100
     );
 
 }
 
 
-/* =====================================================
-   OPEN / CLOSE RECRUIT
-===================================================== */
+/* =========================================================
+   MODULE CHECKLIST
+========================================================= */
 
-function toggleRecruit(id){
-
-    id =
-        String(id);
-
-    if(
-        openRecruitIds.has(id)
-    ){
-
-        openRecruitIds.delete(id);
-
-    }
-    else{
-
-        openRecruitIds.add(id);
-
-    }
-
-    render();
-
-}
-
-
-/* =====================================================
-   MODULE DISPLAY
-===================================================== */
-
-function createModuleDisplay(
-    recruit
-){
+function createModuleDisplay(recruit){
 
     let html = "";
+
 
     for(
         let i = 1;
@@ -1630,92 +1847,77 @@ function createModuleDisplay(
     ){
 
         const completed =
-            recruit.completedModules
-            .includes(i);
+        recruit.completedModules
+        .includes(i);
 
-        const current =
-            !completed &&
-            i === recruit.module;
 
-        let className =
-            "module-item outstanding";
+        const isCurrent =
+        !completed &&
+        i === recruit.module;
 
-        let stateText =
-            "Outstanding";
 
-        let stateClass =
-            "module-future-text";
+        let classes =
+        "module-item";
+
 
         if(completed){
 
-            className =
-                "module-item completed";
-
-            stateText =
-                "✓ Completed";
-
-            stateClass =
-                "module-complete-text";
+            classes +=
+            " completed";
 
         }
-        else if(current){
+        else if(isCurrent){
 
-            className =
-                "module-item current";
-
-            stateText =
-                "Current Module";
-
-            stateClass =
-                "module-current-text";
+            classes +=
+            " current";
 
         }
+
+
+        const status =
+        completed
+        ? "Completed"
+        : isCurrent
+        ? "Current"
+        : "Outstanding";
+
 
         html += `
 
         <label
-            class="${className}"
-            onclick="event.stopPropagation()"
+            class="${classes}"
+            onclick="event.stopPropagation();"
         >
 
-            <div class="module-check">
+            <input
+                class="module-checkbox"
+                type="checkbox"
 
-                <input
-                    type="checkbox"
-                    ${completed ? "checked" : ""}
-                    onchange="
-                        toggleModule(
-                            '${recruit.id}',
-                            ${i},
-                            this.checked
-                        )
-                    "
-                >
+                ${completed ? "checked" : ""}
 
-                <div class="module-info">
+                onchange="
+                    toggleModule(
+                        '${recruit.id}',
+                        ${i},
+                        this.checked
+                    )
+                "
+            >
 
-                    <div class="module-title">
+            <div class="module-content">
 
-                        Module ${i}
+                <div class="module-number">
+                    Module ${i}
+                </div>
 
-                    </div>
+                <div class="module-name">
+                    ${escapeHTML(
+                        MODULE_NAMES[i - 1]
+                    )}
+                </div>
 
-                    <div class="module-name">
-
-                        ${escapeHTML(
-                            MODULE_NAMES[i - 1]
-                        )}
-
-                    </div>
-
-                    <div
-                        class="module-state ${stateClass}"
-                    >
-
-                        ${stateText}
-
-                    </div>
-
+                <div class="module-status">
+                    ${status}
                 </div>
 
             </div>
@@ -1726,47 +1928,46 @@ function createModuleDisplay(
 
     }
 
+
     return html;
 
 }
 
 
-/* =====================================================
+/* =========================================================
    RENDER RECRUIT
-===================================================== */
+========================================================= */
 
 function renderRecruit(recruit){
 
     const progress =
-        moduleProgress(recruit);
+    moduleProgress(recruit);
 
-    const isOpen =
-        openRecruitIds.has(
-            String(recruit.id)
-        );
 
-    const currentModuleName =
-        recruit.completedModules.length >=
-        MODULE_COUNT
+    const expanded =
+    expandedRecruitIds.has(
+        recruit.id
+    );
 
-        ? "Academy complete"
 
-        : "Module " +
-          recruit.module +
-          " — " +
-          MODULE_NAMES[
-              recruit.module - 1
-          ];
+    const progressClass =
+    progress === 100
+    ? "complete"
+    : "";
+
 
     return `
 
     <div
-        class="recruit-card ${isOpen ? "open" : ""}"
-        id="recruit-${recruit.id}"
+        class="recruit-card
+        ${expanded ? "expanded" : ""}"
     >
 
+
+        <!-- COLLAPSED HEADER -->
+
         <div
-            class="recruit-summary"
+            class="recruit-header"
             onclick="
                 toggleRecruit(
                     '${recruit.id}'
@@ -1774,11 +1975,7 @@ function renderRecruit(recruit){
             "
         >
 
-            <div class="recruit-arrow">
-                ›
-            </div>
-
-            <div class="recruit-summary-main">
+            <div class="recruit-header-left">
 
                 <h3>
                     ${escapeHTML(
@@ -1792,90 +1989,98 @@ function renderRecruit(recruit){
                         recruit.callsign
                         ? escapeHTML(
                             recruit.callsign
-                          )
-                        : "No call-sign"
+                        )
+                        : "No call-sign recorded"
                     }
 
-                    •
+                    ${
+                        recruit.discord
+                        ? " • " +
+                          escapeHTML(
+                              recruit.discord
+                          )
+                        : ""
+                    }
 
-                    ${currentModuleName}
+                    • ${progress}% complete
 
                 </p>
 
             </div>
 
-            <div class="recruit-summary-progress">
 
-                <div class="progress">
-
-                    <div
-                        class="progress-bar"
-                        style="
-                            width:${progress}%;
-                        "
-                    ></div>
-
-                </div>
-
-                <div class="recruit-summary-percent">
-
-                    ${progress}% •
-                    ${recruit.completedModules.length}/13
-
-                </div>
-
-            </div>
-
-            <div class="recruit-summary-status">
+            <div class="recruit-header-right">
 
                 <span
-                    class="status ${statusClass(
+                    class="status
+                    ${statusClass(
                         recruit.status
                     )}"
                 >
-
                     ${escapeHTML(
                         recruit.status
                     )}
-
                 </span>
+
+
+                <div class="expand-icon">
+                    ▼
+                </div>
 
             </div>
 
         </div>
 
 
+        <!-- EXPANDED BODY -->
+
         <div class="recruit-body">
 
-            <div class="progress">
 
-                <div
-                    class="progress-bar"
-                    style="
-                        width:${progress}%;
-                    "
-                ></div>
+            <!-- PROGRESS -->
+
+            <div>
+
+                <div class="progress">
+
+                    <div
+                        class="progress-bar
+                        ${progressClass}"
+
+                        style="
+                            width:${progress}%;
+                        "
+                    >
+                    </div>
+
+                </div>
+
+
+                <div class="progress-text">
+
+                    Academy Progress:
+                    <strong>
+                        ${progress}%
+                    </strong>
+
+                    —
+
+                    ${recruit.completedModules.length}
+                    / ${MODULE_COUNT}
+                    modules completed
+
+                </div>
 
             </div>
 
-            <div class="progress-text">
 
-                Academy Progress:
-                <strong>${progress}%</strong>
-
-                —
-
-                ${recruit.completedModules.length}
-                / ${MODULE_COUNT}
-                modules completed
-
-            </div>
-
+            <!-- DETAILS -->
 
             <div
                 class="form-grid"
-                style="margin-top:18px;"
+                style="margin-top:20px;"
             >
+
 
                 <div>
 
@@ -1918,60 +2123,9 @@ function renderRecruit(recruit){
                         "
                     >
 
-                        <option
-                            ${
-                                recruit.status ===
-                                "Active"
-                                ? "selected"
-                                : ""
-                            }
-                        >
-                            Active
-                        </option>
-
-                        <option
-                            ${
-                                recruit.status ===
-                                "Development Required"
-                                ? "selected"
-                                : ""
-                            }
-                        >
-                            Development Required
-                        </option>
-
-                        <option
-                            ${
-                                recruit.status ===
-                                "Ready for Final Assessment"
-                                ? "selected"
-                                : ""
-                            }
-                        >
-                            Ready for Final Assessment
-                        </option>
-
-                        <option
-                            ${
-                                recruit.status ===
-                                "Qualified"
-                                ? "selected"
-                                : ""
-                            }
-                        >
-                            Qualified
-                        </option>
-
-                        <option
-                            ${
-                                recruit.status ===
-                                "On Hold"
-                                ? "selected"
-                                : ""
-                            }
-                        >
-                            On Hold
-                        </option>
+                        ${createStatusOptions(
+                            recruit
+                        )}
 
                     </select>
 
@@ -1988,6 +2142,7 @@ function renderRecruit(recruit){
                         value="${escapeAttribute(
                             recruit.callsign || ""
                         )}"
+
                         onchange="
                             updateRecruit(
                                 '${recruit.id}',
@@ -2010,6 +2165,7 @@ function renderRecruit(recruit){
                         value="${escapeAttribute(
                             recruit.discord || ""
                         )}"
+
                         onchange="
                             updateRecruit(
                                 '${recruit.id}',
@@ -2021,14 +2177,47 @@ function renderRecruit(recruit){
 
                 </div>
 
+
             </div>
 
 
-            <div style="margin-top:15px;">
+            <!-- MODULE CHECKLIST -->
+
+            <div class="module-section">
+
+                <h3>
+                    Module Progress
+                </h3>
+
+                <p class="module-help">
+
+                    Tick each module as it is successfully completed.
+                    Progress is automatically calculated and saved.
+
+                </p>
+
+
+                <div class="module-list">
+
+                    ${createModuleDisplay(
+                        recruit
+                    )}
+
+                </div>
+
+            </div>
+
+
+            <!-- NOTES -->
+
+            <div
+                style="margin-top:25px;"
+            >
 
                 <label>
                     Trainer Notes
                 </label>
+
 
                 <textarea
                     onchange="
@@ -2045,27 +2234,10 @@ function renderRecruit(recruit){
             </div>
 
 
-            <h3>
-                Module Progress
-            </h3>
-
-            <p class="progress-text">
-
-                Tick each module as the recruit
-                successfully completes it.
-
-            </p>
-
-            <div class="module-list">
-
-                ${createModuleDisplay(
-                    recruit
-                )}
-
-            </div>
-
+            <!-- ACTIONS -->
 
             <div class="button-row">
+
 
                 <button
                     class="secondary"
@@ -2094,7 +2266,9 @@ function renderRecruit(recruit){
 
                 </button>
 
+
             </div>
+
 
         </div>
 
@@ -2105,15 +2279,14 @@ function renderRecruit(recruit){
 }
 
 
-/* =====================================================
-   MODULE SELECT OPTIONS
-===================================================== */
+/* =========================================================
+   MODULE OPTIONS
+========================================================= */
 
-function createModuleOptions(
-    recruit
-){
+function createModuleOptions(recruit){
 
     let html = "";
+
 
     for(
         let i = 1;
@@ -2125,11 +2298,9 @@ function createModuleOptions(
 
         <option
             value="${i}"
-            ${
-                recruit.module === i
-                ? "selected"
-                : ""
-            }
+            ${recruit.module === i
+            ? "selected"
+            : ""}
         >
 
             Module ${i} —
@@ -2143,21 +2314,71 @@ function createModuleOptions(
 
     }
 
+
     return html;
 
 }
 
 
-/* =====================================================
+/* =========================================================
+   STATUS OPTIONS
+========================================================= */
+
+function createStatusOptions(recruit){
+
+    const statuses = [
+
+        "Active",
+
+        "Development Required",
+
+        "Ready for Final Assessment",
+
+        "Qualified",
+
+        "On Hold"
+
+    ];
+
+
+    return statuses
+    .map(function(status){
+
+        return `
+
+        <option
+            value="${escapeAttribute(
+                status
+            )}"
+
+            ${recruit.status === status
+            ? "selected"
+            : ""}
+        >
+
+            ${status}
+
+        </option>
+
+        `;
+
+    })
+    .join("");
+
+}
+
+
+/* =========================================================
    RENDER EVERYTHING
-===================================================== */
+========================================================= */
 
 function render(){
 
     const list =
-        document.getElementById(
-            "recruitList"
-        );
+    document.getElementById(
+        "recruitList"
+    );
+
 
     if(recruits.length === 0){
 
@@ -2175,108 +2396,102 @@ function render(){
     else{
 
         list.innerHTML =
-            recruits
-                .map(renderRecruit)
-                .join("");
+        recruits
+        .map(renderRecruit)
+        .join("");
 
     }
+
 
     updateDashboard();
 
 }
 
 
-/* =====================================================
+/* =========================================================
    DASHBOARD
-===================================================== */
+========================================================= */
 
 function updateDashboard(){
 
     document.getElementById(
         "totalStudents"
     ).textContent =
-        recruits.length;
+    recruits.length;
 
 
     document.getElementById(
         "qualifiedStudents"
     ).textContent =
 
-        recruits.filter(
-            function(r){
+    recruits.filter(function(r){
 
-                return r.status ===
-                       "Qualified";
+        return r.status === "Qualified";
 
-            }
-        ).length;
+    }).length;
 
 
     document.getElementById(
         "assessmentStudents"
     ).textContent =
 
-        recruits.filter(
-            function(r){
+    recruits.filter(function(r){
 
-                return r.status ===
-                       "Ready for Final Assessment";
+        return r.status ===
+        "Ready for Final Assessment";
 
-            }
-        ).length;
+    }).length;
 
 
     document.getElementById(
         "developmentStudents"
     ).textContent =
 
-        recruits.filter(
-            function(r){
+    recruits.filter(function(r){
 
-                return r.status ===
-                       "Development Required";
+        return r.status ===
+        "Development Required";
 
-            }
-        ).length;
+    }).length;
 
 }
 
 
-/* =====================================================
+/* =========================================================
    COPY SUMMARY
-===================================================== */
+========================================================= */
 
 function copyRecruitSummary(id){
 
     const recruit =
-        recruits.find(
-            function(item){
+    recruits.find(function(item){
 
-                return String(item.id) ===
-                       String(id);
+        return item.id === id;
 
-            }
-        );
+    });
+
 
     if(!recruit){
         return;
     }
 
+
     const completed =
-        recruit.completedModules.length;
+    recruit.completedModules.length;
+
 
     const currentModule =
+    recruit.status === "Qualified"
 
-        completed >= MODULE_COUNT
+    ? "Academy Complete"
 
-        ? "Academy Complete"
+    : "Module " +
+      recruit.module +
+      " — " +
+      MODULE_NAMES[
+          recruit.module - 1
+      ];
 
-        : "Module " +
-          recruit.module +
-          " — " +
-          MODULE_NAMES[
-              recruit.module - 1
-          ];
 
     const text =
 
@@ -2303,21 +2518,13 @@ Overall Progress:
 ${moduleProgress(recruit)}%
 
 Completed Modules:
-${
-    completed > 0
-    ? recruit.completedModules
+${completed === 0
+    ? "None"
+    : recruit.completedModules
         .map(function(module){
-
-            return "Module " +
-                   module +
-                   " — " +
-                   MODULE_NAMES[
-                       module - 1
-                   ];
-
+            return "Module " + module;
         })
-        .join("\n")
-    : "None"
+        .join(", ")
 }
 
 Trainer Notes:
@@ -2325,30 +2532,30 @@ ${recruit.notes || "No trainer notes recorded."}`;
 
 
     navigator.clipboard
-        .writeText(text)
+    .writeText(text)
 
-        .then(function(){
+    .then(function(){
 
-            alert(
-                "Recruit progress summary copied."
-            );
+        alert(
+            "Recruit progress summary copied."
+        );
 
-        })
+    })
 
-        .catch(function(){
+    .catch(function(){
 
-            alert(
-                "Unable to copy automatically."
-            );
+        alert(
+            "Unable to copy automatically."
+        );
 
-        });
+    });
 
 }
 
 
-/* =====================================================
+/* =========================================================
    ESCAPE HTML
-===================================================== */
+========================================================= */
 
 function escapeHTML(value){
 
@@ -2389,49 +2596,68 @@ function escapeAttribute(value){
 }
 
 
-/* =====================================================
-   REALTIME DATABASE UPDATES
-===================================================== */
+/* =========================================================
+   REALTIME
+========================================================= */
+
+const realtimeChannel =
 
 supabaseClient
 
-    .channel(
-        "aru-recruit-tracker"
-    )
+.channel(
+    "aru-recruit-tracker"
+)
 
-    .on(
+.on(
 
-        "postgres_changes",
+    "postgres_changes",
 
-        {
-            event:"*",
-            schema:"public",
-            table:"aru_recruits"
-        },
+    {
+        event:"*",
 
-        function(payload){
+        schema:"public",
 
-            console.log(
-                "Academy database update:",
-                payload
-            );
+        table:"aru_recruits"
 
-            loadRecruits();
+    },
 
-        }
+    function(payload){
 
-    )
-
-    .subscribe();
+        console.log(
+            "Realtime database update:",
+            payload
+        );
 
 
-/* =====================================================
+        /*
+            Reload the records so every trainer
+            sees the latest database state.
+        */
+
+        loadRecruits();
+
+    }
+
+)
+
+.subscribe(function(status){
+
+    console.log(
+        "Realtime status:",
+        status
+    );
+
+});
+
+
+/* =========================================================
    INITIAL LOAD
-===================================================== */
+========================================================= */
 
 loadRecruits();
 
 </script>
+
 
 </body>
 
