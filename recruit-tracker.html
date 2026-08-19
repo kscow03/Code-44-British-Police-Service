@@ -8,6 +8,9 @@
 
 <title>ARU Recruit Tracker</title>
 
+<!-- Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <style>
 
 *{
@@ -88,7 +91,6 @@ body{
 
 .badge{
     display:inline-block;
-
     margin-top:15px;
     padding:7px 14px;
 
@@ -379,6 +381,26 @@ button.danger:hover{
     padding:35px 10px;
 }
 
+.sync-status{
+    margin-top:15px;
+    padding:10px 14px;
+    border-radius:7px;
+    background:#08111d;
+    border:1px solid #16315c;
+    color:#8f9bad;
+    font-size:.9rem;
+}
+
+.sync-status.online{
+    border-color:#368b54;
+    color:#8de3a7;
+}
+
+.sync-status.error{
+    border-color:#853442;
+    color:#ffb8c0;
+}
+
 .footer{
     margin-top:30px;
     padding-top:20px;
@@ -420,17 +442,23 @@ button.danger:hover{
 
 </head>
 
+
 <body>
+
 
 <script>
 
 if(sessionStorage.getItem("trainerAccess") !== "granted"){
+
     window.location.replace("trainers-login.html");
+
 }
 
 </script>
 
+
 <div class="page-container">
+
 
 <nav class="navbar">
 
@@ -457,6 +485,7 @@ Recruit Tracker
 </a>
 
 </nav>
+
 
 <a class="back-link" href="trainers.html">
 ← Return to Trainers Area
@@ -499,6 +528,7 @@ Active Records
 
 </div>
 
+
 <div class="stat-box">
 
 <strong id="qualifiedStudents">
@@ -509,6 +539,7 @@ Qualified
 
 </div>
 
+
 <div class="stat-box">
 
 <strong id="assessmentStudents">
@@ -518,6 +549,7 @@ Qualified
 Final Assessment Stage
 
 </div>
+
 
 <div class="stat-box">
 
@@ -531,6 +563,13 @@ Development Required
 
 </div>
 
+
+<div id="syncStatus" class="sync-status">
+
+Connecting to Academy database...
+
+</div>
+
 </section>
 
 
@@ -539,6 +578,7 @@ Development Required
 <h2>Add New Student</h2>
 
 <div class="form-grid">
+
 
 <div>
 
@@ -554,6 +594,7 @@ placeholder="MASSARELLI"
 
 </div>
 
+
 <div>
 
 <label for="newDiscord">
@@ -567,6 +608,7 @@ placeholder="<@123456789>"
 >
 
 </div>
+
 
 <div>
 
@@ -582,6 +624,7 @@ placeholder="TC-11"
 
 </div>
 
+
 <div>
 
 <label for="newStart">
@@ -595,7 +638,9 @@ id="newStart"
 
 </div>
 
+
 </div>
+
 
 <div class="button-row">
 
@@ -613,8 +658,8 @@ Add Student
 <h2>Current Recruits</h2>
 
 <p>
-Each recruit record shows their current Academy stage,
-overall module progression and trainer notes.
+All trainer computers connected to the Academy database will see
+the same recruit records and updates.
 </p>
 
 <div id="recruitList" class="recruit-list"></div>
@@ -627,8 +672,8 @@ overall module progression and trainer notes.
 <h2>How Progress Works</h2>
 
 <p>
-The module number recorded against a student represents the stage they are
-currently working on.
+The module number recorded against a student represents the stage they
+are currently working on.
 </p>
 
 <p>
@@ -644,23 +689,40 @@ Once Module 13 has been passed, change the student's status to
 </section>
 
 
+<section class="card success">
+
+<h2>Shared Academy Database</h2>
+
+<p>
+Recruit information is now stored in the central Academy database rather
+than browser storage.
+</p>
+
+<p>
+This means that when one trainer updates a recruit, the updated information
+can be loaded by another trainer on another computer.
+</p>
+
+<p>
+Changes are saved directly to the Academy database whenever a record is
+added or edited.
+</p>
+
+</section>
+
+
 <section class="card warning">
 
 <h2>Data Storage Notice</h2>
 
 <p>
-This tracker uses browser local storage so that it works on a static
-GitHub Pages website.
+This tracker is connected to the Code44 Academy Supabase database.
 </p>
 
 <p>
-The information is stored only in the browser being used. It is not automatically
-shared between trainers, computers or devices.
-</p>
-
-<p>
-Do not use this page for genuine sensitive police information or real personal data.
-It is intended for Code44 Academy management only.
+Do not enter genuine sensitive police information, passwords,
+real-world personal information or operationally sensitive material.
+This system is intended for Code44 Academy management.
 </p>
 
 </section>
@@ -670,165 +732,303 @@ It is intended for Code44 Academy management only.
 
 Code44 Police Service • Armed Response Unit Academy<br>
 
-Recruit Tracker • Trainer-Only Resource
+Recruit Tracker • Shared Trainer Database
 
 </footer>
+
 
 </div>
 
 
 <script>
 
+
+/*
+=========================================================
+SUPABASE CONFIGURATION
+=========================================================
+*/
+
+const SUPABASE_URL =
+"https://hawklowwjrilrrpdbmeb.supabase.co";
+
+const SUPABASE_KEY =
+"sb_publishable_Zau-vuGABRzxvl8a7AOmBA_AKI1uuh6";
+
+
+const supabaseClient =
+window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+);
+
+
+/*
+=========================================================
+ACADEMY DATA
+=========================================================
+*/
+
 const MODULE_COUNT = 13;
 
+
 const MODULE_NAMES = [
+
     "Welcome to ARU",
+
     "Professional Standards",
+
     "Legal & Decision-Making",
+
     "Equipment, Vehicles & PPE",
+
     "Firearms Safety & Handling",
+
     "Firearms Fundamentals & Operational Readiness",
+
     "ARV Deployment & Armed Incident Response",
+
     "Armed Vehicle Tactics",
+
     "Armed Containment, Searches & Warrants",
+
     "Building Operations & CQB",
+
     "Complex Armed Incidents & Integrated Operations",
+
     "Consolidation & Scenario Development",
+
     "Final Assessment & Qualification"
+
 ];
 
 
-function createDefaultData(){
+let recruits = [];
 
-    return [
 
-        {
-            id: Date.now() + 1,
-            name: "MASSARELLI",
-            discord: "",
-            callsign: "",
-            startDate: "",
-            module: 2,
-            status: "Active",
-            notes: "Module 1 completed. Currently progressing to Module 2."
-        },
+/*
+=========================================================
+SYNC STATUS
+=========================================================
+*/
 
-        {
-            id: Date.now() + 2,
-            name: "ROWLEY",
-            discord: "",
-            callsign: "",
-            startDate: "",
-            module: 1,
-            status: "Active",
-            notes: "Pending Module 1."
-        }
+function setSyncStatus(message,type=""){
 
-    ];
+    const element =
+    document.getElementById("syncStatus");
+
+    element.textContent = message;
+
+    element.className =
+    "sync-status " + type;
 
 }
 
 
-function loadRecruits(){
+/*
+=========================================================
+LOAD RECRUITS FROM SUPABASE
+=========================================================
+*/
 
-    const stored =
-    localStorage.getItem("aruAcademyRecruits");
+async function loadRecruits(){
 
-    if(!stored){
+    setSyncStatus(
+        "Loading Academy database..."
+    );
 
-        const defaultData = createDefaultData();
 
-        localStorage.setItem(
-            "aruAcademyRecruits",
-            JSON.stringify(defaultData)
+    const { data, error } =
+    await supabaseClient
+
+        .from("aru_recruits")
+
+        .select("*")
+
+        .order("created_at",{ascending:true});
+
+
+    if(error){
+
+        console.error(error);
+
+        setSyncStatus(
+            "Database connection error: " +
+            error.message,
+            "error"
         );
 
-        return defaultData;
+        return;
 
     }
 
-    try{
 
-        return JSON.parse(stored);
+    recruits =
+    data.map(function(item){
 
-    }catch(error){
+        return {
 
-        return [];
+            id:item.id,
 
-    }
+            name:item.name || "",
 
-}
+            discord:item.discord || "",
+
+            callsign:item.callsign || "",
+
+            startDate:item.start_date || "",
+
+            module:item.current_module || 1,
+
+            status:item.status || "Active",
+
+            notes:item.notes || ""
+
+        };
+
+    });
 
 
-let recruits = loadRecruits();
+    render();
 
 
-function saveRecruits(){
-
-    localStorage.setItem(
-        "aruAcademyRecruits",
-        JSON.stringify(recruits)
+    setSyncStatus(
+        "✓ Connected — Academy database synchronised",
+        "online"
     );
 
 }
 
 
-function addRecruit(){
+/*
+=========================================================
+ADD RECRUIT
+=========================================================
+*/
+
+async function addRecruit(){
 
     const name =
-    document.getElementById("newName").value.trim();
+    document.getElementById("newName")
+    .value
+    .trim();
+
 
     const discord =
-    document.getElementById("newDiscord").value.trim();
+    document.getElementById("newDiscord")
+    .value
+    .trim();
+
 
     const callsign =
-    document.getElementById("newCallsign").value.trim();
+    document.getElementById("newCallsign")
+    .value
+    .trim();
+
 
     const startDate =
-    document.getElementById("newStart").value;
+    document.getElementById("newStart")
+    .value;
+
 
     if(!name){
 
-        alert("Enter the officer's name first.");
+        alert(
+            "Enter the officer's name first."
+        );
+
         return;
 
     }
 
-    const recruit = {
 
-        id: Date.now(),
+    const { data, error } =
+    await supabaseClient
 
-        name:name,
+        .from("aru_recruits")
 
-        discord:discord,
+        .insert({
 
-        callsign:callsign,
+            name:name,
 
-        startDate:startDate,
+            discord:discord,
 
-        module:1,
+            callsign:callsign,
 
-        status:"Active",
+            start_date:startDate || null,
 
-        notes:"Pending Module 1."
+            current_module:1,
 
-    };
+            status:"Active",
 
-    recruits.push(recruit);
+            notes:"Pending Module 1."
 
-    saveRecruits();
+        })
 
-    document.getElementById("newName").value = "";
-    document.getElementById("newDiscord").value = "";
-    document.getElementById("newCallsign").value = "";
-    document.getElementById("newStart").value = "";
+        .select()
+
+        .single();
+
+
+    if(error){
+
+        console.error(error);
+
+        alert(
+            "Unable to add recruit:\n\n" +
+            error.message
+        );
+
+        return;
+
+    }
+
+
+    recruits.push({
+
+        id:data.id,
+
+        name:data.name,
+
+        discord:data.discord,
+
+        callsign:data.callsign,
+
+        startDate:data.start_date,
+
+        module:data.current_module,
+
+        status:data.status,
+
+        notes:data.notes
+
+    });
+
+
+    document.getElementById("newName").value="";
+    document.getElementById("newDiscord").value="";
+    document.getElementById("newCallsign").value="";
+    document.getElementById("newStart").value="";
+
 
     render();
+
+
+    setSyncStatus(
+        "✓ Student added and saved to Academy database",
+        "online"
+    );
 
 }
 
 
-function updateRecruit(id,field,value){
+/*
+=========================================================
+UPDATE RECRUIT
+=========================================================
+*/
+
+async function updateRecruit(id,field,value){
 
     const recruit =
     recruits.find(function(item){
@@ -837,26 +1037,86 @@ function updateRecruit(id,field,value){
 
     });
 
+
     if(!recruit){
         return;
     }
+
+
+    let databaseField = field;
+
 
     if(field === "module"){
 
-        value = parseInt(value);
+        value =
+        parseInt(value);
+
+        databaseField =
+        "current_module";
 
     }
 
-    recruit[field] = value;
 
-    saveRecruits();
+    if(field === "startDate"){
+
+        databaseField =
+        "start_date";
+
+    }
+
+
+    const updateData = {};
+
+    updateData[databaseField] =
+    value || null;
+
+
+    const { error } =
+    await supabaseClient
+
+        .from("aru_recruits")
+
+        .update(updateData)
+
+        .eq("id",id);
+
+
+    if(error){
+
+        console.error(error);
+
+        alert(
+            "Unable to save this change:\n\n" +
+            error.message
+        );
+
+        return;
+
+    }
+
+
+    recruit[field] =
+    value;
+
 
     render();
+
+
+    setSyncStatus(
+        "✓ Changes saved to Academy database",
+        "online"
+    );
 
 }
 
 
-function removeRecruit(id){
+/*
+=========================================================
+DELETE RECRUIT
+=========================================================
+*/
+
+async function removeRecruit(id){
 
     const recruit =
     recruits.find(function(item){
@@ -865,9 +1125,11 @@ function removeRecruit(id){
 
     });
 
+
     if(!recruit){
         return;
     }
+
 
     const confirmed =
     confirm(
@@ -876,9 +1138,35 @@ function removeRecruit(id){
         "?"
     );
 
+
     if(!confirmed){
         return;
     }
+
+
+    const { error } =
+    await supabaseClient
+
+        .from("aru_recruits")
+
+        .delete()
+
+        .eq("id",id);
+
+
+    if(error){
+
+        console.error(error);
+
+        alert(
+            "Unable to delete recruit:\n\n" +
+            error.message
+        );
+
+        return;
+
+    }
+
 
     recruits =
     recruits.filter(function(item){
@@ -887,12 +1175,23 @@ function removeRecruit(id){
 
     });
 
-    saveRecruits();
 
     render();
 
+
+    setSyncStatus(
+        "✓ Recruit record deleted",
+        "online"
+    );
+
 }
 
+
+/*
+=========================================================
+STATUS CLASS
+=========================================================
+*/
 
 function statusClass(status){
 
@@ -900,22 +1199,32 @@ function statusClass(status){
         return "status-qualified";
     }
 
+
     if(status === "Ready for Final Assessment"){
         return "status-ready";
     }
+
 
     if(status === "Development Required"){
         return "status-development";
     }
 
+
     if(status === "On Hold"){
         return "status-hold";
     }
+
 
     return "status-active";
 
 }
 
+
+/*
+=========================================================
+PROGRESS
+=========================================================
+*/
 
 function moduleProgress(recruit){
 
@@ -923,8 +1232,13 @@ function moduleProgress(recruit){
         return 100;
     }
 
+
     const completed =
-    Math.max(0,recruit.module - 1);
+    Math.max(
+        0,
+        recruit.module - 1
+    );
+
 
     return Math.round(
         (completed / MODULE_COUNT) * 100
@@ -933,17 +1247,30 @@ function moduleProgress(recruit){
 }
 
 
+/*
+=========================================================
+MODULE DISPLAY
+=========================================================
+*/
+
 function createModuleDisplay(recruit){
 
     let html = "";
 
-    for(let i = 1; i <= MODULE_COUNT; i++){
+
+    for(
+        let i = 1;
+        i <= MODULE_COUNT;
+        i++
+    ){
 
         let className =
         "module-item module-future";
 
+
         let marker =
         "Outstanding";
+
 
         if(recruit.status === "Qualified"){
 
@@ -975,22 +1302,23 @@ function createModuleDisplay(recruit){
 
         }
 
+
         html += `
 
         <div class="${className}">
 
             <strong>
-            Module ${i}
+                Module ${i}
             </strong>
 
             <br>
 
-            ${MODULE_NAMES[i - 1]}
+            ${escapeHTML(MODULE_NAMES[i - 1])}
 
             <br>
 
             <small>
-            ${marker}
+                ${marker}
             </small>
 
         </div>
@@ -999,26 +1327,42 @@ function createModuleDisplay(recruit){
 
     }
 
+
     return html;
 
 }
 
+
+/*
+=========================================================
+RENDER RECRUIT
+=========================================================
+*/
 
 function renderRecruit(recruit){
 
     const progress =
     moduleProgress(recruit);
 
+
     let moduleOptions = "";
 
-    for(let i = 1; i <= MODULE_COUNT; i++){
+
+    for(
+        let i = 1;
+        i <= MODULE_COUNT;
+        i++
+    ){
 
         moduleOptions += `
 
-        <option value="${i}"
-        ${recruit.module === i ? "selected" : ""}>
+        <option
+            value="${i}"
+            ${recruit.module === i ? "selected" : ""}
+        >
 
-        Module ${i} — ${MODULE_NAMES[i - 1]}
+            Module ${i} —
+            ${escapeHTML(MODULE_NAMES[i - 1])}
 
         </option>
 
@@ -1026,33 +1370,47 @@ function renderRecruit(recruit){
 
     }
 
+
     return `
 
     <div class="recruit-card">
 
+
         <div class="recruit-header">
 
             <h3>
+
                 ${escapeHTML(recruit.name)}
+
             </h3>
+
 
             <p>
 
                 ${
                     recruit.callsign
+
                     ? escapeHTML(recruit.callsign)
+
                     : "No call-sign recorded"
                 }
 
+
                 ${
                     recruit.discord
-                    ? " • " + escapeHTML(recruit.discord)
+
+                    ? " • " +
+                      escapeHTML(recruit.discord)
+
                     : ""
                 }
 
             </p>
 
-            <span class="status ${statusClass(recruit.status)}">
+
+            <span
+                class="status ${statusClass(recruit.status)}"
+            >
 
                 ${escapeHTML(recruit.status)}
 
@@ -1061,85 +1419,120 @@ function renderRecruit(recruit){
         </div>
 
 
+
         <div class="recruit-body">
+
 
             <div class="progress">
 
                 <div
-                class="progress-bar"
-                style="width:${progress}%;">
+                    class="progress-bar"
+                    style="width:${progress}%"
+                >
                 </div>
 
             </div>
+
 
             <div class="progress-text">
 
                 Academy Progress:
-                ${progress}%
+                <strong>${progress}%</strong>
 
             </div>
 
 
-            <div class="form-grid"
-            style="margin-top:18px;">
+
+            <div
+                class="form-grid"
+                style="margin-top:18px;"
+            >
 
 
                 <div>
 
                     <label>
-                    Current Module
+                        Current Module
                     </label>
 
-                    <select
-                    onchange="updateRecruit(
-                    ${recruit.id},
-                    'module',
-                    this.value
-                    )">
 
-                    ${moduleOptions}
+                    <select
+                        onchange="
+                        updateRecruit(
+                            '${recruit.id}',
+                            'module',
+                            this.value
+                        )
+                        "
+                    >
+
+                        ${moduleOptions}
 
                     </select>
 
                 </div>
 
 
+
                 <div>
 
                     <label>
-                    Current Status
+                        Current Status
                     </label>
 
+
                     <select
-                    onchange="updateRecruit(
-                    ${recruit.id},
-                    'status',
-                    this.value
-                    )">
+                        onchange="
+                        updateRecruit(
+                            '${recruit.id}',
+                            'status',
+                            this.value
+                        )
+                        "
+                    >
 
                         <option
-                        ${recruit.status === "Active" ? "selected" : ""}>
-                        Active
+                            ${recruit.status === "Active"
+                            ? "selected"
+                            : ""}
+                        >
+                            Active
                         </option>
 
-                        <option
-                        ${recruit.status === "Development Required" ? "selected" : ""}>
-                        Development Required
-                        </option>
 
                         <option
-                        ${recruit.status === "Ready for Final Assessment" ? "selected" : ""}>
-                        Ready for Final Assessment
+                            ${recruit.status === "Development Required"
+                            ? "selected"
+                            : ""}
+                        >
+                            Development Required
                         </option>
 
-                        <option
-                        ${recruit.status === "Qualified" ? "selected" : ""}>
-                        Qualified
-                        </option>
 
                         <option
-                        ${recruit.status === "On Hold" ? "selected" : ""}>
-                        On Hold
+                            ${recruit.status === "Ready for Final Assessment"
+                            ? "selected"
+                            : ""}
+                        >
+                            Ready for Final Assessment
+                        </option>
+
+
+                        <option
+                            ${recruit.status === "Qualified"
+                            ? "selected"
+                            : ""}
+                        >
+                            Qualified
+                        </option>
+
+
+                        <option
+                            ${recruit.status === "On Hold"
+                            ? "selected"
+                            : ""}
+                        >
+                            On Hold
                         </option>
 
                     </select>
@@ -1147,61 +1540,86 @@ function renderRecruit(recruit){
                 </div>
 
 
+
                 <div>
 
                     <label>
-                    Call-Sign / Collar
+                        Call-Sign / Collar
                     </label>
 
+
                     <input
-                    value="${escapeAttribute(recruit.callsign || "")}"
-                    onchange="updateRecruit(
-                    ${recruit.id},
-                    'callsign',
-                    this.value
-                    )">
+                        value="${escapeAttribute(
+                            recruit.callsign || ""
+                        )}"
+
+                        onchange="
+                        updateRecruit(
+                            '${recruit.id}',
+                            'callsign',
+                            this.value
+                        )
+                        "
+                    >
 
                 </div>
 
 
+
                 <div>
 
                     <label>
-                    Discord Mention
+                        Discord Mention
                     </label>
 
+
                     <input
-                    value="${escapeAttribute(recruit.discord || "")}"
-                    onchange="updateRecruit(
-                    ${recruit.id},
-                    'discord',
-                    this.value
-                    )">
+                        value="${escapeAttribute(
+                            recruit.discord || ""
+                        )}"
+
+                        onchange="
+                        updateRecruit(
+                            '${recruit.id}',
+                            'discord',
+                            this.value
+                        )
+                        "
+                    >
 
                 </div>
 
             </div>
+
 
 
             <div style="margin-top:15px;">
 
                 <label>
-                Trainer Notes
+                    Trainer Notes
                 </label>
 
+
                 <textarea
-                onchange="updateRecruit(
-                ${recruit.id},
-                'notes',
-                this.value
-                )">${escapeHTML(recruit.notes || "")}</textarea>
+                    onchange="
+                    updateRecruit(
+                        '${recruit.id}',
+                        'notes',
+                        this.value
+                    )
+                    "
+                >${escapeHTML(
+                    recruit.notes || ""
+                )}</textarea>
 
             </div>
 
 
+
             <h3>
-            Module Progress
+                Module Progress
             </h3>
+
 
             <div class="module-list">
 
@@ -1210,19 +1628,32 @@ function renderRecruit(recruit){
             </div>
 
 
+
             <div class="button-row">
 
+
                 <button
-                class="secondary"
-                onclick="copyRecruitSummary(${recruit.id})">
+                    class="secondary"
+                    onclick="
+                    copyRecruitSummary(
+                        '${recruit.id}'
+                    )
+                    "
+                >
 
                     Copy Progress Summary
 
                 </button>
 
+
                 <button
-                class="danger"
-                onclick="removeRecruit(${recruit.id})">
+                    class="danger"
+                    onclick="
+                    removeRecruit(
+                        '${recruit.id}'
+                    )
+                    "
+                >
 
                     Delete Recruit
 
@@ -1239,10 +1670,17 @@ function renderRecruit(recruit){
 }
 
 
+/*
+=========================================================
+RENDER EVERYTHING
+=========================================================
+*/
+
 function render(){
 
     const list =
     document.getElementById("recruitList");
+
 
     if(recruits.length === 0){
 
@@ -1250,7 +1688,7 @@ function render(){
 
         <div class="empty">
 
-        No recruit records currently exist.
+            No recruit records currently exist.
 
         </div>
 
@@ -1261,31 +1699,47 @@ function render(){
     else{
 
         list.innerHTML =
-        recruits.map(renderRecruit).join("");
+        recruits
+        .map(renderRecruit)
+        .join("");
 
     }
+
 
     updateDashboard();
 
 }
 
 
+/*
+=========================================================
+DASHBOARD
+=========================================================
+*/
+
 function updateDashboard(){
 
-    document.getElementById("totalStudents")
-    .textContent =
+    document.getElementById(
+        "totalStudents"
+    ).textContent =
     recruits.length;
 
-    document.getElementById("qualifiedStudents")
-    .textContent =
+
+    document.getElementById(
+        "qualifiedStudents"
+    ).textContent =
+
     recruits.filter(function(r){
 
         return r.status === "Qualified";
 
     }).length;
 
-    document.getElementById("assessmentStudents")
-    .textContent =
+
+    document.getElementById(
+        "assessmentStudents"
+    ).textContent =
+
     recruits.filter(function(r){
 
         return r.status ===
@@ -1293,8 +1747,11 @@ function updateDashboard(){
 
     }).length;
 
-    document.getElementById("developmentStudents")
-    .textContent =
+
+    document.getElementById(
+        "developmentStudents"
+    ).textContent =
+
     recruits.filter(function(r){
 
         return r.status ===
@@ -1305,6 +1762,12 @@ function updateDashboard(){
 }
 
 
+/*
+=========================================================
+COPY SUMMARY
+=========================================================
+*/
+
 function copyRecruitSummary(id){
 
     const recruit =
@@ -1314,51 +1777,80 @@ function copyRecruitSummary(id){
 
     });
 
+
     if(!recruit){
         return;
     }
 
+
     const completed =
+
     recruit.status === "Qualified"
+
     ? 13
-    : Math.max(0,recruit.module - 1);
+
+    : Math.max(
+        0,
+        recruit.module - 1
+    );
+
 
     const currentModule =
+
     recruit.status === "Qualified"
+
     ? "Academy Complete"
+
     : "Module " +
       recruit.module +
       " — " +
-      MODULE_NAMES[recruit.module - 1];
+      MODULE_NAMES[
+          recruit.module - 1
+      ];
+
 
     const text =
+
 `ARU Academy — Student Progress
 
 Officer: ${recruit.name}
-Call-Sign/Collar: ${recruit.callsign || "Not recorded"}
-Discord: ${recruit.discord || "Not recorded"}
 
-Current Status: ${recruit.status}
-Current Stage: ${currentModule}
+Call-Sign/Collar:
+${recruit.callsign || "Not recorded"}
 
-Modules Completed: ${completed}/13
-Overall Progress: ${moduleProgress(recruit)}%
+Discord:
+${recruit.discord || "Not recorded"}
+
+Current Status:
+${recruit.status}
+
+Current Stage:
+${currentModule}
+
+Modules Completed:
+${completed}/13
+
+Overall Progress:
+${moduleProgress(recruit)}%
 
 Trainer Notes:
 ${recruit.notes || "No trainer notes recorded."}`;
+
 
     navigator.clipboard.writeText(text)
 
     .then(function(){
 
-        alert("Recruit progress summary copied.");
+        alert(
+            "Recruit progress summary copied."
+        );
 
     })
 
     .catch(function(){
 
         alert(
-        "Unable to copy automatically."
+            "Unable to copy automatically."
         );
 
     });
@@ -1366,19 +1858,40 @@ ${recruit.notes || "No trainer notes recorded."}`;
 }
 
 
+/*
+=========================================================
+ESCAPE HTML
+=========================================================
+*/
+
 function escapeHTML(value){
 
     return String(value)
 
-    .replaceAll("&","&amp;")
+        .replaceAll(
+            "&",
+            "&amp;"
+        )
 
-    .replaceAll("<","&lt;")
+        .replaceAll(
+            "<",
+            "&lt;"
+        )
 
-    .replaceAll(">","&gt;")
+        .replaceAll(
+            ">",
+            "&gt;"
+        )
 
-    .replaceAll('"',"&quot;")
+        .replaceAll(
+            '"',
+            "&quot;"
+        )
 
-    .replaceAll("'","&#039;");
+        .replaceAll(
+            "'",
+            "&#039;"
+        );
 
 }
 
@@ -1390,9 +1903,64 @@ function escapeAttribute(value){
 }
 
 
-render();
+/*
+=========================================================
+REAL-TIME UPDATES
+=========================================================
+*/
+
+/*
+    This is the important bit.
+
+    If Trainer A changes a recruit,
+    Trainer B can receive the update
+    without needing to edit the record manually.
+*/
+
+supabaseClient
+
+.channel("aru-recruit-tracker")
+
+.on(
+
+    "postgres_changes",
+
+    {
+        event:"*",
+
+        schema:"public",
+
+        table:"aru_recruits"
+
+    },
+
+    function(payload){
+
+        console.log(
+            "Database update received:",
+            payload
+        );
+
+
+        loadRecruits();
+
+    }
+
+)
+
+.subscribe();
+
+
+/*
+=========================================================
+INITIAL LOAD
+=========================================================
+*/
+
+loadRecruits();
 
 </script>
+
 
 </body>
 
