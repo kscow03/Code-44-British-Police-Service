@@ -1,7 +1,5 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,7 +20,7 @@
         body {
             margin: 0;
             background: #05080d;
-            color: white;
+            color: #ffffff;
             font-family: "Segoe UI", Arial, sans-serif;
             line-height: 1.6;
         }
@@ -50,7 +48,7 @@
         }
 
         .navbar a:hover {
-            color: white;
+            color: #ffffff;
         }
 
         .back-link {
@@ -63,7 +61,7 @@
 
         .hero {
             background:
-                linear-gradient(rgba(2, 7, 14, .82), rgba(2, 7, 14, .95)),
+                linear-gradient(rgba(2, 7, 14, 0.82), rgba(2, 7, 14, 0.95)),
                 url("arv-photo.png");
 
             background-size: cover;
@@ -156,13 +154,13 @@
             padding: 12px 13px;
 
             background: #08111d;
-            color: white;
+            color: #ffffff;
 
             border: 1px solid #244c80;
             border-radius: 7px;
 
             font-family: inherit;
-            font-size: .95rem;
+            font-size: 0.95rem;
         }
 
         input:focus,
@@ -184,8 +182,7 @@
             margin-top: 18px;
         }
 
-        button,
-        .button {
+        button {
             display: inline-block;
 
             padding: 11px 16px;
@@ -196,13 +193,12 @@
             border: none;
             border-radius: 6px;
 
-            text-decoration: none;
+            font-family: inherit;
             font-weight: bold;
             cursor: pointer;
         }
 
-        button:hover,
-        .button:hover {
+        button:hover {
             background: #77b5ff;
         }
 
@@ -210,6 +206,10 @@
             background: #101b2c;
             color: #4d9dff;
             border: 1px solid #24538b;
+        }
+
+        button.secondary:hover {
+            background: #17263d;
         }
 
         button.danger {
@@ -221,8 +221,6 @@
         button.danger:hover {
             background: #552027;
         }
-
-        /* RECRUIT LIST */
 
         .recruit-list {
             display: grid;
@@ -236,8 +234,6 @@
             border-radius: 10px;
             overflow: hidden;
         }
-
-        /* RECRUIT HEADER */
 
         .recruit-header {
             padding: 18px;
@@ -268,7 +264,7 @@
         .recruit-header-left p {
             margin: 0;
             color: #aab8ca;
-            font-size: .9rem;
+            font-size: 0.9rem;
         }
 
         .recruit-header-right {
@@ -294,20 +290,16 @@
             color: #4d9dff;
             font-weight: bold;
 
-            transition: transform .2s;
+            transition: transform 0.2s;
         }
 
         .recruit-card.expanded .expand-icon {
             transform: rotate(180deg);
         }
 
-        /* RECRUIT BODY */
-
         .recruit-body {
             display: none;
-
             padding: 20px;
-
             border-top: 1px solid #16315c;
         }
 
@@ -315,33 +307,13 @@
             display: block;
         }
 
-        .recruit-body * {
-            cursor: default;
-        }
-
         .recruit-body input,
         .recruit-body select,
         .recruit-body textarea,
         .recruit-body button {
             position: relative;
-            z-index: 5;
+            z-index: 2;
         }
-
-        .recruit-body input,
-        .recruit-body select,
-        .recruit-body textarea {
-            cursor: text;
-        }
-
-        .recruit-body select {
-            cursor: pointer;
-        }
-
-        .recruit-body button {
-            cursor: pointer;
-        }
-
-        /* PROGRESS */
 
         .progress {
             width: 100%;
@@ -356,10 +328,8 @@
 
         .progress-bar {
             height: 100%;
-
             background: #4d9dff;
-
-            transition: width .3s ease;
+            transition: width 0.3s ease;
         }
 
         .progress-bar.complete {
@@ -368,10 +338,8 @@
 
         .progress-text {
             color: #8f9bad;
-            font-size: .9rem;
+            font-size: 0.9rem;
         }
-
-        /* STATUS */
 
         .status {
             display: inline-block;
@@ -380,7 +348,7 @@
 
             border-radius: 20px;
 
-            font-size: .85rem;
+            font-size: 0.85rem;
             font-weight: bold;
         }
 
@@ -414,8 +382,6 @@
             color: #ffb8c0;
         }
 
-        /* MODULE CHECKLIST */
-
         .module-section {
             margin-top: 25px;
         }
@@ -426,7 +392,7 @@
 
         .module-help {
             color: #8f9bad;
-            font-size: .9rem;
+            font-size: 0.9rem;
             margin-top: 0;
         }
 
@@ -449,8 +415,7 @@
             gap: 12px;
 
             cursor: pointer;
-
-            transition: .2s;
+            transition: 0.2s;
         }
 
         .module-item:hover {
@@ -468,14 +433,14 @@
         }
 
         .module-checkbox {
-            width: 20px !important;
-            height: 20px !important;
+            width: 20px;
+            height: 20px;
 
             flex-shrink: 0;
 
             accent-color: #45b36b;
 
-            cursor: pointer !important;
+            cursor: pointer;
         }
 
         .module-content {
@@ -489,20 +454,18 @@
         }
 
         .module-name {
-            font-size: .9rem;
+            font-size: 0.9rem;
             color: #d3dbea;
         }
 
         .module-status {
-            font-size: .78rem;
+            font-size: 0.78rem;
             color: #8f9bad;
         }
 
         .module-item.completed .module-status {
             color: #8de3a7;
         }
-
-        /* INFO BOXES */
 
         .notes {
             margin-top: 15px;
@@ -529,8 +492,6 @@
             border-left: 5px solid #45b36b;
         }
 
-        /* SYNC STATUS */
-
         .sync-status {
             margin-top: 15px;
             padding: 10px 14px;
@@ -541,7 +502,7 @@
             border: 1px solid #16315c;
 
             color: #8f9bad;
-            font-size: .9rem;
+            font-size: 0.9rem;
         }
 
         .sync-status.online {
@@ -554,15 +515,11 @@
             color: #ffb8c0;
         }
 
-        /* EMPTY */
-
         .empty {
             text-align: center;
             color: #8f9bad;
             padding: 35px 10px;
         }
-
-        /* FOOTER */
 
         .footer {
             margin-top: 30px;
@@ -572,13 +529,15 @@
 
             color: #8f9bad;
             text-align: center;
-            font-size: .9rem;
+            font-size: 0.9rem;
         }
 
-        /* MOBILE */
+        .saving {
+            opacity: 0.6;
+            pointer-events: none;
+        }
 
         @media (max-width: 650px) {
-
             .page-container {
                 width: 94%;
             }
@@ -595,10 +554,8 @@
                 line-height: 2;
             }
 
-            button,
-            .button {
+            button {
                 width: 100%;
-                text-align: center;
             }
 
             .recruit-header {
@@ -615,1795 +572,1581 @@
 
 <body>
 
-    <script>
-        /* TRAINER ACCESS */
+<script>
+    if (sessionStorage.getItem("trainerAccess") !== "granted") {
+        window.location.replace("trainers-login.html");
+    }
+</script>
 
-        if (sessionStorage.getItem("trainerAccess") !== "granted") {
-            window.location.replace("trainers-login.html");
-        }
-    </script>
+<div class="page-container">
 
-    <div class="page-container">
+    <nav class="navbar">
+        <a href="aru-members.html">Internal Database</a>
+        |
+        <a href="academy.html">ARU Academy</a>
+        |
+        <a href="trainers.html">Trainers Area</a>
+        |
+        <a href="recruit-tracker.html" style="color: white;">Recruit Tracker</a>
+    </nav>
 
-        <nav class="navbar">
+    <a class="back-link" href="trainers.html">
+        ← Return to Trainers Area
+    </a>
 
-            <a href="aru-members.html">
-                Internal Database
-            </a>
+    <header class="hero">
+        <h1>ARU Recruit Tracker</h1>
+        <p>Cohort Management &amp; Student Progression</p>
+        <p>Code44 Armed Response Unit Academy</p>
 
-            |
+        <span class="badge">
+            Trainer-Only Resource
+        </span>
+    </header>
 
-            <a href="academy.html">
-                ARU Academy
-            </a>
+    <section class="card">
 
-            |
+        <h2>Cohort Dashboard</h2>
 
-            <a href="trainers.html">
-                Trainers Area
-            </a>
+        <p>
+            Monitor student progression across the full 13-module ARU Academy.
+        </p>
 
-            |
+        <div class="dashboard-grid">
 
-            <a href="recruit-tracker.html" style="color:white;">
-                Recruit Tracker
-            </a>
-
-        </nav>
-
-        <a class="back-link" href="trainers.html">
-            ← Return to Trainers Area
-        </a>
-
-        <header class="hero">
-
-            <h1>ARU Recruit Tracker</h1>
-
-            <p>Cohort Management &amp; Student Progression</p>
-
-            <p>Code44 Armed Response Unit Academy</p>
-
-            <span class="badge">
-                Trainer-Only Resource
-            </span>
-
-        </header>
-
-        <!-- DASHBOARD -->
-
-        <section class="card">
-
-            <h2>Cohort Dashboard</h2>
-
-            <p>
-                Monitor student progression across the full 13-module ARU Academy.
-            </p>
-
-            <div class="dashboard-grid">
-
-                <div class="stat-box">
-                    <strong id="totalStudents">0</strong>
-                    Active Records
-                </div>
-
-                <div class="stat-box">
-                    <strong id="qualifiedStudents">0</strong>
-                    Qualified
-                </div>
-
-                <div class="stat-box">
-                    <strong id="assessmentStudents">0</strong>
-                    Final Assessment Stage
-                </div>
-
-                <div class="stat-box">
-                    <strong id="developmentStudents">0</strong>
-                    Development Required
-                </div>
-
+            <div class="stat-box">
+                <strong id="totalStudents">0</strong>
+                Active Records
             </div>
 
-            <div id="syncStatus" class="sync-status">
-                Connecting to Academy database...
+            <div class="stat-box">
+                <strong id="qualifiedStudents">0</strong>
+                Qualified
             </div>
 
-        </section>
-
-        <!-- ADD STUDENT -->
-
-        <section class="card">
-
-            <h2>Add New Student</h2>
-
-            <div class="form-grid">
-
-                <div>
-
-                    <label for="newName">
-                        Officer Name
-                    </label>
-
-                    <input
-                        type="text"
-                        id="newName"
-                        placeholder="MASSARELLI"
-                    >
-
-                </div>
-
-                <div>
-
-                    <label for="newDiscord">
-                        Discord Mention / ID
-                    </label>
-
-                    <input
-                        type="text"
-                        id="newDiscord"
-                        placeholder="<@123456789>"
-                    >
-
-                </div>
-
-                <div>
-
-                    <label for="newCallsign">
-                        Call-Sign / Collar Number
-                    </label>
-
-                    <input
-                        type="text"
-                        id="newCallsign"
-                        placeholder="TC-11"
-                    >
-
-                </div>
-
-                <div>
-
-                    <label for="newStart">
-                        Academy Start Date
-                    </label>
-
-                    <input
-                        type="date"
-                        id="newStart"
-                    >
-
-                </div>
-
+            <div class="stat-box">
+                <strong id="assessmentStudents">0</strong>
+                Final Assessment Stage
             </div>
 
-            <div class="button-row">
+            <div class="stat-box">
+                <strong id="developmentStudents">0</strong>
+                Development Required
+            </div>
 
-                <button
-                    type="button"
-                    id="addStudentButton"
+        </div>
+
+        <div id="syncStatus" class="sync-status">
+            Connecting to Academy database...
+        </div>
+
+    </section>
+
+    <section class="card">
+
+        <h2>Add New Student</h2>
+
+        <div class="form-grid">
+
+            <div>
+                <label for="newName">Officer Name</label>
+
+                <input
+                    type="text"
+                    id="newName"
+                    placeholder="MASSARELLI"
                 >
-                    Add Student
-                </button>
-
             </div>
 
-        </section>
+            <div>
+                <label for="newDiscord">Discord ID</label>
 
-        <!-- RECRUITS -->
+                <input
+                    type="text"
+                    id="newDiscord"
+                    placeholder="123456789012345678"
+                >
+            </div>
 
-        <section class="card">
+            <div>
+                <label for="newCallsign">Call-Sign / Collar Number</label>
 
-            <h2>Current Recruits</h2>
+                <input
+                    type="text"
+                    id="newCallsign"
+                    placeholder="TC-11"
+                >
+            </div>
 
-            <p>
-                Click a recruit's name to expand their full training record.
-            </p>
+            <div>
+                <label for="newCohort">Cohort</label>
 
-            <div id="recruitList" class="recruit-list"></div>
+                <input
+                    type="text"
+                    id="newCohort"
+                    value="Cohort 001"
+                >
+            </div>
 
-        </section>
+            <div>
+                <label for="newStart">Academy Start Date</label>
 
-        <!-- HOW PROGRESS WORKS -->
+                <input
+                    type="date"
+                    id="newStart"
+                >
+            </div>
 
-        <section class="card notice">
+        </div>
 
-            <h2>How Progress Works</h2>
+        <div class="button-row">
 
-            <p>
-                Each module is tracked individually.
-                Tick a module to mark it as completed and automatically update
-                the student's overall progress.
-            </p>
+            <button
+                type="button"
+                id="addStudentButton"
+            >
+                Add Student
+            </button>
 
-            <p>
-                The progress bar is calculated from the number of completed modules
-                out of 13.
-            </p>
+        </div>
 
-            <p>
-                Once all 13 modules have been completed, the student can be marked
-                <strong>Qualified</strong>.
-            </p>
+    </section>
 
-        </section>
+    <section class="card">
 
-        <!-- DATABASE -->
+        <h2>Current Recruits</h2>
 
-        <section class="card success">
+        <p>
+            Click a recruit's name to expand their full training record.
+        </p>
 
-            <h2>Shared Academy Database</h2>
+        <div id="recruitList" class="recruit-list"></div>
 
-            <p>
-                All recruit information is stored in the central Academy database.
-            </p>
+    </section>
 
-            <p>
-                When one trainer updates a student's progress, the change is saved
-                to Supabase and can appear on other trainer computers.
-            </p>
+    <section class="card notice">
 
-        </section>
+        <h2>How Progress Works</h2>
 
-        <section class="card warning">
+        <p>
+            Each module is tracked individually.
+            Tick a module when the student successfully completes it.
+        </p>
 
-            <h2>Data Storage Notice</h2>
+        <p>
+            The progress bar automatically calculates completion out of 13 modules.
+        </p>
 
-            <p>
-                This tracker is connected to the Code44 Academy Supabase database.
-            </p>
+        <p>
+            Completing all 13 modules moves the student to
+            <strong>Ready for Final Assessment</strong>.
+        </p>
 
-            <p>
-                Do not enter genuine sensitive police information, passwords,
-                real-world personal information or operationally sensitive material.
-                This system is intended for Code44 Academy management.
-            </p>
+        <p>
+            A trainer can then manually mark the student as
+            <strong>Qualified</strong>.
+        </p>
 
-        </section>
+    </section>
 
-        <footer class="footer">
+    <section class="card success">
 
-            Code44 Police Service • Armed Response Unit Academy<br>
+        <h2>Shared Academy Database</h2>
 
-            Recruit Tracker • Shared Trainer Database
+        <p>
+            Recruit information is stored in the central Code44 Academy Supabase database.
+        </p>
 
-        </footer>
+        <p>
+            Changes made by trainers are saved to the database and can be seen by other trainers.
+        </p>
 
-    </div>
+    </section>
 
-    <script>
-        /* =========================================================
-           SUPABASE CONFIGURATION
-        ========================================================= */
+    <section class="card warning">
 
-        const SUPABASE_URL =
-            "https://hawklowwjrilrrpdbmeb.supabase.co";
+        <h2>Data Storage Notice</h2>
 
-        const SUPABASE_KEY =
-            "sb_publishable_Zau-vuGABRzxvl8a7AOmBA_AKI1uuh6";
+        <p>
+            This tracker is connected to the Code44 Academy Supabase database.
+        </p>
 
-        const supabaseClient =
-            window.supabase.createClient(
-                SUPABASE_URL,
-                SUPABASE_KEY
+        <p>
+            Do not enter genuine sensitive police information, passwords,
+            real-world personal information or operationally sensitive material.
+            This system is intended for Code44 Academy management.
+        </p>
+
+    </section>
+
+    <footer class="footer">
+        Code44 Police Service • Armed Response Unit Academy
+        <br>
+        Recruit Tracker • Shared Trainer Database
+    </footer>
+
+</div>
+
+<script>
+
+    /* =====================================================
+       SUPABASE
+    ===================================================== */
+
+    const SUPABASE_URL =
+        "https://hawklowwjrilrrpdbmeb.supabase.co";
+
+    const SUPABASE_KEY =
+        "sb_publishable_Zau-vuGABRzxvl8a7AOmBA_AKI1uuh6";
+
+    const supabaseClient =
+        window.supabase.createClient(
+            SUPABASE_URL,
+            SUPABASE_KEY
+        );
+
+
+    /* =====================================================
+       ACADEMY SETTINGS
+    ===================================================== */
+
+    const MODULE_COUNT = 13;
+
+    const MODULE_NAMES = [
+        "Welcome to ARU",
+        "Professional Standards",
+        "Legal & Decision-Making",
+        "Equipment, Vehicles & PPE",
+        "Firearms Safety & Handling",
+        "Firearms Fundamentals & Operational Readiness",
+        "ARV Deployment & Armed Incident Response",
+        "Armed Vehicle Tactics",
+        "Armed Containment, Searches & Warrants",
+        "Building Operations & CQB",
+        "Complex Armed Incidents & Integrated Operations",
+        "Consolidation & Scenario Development",
+        "Final Assessment & Qualification"
+    ];
+
+    const STATUS_OPTIONS = [
+        "Active",
+        "Development Required",
+        "Ready for Final Assessment",
+        "Qualified",
+        "On Hold"
+    ];
+
+    let recruits = [];
+
+    const expandedRecruitIds = new Set();
+
+
+    /* =====================================================
+       DATABASE STATUS
+    ===================================================== */
+
+    function setSyncStatus(message, type = "") {
+
+        const element =
+            document.getElementById("syncStatus");
+
+        if (!element) {
+            return;
+        }
+
+        element.textContent = message;
+        element.className = "sync-status " + type;
+    }
+
+
+    /* =====================================================
+       ESCAPE HTML
+    ===================================================== */
+
+    function escapeHTML(value) {
+
+        return String(value ?? "")
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+    }
+
+
+    /* =====================================================
+       NORMALISE DATABASE RECORD
+    ===================================================== */
+
+    function normaliseRecruit(item) {
+
+        const completedModules = [];
+
+        return {
+            id: item.id,
+            officerName: item.officer_name || "",
+            discordId: item.discord_id || "",
+            callsign: item.callsign || "",
+            cohort: item.cohort || "Cohort 001",
+            startDate: item.start_date || "",
+            currentModule: Number(item.current_module) || 1,
+            status: item.status || "Active",
+            trainerNotes: item.trainer_notes || "",
+            completedModules: completedModules
+        };
+    }
+
+
+    /* =====================================================
+       LOAD RECRUITS
+    ===================================================== */
+
+    async function loadRecruits() {
+
+        setSyncStatus(
+            "Loading Academy database..."
+        );
+
+        const {
+            data,
+            error
+        } = await supabaseClient
+            .from("aru_recruits")
+            .select("*")
+            .order("created_at", {
+                ascending: true
+            });
+
+        if (error) {
+
+            console.error(
+                "Supabase load error:",
+                error
             );
-
-
-        /* =========================================================
-           ACADEMY SETTINGS
-        ========================================================= */
-
-        const MODULE_COUNT = 13;
-
-        const MODULE_NAMES = [
-            "Welcome to ARU",
-            "Professional Standards",
-            "Legal & Decision-Making",
-            "Equipment, Vehicles & PPE",
-            "Firearms Safety & Handling",
-            "Firearms Fundamentals & Operational Readiness",
-            "ARV Deployment & Armed Incident Response",
-            "Armed Vehicle Tactics",
-            "Armed Containment, Searches & Warrants",
-            "Building Operations & CQB",
-            "Complex Armed Incidents & Integrated Operations",
-            "Consolidation & Scenario Development",
-            "Final Assessment & Qualification"
-        ];
-
-        const STATUS_OPTIONS = [
-            "Active",
-            "Development Required",
-            "Ready for Final Assessment",
-            "Qualified",
-            "On Hold"
-        ];
-
-        let recruits = [];
-
-        const expandedRecruitIds = new Set();
-
-
-        /* =========================================================
-           SYNC STATUS
-        ========================================================= */
-
-        function setSyncStatus(message, type = "") {
-
-            const element =
-                document.getElementById("syncStatus");
-
-            if (!element) {
-                return;
-            }
-
-            element.textContent = message;
-
-            element.className =
-                "sync-status " + type;
-        }
-
-
-        /* =========================================================
-           NORMALISE DATABASE RECORD
-        ========================================================= */
-
-        function normaliseRecruit(item) {
-
-            let completedModules =
-                Array.isArray(item.completed_modules)
-                    ? item.completed_modules
-                    : [];
-
-            completedModules =
-                completedModules
-                    .map(Number)
-                    .filter(function(module) {
-
-                        return (
-                            Number.isInteger(module) &&
-                            module >= 1 &&
-                            module <= MODULE_COUNT
-                        );
-
-                    });
-
-            completedModules =
-                [...new Set(completedModules)]
-                    .sort(function(a, b) {
-                        return a - b;
-                    });
-
-
-            /* Backwards compatibility */
-
-            if (
-                completedModules.length === 0 &&
-                Number(item.current_module) > 1
-            ) {
-
-                for (
-                    let i = 1;
-                    i < Number(item.current_module);
-                    i++
-                ) {
-
-                    completedModules.push(i);
-
-                }
-
-            }
-
-
-            /* Qualified students have all modules completed */
-
-            if (item.status === "Qualified") {
-
-                completedModules = [];
-
-                for (
-                    let i = 1;
-                    i <= MODULE_COUNT;
-                    i++
-                ) {
-
-                    completedModules.push(i);
-
-                }
-
-            }
-
-
-            return {
-
-                id: item.id,
-
-                name: item.name || "",
-
-                discord: item.discord || "",
-
-                callsign: item.callsign || "",
-
-                cohort: item.cohort || "",
-
-                startDate: item.start_date || "",
-
-                module: Number(item.current_module) || 1,
-
-                status: item.status || "Active",
-
-                notes: item.notes || "",
-
-                completedModules: completedModules
-
-            };
-
-        }
-
-
-        /* =========================================================
-           LOAD RECRUITS
-        ========================================================= */
-
-        async function loadRecruits() {
 
             setSyncStatus(
-                "Loading Academy database..."
+                "Database error: " + error.message,
+                "error"
             );
 
-            const { data, error } =
-                await supabaseClient
-                    .from("aru_recruits")
-                    .select("*")
-                    .order("created_at", {
-                        ascending: true
-                    });
-
-            if (error) {
-
-                console.error(
-                    "Supabase load error:",
-                    error
-                );
-
-                setSyncStatus(
-                    "Database connection error: " +
-                    error.message,
-                    "error"
-                );
-
-                return;
-            }
-
-            recruits =
-                (data || []).map(normaliseRecruit);
-
-            render();
-
-            setSyncStatus(
-                "✓ Connected — Academy database synchronised",
-                "online"
-            );
-
+            return;
         }
 
+        recruits =
+            (data || []).map(normaliseRecruit);
 
-        /* =========================================================
-           ADD RECRUIT
-        ========================================================= */
+        render();
 
-        async function addRecruit() {
-
-            const name =
-                document
-                    .getElementById("newName")
-                    .value
-                    .trim();
-
-            const discord =
-                document
-                    .getElementById("newDiscord")
-                    .value
-                    .trim();
-
-            const callsign =
-                document
-                    .getElementById("newCallsign")
-                    .value
-                    .trim();
-
-            const startDate =
-                document
-                    .getElementById("newStart")
-                    .value;
-
-            if (!name) {
-
-                alert(
-                    "Enter the officer's name first."
-                );
-
-                return;
-            }
+        setSyncStatus(
+            "✓ Connected — Academy database synchronised",
+            "online"
+        );
+    }
 
 
-            setSyncStatus(
-                "Adding student..."
-            );
+    /* =====================================================
+       ADD RECRUIT
+    ===================================================== */
 
+    async function addRecruit() {
 
-            const { data, error } =
-                await supabaseClient
-                    .from("aru_recruits")
-                    .insert({
+        const name =
+            document.getElementById("newName").value.trim();
 
-                        name: name,
+        const discord =
+            document.getElementById("newDiscord").value.trim();
 
-                        discord: discord || null,
+        const callsign =
+            document.getElementById("newCallsign").value.trim();
 
-                        callsign: callsign || null,
+        const cohort =
+            document.getElementById("newCohort").value.trim();
 
-                        start_date: startDate || null,
+        const startDate =
+            document.getElementById("newStart").value;
 
-                        current_module: 1,
+        if (!name) {
 
-                        status: "Active",
+            alert("Enter the officer's name first.");
 
-                        notes: "Pending Module 1.",
-
-                        completed_modules: []
-
-                    })
-                    .select()
-                    .single();
-
-
-            if (error) {
-
-                console.error(
-                    "Supabase insert error:",
-                    error
-                );
-
-                alert(
-                    "Unable to add recruit:\n\n" +
-                    error.message
-                );
-
-                setSyncStatus(
-                    "Unable to add student",
-                    "error"
-                );
-
-                return;
-            }
-
-
-            recruits.push(
-                normaliseRecruit(data)
-            );
-
-
-            document.getElementById("newName").value = "";
-            document.getElementById("newDiscord").value = "";
-            document.getElementById("newCallsign").value = "";
-            document.getElementById("newStart").value = "";
-
-
-            expandedRecruitIds.add(data.id);
-
-
-            render();
-
-
-            setSyncStatus(
-                "✓ Student added and saved to Academy database",
-                "online"
-            );
-
+            return;
         }
 
+        const button =
+            document.getElementById("addStudentButton");
 
-        /* =========================================================
-           SAVE RECRUIT
-        ========================================================= */
+        button.disabled = true;
+        button.textContent = "Adding...";
 
-        async function saveRecruit(id, updateData) {
+        const {
+            data,
+            error
+        } = await supabaseClient
+            .from("aru_recruits")
+            .insert({
+                officer_name: name,
+                discord_id: discord || null,
+                callsign: callsign || null,
+                cohort: cohort || "Cohort 001",
+                start_date: startDate || null,
+                current_module: 1,
+                status: "Active",
+                trainer_notes: null
+            })
+            .select()
+            .single();
 
-            const { data, error } =
-                await supabaseClient
-                    .from("aru_recruits")
-                    .update(updateData)
-                    .eq("id", id)
-                    .select()
-                    .single();
+        button.disabled = false;
+        button.textContent = "Add Student";
 
+        if (error) {
 
-            if (error) {
-
-                console.error(
-                    "Supabase update error:",
-                    error
-                );
-
-                setSyncStatus(
-                    "Unable to save change: " +
-                    error.message,
-                    "error"
-                );
-
-                alert(
-                    "Unable to save this change:\n\n" +
-                    error.message
-                );
-
-                return false;
-            }
-
-
-            const index =
-                recruits.findIndex(function(item) {
-                    return item.id === id;
-                });
-
-
-            if (index !== -1) {
-
-                recruits[index] =
-                    normaliseRecruit(data);
-
-            }
-
-
-            return true;
-
-        }
-
-
-        /* =========================================================
-           UPDATE RECRUIT FIELD
-        ========================================================= */
-
-        async function updateRecruit(id, field, value) {
-
-            const recruit =
-                recruits.find(function(item) {
-                    return item.id === id;
-                });
-
-
-            if (!recruit) {
-                return;
-            }
-
-
-            let databaseField = field;
-
-
-            if (field === "module") {
-
-                value = parseInt(value, 10);
-
-                databaseField = "current_module";
-
-            }
-
-
-            if (field === "startDate") {
-
-                databaseField = "start_date";
-
-            }
-
-
-            const updateData = {};
-
-            updateData[databaseField] =
-                value || null;
-
-
-            /* Qualified = all modules */
-
-            if (
-                field === "status" &&
-                value === "Qualified"
-            ) {
-
-                updateData.completed_modules = [];
-
-                for (
-                    let i = 1;
-                    i <= MODULE_COUNT;
-                    i++
-                ) {
-
-                    updateData.completed_modules.push(i);
-
-                }
-
-                updateData.current_module =
-                    MODULE_COUNT;
-            }
-
-
-            /* Moving away from Qualified */
-
-            if (
-                field === "status" &&
-                value !== "Qualified" &&
-                recruit.status === "Qualified"
-            ) {
-
-                updateData.completed_modules = [];
-
-                updateData.current_module = 1;
-
-            }
-
-
-            const success =
-                await saveRecruit(
-                    id,
-                    updateData
-                );
-
-
-            if (!success) {
-                return;
-            }
-
-
-            expandedRecruitIds.add(id);
-
-            render();
-
-
-            setSyncStatus(
-                "✓ Changes saved to Academy database",
-                "online"
+            console.error(
+                "Supabase insert error:",
+                error
             );
 
+            alert(
+                "Unable to add recruit:\n\n" +
+                error.message
+            );
+
+            return;
         }
 
+        recruits.push(
+            normaliseRecruit(data)
+        );
 
-        /* =========================================================
-           TOGGLE MODULE
-        ========================================================= */
+        expandedRecruitIds.add(data.id);
 
-        async function toggleModule(
-            id,
-            moduleNumber,
-            checked
+        document.getElementById("newName").value = "";
+        document.getElementById("newDiscord").value = "";
+        document.getElementById("newCallsign").value = "";
+        document.getElementById("newCohort").value = "Cohort 001";
+        document.getElementById("newStart").value = "";
+
+        render();
+
+        setSyncStatus(
+            "✓ Student added and saved",
+            "online"
+        );
+    }
+
+
+    /* =====================================================
+       SAVE DATABASE RECORD
+    ===================================================== */
+
+    async function saveRecruit(id, updates) {
+
+        const {
+            data,
+            error
+        } = await supabaseClient
+            .from("aru_recruits")
+            .update(updates)
+            .eq("id", id)
+            .select()
+            .single();
+
+        if (error) {
+
+            console.error(
+                "Supabase update error:",
+                error
+            );
+
+            setSyncStatus(
+                "Unable to save: " + error.message,
+                "error"
+            );
+
+            alert(
+                "Unable to save this change:\n\n" +
+                error.message
+            );
+
+            return false;
+        }
+
+        const index =
+            recruits.findIndex(
+                recruit => recruit.id === id
+            );
+
+        if (index !== -1) {
+
+            recruits[index] =
+                normaliseRecruit(data);
+        }
+
+        return true;
+    }
+
+
+    /* =====================================================
+       UPDATE FIELD
+    ===================================================== */
+
+    async function updateRecruitField(
+        id,
+        field,
+        value
+    ) {
+
+        const recruit =
+            recruits.find(
+                item => item.id === id
+            );
+
+        if (!recruit) {
+            return;
+        }
+
+        let databaseField = field;
+
+        if (field === "officerName") {
+            databaseField = "officer_name";
+        }
+
+        if (field === "discordId") {
+            databaseField = "discord_id";
+        }
+
+        if (field === "startDate") {
+            databaseField = "start_date";
+        }
+
+        if (field === "currentModule") {
+            databaseField = "current_module";
+            value = Number(value);
+        }
+
+        if (field === "trainerNotes") {
+            databaseField = "trainer_notes";
+        }
+
+        if (field === "cohort") {
+            databaseField = "cohort";
+        }
+
+        if (field === "callsign") {
+            databaseField = "callsign";
+        }
+
+        if (field === "status") {
+            databaseField = "status";
+        }
+
+        const updates = {};
+
+        updates[databaseField] =
+            value === "" ? null : value;
+
+        const success =
+            await saveRecruit(
+                id,
+                updates
+            );
+
+        if (!success) {
+            return;
+        }
+
+        expandedRecruitIds.add(id);
+
+        render();
+
+        setSyncStatus(
+            "✓ Changes saved",
+            "online"
+        );
+    }
+
+
+    /* =====================================================
+       TOGGLE MODULE
+    ===================================================== */
+
+    async function toggleModule(
+        id,
+        moduleNumber,
+        checked
+    ) {
+
+        const recruit =
+            recruits.find(
+                item => item.id === id
+            );
+
+        if (!recruit) {
+            return;
+        }
+
+        /*
+            The Supabase table does not need a separate
+            completed_modules column.
+
+            Module completion is represented by the
+            current_module value.
+
+            Completing module 4 means the recruit is
+            currently on module 5.
+
+            Completing all 13 means current_module = 13
+            and status can be Ready for Final Assessment.
+        */
+
+        let newCurrentModule =
+            recruit.currentModule;
+
+        if (checked) {
+
+            if (moduleNumber >= newCurrentModule) {
+
+                newCurrentModule =
+                    Math.min(
+                        moduleNumber + 1,
+                        MODULE_COUNT
+                    );
+            }
+
+        } else {
+
+            newCurrentModule =
+                Math.min(
+                    moduleNumber,
+                    MODULE_COUNT
+                );
+        }
+
+        let newStatus =
+            recruit.status;
+
+        if (newCurrentModule >= MODULE_COUNT) {
+
+            newStatus =
+                "Ready for Final Assessment";
+
+        } else if (
+            recruit.status === "Qualified"
         ) {
 
-            const recruit =
-                recruits.find(function(item) {
-                    return item.id === id;
-                });
-
-
-            if (!recruit) {
-                return;
-            }
-
-
-            expandedRecruitIds.add(id);
-
-
-            let completed =
-                [...recruit.completedModules];
-
-
-            if (checked) {
-
-                if (
-                    !completed.includes(moduleNumber)
-                ) {
-
-                    completed.push(moduleNumber);
-
-                }
-
-            }
-            else {
-
-                completed =
-                    completed.filter(function(module) {
-                        return module !== moduleNumber;
-                    });
-
-            }
-
-
-            completed =
-                [...new Set(completed)]
-                    .sort(function(a, b) {
-                        return a - b;
-                    });
-
-
-            /* Find first incomplete module */
-
-            let currentModule = MODULE_COUNT;
-
-            for (
-                let i = 1;
-                i <= MODULE_COUNT;
-                i++
-            ) {
-
-                if (!completed.includes(i)) {
-
-                    currentModule = i;
-
-                    break;
-
-                }
-
-            }
-
-
-            /* Determine status */
-
-            let newStatus =
-                recruit.status;
-
-
-            if (
-                completed.length === MODULE_COUNT
-            ) {
-
-                if (
-                    recruit.status !== "Qualified"
-                ) {
-
-                    newStatus =
-                        "Ready for Final Assessment";
-
-                }
-
-            }
-            else if (
-                recruit.status === "Qualified"
-            ) {
-
-                newStatus = "Active";
-
-            }
-
-
-            const updateData = {
-
-                completed_modules: completed,
-
-                current_module: currentModule,
-
-                status: newStatus
-
-            };
-
-
-            const success =
-                await saveRecruit(
-                    id,
-                    updateData
-                );
-
-
-            if (!success) {
-
-                await loadRecruits();
-
-                return;
-
-            }
-
-
-            expandedRecruitIds.add(id);
-
-            render();
-
-
-            setSyncStatus(
-                "✓ Module progress saved",
-                "online"
-            );
-
+            newStatus =
+                "Active";
         }
 
+        const success =
+            await saveRecruit(
+                id,
+                {
+                    current_module: newCurrentModule,
+                    status: newStatus
+                }
+            );
 
-        /* =========================================================
-           DELETE RECRUIT
-        ========================================================= */
+        if (!success) {
+            return;
+        }
 
-        async function removeRecruit(id) {
+        expandedRecruitIds.add(id);
 
-            const recruit =
-                recruits.find(function(item) {
-                    return item.id === id;
-                });
+        render();
 
-
-            if (!recruit) {
-                return;
-            }
-
-
-            const confirmed =
-                confirm(
-                    "Delete the Academy record for " +
-                    recruit.name +
-                    "?"
-                );
+        setSyncStatus(
+            "✓ Module progress saved",
+            "online"
+        );
+    }
 
 
-            if (!confirmed) {
-                return;
-            }
+    /* =====================================================
+       DELETE
+    ===================================================== */
+
+    async function removeRecruit(id) {
+
+        const recruit =
+            recruits.find(
+                item => item.id === id
+            );
+
+        if (!recruit) {
+            return;
+        }
+
+        const confirmed =
+            confirm(
+                "Delete the Academy record for " +
+                recruit.officerName +
+                "?"
+            );
+
+        if (!confirmed) {
+            return;
+        }
+
+        const {
+            error
+        } = await supabaseClient
+            .from("aru_recruits")
+            .delete()
+            .eq("id", id);
+
+        if (error) {
+
+            console.error(
+                "Supabase delete error:",
+                error
+            );
+
+            alert(
+                "Unable to delete recruit:\n\n" +
+                error.message
+            );
+
+            return;
+        }
+
+        recruits =
+            recruits.filter(
+                item => item.id !== id
+            );
+
+        expandedRecruitIds.delete(id);
+
+        render();
+
+        setSyncStatus(
+            "✓ Recruit record deleted",
+            "online"
+        );
+    }
 
 
-            const { error } =
-                await supabaseClient
-                    .from("aru_recruits")
-                    .delete()
-                    .eq("id", id);
+    /* =====================================================
+       EXPAND / COLLAPSE
+    ===================================================== */
 
+    function toggleRecruit(id) {
 
-            if (error) {
-
-                console.error(
-                    "Supabase delete error:",
-                    error
-                );
-
-                alert(
-                    "Unable to delete recruit:\n\n" +
-                    error.message
-                );
-
-                return;
-
-            }
-
-
-            recruits =
-                recruits.filter(function(item) {
-                    return item.id !== id;
-                });
-
+        if (expandedRecruitIds.has(id)) {
 
             expandedRecruitIds.delete(id);
 
+        } else {
 
-            render();
+            expandedRecruitIds.add(id);
+        }
+
+        render();
+    }
 
 
-            setSyncStatus(
-                "✓ Recruit record deleted",
-                "online"
+    /* =====================================================
+       STATUS CLASS
+    ===================================================== */
+
+    function statusClass(status) {
+
+        if (status === "Qualified") {
+            return "status-qualified";
+        }
+
+        if (
+            status === "Ready for Final Assessment"
+        ) {
+            return "status-ready";
+        }
+
+        if (
+            status === "Development Required"
+        ) {
+            return "status-development";
+        }
+
+        if (status === "On Hold") {
+            return "status-hold";
+        }
+
+        return "status-active";
+    }
+
+
+    /* =====================================================
+       PROGRESS
+    ===================================================== */
+
+    function moduleProgress(recruit) {
+
+        if (recruit.status === "Qualified") {
+            return 100;
+        }
+
+        const completed =
+            Math.max(
+                0,
+                Math.min(
+                    MODULE_COUNT,
+                    recruit.currentModule - 1
+                )
             );
 
+        return Math.round(
+            (completed / MODULE_COUNT) * 100
+        );
+    }
+
+
+    /* =====================================================
+       IS MODULE COMPLETE
+    ===================================================== */
+
+    function isModuleComplete(
+        recruit,
+        moduleNumber
+    ) {
+
+        if (
+            recruit.status === "Qualified"
+        ) {
+            return true;
         }
 
-
-        /* =========================================================
-           EXPAND / COLLAPSE
-        ========================================================= */
-
-        function toggleRecruit(id) {
-
-            if (
-                expandedRecruitIds.has(id)
-            ) {
-
-                expandedRecruitIds.delete(id);
-
-            }
-            else {
-
-                expandedRecruitIds.add(id);
-
-            }
-
-            render();
-
-        }
+        return (
+            moduleNumber <
+            recruit.currentModule
+        );
+    }
 
 
-        /* =========================================================
-           STATUS CLASS
-        ========================================================= */
+    /* =====================================================
+       CREATE MODULE CHECKLIST
+    ===================================================== */
 
-        function statusClass(status) {
+    function createModuleDisplay(recruit) {
 
-            if (status === "Qualified") {
-                return "status-qualified";
-            }
+        let html = "";
 
-            if (
-                status ===
-                "Ready for Final Assessment"
-            ) {
-
-                return "status-ready";
-
-            }
-
-            if (
-                status ===
-                "Development Required"
-            ) {
-
-                return "status-development";
-
-            }
-
-            if (status === "On Hold") {
-                return "status-hold";
-            }
-
-            return "status-active";
-
-        }
-
-
-        /* =========================================================
-           PROGRESS
-        ========================================================= */
-
-        function moduleProgress(recruit) {
-
-            if (
-                recruit.status === "Qualified"
-            ) {
-
-                return 100;
-
-            }
+        for (
+            let i = 1;
+            i <= MODULE_COUNT;
+            i++
+        ) {
 
             const completed =
-                recruit.completedModules.length;
-
-
-            return Math.round(
-                (completed / MODULE_COUNT) * 100
-            );
-
-        }
-
-
-        /* =========================================================
-           MODULE CHECKLIST
-        ========================================================= */
-
-        function createModuleDisplay(recruit) {
-
-            let html = "";
-
-            for (
-                let i = 1;
-                i <= MODULE_COUNT;
-                i++
-            ) {
-
-                const completed =
-                    recruit.completedModules.includes(i);
-
-
-                const isCurrent =
-                    !completed &&
-                    i === recruit.module;
-
-
-                let classes =
-                    "module-item";
-
-
-                if (completed) {
-
-                    classes += " completed";
-
-                }
-                else if (isCurrent) {
-
-                    classes += " current";
-
-                }
-
-
-                const status =
-                    completed
-                        ? "Completed"
-                        : isCurrent
-                            ? "Current"
-                            : "Outstanding";
-
-
-                html += `
-                    <label
-                        class="${classes}"
-                        data-module-label="true"
-                    >
-
-                        <input
-                            class="module-checkbox"
-                            type="checkbox"
-                            ${completed ? "checked" : ""}
-                            data-module-id="${escapeAttribute(recruit.id)}"
-                            data-module-number="${i}"
-                        >
-
-                        <div class="module-content">
-
-                            <div class="module-number">
-                                Module ${i}
-                            </div>
-
-                            <div class="module-name">
-                                ${escapeHTML(MODULE_NAMES[i - 1])}
-                            </div>
-
-                            <div class="module-status">
-                                ${status}
-                            </div>
-
-                        </div>
-
-                    </label>
-                `;
-
-            }
-
-
-            return html;
-
-        }
-
-
-        /* =========================================================
-           RENDER RECRUIT
-        ========================================================= */
-
-        function renderRecruit(recruit) {
-
-            const progress =
-                moduleProgress(recruit);
-
-
-            const expanded =
-                expandedRecruitIds.has(
-                    recruit.id
+                isModuleComplete(
+                    recruit,
+                    i
                 );
 
+            const current =
+                !completed &&
+                i === recruit.currentModule;
 
-            const progressClass =
-                progress === 100
-                    ? "complete"
-                    : "";
+            let classes =
+                "module-item";
 
+            if (completed) {
+                classes += " completed";
+            }
 
-            return `
-                <div
-                    class="recruit-card ${expanded ? "expanded" : ""}"
-                    data-recruit-card="${escapeAttribute(recruit.id)}"
+            if (current) {
+                classes += " current";
+            }
+
+            const status =
+                completed
+                    ? "Completed"
+                    : current
+                        ? "Current"
+                        : "Outstanding";
+
+            html += `
+                <label
+                    class="${classes}"
+                    onclick="event.stopPropagation();"
                 >
 
-                    <!-- HEADER -->
-
-                    <div
-                        class="recruit-header"
-                        data-recruit-id="${escapeAttribute(recruit.id)}"
+                    <input
+                        class="module-checkbox"
+                        type="checkbox"
+                        ${completed ? "checked" : ""}
+                        onchange="
+                            event.stopPropagation();
+                            toggleModule(
+                                ${recruit.id},
+                                ${i},
+                                this.checked
+                            )
+                        "
                     >
 
-                        <div class="recruit-header-left">
+                    <div class="module-content">
 
-                            <h3>
-                                ${escapeHTML(recruit.name)}
-                            </h3>
-
-                            <p>
-
-                                ${
-                                    recruit.callsign
-                                        ? escapeHTML(recruit.callsign)
-                                        : "No call-sign recorded"
-                                }
-
-                                ${
-                                    recruit.discord
-                                        ? " • " + escapeHTML(recruit.discord)
-                                        : ""
-                                }
-
-                                • ${progress}% complete
-
-                            </p>
-
+                        <div class="module-number">
+                            Module ${i}
                         </div>
 
+                        <div class="module-name">
+                            ${escapeHTML(MODULE_NAMES[i - 1])}
+                        </div>
 
-                        <div class="recruit-header-right">
-
-                            <span
-                                class="status ${statusClass(recruit.status)}"
-                            >
-                                ${escapeHTML(recruit.status)}
-                            </span>
-
-                            <div class="expand-icon">
-                                ▼
-                            </div>
-
+                        <div class="module-status">
+                            ${status}
                         </div>
 
                     </div>
 
+                </label>
+            `;
+        }
 
-                    <!-- BODY -->
-
-                    <div
-                        class="recruit-body"
-                        data-recruit-body="${escapeAttribute(recruit.id)}"
-                    >
-
-                        <!-- PROGRESS -->
-
-                        <div>
-
-                            <div class="progress">
-
-                                <div
-                                    class="progress-bar ${progressClass}"
-                                    style="width:${progress}%"
-                                ></div>
-
-                            </div>
-
-                            <div class="progress-text">
-
-                                Academy Progress:
-                                <strong>${progress}%</strong>
-
-                                —
-
-                                ${recruit.completedModules.length}
-                                / ${MODULE_COUNT}
-                                modules completed
-
-                            </div>
-
-                        </div>
+        return html;
+    }
 
 
-                        <!-- DETAILS -->
+    /* =====================================================
+       MODULE OPTIONS
+    ===================================================== */
 
-                        <div
-                            class="form-grid"
-                            style="margin-top:20px;"
+    function createModuleOptions(recruit) {
+
+        let html = "";
+
+        for (
+            let i = 1;
+            i <= MODULE_COUNT;
+            i++
+        ) {
+
+            html += `
+                <option
+                    value="${i}"
+                    ${recruit.currentModule === i ? "selected" : ""}
+                >
+                    Module ${i} — ${escapeHTML(MODULE_NAMES[i - 1])}
+                </option>
+            `;
+        }
+
+        return html;
+    }
+
+
+    /* =====================================================
+       STATUS OPTIONS
+    ===================================================== */
+
+    function createStatusOptions(recruit) {
+
+        return STATUS_OPTIONS
+            .map(status => `
+                <option
+                    value="${escapeHTML(status)}"
+                    ${recruit.status === status ? "selected" : ""}
+                >
+                    ${escapeHTML(status)}
+                </option>
+            `)
+            .join("");
+    }
+
+
+    /* =====================================================
+       RENDER RECRUIT
+    ===================================================== */
+
+    function renderRecruit(recruit) {
+
+        const progress =
+            moduleProgress(recruit);
+
+        const expanded =
+            expandedRecruitIds.has(
+                recruit.id
+            );
+
+        const progressClass =
+            progress === 100
+                ? "complete"
+                : "";
+
+        const currentModuleName =
+            recruit.currentModule >= MODULE_COUNT
+                ? MODULE_NAMES[MODULE_COUNT - 1]
+                : MODULE_NAMES[
+                    Math.max(
+                        0,
+                        recruit.currentModule - 1
+                    )
+                ];
+
+        return `
+            <div
+                class="recruit-card ${expanded ? "expanded" : ""}"
+            >
+
+                <div
+                    class="recruit-header"
+                    data-recruit-id="${recruit.id}"
+                >
+
+                    <div class="recruit-header-left">
+
+                        <h3>
+                            ${escapeHTML(recruit.officerName)}
+                        </h3>
+
+                        <p>
+
+                            ${
+                                recruit.callsign
+                                    ? escapeHTML(recruit.callsign)
+                                    : "No call-sign recorded"
+                            }
+
+                            ${
+                                recruit.discordId
+                                    ? " • " + escapeHTML(recruit.discordId)
+                                    : ""
+                            }
+
+                            • ${escapeHTML(recruit.cohort)}
+
+                            • ${progress}% complete
+
+                        </p>
+
+                    </div>
+
+                    <div class="recruit-header-right">
+
+                        <span
+                            class="status ${statusClass(recruit.status)}"
                         >
+                            ${escapeHTML(recruit.status)}
+                        </span>
 
-                            <div>
-
-                                <label>
-                                    Current Module
-                                </label>
-
-                                <select
-                                    class="recruit-control"
-                                    data-action="module"
-                                    data-id="${escapeAttribute(recruit.id)}"
-                                >
-
-                                    ${createModuleOptions(recruit)}
-
-                                </select>
-
-                            </div>
-
-
-                            <div>
-
-                                <label>
-                                    Current Status
-                                </label>
-
-                                <select
-                                    class="recruit-control"
-                                    data-action="status"
-                                    data-id="${escapeAttribute(recruit.id)}"
-                                >
-
-                                    ${createStatusOptions(recruit)}
-
-                                </select>
-
-                            </div>
-
-
-                            <div>
-
-                                <label>
-                                    Call-Sign / Collar
-                                </label>
-
-                                <input
-                                    class="recruit-control"
-                                    data-action="callsign"
-                                    data-id="${escapeAttribute(recruit.id)}"
-                                    type="text"
-                                    value="${escapeAttribute(recruit.callsign || "")}"
-                                >
-
-                            </div>
-
-
-                            <div>
-
-                                <label>
-                                    Discord Mention
-                                </label>
-
-                                <input
-                                    class="recruit-control"
-                                    data-action="discord"
-                                    data-id="${escapeAttribute(recruit.id)}"
-                                    type="text"
-                                    value="${escapeAttribute(recruit.discord || "")}"
-                                >
-
-                            </div>
-
-                        </div>
-
-
-                        <!-- MODULES -->
-
-                        <div class="module-section">
-
-                            <h3>
-                                Module Progress
-                            </h3>
-
-                            <p class="module-help">
-
-                                Tick each module as it is successfully completed.
-                                Progress is automatically calculated and saved.
-
-                            </p>
-
-                            <div class="module-list">
-
-                                ${createModuleDisplay(recruit)}
-
-                            </div>
-
-                        </div>
-
-
-                        <!-- NOTES -->
-
-                        <div style="margin-top:25px;">
-
-                            <label>
-                                Trainer Notes
-                            </label>
-
-                            <textarea
-                                class="recruit-control"
-                                data-action="notes"
-                                data-id="${escapeAttribute(recruit.id)}"
-                            >${escapeHTML(recruit.notes || "")}</textarea>
-
-                        </div>
-
-
-                        <!-- ACTIONS -->
-
-                        <div class="button-row">
-
-                            <button
-                                type="button"
-                                class="secondary recruit-action"
-                                data-action="copy"
-                                data-id="${escapeAttribute(recruit.id)}"
-                            >
-                                Copy Progress Summary
-                            </button>
-
-
-                            <button
-                                type="button"
-                                class="danger recruit-action"
-                                data-action="delete"
-                                data-id="${escapeAttribute(recruit.id)}"
-                            >
-                                Delete Recruit
-                            </button>
-
+                        <div class="expand-icon">
+                            ▼
                         </div>
 
                     </div>
 
                 </div>
+
+                <div class="recruit-body">
+
+                    <div>
+
+                        <div class="progress">
+
+                            <div
+                                class="progress-bar ${progressClass}"
+                                style="width: ${progress}%"
+                            ></div>
+
+                        </div>
+
+                        <div class="progress-text">
+
+                            Academy Progress:
+                            <strong>${progress}%</strong>
+
+                            —
+
+                            ${
+                                Math.max(
+                                    0,
+                                    Math.min(
+                                        MODULE_COUNT,
+                                        recruit.currentModule - 1
+                                    )
+                                )
+                            }
+
+                            / ${MODULE_COUNT}
+                            modules completed
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="form-grid"
+                        style="margin-top: 20px;"
+                    >
+
+                        <div>
+
+                            <label>
+                                Officer Name
+                            </label>
+
+                            <input
+                                class="recruit-control"
+                                data-field="officerName"
+                                data-id="${recruit.id}"
+                                type="text"
+                                value="${escapeHTML(recruit.officerName)}"
+                            >
+
+                        </div>
+
+
+                        <div>
+
+                            <label>
+                                Call-Sign / Collar
+                            </label>
+
+                            <input
+                                class="recruit-control"
+                                data-field="callsign"
+                                data-id="${recruit.id}"
+                                type="text"
+                                value="${escapeHTML(recruit.callsign)}"
+                            >
+
+                        </div>
+
+
+                        <div>
+
+                            <label>
+                                Discord ID
+                            </label>
+
+                            <input
+                                class="recruit-control"
+                                data-field="discordId"
+                                data-id="${recruit.id}"
+                                type="text"
+                                value="${escapeHTML(recruit.discordId)}"
+                            >
+
+                        </div>
+
+
+                        <div>
+
+                            <label>
+                                Cohort
+                            </label>
+
+                            <input
+                                class="recruit-control"
+                                data-field="cohort"
+                                data-id="${recruit.id}"
+                                type="text"
+                                value="${escapeHTML(recruit.cohort)}"
+                            >
+
+                        </div>
+
+
+                        <div>
+
+                            <label>
+                                Academy Start Date
+                            </label>
+
+                            <input
+                                class="recruit-control"
+                                data-field="startDate"
+                                data-id="${recruit.id}"
+                                type="date"
+                                value="${escapeHTML(recruit.startDate)}"
+                            >
+
+                        </div>
+
+
+                        <div>
+
+                            <label>
+                                Current Module
+                            </label>
+
+                            <select
+                                class="recruit-control"
+                                data-field="currentModule"
+                                data-id="${recruit.id}"
+                            >
+                                ${createModuleOptions(recruit)}
+                            </select>
+
+                        </div>
+
+
+                        <div>
+
+                            <label>
+                                Current Status
+                            </label>
+
+                            <select
+                                class="recruit-control"
+                                data-field="status"
+                                data-id="${recruit.id}"
+                            >
+                                ${createStatusOptions(recruit)}
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="module-section">
+
+                        <h3>
+                            Module Progress
+                        </h3>
+
+                        <p class="module-help">
+                            Tick each module when successfully completed.
+                            Progress is saved to the shared Academy database.
+                        </p>
+
+                        <div class="module-list">
+
+                            ${createModuleDisplay(recruit)}
+
+                        </div>
+
+                    </div>
+
+
+                    <div style="margin-top: 25px;">
+
+                        <label>
+                            Trainer Notes
+                        </label>
+
+                        <textarea
+                            class="recruit-control"
+                            data-field="trainerNotes"
+                            data-id="${recruit.id}"
+                            placeholder="Enter trainer notes..."
+                        >${escapeHTML(recruit.trainerNotes)}</textarea>
+
+                    </div>
+
+
+                    <div class="button-row">
+
+                        <button
+                            type="button"
+                            class="secondary recruit-action"
+                            data-action="copy"
+                            data-id="${recruit.id}"
+                        >
+                            Copy Progress Summary
+                        </button>
+
+                        <button
+                            type="button"
+                            class="danger recruit-action"
+                            data-action="delete"
+                            data-id="${recruit.id}"
+                        >
+                            Delete Recruit
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+        `;
+    }
+
+
+    /* =====================================================
+       RENDER EVERYTHING
+    ===================================================== */
+
+    function render() {
+
+        const list =
+            document.getElementById(
+                "recruitList"
+            );
+
+        if (!list) {
+            return;
+        }
+
+        if (recruits.length === 0) {
+
+            list.innerHTML = `
+                <div class="empty">
+                    No recruit records currently exist.
+                </div>
             `;
 
+        } else {
+
+            list.innerHTML =
+                recruits
+                    .map(renderRecruit)
+                    .join("");
         }
 
+        attachEvents();
 
-        /* =========================================================
-           MODULE OPTIONS
-        ========================================================= */
-
-        function createModuleOptions(recruit) {
-
-            let html = "";
-
-            for (
-                let i = 1;
-                i <= MODULE_COUNT;
-                i++
-            ) {
-
-                html += `
-                    <option
-                        value="${i}"
-                        ${recruit.module === i ? "selected" : ""}
-                    >
-                        Module ${i} — ${escapeHTML(MODULE_NAMES[i - 1])}
-                    </option>
-                `;
-
-            }
-
-            return html;
-
-        }
+        updateDashboard();
+    }
 
 
-        /* =========================================================
-           STATUS OPTIONS
-        ========================================================= */
+    /* =====================================================
+       EVENT HANDLERS
+    ===================================================== */
 
-        function createStatusOptions(recruit) {
+    function attachEvents() {
 
-            return STATUS_OPTIONS
-                .map(function(status) {
+        document
+            .querySelectorAll(".recruit-header")
+            .forEach(header => {
 
-                    return `
-                        <option
-                            value="${escapeAttribute(status)}"
-                            ${recruit.status === status ? "selected" : ""}
-                        >
-                            ${escapeHTML(status)}
-                        </option>
-                    `;
+                header.addEventListener(
+                    "click",
+                    function(event) {
 
-                })
-                .join("");
+                        event.preventDefault();
 
-        }
-
-
-        /* =========================================================
-           RENDER EVERYTHING
-        ========================================================= */
-
-        function render() {
-
-            const list =
-                document.getElementById("recruitList");
-
-
-            if (!list) {
-                return;
-            }
-
-
-            if (recruits.length === 0) {
-
-                list.innerHTML = `
-                    <div class="empty">
-                        No recruit records currently exist.
-                    </div>
-                `;
-
-            }
-            else {
-
-                list.innerHTML =
-                    recruits
-                        .map(renderRecruit)
-                        .join("");
-
-            }
-
-
-            attachRecruitEvents();
-
-            updateDashboard();
-
-        }
-
-
-        /* =========================================================
-           EVENT HANDLERS
-        ========================================================= */
-
-        function attachRecruitEvents() {
-
-            /*
-             * HEADER ONLY
-             *
-             * The header is the only thing that expands/collapses
-             * a recruit. Nothing inside the body is connected to
-             * this event.
-             */
-
-            document
-                .querySelectorAll(".recruit-header")
-                .forEach(function(header) {
-
-                    header.addEventListener(
-                        "click",
-                        function(event) {
-
-                            event.preventDefault();
-                            event.stopPropagation();
-
-                            const id =
-                                header.dataset.recruitId;
-
-                            toggleRecruit(id);
-
-                        }
-                    );
-
-                });
-
-
-            /*
-             * TEXT INPUTS / SELECTS
-             */
-
-            document
-                .querySelectorAll(".recruit-control")
-                .forEach(function(control) {
-
-                    control.addEventListener(
-                        "click",
-                        function(event) {
-
-                            event.stopPropagation();
-
-                        }
-                    );
-
-
-                    control.addEventListener(
-                        "mousedown",
-                        function(event) {
-
-                            event.stopPropagation();
-
-                        }
-                    );
-
-
-                    control.addEventListener(
-                        "change",
-                        async function(event) {
-
-                            event.stopPropagation();
-
-                            const id =
-                                control.dataset.id;
-
-                            const action =
-                                control.dataset.action;
-
-
-                            await updateRecruit(
-                                id,
-                                action,
-                                control.value
+                        const id =
+                            Number(
+                                header.dataset.recruitId
                             );
 
-                        }
-                    );
+                        toggleRecruit(id);
+                    }
+                );
+            });
 
-                });
+
+        document
+            .querySelectorAll(".recruit-control")
+            .forEach(control => {
+
+                control.addEventListener(
+                    "click",
+                    function(event) {
+
+                        event.stopPropagation();
+                    }
+                );
 
 
-            /*
-             * MODULE CHECKBOXES
-             *
-             * These have their own dedicated event listener.
-             */
+                control.addEventListener(
+                    "keydown",
+                    function(event) {
 
-            document
-                .querySelectorAll(".module-checkbox")
-                .forEach(function(checkbox) {
+                        event.stopPropagation();
+                    }
+                );
 
-                    checkbox.addEventListener(
-                        "click",
+
+                control.addEventListener(
+                    "change",
+                    async function(event) {
+
+                        event.stopPropagation();
+
+                        const id =
+                            Number(
+                                control.dataset.id
+                            );
+
+                        const field =
+                            control.dataset.field;
+
+                        const value =
+                            control.value;
+
+                        await updateRecruitField(
+                            id,
+                            field,
+                            value
+                        );
+                    }
+                );
+
+
+                if (
+                    control.dataset.field ===
+                    "trainerNotes"
+                ) {
+
+                    let timeout;
+
+                    control.addEventListener(
+                        "input",
                         function(event) {
 
                             event.stopPropagation();
 
-                        }
-                    );
+                            clearTimeout(timeout);
 
+                            timeout =
+                                setTimeout(
+                                    async function() {
 
-                    checkbox.addEventListener(
-                        "mousedown",
-                        function(event) {
+                                        const id =
+                                            Number(
+                                                control.dataset.id
+                                            );
 
-                            event.stopPropagation();
+                                        await updateRecruitField(
+                                            id,
+                                            "trainerNotes",
+                                            control.value
+                                        );
 
-                        }
-                    );
-
-
-                    checkbox.addEventListener(
-                        "change",
-                        async function(event) {
-
-                            event.stopPropagation();
-
-                            const id =
-                                checkbox.dataset.moduleId;
-
-                            const moduleNumber =
-                                Number(
-                                    checkbox.dataset.moduleNumber
+                                    },
+                                    700
                                 );
+                        }
+                    );
+                }
+            });
 
-                            await toggleModule(
-                                id,
-                                moduleNumber,
-                                checkbox.checked
+
+        document
+            .querySelectorAll(".recruit-action")
+            .forEach(button => {
+
+                button.addEventListener(
+                    "click",
+                    function(event) {
+
+                        event.preventDefault();
+                        event.stopPropagation();
+
+                        const id =
+                            Number(
+                                button.dataset.id
                             );
 
+                        const action =
+                            button.dataset.action;
+
+                        if (action === "copy") {
+                            copyRecruitSummary(id);
                         }
-                    );
 
-                });
-
-
-            /*
-             * COPY / DELETE BUTTONS
-             */
-
-            document
-                .querySelectorAll(".recruit-action")
-                .forEach(function(button) {
-
-                    button.addEventListener(
-                        "click",
-                        function(event) {
-
-                            event.preventDefault();
-                            event.stopPropagation();
-
-                            const id =
-                                button.dataset.id;
-
-                            const action =
-                                button.dataset.action;
-
-
-                            if (action === "copy") {
-
-                                copyRecruitSummary(id);
-
-                            }
-
-
-                            if (action === "delete") {
-
-                                removeRecruit(id);
-
-                            }
-
+                        if (action === "delete") {
+                            removeRecruit(id);
                         }
-                    );
+                    }
+                );
+            });
+    }
 
-                });
 
+    /* =====================================================
+       DASHBOARD
+    ===================================================== */
+
+    function updateDashboard() {
+
+        document.getElementById(
+            "totalStudents"
+        ).textContent =
+            recruits.length;
+
+
+        document.getElementById(
+            "qualifiedStudents"
+        ).textContent =
+            recruits.filter(
+                recruit =>
+                    recruit.status === "Qualified"
+            ).length;
+
+
+        document.getElementById(
+            "assessmentStudents"
+        ).textContent =
+            recruits.filter(
+                recruit =>
+                    recruit.status ===
+                    "Ready for Final Assessment"
+            ).length;
+
+
+        document.getElementById(
+            "developmentStudents"
+        ).textContent =
+            recruits.filter(
+                recruit =>
+                    recruit.status ===
+                    "Development Required"
+            ).length;
+    }
+
+
+    /* =====================================================
+       COPY SUMMARY
+    ===================================================== */
+
+    async function copyRecruitSummary(id) {
+
+        const recruit =
+            recruits.find(
+                item => item.id === id
+            );
+
+        if (!recruit) {
+            return;
         }
 
+        const completed =
+            recruit.status === "Qualified"
+                ? MODULE_COUNT
+                : Math.max(
+                    0,
+                    Math.min(
+                        MODULE_COUNT,
+                        recruit.currentModule - 1
+                    )
+                );
 
-        /* =========================================================
-           DASHBOARD
-        ========================================================= */
+        const currentModule =
+            recruit.status === "Qualified"
+                ? "Academy Complete"
+                : "Module " +
+                  recruit.currentModule +
+                  " — " +
+                  MODULE_NAMES[
+                      Math.min(
+                          MODULE_COUNT - 1,
+                          recruit.currentModule - 1
+                      )
+                  ];
 
-        function updateDashboard() {
-
-            document.getElementById(
-                "totalStudents"
-            ).textContent =
-                recruits.length;
-
-
-            document.getElementById(
-                "qualifiedStudents"
-            ).textContent =
-
-                recruits.filter(function(r) {
-
-                    return r.status === "Qualified";
-
-                }).length;
-
-
-            document.getElementById(
-                "assessmentStudents"
-            ).textContent =
-
-                recruits.filter(function(r) {
-
-                    return r.status ===
-                        "Ready for Final Assessment";
-
-                }).length;
-
-
-            document.getElementById(
-                "developmentStudents"
-            ).textContent =
-
-                recruits.filter(function(r) {
-
-                    return r.status ===
-                        "Development Required";
-
-                }).length;
-
-        }
-
-
-        /* =========================================================
-           COPY SUMMARY
-        ========================================================= */
-
-        function copyRecruitSummary(id) {
-
-            const recruit =
-                recruits.find(function(item) {
-                    return item.id === id;
-                });
-
-
-            if (!recruit) {
-                return;
-            }
-
-
-            const completed =
-                recruit.completedModules.length;
-
-
-            const currentModule =
-                recruit.status === "Qualified"
-
-                    ? "Academy Complete"
-
-                    : "Module " +
-                      recruit.module +
-                      " — " +
-                      MODULE_NAMES[
-                          recruit.module - 1
-                      ];
-
-
-            const text =
-
+        const text =
 `ARU Academy — Student Progress
 
-Officer: ${recruit.name}
+Officer: ${recruit.officerName}
 
 Call-Sign/Collar:
 ${recruit.callsign || "Not recorded"}
 
 Discord:
-${recruit.discord || "Not recorded"}
+${recruit.discordId || "Not recorded"}
+
+Cohort:
+${recruit.cohort || "Not recorded"}
+
+Academy Start Date:
+${recruit.startDate || "Not recorded"}
 
 Current Status:
 ${recruit.status}
@@ -2412,154 +2155,85 @@ Current Stage:
 ${currentModule}
 
 Modules Completed:
-${completed}/13
+${completed}/${MODULE_COUNT}
 
 Overall Progress:
 ${moduleProgress(recruit)}%
 
-Completed Modules:
-${
-    completed === 0
-        ? "None"
-        : recruit.completedModules
-            .map(function(module) {
-                return (
-                    "Module " +
-                    module +
-                    " — " +
-                    MODULE_NAMES[module - 1]
-                );
-            })
-            .join("\n")
-}
-
 Trainer Notes:
-${recruit.notes || "No trainer notes recorded."}`;
+${recruit.trainerNotes || "No trainer notes recorded."}`;
 
+        try {
 
-            navigator.clipboard
-                .writeText(text)
+            await navigator.clipboard.writeText(text);
 
-                .then(function() {
-
-                    alert(
-                        "Recruit progress summary copied."
-                    );
-
-                })
-
-                .catch(function() {
-
-                    alert(
-                        "Unable to copy automatically."
-                    );
-
-                });
-
-        }
-
-
-        /* =========================================================
-           ESCAPE HTML
-        ========================================================= */
-
-        function escapeHTML(value) {
-
-            return String(value)
-
-                .replaceAll(
-                    "&",
-                    "&amp;"
-                )
-
-                .replaceAll(
-                    "<",
-                    "&lt;"
-                )
-
-                .replaceAll(
-                    ">",
-                    "&gt;"
-                )
-
-                .replaceAll(
-                    '"',
-                    "&quot;"
-                )
-
-                .replaceAll(
-                    "'",
-                    "&#039;"
-                );
-
-        }
-
-
-        function escapeAttribute(value) {
-
-            return escapeHTML(value);
-
-        }
-
-
-        /* =========================================================
-           ADD BUTTON
-        ========================================================= */
-
-        document
-            .getElementById("addStudentButton")
-            .addEventListener(
-                "click",
-                addRecruit
+            alert(
+                "Recruit progress summary copied."
             );
 
+        } catch (error) {
 
-        /* =========================================================
-           REALTIME
-        ========================================================= */
+            alert(
+                "Unable to copy automatically."
+            );
+        }
+    }
 
-        const realtimeChannel =
 
-            supabaseClient
-                .channel("aru-recruit-tracker")
+    /* =====================================================
+       ADD BUTTON
+    ===================================================== */
 
-                .on(
-                    "postgres_changes",
-                    {
-                        event: "*",
-                        schema: "public",
-                        table: "aru_recruits"
-                    },
-                    function(payload) {
+    document
+        .getElementById("addStudentButton")
+        .addEventListener(
+            "click",
+            addRecruit
+        );
 
-                        console.log(
-                            "Realtime database update:",
-                            payload
-                        );
 
-                        loadRecruits();
+    /* =====================================================
+       SUPABASE REALTIME
+    ===================================================== */
 
-                    }
-                )
+    const realtimeChannel =
+        supabaseClient
+            .channel("aru-recruit-tracker")
+            .on(
+                "postgres_changes",
+                {
+                    event: "*",
+                    schema: "public",
+                    table: "aru_recruits"
+                },
+                function(payload) {
 
-                .subscribe(function(status) {
+                    console.log(
+                        "Realtime database update:",
+                        payload
+                    );
+
+                    loadRecruits();
+                }
+            )
+            .subscribe(
+                function(status) {
 
                     console.log(
                         "Realtime status:",
                         status
                     );
+                }
+            );
 
-                });
 
+    /* =====================================================
+       INITIAL LOAD
+    ===================================================== */
 
-        /* =========================================================
-           INITIAL LOAD
-        ========================================================= */
+    loadRecruits();
 
-        loadRecruits();
-
-    </script>
+</script>
 
 </body>
 </html>
-```
