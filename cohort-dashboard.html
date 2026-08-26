@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARU Cohort Dashboard</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#05080d;color:#fff;font-family:"Segoe UI",Arial,sans-serif;line-height:1.6}
+.page-container{width:92%;max-width:1250px;margin:0 auto;padding:35px 0 60px}
+.navbar{background:#0b111b;border:1px solid #16315c;border-radius:8px;padding:15px;margin-bottom:20px}
+.navbar a,.back-link{color:#4d9dff;text-decoration:none;font-weight:bold}
+.navbar a:hover,.back-link:hover{color:#fff}
+.navbar a{margin:0 5px}
+.back-link{display:inline-block;margin-bottom:20px}
+.hero{background:linear-gradient(rgba(2,7,14,.82),rgba(2,7,14,.95)),url("arv-photo.png");background-size:cover;background-position:center;border:1px solid #16315c;border-radius:12px;padding:55px 30px;text-align:center}
+.hero h1{margin:0 0 10px;color:#4d9dff;font-size:2.5rem}
+.hero p{margin:5px 0;color:#d3dbea}
+.badge{display:inline-block;margin-top:15px;padding:7px 14px;background:#3a2a0d;border:1px solid #a8761e;border-radius:20px;color:#f2c76f;font-weight:bold}
+h2,h3{color:#4d9dff}
+.card{background:#0b111b;border:1px solid #16315c;border-radius:9px;padding:22px;margin-top:20px}
+.dashboard-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:15px;margin-top:18px}
+.stat-box{background:#08111d;border:1px solid #16315c;border-radius:8px;padding:18px;text-align:center}
+.stat-box strong{display:block;color:#4d9dff;font-size:1.7rem;margin-bottom:4px}
+.stat-label{color:#aab8ca;font-size:.9rem}
+.form-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:15px}
+label{display:block;margin-bottom:6px;color:#dceaff;font-weight:bold}
+input,select{width:100%;padding:12px 13px;background:#08111d;color:#fff;border:1px solid #244c80;border-radius:7px;font-family:inherit;font-size:.95rem}
+input:focus,select:focus{outline:none;border-color:#4d9dff}
+.button-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+button{padding:11px 16px;background:#4d9dff;color:#05080d;border:none;border-radius:6px;font-weight:bold;cursor:pointer}
+button:hover{background:#77b5ff}
+button.secondary{background:#101b2c;color:#4d9dff;border:1px solid #24538b}
+.sync-status{margin-top:15px;padding:10px 14px;border-radius:7px;background:#08111d;border:1px solid #16315c;color:#8f9bad;font-size:.9rem}
+.sync-status.online{border-color:#368b54;color:#8de3a7}
+.sync-status.error{border-color:#853442;color:#ffb8c0}
+.cohort-summary{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:center}
+.progress{width:100%;height:28px;background:#18212c;border-radius:20px;overflow:hidden;margin:10px 0}
+.progress-bar{height:100%;background:#4d9dff;transition:width .3s ease}
+.progress-bar.complete{background:#45b36b}
+.big-progress{text-align:center}
+.big-progress .percent{font-size:2.3rem;font-weight:bold;color:#4d9dff}
+.big-progress .caption{color:#8f9bad}
+.legend{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+.legend span{padding:5px 10px;border-radius:20px;font-size:.8rem;font-weight:bold}
+.status-active{background:#10203a;border:1px solid #2c65a8;color:#8fc2ff}
+.status-development{background:#3a2a0d;border:1px solid #a8761e;color:#f2c76f}
+.status-ready{background:#0e2a1a;border:1px solid #368b54;color:#8de3a7}
+.status-qualified{background:#123224;border:1px solid #45b36b;color:#9bf0b8}
+.status-hold{background:#301318;border:1px solid #853442;color:#ffb8c0}
+.cohort-list{display:grid;gap:12px;margin-top:18px}
+.cohort-row{background:#08111d;border:1px solid #16315c;border-radius:9px;padding:16px}
+.cohort-row-top{display:flex;justify-content:space-between;gap:15px;align-items:center}
+.cohort-name{font-weight:bold;color:#fff;font-size:1.05rem}
+.cohort-meta{color:#8f9bad;font-size:.85rem}
+.mini-progress{height:12px;background:#18212c;border-radius:20px;overflow:hidden;margin-top:10px}
+.mini-progress-bar{height:100%;background:#4d9dff}
+.student-table{width:100%;border-collapse:collapse;margin-top:15px}
+.student-table th,.student-table td{text-align:left;padding:12px 10px;border-bottom:1px solid #16315c;vertical-align:middle}
+.student-table th{color:#8fc2ff;font-size:.85rem}
+.student-table td{color:#d3dbea;font-size:.9rem}
+.student-name{font-weight:bold;color:#fff}
+.status{display:inline-block;padding:5px 10px;border-radius:20px;font-size:.78rem;font-weight:bold}
+.module-count{color:#8f9bad;font-size:.85rem}
+.empty{text-align:center;color:#8f9bad;padding:35px 10px}
+.notice{border-left:5px solid #4d9dff}
+.success{border-left:5px solid #45b36b}
+.warning{border-left:5px solid #e3a629}
+.footer{margin-top:30px;padding-top:20px;border-top:1px solid #16315c;color:#8f9bad;text-align:center;font-size:.9rem}
+@media(max-width:750px){.page-container{width:94%}.hero{padding:40px 18px}.hero h1{font-size:2rem}.navbar{line-height:2}.cohort-summary{grid-template-columns:1fr}.student-table{display:block;overflow-x:auto;white-space:nowrap}.cohort-row-top{align-items:flex-start;flex-direction:column}button{width:100%}}
+</style>
+</head>
+<body>
+<script>
+if(sessionStorage.getItem("trainerAccess")!=="granted"){
+    window.location.replace("trainers-login.html");
+}
+</script>
+
+<div class="page-container">
+<nav class="navbar">
+    <a href="aru-members.html">Internal Database</a> |
+    <a href="academy.html">ARU Academy</a> |
+    <a href="trainers.html">Trainers Area</a> |
+    <a href="recruit-tracker.html">Recruit Tracker</a> |
+    <a href="cohort-dashboard.html" style="color:white;">Cohort Dashboard</a>
+</nav>
+
+<a class="back-link" href="trainers.html">← Return to Trainers Area</a>
+
+<header class="hero">
+    <h1>ARU Cohort Dashboard</h1>
+    <p>Live Cohort Management &amp; Academy Progression</p>
+    <p>Code44 Armed Response Unit Academy</p>
+    <span class="badge">Trainer-Only Resource</span>
+</header>
+
+<section class="card">
+    <h2>Cohort Overview</h2>
+    <p>Everything on this page is calculated directly from the shared Supabase recruit database.</p>
+
+    <div class="form-grid" style="margin-top:18px;">
+        <div>
+            <label for="cohortSelect">View Cohort</label>
+            <select id="cohortSelect">
+                <option value="ALL">All Cohorts</option>
+            </select>
+        </div>
+        <div>
+            <label for="searchInput">Search Students</label>
+            <input type="text" id="searchInput" placeholder="Search by name, call-sign or Discord ID">
+        </div>
+    </div>
+
+    <div id="syncStatus" class="sync-status">Connecting to Academy database...</div>
+</section>
+
+<section class="card">
+    <h2 id="selectedCohortTitle">All Cohorts</h2>
+
+    <div class="dashboard-grid">
+        <div class="stat-box"><strong id="totalStudents">0</strong><span class="stat-label">Students</span></div>
+        <div class="stat-box"><strong id="qualifiedStudents">0</strong><span class="stat-label">Qualified</span></div>
+        <div class="stat-box"><strong id="assessmentStudents">0</strong><span class="stat-label">Final Assessment</span></div>
+        <div class="stat-box"><strong id="developmentStudents">0</strong><span class="stat-label">Development Required</span></div>
+        <div class="stat-box"><strong id="activeStudents">0</strong><span class="stat-label">Active</span></div>
+    </div>
+
+    <div class="cohort-summary" style="margin-top:25px;">
+        <div>
+            <h3>Overall Cohort Progress</h3>
+            <div class="progress">
+                <div id="overallProgressBar" class="progress-bar" style="width:0%"></div>
+            </div>
+            <div id="overallProgressText" class="progress-text">0% average module completion</div>
+        </div>
+        <div class="big-progress">
+            <div id="overallPercent" class="percent">0%</div>
+            <div class="caption">Average Academy Progress</div>
+        </div>
+    </div>
+
+    <div class="legend">
+        <span class="status status-active">Active</span>
+        <span class="status status-development">Development Required</span>
+        <span class="status status-ready">Ready for Final Assessment</span>
+        <span class="status status-qualified">Qualified</span>
+        <span class="status status-hold">On Hold</span>
+    </div>
+</section>
+
+<section class="card">
+    <h2>Cohort Comparison</h2>
+    <p>Quick view of every cohort currently stored in the Academy database.</p>
+    <div id="cohortList" class="cohort-list"></div>
+</section>
+
+<section class="card">
+    <h2>Student Progress</h2>
+    <div id="studentTableContainer"></div>
+</section>
+
+<section class="card notice">
+    <h2>How This Works</h2>
+    <p>This dashboard does not have a separate student list. It reads the same <strong>aru_recruits</strong> table used by the Recruit Tracker.</p>
+    <p>When a trainer adds a student, changes a module, changes a status or updates a cohort in the Recruit Tracker, this dashboard automatically reflects the change.</p>
+    <p>That means every trainer is looking at the same live Academy information rather than separate copies.</p>
+</section>
+
+<section class="card success">
+    <h2>Shared Trainer Database</h2>
+    <p>All figures shown above are calculated from the current Supabase records.</p>
+    <p>The page also listens for database changes so updates made by another trainer can appear automatically.</p>
+</section>
+
+<section class="card warning">
+    <h2>Data Storage Notice</h2>
+    <p>This tracker is intended for Code44 Academy management only.</p>
+    <p>Do not enter genuine sensitive police information, passwords, real-world personal information or operationally sensitive material.</p>
+</section>
+
+<footer class="footer">
+Code44 Police Service • Armed Response Unit Academy<br>
+Cohort Dashboard • Shared Trainer Database
+</footer>
+</div>
+
+<script>
+const SUPABASE_URL="https://hawklowwjrilrrpdbmeb.supabase.co";
+const SUPABASE_KEY="sb_publishable_Zau-vuGABRzxvl8a7AOmBA_AKI1uuh6";
+const supabaseClient=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+
+const MODULE_COUNT=13;
+const recruits=[];
+let allRecruits=[];
+let selectedCohort="ALL";
+let searchTerm="";
+
+function setSyncStatus(message,type=""){
+    const element=document.getElementById("syncStatus");
+    element.textContent=message;
+    element.className="sync-status "+type;
+}
+
+function escapeHTML(value){
+    return String(value??"")
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
+}
+
+function normaliseRecruit(item){
+    return {
+        id:item.id,
+        name:item.officer_name||"Unnamed Student",
+        discord:item.discord_id||"",
+        callsign:item.callsign||"",
+        cohort:item.cohort||"Cohort 001",
+        startDate:item.start_date||"",
+        module:Number(item.current_module)||1,
+        status:item.status||"Active",
+        notes:item.trainer_notes||"",
+        updatedAt:item.updated_at||item.created_at||""
+    };
+}
+
+function progressForRecruit(recruit){
+    if(recruit.status==="Qualified") return 100;
+    const current=Math.max(1,Math.min(MODULE_COUNT,recruit.module));
+    return Math.round(((current-1)/MODULE_COUNT)*100);
+}
+
+function statusClass(status){
+    if(status==="Qualified") return "status-qualified";
+    if(status==="Ready for Final Assessment") return "status-ready";
+    if(status==="Development Required") return "status-development";
+    if(status==="On Hold") return "status-hold";
+    return "status-active";
+}
+
+function formatDate(value){
+    if(!value) return "Not recorded";
+    const date=new Date(value+"T00:00:00");
+    if(Number.isNaN(date.getTime())) return value;
+    return date.toLocaleDateString("en-GB");
+}
+
+function getFilteredRecruits(){
+    return allRecruits.filter(function(recruit){
+        const cohortMatch=selectedCohort==="ALL"||recruit.cohort===selectedCohort;
+        const search=searchTerm.toLowerCase();
+        const searchMatch=!search||
+            recruit.name.toLowerCase().includes(search)||
+            recruit.callsign.toLowerCase().includes(search)||
+            recruit.discord.toLowerCase().includes(search);
+        return cohortMatch&&searchMatch;
+    });
+}
+
+function getCohortRecruits(cohort){
+    return allRecruits.filter(function(recruit){return recruit.cohort===cohort;});
+}
+
+function calculateAverageProgress(list){
+    if(!list.length) return 0;
+    const total=list.reduce(function(sum,recruit){return sum+progressForRecruit(recruit);},0);
+    return Math.round(total/list.length);
+}
+
+function updateCohortSelect(){
+    const select=document.getElementById("cohortSelect");
+    const cohorts=[...new Set(allRecruits.map(function(recruit){return recruit.cohort;}).filter(Boolean))].sort();
+    const current=selectedCohort;
+    select.innerHTML='<option value="ALL">All Cohorts</option>'+cohorts.map(function(cohort){
+        return '<option value="'+escapeHTML(cohort)+'">'+escapeHTML(cohort)+'</option>';
+    }).join("");
+    select.value=cohorts.includes(current)||current==="ALL"?current:"ALL";
+    selectedCohort=select.value;
+}
+
+function updateDashboard(){
+    const list=getFilteredRecruits();
+    const qualified=list.filter(function(r){return r.status==="Qualified";}).length;
+    const assessment=list.filter(function(r){return r.status==="Ready for Final Assessment";}).length;
+    const development=list.filter(function(r){return r.status==="Development Required";}).length;
+    const active=list.filter(function(r){return r.status==="Active";}).length;
+    const average=calculateAverageProgress(list);
+
+    document.getElementById("totalStudents").textContent=list.length;
+    document.getElementById("qualifiedStudents").textContent=qualified;
+    document.getElementById("assessmentStudents").textContent=assessment;
+    document.getElementById("developmentStudents").textContent=development;
+    document.getElementById("activeStudents").textContent=active;
+    document.getElementById("overallPercent").textContent=average+"%";
+    document.getElementById("overallProgressBar").style.width=average+"%";
+    document.getElementById("overallProgressBar").className="progress-bar"+(average===100?" complete":"");
+    document.getElementById("overallProgressText").textContent=average+"% average module completion across "+list.length+" student"+(list.length===1?"":"s");
+    document.getElementById("selectedCohortTitle").textContent=selectedCohort==="ALL"?"All Cohorts":selectedCohort;
+}
+
+function renderCohortComparison(){
+    const container=document.getElementById("cohortList");
+    const cohorts=[...new Set(allRecruits.map(function(recruit){return recruit.cohort;}).filter(Boolean))].sort();
+
+    if(!cohorts.length){
+        container.innerHTML='<div class="empty">No cohort records currently exist.</div>';
+        return;
+    }
+
+    container.innerHTML=cohorts.map(function(cohort){
+        const list=getCohortRecruits(cohort);
+        const average=calculateAverageProgress(list);
+        const qualified=list.filter(function(r){return r.status==="Qualified";}).length;
+        return '<div class="cohort-row">'+
+            '<div class="cohort-row-top">'+
+                '<div><div class="cohort-name">'+escapeHTML(cohort)+'</div><div class="cohort-meta">'+list.length+' student'+(list.length===1?"":"s")+' • '+qualified+' qualified</div></div>'+
+                '<strong>'+average+'%</strong>'+ 
+            '</div>'+
+            '<div class="mini-progress"><div class="mini-progress-bar" style="width:'+average+'%"></div></div>'+ 
+        '</div>';
+    }).join("");
+}
+
+function renderStudents(){
+    const container=document.getElementById("studentTableContainer");
+    const list=getFilteredRecruits();
+
+    if(!list.length){
+        container.innerHTML='<div class="empty">No students match the current filters.</div>';
+        return;
+    }
+
+    const rows=list.map(function(recruit){
+        const progress=progressForRecruit(recruit);
+        const stage=recruit.status==="Qualified"?"Complete":"Module "+recruit.module;
+        return '<tr>'+ 
+            '<td><div class="student-name">'+escapeHTML(recruit.name)+'</div><div class="cohort-meta">'+escapeHTML(recruit.callsign||"No call-sign")+'</div></td>'+ 
+            '<td>'+escapeHTML(recruit.cohort)+'</td>'+ 
+            '<td><span class="status '+statusClass(recruit.status)+'">'+escapeHTML(recruit.status)+'</span></td>'+ 
+            '<td><div class="module-count">'+stage+'</div><div class="mini-progress"><div class="mini-progress-bar" style="width:'+progress+'%"></div></div><div class="cohort-meta">'+progress+'%</div></td>'+ 
+            '<td>'+formatDate(recruit.startDate)+'</td>'+ 
+        '</tr>';
+    }).join("");
+
+    container.innerHTML='<table class="student-table"><thead><tr><th>Student</th><th>Cohort</th><th>Status</th><th>Progress</th><th>Start Date</th></tr></thead><tbody>'+rows+'</tbody></table>';
+}
+
+function render(){
+    updateCohortSelect();
+    updateDashboard();
+    renderCohortComparison();
+    renderStudents();
+}
+
+async function loadRecruits(){
+    setSyncStatus("Loading Academy database...");
+
+    const result=await supabaseClient
+        .from("aru_recruits")
+        .select("*")
+        .order("created_at",{ascending:true});
+
+    if(result.error){
+        console.error(result.error);
+        setSyncStatus("Database connection error: "+result.error.message,"error");
+        return;
+    }
+
+    allRecruits=(result.data||[]).map(normaliseRecruit);
+    render();
+    setSyncStatus("✓ Connected — Academy database synchronised","online");
+}
+
+document.getElementById("cohortSelect").addEventListener("change",function(event){
+    selectedCohort=event.target.value;
+    render();
+});
+
+document.getElementById("searchInput").addEventListener("input",function(event){
+    searchTerm=event.target.value.trim();
+    updateDashboard();
+    renderStudents();
+});
+
+supabaseClient
+    .channel("aru-cohort-dashboard")
+    .on("postgres_changes",{event:"*",schema:"public",table:"aru_recruits"},function(){
+        loadRecruits();
+    })
+    .subscribe(function(status){
+        console.log("Realtime status:",status);
+    });
+
+loadRecruits();
+</script>
+</body>
+</html>
