@@ -8,6 +8,8 @@
 
 <title>ARU Trainers Area</title>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <style>
 
 *{
@@ -146,13 +148,42 @@ h3{
     margin-bottom:5px;
 }
 
-.student-stage{
-    line-height:1.8;
+.stat-value{
+    font-size:1.25rem;
+    font-weight:bold;
+    color:white;
 }
 
-.student-stage span{
-    display:block;
-    color:#c9d4e3;
+.student-stage{
+    grid-column:1 / -1;
+    text-align:left;
+}
+
+.student-stage strong{
+    text-align:center;
+}
+
+.student-stage-list{
+    display:grid;
+    gap:8px;
+    margin-top:10px;
+}
+
+.student-stage-item{
+    padding:10px 12px;
+    background:#0b111b;
+    border:1px solid #16315c;
+    border-radius:6px;
+}
+
+.student-stage-item strong{
+    display:inline;
+    color:white;
+}
+
+.student-progress{
+    color:#8f9bad;
+    font-size:.9rem;
 }
 
 .trainer-grid{
@@ -269,6 +300,26 @@ h3{
     border:1px solid #24538b;
 }
 
+.sync-status{
+    margin-top:18px;
+    padding:11px 14px;
+    background:#08111d;
+    border:1px solid #16315c;
+    border-radius:7px;
+    color:#8f9bad;
+    font-size:.9rem;
+}
+
+.sync-status.online{
+    border-color:#368b54;
+    color:#8de3a7;
+}
+
+.sync-status.error{
+    border-color:#853442;
+    color:#ffb8c0;
+}
+
 .footer{
     margin-top:30px;
     padding-top:20px;
@@ -302,6 +353,7 @@ h3{
         width:100%;
         text-align:center;
     }
+
 }
 
 </style>
@@ -320,9 +372,7 @@ if(sessionStorage.getItem("trainerAccess") !== "granted"){
 
 </script>
 
-
 <div class="page-container">
-
 
 <nav class="navbar">
 
@@ -362,11 +412,9 @@ if(sessionStorage.getItem("trainerAccess") !== "granted"){
 
 </nav>
 
-
 <a class="back-link" href="academy.html">
     ← Return to ARU Academy
 </a>
-
 
 <header class="hero">
 
@@ -403,7 +451,9 @@ if(sessionStorage.getItem("trainerAccess") !== "granted"){
 
             <strong>Current Cohort</strong>
 
-            Cohort 001
+            <div class="stat-value" id="currentCohort">
+                Loading...
+            </div>
 
         </div>
 
@@ -411,15 +461,39 @@ if(sessionStorage.getItem("trainerAccess") !== "granted"){
 
             <strong>Active Students</strong>
 
-            2
+            <div class="stat-value" id="activeStudents">
+                0
+            </div>
 
         </div>
 
         <div class="stat-box">
 
-            <strong>Lead Trainer</strong>
+            <strong>Qualified</strong>
 
-            PC K. MADDOX
+            <div class="stat-value" id="qualifiedStudents">
+                0
+            </div>
+
+        </div>
+
+        <div class="stat-box">
+
+            <strong>Final Assessment</strong>
+
+            <div class="stat-value" id="assessmentStudents">
+                0
+            </div>
+
+        </div>
+
+        <div class="stat-box">
+
+            <strong>Development Required</strong>
+
+            <div class="stat-value" id="developmentStudents">
+                0
+            </div>
 
         </div>
 
@@ -427,7 +501,9 @@ if(sessionStorage.getItem("trainerAccess") !== "granted"){
 
             <strong>Academy Modules</strong>
 
-            13
+            <div class="stat-value">
+                13
+            </div>
 
         </div>
 
@@ -435,20 +511,20 @@ if(sessionStorage.getItem("trainerAccess") !== "granted"){
 
             <strong>Current Student Progress</strong>
 
-            <span>
-                Massarelli — Pending FINAL ASSESSMENT 
-            </span>
+            <div id="studentProgressList" class="student-stage-list">
 
-            <span>
-                Rowley — Pending Module 1
-            </span>
-             
-            <span>
-                Bell — Pending Module 9
-            </span>
+                <div class="student-stage-item">
+                    Loading student records...
+                </div>
+
+            </div>
 
         </div>
 
+    </div>
+
+    <div id="dashboardSyncStatus" class="sync-status">
+        Connecting to Academy database...
     </div>
 
 </section>
@@ -757,8 +833,8 @@ if(sessionStorage.getItem("trainerAccess") !== "granted"){
     </p>
 
     <p>
-        These systems currently use browser local storage and are intended for
-        Code44 Academy administration only.
+        The Recruit Tracker and Trainer Dashboard use the shared Academy
+        Supabase database so trainers can see the same recruit information.
     </p>
 
 </section>
@@ -829,8 +905,8 @@ if(sessionStorage.getItem("trainerAccess") !== "granted"){
     </p>
 
     <p>
-        This system uses basic browser-session access control and browser
-        local storage. It should not be treated as secure storage for real
+        This system uses basic browser-session access control and Supabase
+        database access. It should not be treated as secure storage for real
         sensitive information, passwords or genuine personal data.
     </p>
 
@@ -849,35 +925,25 @@ if(sessionStorage.getItem("trainerAccess") !== "granted"){
     <div class="button-row">
 
         <a class="button secondary" href="academy.html">
-
             Return to Academy
-
         </a>
 
         <a class="button secondary" href="recruit-tracker.html">
-
             Recruit Tracker
-
         </a>
 
         <a class="button secondary" href="training-records.html">
-
             Training Records
-
         </a>
 
         <a class="button secondary" href="knowledge-check-records.html">
-
             Knowledge Checks
-
         </a>
 
         <button class="button"
                 type="button"
                 onclick="trainerLogout()">
-
             Logout
-
         </button>
 
     </div>
@@ -898,13 +964,478 @@ if(sessionStorage.getItem("trainerAccess") !== "granted"){
 
 <script>
 
-function trainerLogout(){
+const SUPABASE_URL =
+    "https://hawklowwjrilrrpdbmeb.supabase.co";
 
-    sessionStorage.removeItem("trainerAccess");
+const SUPABASE_KEY =
+    "sb_publishable_Zau-vuGABRzxvl8a7AOmBA_AKI1uuh6";
 
-    window.location.href = "trainers-login.html";
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
+
+
+const MODULE_COUNT = 13;
+
+
+const MODULE_NAMES = [
+
+    "Welcome to ARU",
+
+    "Professional Standards",
+
+    "Legal & Decision-Making",
+
+    "Equipment, Vehicles & PPE",
+
+    "Firearms Safety & Handling",
+
+    "Firearms Fundamentals & Operational Readiness",
+
+    "ARV Deployment & Armed Incident Response",
+
+    "Armed Vehicle Tactics",
+
+    "Armed Containment, Searches & Warrants",
+
+    "Building Operations & CQB",
+
+    "Complex Armed Incidents & Integrated Operations",
+
+    "Consolidation & Scenario Development",
+
+    "Final Assessment & Qualification"
+
+];
+
+
+let recruits = [];
+
+
+function setDashboardSyncStatus(message, type = "") {
+
+    const element =
+        document.getElementById("dashboardSyncStatus");
+
+    if (!element) {
+        return;
+    }
+
+    element.textContent = message;
+
+    element.className =
+        "sync-status " + type;
 
 }
+
+
+function normaliseRecruit(item) {
+
+    const currentModule =
+        Number(item.current_module) || 1;
+
+    const status =
+        item.status || "Active";
+
+    let progress;
+
+    if (status === "Qualified") {
+
+        progress = 100;
+
+    }
+    else {
+
+        progress =
+            Math.round(
+                ((Math.max(1, currentModule) - 1) /
+                MODULE_COUNT) * 100
+            );
+
+    }
+
+    return {
+
+        id: item.id,
+
+        officerName:
+            item.officer_name || "Unnamed Officer",
+
+        discordId:
+            item.discord_id || "",
+
+        callsign:
+            item.callsign || "",
+
+        cohort:
+            item.cohort || "Cohort 001",
+
+        currentModule:
+            currentModule,
+
+        status:
+            status,
+
+        progress:
+            Math.min(100, Math.max(0, progress))
+
+    };
+
+}
+
+
+async function loadTrainerDashboard() {
+
+    setDashboardSyncStatus(
+        "Loading Academy database..."
+    );
+
+
+    const { data, error } =
+        await supabaseClient
+            .from("aru_recruits")
+            .select(
+                "id, officer_name, discord_id, callsign, cohort, current_module, status, created_at"
+            )
+            .order(
+                "created_at",
+                {
+                    ascending:true
+                }
+            );
+
+
+    if (error) {
+
+        console.error(
+            "Supabase dashboard error:",
+            error
+        );
+
+        setDashboardSyncStatus(
+            "Database connection error: " +
+            error.message,
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    recruits =
+        (data || []).map(
+            normaliseRecruit
+        );
+
+
+    updateTrainerDashboard();
+
+
+    setDashboardSyncStatus(
+        "✓ Connected — Academy database synchronised",
+        "online"
+    );
+
+}
+
+
+function updateTrainerDashboard() {
+
+    const cohortElement =
+        document.getElementById("currentCohort");
+
+    const activeElement =
+        document.getElementById("activeStudents");
+
+    const qualifiedElement =
+        document.getElementById("qualifiedStudents");
+
+    const assessmentElement =
+        document.getElementById("assessmentStudents");
+
+    const developmentElement =
+        document.getElementById("developmentStudents");
+
+    const progressElement =
+        document.getElementById("studentProgressList");
+
+
+    if (!cohortElement) {
+        return;
+    }
+
+
+    if (recruits.length === 0) {
+
+        cohortElement.textContent =
+            "No Cohort";
+
+        activeElement.textContent =
+            "0";
+
+        qualifiedElement.textContent =
+            "0";
+
+        assessmentElement.textContent =
+            "0";
+
+        developmentElement.textContent =
+            "0";
+
+        progressElement.innerHTML =
+
+            '<div class="student-stage-item">' +
+            'No recruit records currently exist.' +
+            '</div>';
+
+        return;
+
+    }
+
+
+    const cohortCounts = {};
+
+
+    recruits.forEach(function(recruit) {
+
+        const cohort =
+            recruit.cohort || "Cohort 001";
+
+        if (!cohortCounts[cohort]) {
+
+            cohortCounts[cohort] = 0;
+
+        }
+
+        cohortCounts[cohort]++;
+
+    });
+
+
+    let currentCohort =
+        recruits[0].cohort || "Cohort 001";
+
+
+    Object.keys(cohortCounts)
+        .forEach(function(cohort) {
+
+            if (
+                cohortCounts[cohort] >
+                cohortCounts[currentCohort]
+            ) {
+
+                currentCohort =
+                    cohort;
+
+            }
+
+        });
+
+
+    const cohortRecruits =
+        recruits.filter(function(recruit) {
+
+            return (
+                (recruit.cohort || "Cohort 001") ===
+                currentCohort
+            );
+
+        });
+
+
+    cohortElement.textContent =
+        currentCohort;
+
+
+    activeElement.textContent =
+        cohortRecruits.filter(function(recruit) {
+
+            return (
+                recruit.status !== "Qualified"
+            );
+
+        }).length;
+
+
+    qualifiedElement.textContent =
+        cohortRecruits.filter(function(recruit) {
+
+            return recruit.status === "Qualified";
+
+        }).length;
+
+
+    assessmentElement.textContent =
+        cohortRecruits.filter(function(recruit) {
+
+            return (
+                recruit.status ===
+                "Ready for Final Assessment"
+            );
+
+        }).length;
+
+
+    developmentElement.textContent =
+        cohortRecruits.filter(function(recruit) {
+
+            return (
+                recruit.status ===
+                "Development Required"
+            );
+
+        }).length;
+
+
+    progressElement.innerHTML =
+        cohortRecruits
+            .map(function(recruit) {
+
+                const moduleNumber =
+                    Math.min(
+                        MODULE_COUNT,
+                        Math.max(
+                            1,
+                            recruit.currentModule
+                        )
+                    );
+
+
+                const moduleName =
+                    MODULE_NAMES[
+                        moduleNumber - 1
+                    ];
+
+
+                const statusText =
+                    recruit.status;
+
+
+                return (
+
+                    '<div class="student-stage-item">' +
+
+                        '<strong>' +
+
+                            escapeHTML(
+                                recruit.officerName
+                            ) +
+
+                        '</strong>' +
+
+                        ' — ' +
+
+                        escapeHTML(
+                            statusText
+                        ) +
+
+                        '<div class="student-progress">' +
+
+                            'Module ' +
+                            moduleNumber +
+                            ' — ' +
+                            escapeHTML(
+                                moduleName
+                            ) +
+
+                            ' • ' +
+
+                            recruit.progress +
+                            '% progress' +
+
+                        '</div>' +
+
+                    '</div>'
+
+                );
+
+            })
+            .join("");
+
+}
+
+
+function escapeHTML(value) {
+
+    return String(value)
+
+        .replaceAll(
+            "&",
+            "&amp;"
+        )
+
+        .replaceAll(
+            "<",
+            "&lt;"
+        )
+
+        .replaceAll(
+            ">",
+            "&gt;"
+        )
+
+        .replaceAll(
+            '"',
+            "&quot;"
+        )
+
+        .replaceAll(
+            "'",
+            "&#039;"
+        );
+
+}
+
+
+const realtimeChannel =
+    supabaseClient
+        .channel(
+            "aru-trainers-dashboard"
+        )
+        .on(
+            "postgres_changes",
+            {
+                event:"*",
+                schema:"public",
+                table:"aru_recruits"
+            },
+            function(payload) {
+
+                console.log(
+                    "Recruit database update:",
+                    payload
+                );
+
+                loadTrainerDashboard();
+
+            }
+        )
+        .subscribe(function(status) {
+
+            console.log(
+                "Trainer dashboard realtime status:",
+                status
+            );
+
+        });
+
+
+function trainerLogout() {
+
+    sessionStorage.removeItem(
+        "trainerAccess"
+    );
+
+    window.location.href =
+        "trainers-login.html";
+
+}
+
+
+loadTrainerDashboard();
 
 </script>
 
